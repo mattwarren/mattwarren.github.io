@@ -3,6 +3,13 @@ layout: post
 title: Example content
 ---
 
+```
+Took 00:00:31.623 to DE-serialise 7,990,787 Stack Overflow Questions, used 2136.50 MB of memory
+Took 00:01:14.229 (74,229 ms) to group all the tags, used 2799.32 MB of memory
+Took 00:00:34.148 (34,148 ms) to create all the "related" tags info, used 362.57 MB of memory
+Took 00:01:31.662 (91,662 ms) to sort the 191,025 arrays
+After SETUP - Using 4536.21 MB of memory in total
+```
 
 <div class="message">
   Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
