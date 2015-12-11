@@ -1,8 +1,6 @@
 ---
 layout: post
 title: The Stack Overflow Tag Engine – Part 3
-date: 2015-10-29 16:11
-author: matthewwarren
 comments: true
 tags: [bitmaps, indexing, stackoverflow, stackoverflow]
 ---

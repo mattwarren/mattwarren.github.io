@@ -1,8 +1,6 @@
 ---
 layout: post
 title: The Stack Overflow Tag Engine – Part 1
-date: 2014-11-01 01:23
-author: matthewwarren
 comments: true
 tags: [indexing, lucene, stackoverflow, stackoverflow]
 ---

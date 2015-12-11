@@ -1,8 +1,6 @@
 ---
 layout: post
 title: The Stack Overflow Tag Engine – Part 2
-date: 2015-08-19 12:35
-author: matthewwarren
 comments: true
 tags: [indexing, stackoverflow, stackoverflow, trigrams]
 ---

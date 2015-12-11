@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Open Source .NET – 1 year later
-date: 2015-12-08 12:45
-author: matthewwarren
 comments: true
 tags: [.NET, Analytics, OpenSource, Roslyn]
 ---
