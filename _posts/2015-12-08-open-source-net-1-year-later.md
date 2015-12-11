@@ -14,7 +14,7 @@ I will be looking at the 3 following projects, as they are all highly significan
 - <a href="https://github.com/dotnet/coreclr/" target="_blank">**CoreCLR**</a> - the .NET Core runtime, called CoreCLR, and the base library, called mscorlib. It includes the garbage collector, JIT compiler, base .NET data types and many low-level classes.
 - <a href="https://github.com/dotnet/corefx/" target="_blank">**CoreFX**</a> the .NET Core foundational libraries, called CoreFX. It includes classes for collections, file systems, console, XML, async and many others.
 
-### <a name="AvailableData"></a>**Available Data**
+## <a name="AvailableData"></a>**Available Data**
 
 GitHub itself has some nice graphs built-in, for instance you can see the **Commits per Month** over an entire year:
 <a href="https://github.com/dotnet/roslyn/graphs/contributors" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11634181/f451abce-9d06-11e5-8940-d133d1931422.png" alt="Commits Per Month" class="aligncenter" /></a>
@@ -28,11 +28,11 @@ However, knowing the "*# of Issues*" or "*Merged Pull Requests*" per/month on it
 
 <a href="https://cloud.githubusercontent.com/assets/157298/11634101/8abd7210-9d06-11e5-82b0-570f296cf433.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11634101/8abd7210-9d06-11e5-82b0-570f296cf433.png" width="773" height="370" alt="owner collaborator or community" class="aligncenter" /></a>
 
-### <a name="Results"></a>**Results**
+## <a name="Results"></a>**Results**
 
 So now that we can get the data we need, what results do we get.
 
-#### <a name="TotalIssuesBySubmitter"></a>**Total Issues - By Submitter**
+### <a name="TotalIssuesBySubmitter"></a>**Total Issues - By Submitter**
 
 | **Project** | **Owner** | **Collaborator** | **Community** | **Total** |
 | ----------- | --------- | ---------------- | ------------- | --------- |
@@ -44,7 +44,7 @@ So now that we can get the data we need, what results do we get.
 
 Here you can see that the Owners and Collaborators do in some cases dominate, e.g. in Roslyn where almost 60% of the issues were opened by them. But in other cases the Community is very active, especially in CoreCLR where Community members are opening more issues than Owners/Collaborators combined. Part of the reason for this is the nature of the different repositories, CoreCLR is the most visible part of the .NET framework as it encompasses most of the libraries that .NET developers would use on a day-to-day basis, so it's not surprising that the Community has lots of suggestions for improvements or bug fixes. In addition, the CoreCLR has been around for a much longer time and so the Community has had more time to use it and find out the parts it doesn't like. Whereas Roslyn is a much newer project so there has been less time to use it, plus finding bugs in a compiler is by its nature harder to do.
 
-#### <a name="TotalMergedPullRequestsBySubmitter"></a>**Total Merged Pull Requests - By Submitter**
+### <a name="TotalMergedPullRequestsBySubmitter"></a>**Total Merged Pull Requests - By Submitter**
 
 | **Project** | **Owner** | **Collaborator** | **Community** | **Total** |
 | ----------- | --------- | ---------------- | ------------- | --------- |
@@ -60,15 +60,15 @@ However if we look at Merged Pull Requests, we can see that that the overall amo
 
 Finally if you look at the amount per/month (see the 2 graphs below, click for larger images), it's hard to pick up any definite trends or say if the Community is *definitely* contributing more or less over time. But you can say that over a year the Community has consistently contributed and it doesn't look like that contribution is going to end. It is not just an initial burst that only happened straight after the projects were open sourced, it is a sustained level of contributions over an entire year.
 
-#### <a name="IssuesPerMonthBySubmitter"></a>**Issues Per Month - By Submitter**
+### <a name="IssuesPerMonthBySubmitter"></a>**Issues Per Month - By Submitter**
 
 <a href="https://cloud.githubusercontent.com/assets/157298/11596712/ad28f518-9aae-11e5-81d9-42bc22903d09.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11596712/ad28f518-9aae-11e5-81d9-42bc22903d09.png" alt="Issues Per Month - By Submitter (Owner, Collaborator or Community)" class="aligncenter" /></a>
 
-#### <a name="MergedPullRequestPerMonthBySubmitter"></a>**Merged Pull Request Per Month - By Submitter**
+### <a name="MergedPullRequestPerMonthBySubmitter"></a>**Merged Pull Request Per Month - By Submitter**
 
 <a href="https://cloud.githubusercontent.com/assets/157298/11652755/785d0d20-9d91-11e5-9802-834bb3955718.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11652755/785d0d20-9d91-11e5-9802-834bb3955718.png" alt="Merged Pull Requests Per Month - By Submitter (Owner, Collaborator or Community)" class="aligncenter" /></a>
 
-### <a name="Top20IssuesLabels"></a>**Top 20 Issue Labels**
+## <a name="Top20IssuesLabels"></a>**Top 20 Issue Labels**
 
 The last thing that I want to do whilst I have the data is to take a look at the most popular *Issue Labels* and see what they tell us about the *type* of work that has been going on since the 3 projects were open sourced.
 
