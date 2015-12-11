@@ -20,3 +20,7 @@ author:
 
 # Custom vars
 version:             1.0.0
+
+markdown:     kramdown
+kramdown:
+  input: GFM
