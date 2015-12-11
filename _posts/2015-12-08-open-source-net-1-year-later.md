@@ -10,6 +10,7 @@ A little over a year ago Microsoft announced that they were <a href="http://www.
 > How much **Community** involvement has there been since Microsoft open sourced large parts of the .NET framework?
 
 I will be looking at the 3 following projects, as they are all highly significant parts of the .NET ecosystem and are also some of the <a href="https://github.com/dotnet/" target="_blank">most active/starred/forked projects</a> within the .NET Foundation:
+
 - <a href="https://github.com/dotnet/roslyn/" target="_blank">**Roslyn**</a> - The .NET Compiler Platform ("Roslyn") provides open-source C# and Visual Basic compilers with rich code analysis APIs.
 - <a href="https://github.com/dotnet/coreclr/" target="_blank">**CoreCLR**</a> - the .NET Core runtime, called CoreCLR, and the base library, called mscorlib. It includes the garbage collector, JIT compiler, base .NET data types and many low-level classes.
 - <a href="https://github.com/dotnet/corefx/" target="_blank">**CoreFX**</a> the .NET Core foundational libraries, called CoreFX. It includes classes for collections, file systems, console, XML, async and many others.
@@ -26,7 +27,7 @@ However to answer the question above, I needed more data. Fortunately GitHub pro
 
 However, knowing the "*# of Issues*" or "*Merged Pull Requests*" per/month on it's own isn't that useful, it doesn't tell us anything about *who* created the issue or submitted the PR. Fortunately GitHub classifies users into categories, for instance in the image below from <a href="https://github.com/dotnet/roslyn/issues/670" target="_blank">Roslyn Issue #670</a> we can see what type of user posted each comment, an "Owner", "Collaborator" or blank which signifies a "Community" member, i.e. someone who (AFAICT) doesn't work at Microsoft.
 
-<a href="https://cloud.githubusercontent.com/assets/157298/11634101/8abd7210-9d06-11e5-82b0-570f296cf433.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11634101/8abd7210-9d06-11e5-82b0-570f296cf433.png" width="773" height="370" alt="owner collaborator or community" class="aligncenter" /></a>
+<a href="https://cloud.githubusercontent.com/assets/157298/11634101/8abd7210-9d06-11e5-82b0-570f296cf433.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11634101/8abd7210-9d06-11e5-82b0-570f296cf433.png" alt="owner collaborator or community" class="aligncenter" /></a>
 
 ## <a name="Results"></a>**Results**
 
@@ -72,7 +73,7 @@ Finally if you look at the amount per/month (see the 2 graphs below, click for l
 
 The last thing that I want to do whilst I have the data is to take a look at the most popular *Issue Labels* and see what they tell us about the *type* of work that has been going on since the 3 projects were open sourced.
 
-<a href="https://cloud.githubusercontent.com/assets/157298/11633496/8505205a-9d03-11e5-89fd-33384b20306c.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11633496/8505205a-9d03-11e5-89fd-33384b20306c.png" width="614" height="645" alt="Top 20 Issue Labels" class="aligncenter" /></a>
+<a href="https://cloud.githubusercontent.com/assets/157298/11633496/8505205a-9d03-11e5-89fd-33384b20306c.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11633496/8505205a-9d03-11e5-89fd-33384b20306c.png" alt="Top 20 Issue Labels" class="aligncenter" /></a>
 
 Here are a few observations about the results:
 
