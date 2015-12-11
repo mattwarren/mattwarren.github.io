@@ -67,15 +67,15 @@ So what does the index actually look like, well it's basically a series of sorte
 
 It turns out the the code to do this isn't that complex:
 
-{% highlight csharp %}
+``` csharp
 // start with a copy of the main array, with Id's in order, { 0, 1, 2, 3, 4, 5, ..... }
 tagsByLastActivityDate = new Dictionary<string, int[]>(groupedTags.Count);
 var byLastActivityDate = tag.Value.Positions.ToArray(); 
 Array.Sort(byLastActivityDate, comparer.LastActivityDate);
-{% endhighlight %}
+```
 
 Where the comparer is as simple as the following (note that is sorting the `byLastActiviteDate` array, using the values in the `question` array to determine the sort order.
-{% highlight csharp %}
+``` csharp
 public int LastActivityDate(int x, int y)
 {
     if (questions[y].LastActivityDate == questions[x].LastActivityDate)
@@ -83,16 +83,16 @@ public int LastActivityDate(int x, int y)
     // Compare LastActivityDate DESCENDING, i.e. most recent is first
     return questions[y].LastActivityDate.CompareTo(questions[x].LastActivityDate);
 }
-{% endhighlight %}
+```
 
 So once we've created the sorted list on the left and right of the diagram above (`Last Edited` and `Score`), we can just traverse them *in order* to get the indexes of the `Questions`. For instance if we walk through the `Score` array in order `(1, 2, .., 7, 8)`, collecting the Id's as we go, we end up with `{ 8, 4, 3, 5, 6, 1, 2, 7 }`, which are the array indexes for the corresponding `Questions`. The code to do this is the following, taking account of the `pageSize` and `skip` values:
-{% highlight csharp %}
+``` csharp
 var result = queryInfo[tag]
         .Skip(skip)
         .Take(pageSize)
         .Select(i => questions[i])
         .ToList();
-{% endhighlight %}
+```
 
 Once that's all done, I ended up with an API that you can query in the browser. Note that the timing is the time taken on the server-side, but it is correct, basic queries against a single tag are lightening quick!
 
