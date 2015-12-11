@@ -32,13 +32,13 @@ layout: default
 </div>
 
 <div class="page-tags">
-  {% for tag in page.tags %}
-  <h2>{% tag %}<h2>
+  {% for page_tag in page.tags %}
+  <h2>{% page_tag %}<h2>
   {% endfor %}
 </div>
 <div class="page-categories">
-  {% for category in page.categories %}
-  <h2>{% category %}<h2>
+  {% for page_category in page.categories %}
+  <h2>{% page_category %}<h2>
   {% endfor %}
 </div>
 
