@@ -1,6 +1,10 @@
 ---
 layout: post
 title: The Stack Overflow Tag Engine – Part 2
+date: 2015-08-19 12:35
+author: matthewwarren
+comments: true
+categories: [indexing, stackoverflow, stackoverflow, trigrams]
 ---
 
 I've added a <a href="http://mattwarren.org/resources/" target="_blank">**Resources**</a> and <a href="http://mattwarren.org/speaking/" target="_blank">**Speaking**</a> page to my site, check them out if you want to learn more. There's also a video of my NDC London 2014 talk <a href="http://mattwarren.org/speaking/#NDCLondon2014" target="_blank">"Performance is a Feature!"</a>.

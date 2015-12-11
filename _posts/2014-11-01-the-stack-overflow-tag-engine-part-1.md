@@ -1,6 +1,10 @@
 ---
 layout: post
 title: The Stack Overflow Tag Engine – Part 1
+date: 2014-11-01 01:23
+author: matthewwarren
+comments: true
+categories: [indexing, lucene, stackoverflow, stackoverflow]
 ---
 
 I've added a <a href="http://mattwarren.org/resources/" target="_blank">**Resources**</a> and <a href="http://mattwarren.org/speaking/" target="_blank">**Speaking**</a> page to my site, check them out if you want to learn more.

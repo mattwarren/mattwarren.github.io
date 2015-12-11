@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Open Source .NET – 1 year later
+date: 2015-12-08 12:45
+author: matthewwarren
+comments: true
+categories: [.NET, Analytics, OpenSource, Roslyn]
 ---
 
 A little over a year ago Microsoft announced that they were <a href="http://www.hanselman.com/blog/AnnouncingNET2015NETAsOpenSourceNETOnMacAndLinuxAndVisualStudioCommunity.aspx">open sourcing large parts of the .NET framework</a>. At the time Scott Hanselman did a <a href="http://www.hanselman.com/blog/TheNETCoreCLRIsNowOpenSourceSoIRanTheGitHubRepoThroughMicrosoftPowerBI.aspx" target="_blank">nice analysis of the source</a>, using Microsoft Power BI. Inspired by this and now that a year has passed, I wanted to try and answer the question:
