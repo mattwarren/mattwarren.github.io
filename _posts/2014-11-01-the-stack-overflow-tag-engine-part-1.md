@@ -17,6 +17,7 @@ But if you've ever visited <a href="http://www.stackoverflow.com" target="_blank
 
 #### <a name="TagAPI"></a>**Tag API**
 As well as simple searches, you can also tailor the results with more complex queries (you may need to be logged into the site for these links to work), so you can search for:
+
 - <a href="http://stackoverflow.com/questions/tagged/.net+or+jquery-" target="_blank">questions tagged with .NET but not jQuery</a>
 - <a href="http://stackoverflow.com/questions/tagged/c%23?order=desc&amp;sort=votes" target="_blank">the most popular C# questions (by votes)</a>
 - <a href="http://stackoverflow.com/questions/tagged/xml?sort=frequent&amp;page=10&amp;pagesize=5" target="_blank">page 10 of the most frequently linked to XML question</a>
@@ -32,13 +33,13 @@ As I said I wanted to see what was involved in building a version of the Tag Eng
 
 Below is the output of the code that runs on start-up and processes the data, you can see there are just over 7.9 millions questions in the data set, taking up just over 2GB of memory, when read into a <a href="https://github.com/mattwarren/StackOverflowTagServer/blob/master/Shared/Question.cs" target="_blank">`List`&lt;`Question`&gt;</a>.
 
-```
+{% highlight text %}
 Took 00:00:31.623 to DE-serialise 7,990,787 Stack Overflow Questions, used 2136.50 MB of memory
 Took 00:01:14.229 (74,229 ms) to group all the tags, used 2799.32 MB of memory
 Took 00:00:34.148 (34,148 ms) to create all the "related" tags info, used 362.57 MB of memory
 Took 00:01:31.662 (91,662 ms) to sort the 191,025 arrays
 After SETUP - Using 4536.21 MB of memory in total
-```
+{% endhighlight %}
 
 So it takes roughly *31 seconds* to de-serialise the data from disk (yay [protobuf-net](https://code.google.com/p/protobuf-net/)!) and another *3 1/2 minutes* to process and sort it. At the end we are using roughly 4.5GB of memory.
 
@@ -66,12 +67,12 @@ So what does the index actually look like, well it's basically a series of sorte
 
 It turns out the the code to do this isn't that complex:
 
-``` csharp
+{% highlight csharp %}
 // start with a copy of the main array, with Id's in order, { 0, 1, 2, 3, 4, 5, ..... }
 tagsByLastActivityDate = new Dictionary<string, int[]>(groupedTags.Count);
 var byLastActivityDate = tag.Value.Positions.ToArray(); 
 Array.Sort(byLastActivityDate, comparer.LastActivityDate);
-```
+{% endhighlight %}
 
 Where the comparer is as simple as the following (note that is sorting the `byLastActiviteDate` array, using the values in the `question` array to determine the sort order.
 
@@ -87,13 +88,13 @@ public int LastActivityDate(int x, int y)
 
 So once we've created the sorted list on the left and right of the diagram above (`Last Edited` and `Score`), we can just traverse them *in order* to get the indexes of the `Questions`. For instance if we walk through the `Score` array in order `(1, 2, .., 7, 8)`, collecting the Id's as we go, we end up with `{ 8, 4, 3, 5, 6, 1, 2, 7 }`, which are the array indexes for the corresponding `Questions`. The code to do this is the following, taking account of the `pageSize` and `skip` values:
 
-``` csharp
+{% highlight csharp %}
 var result = queryInfo[tag]
         .Skip(skip)
         .Take(pageSize)
         .Select(i => questions[i])
         .ToList();
-```
+{% endhighlight %}
 
 Once that's all done, I ended up with an API that you can query in the browser. Note that the timing is the time taken on the server-side, but it is correct, basic queries against a single tag are lightening quick!
 
