@@ -4,7 +4,7 @@ title: The Stack Overflow Tag Engine – Part 3
 date: 2015-10-29 16:11
 author: matthewwarren
 comments: true
-categories: [bitmaps, indexing, stackoverflow, stackoverflow]
+tags: [bitmaps, indexing, stackoverflow, stackoverflow]
 ---
 
 This is the part 3 of a mini-series looking at what it *might* take to build the Stack Overflow Tag Engine, if you haven't read <a href="http://mattwarren.org/2014/11/01/the-stack-overflow-tag-engine-part-1/" target="_blank">part 1</a> or <a href="http://mattwarren.org/2015/08/19/the-stack-overflow-tag-engine-part-2/" target="_blank">part 2</a>, I recommend reading them first.
