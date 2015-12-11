@@ -17,10 +17,10 @@ I will be looking at the 3 following projects, as they are all highly significan
 ### <a name="AvailableData"></a>**Available Data**
 
 GitHub itself has some nice graphs built-in, for instance you can see the **Commits per Month** over an entire year:
-<a href="https://github.com/dotnet/roslyn/graphs/contributors" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11634181/f451abce-9d06-11e5-8940-d133d1931422.png" width="994" height="328" alt="Commits Per Month" class="aligncenter" /></a>
+<a href="https://github.com/dotnet/roslyn/graphs/contributors" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11634181/f451abce-9d06-11e5-8940-d133d1931422.png" alt="Commits Per Month" class="aligncenter" /></a>
 
 Also you can get a nice dashboard showing the **Monthly Pulse**
-<a href="https://github.com/dotnet/roslyn/pulse/monthly" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11634411/35085a4a-9d08-11e5-8995-02c65d9ee12d.png" width="994" height="394" alt="github stats - monthly pulse" class="aligncenter" /></a>
+<a href="https://github.com/dotnet/roslyn/pulse/monthly" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11634411/35085a4a-9d08-11e5-8995-02c65d9ee12d.png" alt="github stats - monthly pulse" class="aligncenter" /></a>
 
 However to answer the question above, I needed more data. Fortunately GitHub provides a <a href="https://developer.github.com/v3/" target="_blank">really comprehensive API</a>, which combined with the excellent <a href="https://github.com/octokit/octokit.net" target="_blank">Octokit.net library</a> and the <a href="https://www.linqpad.net/" target="_blank"> brilliant LINQPad</a>, meant I was able to easily get all the data I needed. Here's a <a href="https://gist.github.com/mattwarren/894aa5f46ca62a63764a" target="_blank">sample LINQPad script</a> if you want to start playing around with the API yourself.
 
@@ -62,11 +62,11 @@ Finally if you look at the amount per/month (see the 2 graphs below, click for l
 
 #### <a name="IssuesPerMonthBySubmitter"></a>**Issues Per Month - By Submitter**
 
-<a href="https://cloud.githubusercontent.com/assets/157298/11596712/ad28f518-9aae-11e5-81d9-42bc22903d09.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11596712/ad28f518-9aae-11e5-81d9-42bc22903d09.png" width="1150" height="700" alt="Issues Per Month - By Submitter (Owner, Collaborator or Community)" class="aligncenter" /></a>
+<a href="https://cloud.githubusercontent.com/assets/157298/11596712/ad28f518-9aae-11e5-81d9-42bc22903d09.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11596712/ad28f518-9aae-11e5-81d9-42bc22903d09.png" alt="Issues Per Month - By Submitter (Owner, Collaborator or Community)" class="aligncenter" /></a>
 
 #### <a name="MergedPullRequestPerMonthBySubmitter"></a>**Merged Pull Request Per Month - By Submitter**
 
-<a href="https://cloud.githubusercontent.com/assets/157298/11652755/785d0d20-9d91-11e5-9802-834bb3955718.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11652755/785d0d20-9d91-11e5-9802-834bb3955718.png" width="1150" height="700" alt="Merged Pull Requests Per Month - By Submitter (Owner, Collaborator or Community)" class="aligncenter" /></a>
+<a href="https://cloud.githubusercontent.com/assets/157298/11652755/785d0d20-9d91-11e5-9802-834bb3955718.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11652755/785d0d20-9d91-11e5-9802-834bb3955718.png" alt="Merged Pull Requests Per Month - By Submitter (Owner, Collaborator or Community)" class="aligncenter" /></a>
 
 ### <a name="Top20IssuesLabels"></a>**Top 20 Issue Labels**
 
