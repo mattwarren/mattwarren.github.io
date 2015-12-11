@@ -43,7 +43,7 @@ After SETUP - Using 4536.21 MB of memory in total
 
 So it takes roughly *31 seconds* to de-serialise the data from disk (yay [protobuf-net](https://code.google.com/p/protobuf-net/)!) and another *3 1/2 minutes* to process and sort it. At the end we are using roughly 4.5GB of memory.
 
-{% highlight plaintext %}
+{% highlight text %}
 Max LastActivityDate 14/09/2014 03:07:29
 Min LastActivityDate 18/08/2008 03:34:29
 Max CreationDate 14/09/2014 03:06:45
