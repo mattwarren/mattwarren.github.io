@@ -17,6 +17,7 @@ But if you've ever visited <a href="http://www.stackoverflow.com" target="_blank
 
 #### <a name="TagAPI"></a>**Tag API**
 As well as simple searches, you can also tailor the results with more complex queries (you may need to be logged into the site for these links to work), so you can search for:
+
 - <a href="http://stackoverflow.com/questions/tagged/.net+or+jquery-" target="_blank">questions tagged with .NET but not jQuery</a>
 - <a href="http://stackoverflow.com/questions/tagged/c%23?order=desc&amp;sort=votes" target="_blank">the most popular C# questions (by votes)</a>
 - <a href="http://stackoverflow.com/questions/tagged/xml?sort=frequent&amp;page=10&amp;pagesize=5" target="_blank">page 10 of the most frequently linked to XML question</a>
@@ -42,7 +43,7 @@ After SETUP - Using 4536.21 MB of memory in total
 
 So it takes roughly *31 seconds* to de-serialise the data from disk (yay [protobuf-net](https://code.google.com/p/protobuf-net/)!) and another *3 1/2 minutes* to process and sort it. At the end we are using roughly 4.5GB of memory.
 
-```
+{% highlight plaintext %}
 Max LastActivityDate 14/09/2014 03:07:29
 Min LastActivityDate 18/08/2008 03:34:29
 Max CreationDate 14/09/2014 03:06:45
@@ -53,12 +54,12 @@ Max ViewCount 1917888 (Id 184618)
 Min ViewCount 1
 Max AnswerCount 518 (Id 184618)
 Min AnswerCount 0
-```
+{% endhighlight %}
 
 Yes that's right, there is actually a Stack Overflow questions with <a href="http://stackoverflow.com/questions/184618/what-is-the-best-comment-in-source-code-you-have-ever-encountered" target="_blank">1.9 million views</a>, not surprisingly it's locked for editing, but it's also considered "not constructive"! The same question also has 518 answers, the most of any on the site and if you're wondering, the question with the highest score has an impressive 8192 votes and is titled <a href="http://stackoverflow.com/questions/11227809/why-is-processing-a-sorted-array-faster-than-an-unsorted-array" target="_blank">Why is processing a sorted array faster than an unsorted array?</a>
 
 #### <a name="CreatingAnIndex"></a>**Creating an Index**
-So what does the index actually look like, well it's basically a series of sorted lists (`List`&lt;`int`&gt;) that contain an offset into the main `List`&lt;`Question`&gt; that contains all the <a href="https://github.com/mattwarren/StackOverflowTagServer/blob/master/Shared/Question.cs" target="_blank">`Question`</a> data. Or in a diagram, something like this:
+So what does the index actually look like, well it's basically a series of sorted lists (`List<int>') that contain an offset into the main `List<Question>` that contains all the <a href="https://github.com/mattwarren/StackOverflowTagServer/blob/master/Shared/Question.cs" target="_blank">`Question`</a> data. Or in a diagram, something like this:
 
 <a href="https://mattwarrendotorg.files.wordpress.com/2014/11/indexing-explanation.png" target="_blank"><img src="https://mattwarrendotorg.files.wordpress.com/2014/11/indexing-explanation.png?w=760" alt="Indexing explanation" width="660" height="165" class="aligncenter size-large wp-image-1020" /></a>
 
@@ -66,15 +67,15 @@ So what does the index actually look like, well it's basically a series of sorte
 
 It turns out the the code to do this isn't that complex:
 
-``` csharp
+{% highlight csharp %}
 // start with a copy of the main array, with Id's in order, { 0, 1, 2, 3, 4, 5, ..... }
 tagsByLastActivityDate = new Dictionary<string, int[]>(groupedTags.Count);
 var byLastActivityDate = tag.Value.Positions.ToArray(); 
 Array.Sort(byLastActivityDate, comparer.LastActivityDate);
-```
+{% endhighlight %}
 
 Where the comparer is as simple as the following (note that is sorting the `byLastActiviteDate` array, using the values in the `question` array to determine the sort order.
-```csharp
+{% highlight csharp %}
 public int LastActivityDate(int x, int y)
 {
     if (questions[y].LastActivityDate == questions[x].LastActivityDate)
@@ -82,16 +83,16 @@ public int LastActivityDate(int x, int y)
     // Compare LastActivityDate DESCENDING, i.e. most recent is first
     return questions[y].LastActivityDate.CompareTo(questions[x].LastActivityDate);
 }
-```
+{% endhighlight %}
 
 So once we've created the sorted list on the left and right of the diagram above (`Last Edited` and `Score`), we can just traverse them *in order* to get the indexes of the `Questions`. For instance if we walk through the `Score` array in order `(1, 2, .., 7, 8)`, collecting the Id's as we go, we end up with `{ 8, 4, 3, 5, 6, 1, 2, 7 }`, which are the array indexes for the corresponding `Questions`. The code to do this is the following, taking account of the `pageSize` and `skip` values:
-``` csharp
+{% highlight csharp %}
 var result = queryInfo[tag]
         .Skip(skip)
         .Take(pageSize)
         .Select(i => questions[i])
         .ToList();
-```
+{% endhighlight %}
 
 Once that's all done, I ended up with an API that you can query in the browser. Note that the timing is the time taken on the server-side, but it is correct, basic queries against a single tag are lightening quick!
 
@@ -99,6 +100,7 @@ Once that's all done, I ended up with an API that you can query in the browser. 
 
 #### <a name="NextTime"></a>**Next time**
 Now that the basic index is setup, next time I'll be looking at how to handle:
+
 - Complex boolean queries `.net or jquery- and c#`
 - Power users who have 100's of excluded tags
 
