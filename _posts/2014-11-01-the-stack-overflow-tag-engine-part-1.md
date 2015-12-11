@@ -17,7 +17,6 @@ But if you've ever visited <a href="http://www.stackoverflow.com" target="_blank
 
 #### <a name="TagAPI"></a>**Tag API**
 As well as simple searches, you can also tailor the results with more complex queries (you may need to be logged into the site for these links to work), so you can search for:
-
 - <a href="http://stackoverflow.com/questions/tagged/.net+or+jquery-" target="_blank">questions tagged with .NET but not jQuery</a>
 - <a href="http://stackoverflow.com/questions/tagged/c%23?order=desc&amp;sort=votes" target="_blank">the most popular C# questions (by votes)</a>
 - <a href="http://stackoverflow.com/questions/tagged/xml?sort=frequent&amp;page=10&amp;pagesize=5" target="_blank">page 10 of the most frequently linked to XML question</a>
@@ -75,7 +74,8 @@ Array.Sort(byLastActivityDate, comparer.LastActivityDate);
 ```
 
 Where the comparer is as simple as the following (note that is sorting the `byLastActiviteDate` array, using the values in the `question` array to determine the sort order.
-``` csharp
+
+{% highlight csharp %}
 public int LastActivityDate(int x, int y)
 {
     if (questions[y].LastActivityDate == questions[x].LastActivityDate)
@@ -83,9 +83,10 @@ public int LastActivityDate(int x, int y)
     // Compare LastActivityDate DESCENDING, i.e. most recent is first
     return questions[y].LastActivityDate.CompareTo(questions[x].LastActivityDate);
 }
-```
+{% endhighlight %}
 
 So once we've created the sorted list on the left and right of the diagram above (`Last Edited` and `Score`), we can just traverse them *in order* to get the indexes of the `Questions`. For instance if we walk through the `Score` array in order `(1, 2, .., 7, 8)`, collecting the Id's as we go, we end up with `{ 8, 4, 3, 5, 6, 1, 2, 7 }`, which are the array indexes for the corresponding `Questions`. The code to do this is the following, taking account of the `pageSize` and `skip` values:
+
 ``` csharp
 var result = queryInfo[tag]
         .Skip(skip)
