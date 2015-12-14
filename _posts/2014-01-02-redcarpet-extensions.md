@@ -3,6 +3,10 @@ layout: default
 title: Configuring Redcarpet
 ---
 
+<div class="message">
+  Howdy! This is an example blog post that shows Redcarpet support for GitHub flavoured Markdown.
+</div>
+
 # Configuring Redcarpet
 
 GitHub uses the [Redcarpet](https://github.com/vmg/redcarpet/) renderer for `.md` content.
