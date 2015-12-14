@@ -27,14 +27,16 @@ layout: default
   {{ content }}
 </div>
 
-<div class="">
+<!-- Disabled till the whole tags thing is working properly
+<div class="???">
   <p id="post-meta">{{ tags_content }}</p>
 </div>
+-->
 
 <div class="page-tags">
-  <h2>Tags:</h2>
+  Tags:
   {% for page_tag in page.tags %}
-  <span>{{ page_tag }}</span>
+  <span>{{ page_tag }}, </span>
   {% endfor %}
 </div>
 
