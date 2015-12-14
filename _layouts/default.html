@@ -2,6 +2,7 @@
 <html lang="en-us">
 
   {% include head.html %}
+  {% include base.html %}
 
   <body>
     <!-- Google Tag Manager -->
@@ -44,7 +45,7 @@
         document.addEventListener('click', function(e) {
           var target = e.target;
 
-          if(!checkbox.checked ||
+          if (!checkbox.checked ||
              sidebar.contains(target) ||
              (target === checkbox || target === toggle)) return;
 

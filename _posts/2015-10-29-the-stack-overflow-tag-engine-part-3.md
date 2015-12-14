@@ -5,13 +5,14 @@ comments: true
 tags: [bitmaps, indexing, stackoverflow]
 ---
 
-This is the part 3 of a mini-series looking at what it *might* take to build the Stack Overflow Tag Engine, if you haven't read <a href="http://mattwarren.org/2014/11/01/the-stack-overflow-tag-engine-part-1/" target="_blank">part 1</a> or <a href="http://mattwarren.org/2015/08/19/the-stack-overflow-tag-engine-part-2/" target="_blank">part 2</a>, I recommend reading them first.
+This is the part 3 of a mini-series looking at what it *might* take to build the Stack Overflow Tag Engine, if you haven't read [part 1]({{base}}/the-stack-overflow-tag-engine-part-1/) or [part 2]({{base}}/2015/08/19/the-stack-overflow-tag-engine-part-2/), I recommend reading them first.
 
 ---------------------------------------
 
 ## <a name="ComplexBooleanQueries"></a>**Complex boolean queries**
 
 One of the most powerful features of the Stack Overflow Tag Engine is that it allows you to do complex boolean queries against multiple Tag, for instance:
+
 - <a href="http://stackoverflow.com/questions/tagged/.net+or+jquery-" target="_blank">.net OR (NOT jquery)</a>
 - <a href="http://stackoverflow.com/questions/tagged/.net+or+jquery-+javascript" target="_blank">.net OR (NOT jquery) AND javascript</a>
 
@@ -129,6 +130,7 @@ To ensure I'm being fair, I should point out that the compressed Bitmap queries 
 <a href="https://mattwarrendotorg.files.wordpress.com/2015/10/or-queries-with-exclusions.png" target="_blank"><img src="https://mattwarrendotorg.files.wordpress.com/2015/10/or-queries-with-exclusions.png" alt="OR Queries with Exclusions" width="836" height="487" class="aligncenter size-full wp-image-1147" /></a>
 
 If you are interested the results for all the query types are available: 
+
 - <a href="https://mattwarrendotorg.files.wordpress.com/2015/10/and-queries-with-exclusions.png" target="_blank">AND Queries</a>
 - <a href="https://mattwarrendotorg.files.wordpress.com/2015/10/and-not-queries-with-exclusions.png" target="_blank">AND NOT Queries</a>
 - <a href="https://mattwarrendotorg.files.wordpress.com/2015/10/or-queries-with-exclusions.png" target="_blank">OR Queries</a> 
