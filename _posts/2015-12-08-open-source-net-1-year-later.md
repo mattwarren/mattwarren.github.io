@@ -5,15 +5,15 @@ comments: true
 tags: [.NET, Analytics, Open Source, Roslyn]
 ---
 
-A little over a year ago Microsoft announced that they were <a href="http://www.hanselman.com/blog/AnnouncingNET2015NETAsOpenSourceNETOnMacAndLinuxAndVisualStudioCommunity.aspx" target="_blank">open sourcing large parts of the .NET framework</a>. At the time Scott Hanselman did a <a href="http://www.hanselman.com/blog/TheNETCoreCLRIsNowOpenSourceSoIRanTheGitHubRepoThroughMicrosoftPowerBI.aspx" target="_blank">nice analysis of the source</a>, using Microsoft Power BI. Inspired by this and now that a year has passed, I wanted to try and answer the question:
+A little over a year ago Microsoft announced that they were [open sourcing large parts of the .NET framework](http://www.hanselman.com/blog/AnnouncingNET2015NETAsOpenSourceNETOnMacAndLinuxAndVisualStudioCommunity.aspx). At the time Scott Hanselman did a [nice analysis of the source](http://www.hanselman.com/blog/TheNETCoreCLRIsNowOpenSourceSoIRanTheGitHubRepoThroughMicrosoftPowerBI.aspx), using Microsoft Power BI. Inspired by this and now that a year has passed, I wanted to try and answer the question:
 
 > How much **Community** involvement has there been since Microsoft open sourced large parts of the .NET framework?
 
-I will be looking at the 3 following projects, as they are all highly significant parts of the .NET ecosystem and are also some of the <a href="https://github.com/dotnet/" target="_blank">most active/starred/forked projects</a> within the .NET Foundation:
+I will be looking at the 3 following projects, as they are all highly significant parts of the .NET ecosystem and are also some of the [most active/starred/forked projects](https://github.com/dotnet/) within the .NET Foundation:
 
-- <a href="https://github.com/dotnet/roslyn/" target="_blank">**Roslyn**</a> - The .NET Compiler Platform ("Roslyn") provides open-source C# and Visual Basic compilers with rich code analysis APIs.
-- <a href="https://github.com/dotnet/coreclr/" target="_blank">**CoreCLR**</a> - the .NET Core runtime, called CoreCLR, and the base library, called mscorlib. It includes the garbage collector, JIT compiler, base .NET data types and many low-level classes.
-- <a href="https://github.com/dotnet/corefx/" target="_blank">**CoreFX**</a> the .NET Core foundational libraries, called CoreFX. It includes classes for collections, file systems, console, XML, async and many others.
+- [**Roslyn**](https://github.com/dotnet/roslyn/) - The .NET Compiler Platform ("Roslyn") provides open-source C# and Visual Basic compilers with rich code analysis APIs.
+- [**CoreCLR**](https://github.com/dotnet/coreclr/) - the .NET Core runtime, called CoreCLR, and the base library, called mscorlib. It includes the garbage collector, JIT compiler, base .NET data types and many low-level classes.
+- [**CoreFX**](https://github.com/dotnet/corefx/) the .NET Core foundational libraries, called CoreFX. It includes classes for collections, file systems, console, XML, async and many others.
 
 ## <a name="AvailableData"></a>**Available Data**
 
@@ -23,7 +23,7 @@ GitHub itself has some nice graphs built-in, for instance you can see the **Comm
 Also you can get a nice dashboard showing the **Monthly Pulse**
 <a href="https://github.com/dotnet/roslyn/pulse/monthly" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11634411/35085a4a-9d08-11e5-8995-02c65d9ee12d.png" alt="github stats - monthly pulse" class="aligncenter" /></a>
 
-However to answer the question above, I needed more data. Fortunately GitHub provides a <a href="https://developer.github.com/v3/" target="_blank">really comprehensive API</a>, which combined with the excellent <a href="https://github.com/octokit/octokit.net" target="_blank">Octokit.net library</a> and the <a href="https://www.linqpad.net/" target="_blank"> brilliant LINQPad</a>, meant I was able to easily get all the data I needed. Here's a <a href="https://gist.github.com/mattwarren/894aa5f46ca62a63764a" target="_blank">sample LINQPad script</a> if you want to start playing around with the API yourself.
+However to answer the question above, I needed more data. Fortunately GitHub provides a [really comprehensive API}(https://developer.github.com/v3/), which combined with the excellent [Octokit.net library](https://github.com/octokit/octokit.net) and the [brilliant LINQPad](https://www.linqpad.net/), meant I was able to easily get all the data I needed. Here's a [sample LINQPad script](https://gist.github.com/mattwarren/894aa5f46ca62a63764a) if you want to start playing around with the API yourself.
 
 However, knowing the "*# of Issues*" or "*Merged Pull Requests*" per/month on it's own isn't that useful, it doesn't tell us anything about *who* created the issue or submitted the PR. Fortunately GitHub classifies users into categories, for instance in the image below from <a href="https://github.com/dotnet/roslyn/issues/670" target="_blank">Roslyn Issue #670</a> we can see what type of user posted each comment, an "Owner", "Collaborator" or blank which signifies a "Community" member, i.e. someone who (AFAICT) doesn't work at Microsoft.
 
