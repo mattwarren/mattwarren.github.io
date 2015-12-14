@@ -47,7 +47,7 @@ The main problem is that we have to scan through all the ids for `tag1` until we
 
 So can we do any better, well yes, there is a fairly established mechanism for doing these types of queries, known as [**Bitmap indexes**](http://lemire.me/blog/archives/2008/08/20/the-mythical-bitmap-index/). To use these you have to pre-calculate an index in which each bit is set to `1` to indicate a match and `0` otherwise. In our scenario this looks so: 
 
-<a href="{{base}}/images/2015/10/bit-map-indexing-explanation.png" target="_blank"><img src="{{base}}/images/2015/10/bit-map-indexing-explanation.png" alt="Bit Map Indexing explanation" width="660" height="145"/></a>
+<a href="{{base}}/images/2015/10/bit-map-indexing-explanation.png" target="_blank"><img src="{{base}}/images/2015/10/bit-map-indexing-explanation.png" alt="Bit Map Indexing explanation"/></a>
 
 Then it is just a case of doing the relevant bitwise operations against the bits (a `byte` at a time), for example if you want to get the questions that have the `C#` `AND` `Java` Tags, you do the following:
 
@@ -121,13 +121,13 @@ But do queries against compressed Bitmaps actually perform faster than the naive
 
 As you can see below, for `AND NOT` queries they are much faster, especially compared to the worse-case where the regular/naive code takes over 150 ms and the compressed Bitmap code takes ~5 ms (the x-axis is `# of excluded/skipped questions` and the y-axis is `time in milliseconds`). 
 
-<a href="{{base}}/images/2015/10/and-not-queries-with-exclusions.png" target="_blank"><img src="{{base}}/images/2015/10/and-not-queries-with-exclusions.png" alt="AND NOT Queries with Exclusions" width="836" height="487" class="aligncenter size-full wp-image-1147" /></a>
+<a href="{{base}}/images/2015/10/and-not-queries-with-exclusions.png" target="_blank"><img src="{{base}}/images/2015/10/and-not-queries-with-exclusions.png" alt="AND NOT Queries with Exclusions"/></a>
 
 For reference there are 194,384 questions tagged with `.net` and 528,490 tagged with `jquery`.
 
 To ensure I'm being fair, I should point out that the compressed Bitmap queries are *slower* for `OR` queries, as shown below. But note the scale, they take ~5 ms compared to ~1-2 ms for the regular queries, so the compressed Bitmap queries are still fast! The nice things about the compressed Bitmap queries is that they take the same amount of time, regardless of how many questions we skip, whereas the regular queries get slower as `# of excluded/skipped questions` increases.
 
-<a href="{{base}}/images/2015/10/or-queries-with-exclusions.png" target="_blank"><img src="{{base}}/images/2015/10/or-queries-with-exclusions.png" alt="OR Queries with Exclusions" width="836" height="487" class="aligncenter size-full wp-image-1147" /></a>
+<a href="{{base}}/images/2015/10/or-queries-with-exclusions.png" target="_blank"><img src="{{base}}/images/2015/10/or-queries-with-exclusions.png" alt="OR Queries with Exclusions"/></a>
 
 If you are interested the results for all the query types are available: 
 
@@ -157,7 +157,7 @@ But there's still more things to implement, in future posts I hope to cover the 
 
 - Currently my implementation doesn't play nicely with the Garbage Collector and it does lots of allocations. I will attempt to replicate the "no-allocations" rule that Stack Overflow have after [their battle with the .NET GC](http://blog.marcgravell.com/2011/10/assault-by-gc.html)
 
-<a href="https://twitter.com/Nick_Craver/status/636516399435923456" target="_blank"><img src="{{base}}/images/2015/10/nick_craver-tweet.png" alt="Nick_Craver Tweet" width="636" height="320" class="aligncenter size-full wp-image-1161" /></a>
+<a href="https://twitter.com/Nick_Craver/status/636516399435923456" target="_blank"><img src="{{base}}/images/2015/10/nick_craver-tweet.png" alt="Nick_Craver Tweet"/></a>
 
 - [How a DDOS attack on TagServer](http://stackstatus.net/post/107352821074/outage-postmortem-january-6th-2015) *might* have been caused
 
