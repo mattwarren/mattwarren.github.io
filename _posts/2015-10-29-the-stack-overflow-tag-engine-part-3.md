@@ -96,7 +96,7 @@ However if you don't want to read the <a href="http://arxiv.org/abs/0901.3751" t
 To give an idea of the space savings that can be achieved, the table below shows the size in bytes for compressed Bitmaps that have varying amounts of individual bit set to `1` (for comparision uncompressed Bitmaps are 1,000,000 bytes or 0.95MB)
 
 | # Bits Set | Size in Bytes |
-|----------------------------|
+|------------|---------------|
 | 1 | 24 |
 | 10 | 168 |
 | 25 | 408 |
