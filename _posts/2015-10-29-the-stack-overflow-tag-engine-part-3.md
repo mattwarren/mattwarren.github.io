@@ -22,21 +22,21 @@ var result = new List<Question>(pageSize);
 var andHashSet = new HastSet<int>(queryInfo[tag2]);
 foreach (var id in queryInfo[tag1])
 {
-	if (result.Count >= pageSize)
-		break;
+    if (result.Count >= pageSize)
+        break;
 
-	baseQueryCounter++;
-	if (questions[id].Tags.Any(t => tagsToExclude.Contains(t)))	
-	{
-		excludedCounter++;
-	}
-	else if (andHashSet.Remove(item))
-	{
-		if (itemsSkipped >= skip)
-			result.Add(questions[item]);
-		else
-			itemsSkipped++;
-	}
+    baseQueryCounter++;
+    if (questions[id].Tags.Any(t => tagsToExclude.Contains(t))) 
+    {
+        excludedCounter++;
+    }
+    else if (andHashSet.Remove(item))
+    {
+        if (itemsSkipped >= skip)
+            result.Add(questions[item]);
+        else
+            itemsSkipped++;
+    }
 }
 ```
 
@@ -53,7 +53,7 @@ Then it is just a case of doing the relevant bitwise operations against the bits
 ``` csharp
 for (int i = 0; i < numBits / 8; i++)
 {
-	result[i] = bitSetCSharp[i] & bitSetJava[i];
+    result[i] = bitSetCSharp[i] & bitSetJava[i];
 }
 ```
 
@@ -69,27 +69,27 @@ However if you don't want to read the <a href="http://arxiv.org/abs/0901.3751" t
 0 0x00
 1 words
         [   0]=                   17,  2 bits set ->
-		{0000000000000000000000000000000000000000000000000000000000010001}
+        {0000000000000000000000000000000000000000000000000000000000010001}
 31 0x00
 1 words
         [   0]=        2199023255552,  1 bits set ->
-		{0000000000000000000000100000000000000000000000000000000000000000}
+        {0000000000000000000000100000000000000000000000000000000000000000}
 18 0x01
 1 words
         [   0]=                   64,  1 bits set ->
-		{0000000000000000000000000000000000000000000000000000000001000000}
+        {0000000000000000000000000000000000000000000000000000000001000000}
 48 0x01
 3 words
         [   0]=              1048576,  1 bits set ->
-		{0000000000000000000000000000000000000000000100000000000000000000}
+        {0000000000000000000000000000000000000000000100000000000000000000}
         [   1]=     9007199254740992,  1 bits set ->
-		{0000000000100000000000000000000000000000000000000000000000000000}
+        {0000000000100000000000000000000000000000000000000000000000000000}
         [   2]=     9007199304740992,  13 bits set ->
-		{0000000000100000000000000000000000000010111110101111000010000000}
+        {0000000000100000000000000000000000000010111110101111000010000000}
 131 0x00
 1 words
         [   0]=            536870912,  1 bits set ->
- 		{0000000000000000000000000000000000100000000000000000000000000000}
+        {0000000000000000000000000000000000100000000000000000000000000000}
 ....
 ```
 
