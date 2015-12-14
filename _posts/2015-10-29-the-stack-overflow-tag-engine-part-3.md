@@ -41,13 +41,13 @@ foreach (var id in queryInfo[tag1])
 }
 ```
 
-The main problem is that we have to scan through all the ids for `tag1` until we have enough matches, i.e. `foreach (var id in queryInfo[tag1])`. In addition we have to initially load up the `HashSet` with all the ids for `tag2`, so that we can check matches. So this method takes longer as we skip more and more questions, i.e. for larger value of `skip` or if there are a large amount of `tagsToExclude` (i.e. "*Ignored Tags*"), see [Part 2 for more information]({{base}}/2015/08/19/the-stack-overflow-tag-engine-part-2/#IgnoredTags).
+The main problem is that we have to scan through all the ids for `tag1` until we have enough matches, i.e. `foreach (var id in queryInfo[tag1])`. In addition we have to initially load up the `HashSet` with all the ids for `tag2`, so that we can check matches. So this method takes longer as we skip more and more questions, i.e. for larger value of `skip` or if there are a large amount of `tagsToExclude` (i.e. "*Ignored Tags*"), see [Part 2 for more infomation]({{base}}/2015/08/19/the-stack-overflow-tag-engine-part-2/#IgnoredTags).
 
 ## <a name="Bitmaps"></a>**Bitmaps**
 
 So can we do any better, well yes, there is a fairly established mechanism for doing these types of queries, known as [**Bitmap indexes**](http://lemire.me/blog/archives/2008/08/20/the-mythical-bitmap-index/). To use these you have to pre-calculate an index in which each bit is set to `1` to indicate a match and `0` otherwise. In our scenario this looks so: 
 
-<a href="/bit-map-indexing-explanation.png" target="_blank"><img src="/bit-map-indexing-explanation.png" alt="Bit Map Indexing explanation" width="660" height="145"/></a>
+<a href="{{base}}/2015/10/bit-map-indexing-explanation.png" target="_blank"><img src="{{base}}/2015/10/bit-map-indexing-explanation.png" alt="Bit Map Indexing explanation" width="660" height="145"/></a>
 
 Then it is just a case of doing the relevant bitwise operations against the bits (a `byte` at a time), for example if you want to get the questions that have the `C#` `AND` `Java` Tags, you do the following:
 
@@ -62,7 +62,7 @@ The main drawback is that we have to create a Bitmap index for *each* tag (`C#`,
 
 ## <a name="CompressedBitmaps"></a>**Compressed Bitmaps**
 
-Fortunately there is a way to heavily compress the Bitmaps using a form of [Run-length encoding](http://en.wikipedia.org/wiki/Run-length_encoding), to do this I made use of the [C# version](https://github.com/lemire/csharpewah) of the excellent [EWAH library](https://github.com/lemire/javaewah). This library is based on the research carried out in the paper [Sorting improves word-aligned bitmap indexes](http://arxiv.org/abs/0901.3751) by [Daniel Lemire](https://twitter.com/lemire) and others. By using EWAH it has the added benefit that you don't need to uncompress the Bitmap to perform the bitwise operations, they can be done in-place (for an idea of how this is done take a look at [this commit where I added a single in-place `AndNot` function](https://github.com/mattwarren/StackOverflowTagServer/commit/20561e60e1b7d90ff0bb023ec8cf89494d0705f5) to the existing library). 
+Fortunately there is a way to heavily compress the Bitmaps using a form of [Run-length encoding](http://en.wikipedia.org/wiki/Run-length_encoding), to do this I made use of the [C# version](https://github.com/lemire/csharpewah) of the excellent [EWAH library](https://github.com/lemire/javaewah). This library is based on the research carried out in the paper [Sorting improves word-aligned bitmap indexes](http://arxiv.org/abs/0901.3751) by [Daniel Lemire](https://twitter.com/lemire and others. By using EWAH it has the added benefit that you don't need to uncompress the Bitmap to perform the bitwise operations, they can be done in-place (for an idea of how this is done take a look at [this commit where I added a single in-place `AndNot` function](https://github.com/mattwarren/StackOverflowTagServer/commit/20561e60e1b7d90ff0bb023ec8cf89494d0705f5) to the existing library). 
 
 However if you don't want to read the <a href="http://arxiv.org/abs/0901.3751" target="_blank">research paper</a>, the diagram below shows how the Bitmap is compressed into 64-bit `words` that have 1 or more bits set, plus runs of repeating zeros or ones. So `31 0x00` indicates that 31 instances of a `64-bit word` (with all the bits set to `0`) have be encoded as a single value, rather than as 31 individual `words`.
 
@@ -121,20 +121,20 @@ But do queries against compressed Bitmaps actually perform faster than the naive
 
 As you can see below, for `AND NOT` queries they are much faster, especially compared to the worse-case where the regular/naive code takes over 150 ms and the compressed Bitmap code takes ~5 ms (the x-axis is `# of excluded/skipped questions` and the y-axis is `time in milliseconds`). 
 
-<a href="https://mattwarrendotorg.files.wordpress.com/2015/10/and-not-queries-with-exclusions.png" target="_blank"><img src="https://mattwarrendotorg.files.wordpress.com/2015/10/and-not-queries-with-exclusions.png" alt="AND NOT Queries with Exclusions" width="836" height="487" class="aligncenter size-full wp-image-1147" /></a>
+<a href="{{base}}/2015/10/and-not-queries-with-exclusions.png" target="_blank"><img src="{{base}}/2015/10/and-not-queries-with-exclusions.png" alt="AND NOT Queries with Exclusions" width="836" height="487" class="aligncenter size-full wp-image-1147" /></a>
 
 For reference there are 194,384 questions tagged with `.net` and 528,490 tagged with `jquery`.
 
 To ensure I'm being fair, I should point out that the compressed Bitmap queries are *slower* for `OR` queries, as shown below. But note the scale, they take ~5 ms compared to ~1-2 ms for the regular queries, so the compressed Bitmap queries are still fast! The nice things about the compressed Bitmap queries is that they take the same amount of time, regardless of how many questions we skip, whereas the regular queries get slower as `# of excluded/skipped questions` increases.
 
-<a href="https://mattwarrendotorg.files.wordpress.com/2015/10/or-queries-with-exclusions.png" target="_blank"><img src="https://mattwarrendotorg.files.wordpress.com/2015/10/or-queries-with-exclusions.png" alt="OR Queries with Exclusions" width="836" height="487" class="aligncenter size-full wp-image-1147" /></a>
+<a href="{{base}}/2015/10/or-queries-with-exclusions.png" target="_blank"><img src="{{base}}/2015/10/or-queries-with-exclusions.png" alt="OR Queries with Exclusions" width="836" height="487" class="aligncenter size-full wp-image-1147" /></a>
 
 If you are interested the results for all the query types are available: 
 
-- <a href="https://mattwarrendotorg.files.wordpress.com/2015/10/and-queries-with-exclusions.png" target="_blank">AND Queries</a>
-- <a href="https://mattwarrendotorg.files.wordpress.com/2015/10/and-not-queries-with-exclusions.png" target="_blank">AND NOT Queries</a>
-- <a href="https://mattwarrendotorg.files.wordpress.com/2015/10/or-queries-with-exclusions.png" target="_blank">OR Queries</a> 
-- <a href="https://mattwarrendotorg.files.wordpress.com/2015/10/or-not-queries-with-exclusions.png" target="_blank">OR NOT Queries</a>
+- <a href="{{base}}/2015/10/and-queries-with-exclusions.png" target="_blank">AND Queries</a>
+- <a href="{{base}}/2015/10/and-not-queries-with-exclusions.png" target="_blank">AND NOT Queries</a>
+- <a href="{{base}}/2015/10/or-queries-with-exclusions.png" target="_blank">OR Queries</a> 
+- <a href="{{base}}/2015/10/or-not-queries-with-exclusions.png" target="_blank">OR NOT Queries</a>
 
 ## <a name="FurtherReading"></a>**Further Reading**
 
@@ -157,7 +157,7 @@ But there's still more things to implement, in future posts I hope to cover the 
 
 - Currently my implementation doesn't play nicely with the Garbage Collector and it does lots of allocations. I will attempt to replicate the "no-allocations" rule that Stack Overflow have after <a href="http://blog.marcgravell.com/2011/10/assault-by-gc.html" target="_blank">their battle with the .NET GC</a>
 
-<a href="https://twitter.com/Nick_Craver/status/636516399435923456" target="_blank"><img src="https://mattwarrendotorg.files.wordpress.com/2015/10/nick_craver-tweet.png" alt="Nick_Craver Tweet" width="636" height="320" class="aligncenter size-full wp-image-1161" /></a>
+<a href="https://twitter.com/Nick_Craver/status/636516399435923456" target="_blank"><img src="{{base}}/2015/10/nick_craver-tweet.png" alt="Nick_Craver Tweet" width="636" height="320" class="aligncenter size-full wp-image-1161" /></a>
 
 - <a href="http://stackstatus.net/post/107352821074/outage-postmortem-january-6th-2015" target="_blank">How a DDOS attack on TagServer</a> *might* have been caused
 
