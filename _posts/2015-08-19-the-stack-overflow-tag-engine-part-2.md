@@ -101,9 +101,9 @@ and you now know that the tags with index *0* and *5* are the only matches becau
 
 On my laptop I get the results shown below, where `Contains` is the naive way shown above and `Regex` is an *attempt* to make it faster by using compiled Regex queries (which was actually slower)
 
-> ```Expanded to 7,677 tags (Contains), took 721.51 ms```
-> ```Expanded to 7,677 tags (Regex), took 1,218.69 ms```
-> **```Expanded to 7,677 tags (Trigrams), took  54.21 ms```**
+```Expanded to 7,677 tags (Contains), took 721.51 ms```
+```Expanded to 7,677 tags (Regex), took 1,218.69 ms```
+**```Expanded to 7,677 tags (Trigrams), took  54.21 ms```**
 
 As you can see, the inverted index using Trigrams is a clear winner. If you are interested, the <a href="https://github.com/mattwarren/StackOverflowTagServer/blob/master/TagServer/WildcardProcessor.cs" target="_blank">source code</a> is available on GitHub.
 
