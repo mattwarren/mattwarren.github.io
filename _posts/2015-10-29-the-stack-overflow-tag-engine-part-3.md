@@ -64,7 +64,7 @@ The main drawback is that we have to create a Bitmap index for *each* tag (`C#`,
 
 Fortunately there is a way to heavily compress the Bitmaps using a form of [Run-length encoding](http://en.wikipedia.org/wiki/Run-length_encoding), to do this I made use of the [C# version](https://github.com/lemire/csharpewah) of the excellent [EWAH library](https://github.com/lemire/javaewah). This library is based on the research carried out in the paper [Sorting improves word-aligned bitmap indexes](http://arxiv.org/abs/0901.3751) by [Daniel Lemire](https://twitter.com/lemire and others. By using EWAH it has the added benefit that you don't need to uncompress the Bitmap to perform the bitwise operations, they can be done in-place (for an idea of how this is done take a look at [this commit where I added a single in-place `AndNot` function](https://github.com/mattwarren/StackOverflowTagServer/commit/20561e60e1b7d90ff0bb023ec8cf89494d0705f5) to the existing library). 
 
-However if you don't want to read the <a href="http://arxiv.org/abs/0901.3751" target="_blank">research paper</a>, the diagram below shows how the Bitmap is compressed into 64-bit `words` that have 1 or more bits set, plus runs of repeating zeros or ones. So `31 0x00` indicates that 31 instances of a `64-bit word` (with all the bits set to `0`) have be encoded as a single value, rather than as 31 individual `words`.
+However if you don't want to read the [research paper](http://arxiv.org/abs/0901.3751), the diagram below shows how the Bitmap is compressed into 64-bit `words` that have 1 or more bits set, plus runs of repeating zeros or ones. So `31 0x00` indicates that 31 instances of a `64-bit word` (with all the bits set to `0`) have be encoded as a single value, rather than as 31 individual `words`.
 
 ```
 0 0x00
@@ -131,34 +131,34 @@ To ensure I'm being fair, I should point out that the compressed Bitmap queries 
 
 If you are interested the results for all the query types are available: 
 
-- <a href="{{base}}/2015/10/and-queries-with-exclusions.png" target="_blank">AND Queries</a>
-- <a href="{{base}}/2015/10/and-not-queries-with-exclusions.png" target="_blank">AND NOT Queries</a>
-- <a href="{{base}}/2015/10/or-queries-with-exclusions.png" target="_blank">OR Queries</a> 
-- <a href="{{base}}/2015/10/or-not-queries-with-exclusions.png" target="_blank">OR NOT Queries</a>
+- [AND Queries]({{base}}/2015/10/and-queries-with-exclusions.png)
+- [AND NOT Queries]({{base}}/2015/10/and-not-queries-with-exclusions.png)
+- [OR Queries]({{base}}/2015/10/or-queries-with-exclusions.png)
+- [OR NOT Queries]({{base}}/2015/10/or-not-queries-with-exclusions.png)
 
 ## <a name="FurtherReading"></a>**Further Reading**
 
 - Bitmaps
-  - <a href="http://lemire.me/blog/archives/2008/08/20/the-mythical-bitmap-index/" target="_blank">The mythical bitmap index</a>
-  - <a href="http://roaringbitmap.org/" target="_blank">Roaring Bitmaps (a newer/faster compressed Bit Map implementation)</a>
-  - <a href="http://lemire.me/blog/archives/2012/10/23/when-is-a-bitmap-faster-than-an-integer-list/" target="_blank">When is a bitmap faster than an integer list</a>
-  - <a href="http://kellabyte.com/2013/03/05/using-bitmap-indexes-in-databases/" target="_blank">Using bitmap indexes in databases</a> 
-  - <a href="https://news.ycombinator.com/item?id=8796997" target="_blank">Interesting Hacker News discussion on Roaring Bitmaps</a>
-  -  <a href="http://ascr-discovery.science.doe.gov/2008/12/more-than-a-bit-faster/" target="_blank">Research into different Bitmap implementations</a>
+  - [The mythical bitmap index](http://lemire.me/blog/archives/2008/08/20/the-mythical-bitmap-index/)
+  - [Roaring Bitmaps (a newer/faster compressed Bit Map implementation)](http://roaringbitmap.org/)
+  - [When is a bitmap faster than an integer list](http://lemire.me/blog/archives/2012/10/23/when-is-a-bitmap-faster-than-an-integer-list/)
+  - [Using bitmap indexes in databases]<a href="http://kellabyte.com/2013/03/05/using-bitmap-indexes-in-databases/)
+  - [Interesting Hacker News discussion on Roaring Bitmaps]<a href="https://news.ycombinator.com/item?id=8796997)
+  - [Research into different Bitmap implementations](http://ascr-discovery.science.doe.gov/2008/12/more-than-a-bit-faster/)
 - Real-world usage
-  - <a href="http://githubengineering.com/counting-objects/" target="_blank">How GitHub used Bitmaps to speed up repository cloning</a>
-  - <a href="https://www.elastic.co/blog/frame-of-reference-and-roaring-bitmaps" target="_blank">Roaring Bitmap implementation in Elastic Search</a>
-  - <a href="https://issues.apache.org/jira/browse/LUCENE-5983" target="_blank" />Usage of Bitmaps indexes in Lucene</a>
-  - <a href="https://groups.google.com/forum/m/#!topic/druid-development/_kw2jncIlp0" target="_blank">Compressed Bitmaps implemented in Druid</a>
+  - [How GitHub used Bitmaps to speed up repository cloning](http://githubengineering.com/counting-objects/)
+  - [Roaring Bitmap implementation in Elastic Search](https://www.elastic.co/blog/frame-of-reference-and-roaring-bitmaps)
+  - [Usage of Bitmaps indexes in Lucene](https://issues.apache.org/jira/browse/LUCENE-5983))
+  - [Compressed Bitmaps implemented in Druid](https://groups.google.com/forum/m/#!topic/druid-development/_kw2jncIlp0))
 
 ## <a name="FuturePosts"></a>**Future Posts**
 
 But there's still more things to implement, in future posts I hope to cover the following:
 
-- Currently my implementation doesn't play nicely with the Garbage Collector and it does lots of allocations. I will attempt to replicate the "no-allocations" rule that Stack Overflow have after <a href="http://blog.marcgravell.com/2011/10/assault-by-gc.html" target="_blank">their battle with the .NET GC</a>
+- Currently my implementation doesn't play nicely with the Garbage Collector and it does lots of allocations. I will attempt to replicate the "no-allocations" rule that Stack Overflow have after [their battle with the .NET GC](http://blog.marcgravell.com/2011/10/assault-by-gc.html)
 
 <a href="https://twitter.com/Nick_Craver/status/636516399435923456" target="_blank"><img src="{{base}}/2015/10/nick_craver-tweet.png" alt="Nick_Craver Tweet" width="636" height="320" class="aligncenter size-full wp-image-1161" /></a>
 
-- <a href="http://stackstatus.net/post/107352821074/outage-postmortem-january-6th-2015" target="_blank">How a DDOS attack on TagServer</a> *might* have been caused
+- [How a DDOS attack on TagServer](http://stackstatus.net/post/107352821074/outage-postmortem-january-6th-2015) *might* have been caused
 
 > In October, we had a situation where a flood of crafted requests were causing high resource utilization on our Tag Engine servers, which is our internal application for associating questions and tags in a high-performance way.
