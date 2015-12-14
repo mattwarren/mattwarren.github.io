@@ -38,6 +38,14 @@ layout: default
   {% endfor %}
 </div>
 
+<div class="share">
+  Share this article:
+  <a target="_blank" title="Share on Twitter" href="https://twitter.com/intent/tweet?url={{ site.baseurl }}{{ post.url }}&amp;text=The Life of a Stripe Charge&amp;via=modernpayments"><i class="fa fa-twitter"></i></a>&nbsp;
+  <a target="_blank" title="Share on Facebook" href="https://facebook.com/sharer.php?u={{ site.baseurl }}{{ post.url }}"><i class="fa fa-facebook"></i></a>&nbsp;
+  <a target="_blank" title="Share on LinkedIn" href="http://www.linkedin.com/shareArticle?mini=true&amp;{{ site.baseurl }}{{ post.url }}&amp;title={{ post.title }}"><i class="fa fa-linkedin"></i></a>&nbsp;
+  <a target="_blank" title="Share on Hacker News" style="font-family: 'Lato', helvetica, arial, sans-serif;" href="https://news.ycombinator.com/submitlink?u={{ site.baseurl }}{{ post.url }}&amp;t={{ post.title }}"><i class="fa fa-hacker-news"></i></a>&nbsp;
+</div>
+
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
