@@ -30,5 +30,5 @@ gems:
 # and http://ajoz.github.io/2014/06/29/i-want-my-github-flavored-markdown/
 # For tables see https://george-hawkins.github.io/basic-gfm-jekyll/redcarpet-extensions.html
 markdown: redcarpet
-redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+#redcarpet:
+#  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
