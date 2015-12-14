@@ -12,9 +12,8 @@ I've added a [**Resources**]({{base}}/resources/)</a> and [**Speaking**]({{base}
 
 ## <a name="Recap"></a>**Recap of Stack Overflow Tag Engine**
 
-<!--more-->
 This is the long-delayed part 2 of a mini-series looking at what it *might* take to build the Stack Overflow Tag Engine, if you haven't read <a href="http://mattwarren.org/2014/11/01/the-stack-overflow-tag-engine-part-1/" target="_blank">part 1</a>, I recommend reading it first.
-
+<!--more-->
 Since the first part was published, Stack Overflow published a nice performance report, giving some more stats on the Tag Engine Servers. As you can see they run the Tag Engine on some pretty powerful servers, but only have a peak CPU usage of 10%, which means there's plenty of overhead available. It's a nice way of being able to cope with surges in demand or busy times of the day.
 
 <a href="https://stackexchange.com/performance" target="_blank"><img src="https://mattwarrendotorg.files.wordpress.com/2015/01/tag-server-infographic.png" alt="Tag Engine infographic" width="560" height="321" class="aligncenter size-full wp-image-1068" /></a>
