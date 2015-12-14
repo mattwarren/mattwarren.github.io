@@ -118,4 +118,38 @@ Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur e
 
 -----
 
+### tables
+
+Set by GitHub - without it the following would not be rendered as a table.
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+
+### autolink
+
+Set by GitHub - without it the following would not automatically be handled as links and you'd need to use `[foo@...](mailto:foo@...)` etc.
+
+foo@bar.com  
+www.example.com  
+http://www.example.com/
+
+### disable_indented_code_blocks
+
+Not set by GitHub - if it were you couldn't use the traditional Markdown approach of creating code block by indenting them by four spaces.
+
+    This is a code block created by indenting each line by four spaces.
+    As in fenced code blocks you don't have to worry about e.g. <b> being interpreted.
+
+### strikethrough
+
+Set by GitHub - with this enabled you can strikethrough text with two `~` characters at the start and end.
+
+~~strikethrough~~
+
+----
+
 Want to see something else added? <a href="https://github.com/poole/poole/issues/new">Open an issue.</a>
