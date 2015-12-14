@@ -61,7 +61,7 @@ Min AnswerCount 0
 Yes that's right, there is actually a Stack Overflow questions with <a href="http://stackoverflow.com/questions/184618/what-is-the-best-comment-in-source-code-you-have-ever-encountered" target="_blank">1.9 million views</a>, not surprisingly it's locked for editing, but it's also considered "not constructive"! The same question also has 518 answers, the most of any on the site and if you're wondering, the question with the highest score has an impressive 8192 votes and is titled <a href="http://stackoverflow.com/questions/11227809/why-is-processing-a-sorted-array-faster-than-an-unsorted-array" target="_blank">Why is processing a sorted array faster than an unsorted array?</a>
 
 #### <a name="CreatingAnIndex"></a>**Creating an Index**
-So what does the index actually look like, well it's basically a series of sorted lists (`List<int>') that contain an offset into the main `List<Question>` that contains all the <a href="https://github.com/mattwarren/StackOverflowTagServer/blob/master/Shared/Question.cs" target="_blank">`Question`</a> data. Or in a diagram, something like this:
+So what does the index actually look like, well it's basically a series of sorted lists (`List<int>`) that contain an offset into the main `List<Question>` that contains all the <a href="https://github.com/mattwarren/StackOverflowTagServer/blob/master/Shared/Question.cs" target="_blank">`Question`</a> data. Or in a diagram, something like this:
 
 <a href="https://mattwarrendotorg.files.wordpress.com/2014/11/indexing-explanation.png" target="_blank"><img src="https://mattwarrendotorg.files.wordpress.com/2014/11/indexing-explanation.png?w=760" alt="Indexing explanation" width="660" height="165" class="aligncenter size-large wp-image-1020" /></a>
 
@@ -74,7 +74,7 @@ It turns out the the code to do this isn't that complex:
 tagsByLastActivityDate = new Dictionary<string, int[]>(groupedTags.Count);
 var byLastActivityDate = tag.Value.Positions.ToArray(); 
 Array.Sort(byLastActivityDate, comparer.LastActivityDate);
-``` endhighlight
+```
 
 Where the comparer is as simple as the following (note that is sorting the `byLastActiviteDate` array, using the values in the `question` array to determine the sort order.
 
