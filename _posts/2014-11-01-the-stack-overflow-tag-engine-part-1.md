@@ -33,7 +33,7 @@ As I said I wanted to see what was involved in building a version of the Tag Eng
 
 <a href="https://mattwarrendotorg.files.wordpress.com/2014/10/sample-question-parts-used-highlighted-in-red.png" target="_blank"><img src="https://mattwarrendotorg.files.wordpress.com/2014/10/sample-question-parts-used-highlighted-in-red.png?w=600" alt="Sample Question" class="aligncenter" /></a>
 
-Below is the output of the code that runs on start-up and processes the data, you can see there are just over 7.9 millions questions in the data set, taking up just over 2GB of memory, when read into a <a href="https://github.com/mattwarren/StackOverflowTagServer/blob/master/Shared/Question.cs" target="_blank">`List`&lt;`Question`&gt;</a>.
+Below is the output of the code that runs on start-up and processes the data, you can see there are just over 7.9 millions questions in the data set, taking up just over 2GB of memory, when read into a <a href="https://github.com/mattwarren/StackOverflowTagServer/blob/master/Shared/Question.cs" target="_blank">`List<Question>`</a>.
 
 ```
 Took 00:00:31.623 to DE-serialise 7,990,787 Stack Overflow Questions, used 2136.50 MB of memory
