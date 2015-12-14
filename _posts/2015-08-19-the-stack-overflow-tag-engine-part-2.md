@@ -3,6 +3,7 @@ layout: post
 title: The Stack Overflow Tag Engine – Part 2
 comments: true
 tags: [indexing, stackoverflow, trigrams]
+excerpt_separator: <!--more-->
 ---
 
 I've added a [**Resources**]({{base}}/resources/)</a> and [**Speaking**]({{base}}/speaking/) page to my site, check them out if you want to learn more. There's also a video available of my NDC London 2014 talk ["Performance is a Feature!"]({{base}}/speaking/#NDCLondon2014).

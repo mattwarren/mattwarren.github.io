@@ -3,6 +3,7 @@ layout: post
 title: The Stack Overflow Tag Engine – Part 1
 comments: true
 tags: [indexing, lucene, stackoverflow]
+excerpt_separator: <!--more-->
 ---
 
 I've added a [**Resources**]({{base}}/resources/)</a> and [**Speaking**]({{base}}/speaking/) page to my site, check them out if you want to learn more.
