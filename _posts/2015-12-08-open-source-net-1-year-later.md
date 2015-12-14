@@ -18,10 +18,12 @@ I will be looking at the 3 following projects, as they are all highly significan
 ## <a name="AvailableData"></a>**Available Data**
 
 GitHub itself has some nice graphs built-in, for instance you can see the **Commits per Month** over an entire year:
-<a href="https://github.com/dotnet/roslyn/graphs/contributors" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11634181/f451abce-9d06-11e5-8940-d133d1931422.png" alt="Commits Per Month" class="aligncenter" /></a>
+
+[![Commits Per Month](https://cloud.githubusercontent.com/assets/157298/11634181/f451abce-9d06-11e5-8940-d133d1931422.png)](https://github.com/dotnet/roslyn/graphs/contributors)
 
 Also you can get a nice dashboard showing the **Monthly Pulse**
-<a href="https://github.com/dotnet/roslyn/pulse/monthly" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11634411/35085a4a-9d08-11e5-8995-02c65d9ee12d.png" alt="github stats - monthly pulse" class="aligncenter" /></a>
+
+[![github stats - monthly pulse](https://cloud.githubusercontent.com/assets/157298/11634411/35085a4a-9d08-11e5-8995-02c65d9ee12d.png)](https://github.com/dotnet/roslyn/pulse/monthly)
 
 However to answer the question above, I needed more data. Fortunately GitHub provides a [really comprehensive API](https://developer.github.com/v3/), which combined with the excellent [Octokit.net library](https://github.com/octokit/octokit.net) and the [brilliant LINQPad](https://www.linqpad.net/), meant I was able to easily get all the data I needed. Here's a [sample LINQPad script](https://gist.github.com/mattwarren/894aa5f46ca62a63764a) if you want to start playing around with the API yourself.
 
@@ -63,22 +65,22 @@ Finally if you look at the amount per/month (see the 2 graphs below, click for l
 
 ### <a name="IssuesPerMonthBySubmitter"></a>**Issues Per Month - By Submitter**
 
-<a href="https://cloud.githubusercontent.com/assets/157298/11596712/ad28f518-9aae-11e5-81d9-42bc22903d09.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11596712/ad28f518-9aae-11e5-81d9-42bc22903d09.png" alt="Issues Per Month - By Submitter (Owner, Collaborator or Community)" class="aligncenter" /></a>
+[![Issues Per Month - By Submitter (Owner, Collaborator or Community)](https://cloud.githubusercontent.com/assets/157298/11596712/ad28f518-9aae-11e5-81d9-42bc22903d09.png)](https://cloud.githubusercontent.com/assets/157298/11596712/ad28f518-9aae-11e5-81d9-42bc22903d09.png)
 
 ### <a name="MergedPullRequestPerMonthBySubmitter"></a>**Merged Pull Request Per Month - By Submitter**
 
-<a href="https://cloud.githubusercontent.com/assets/157298/11652755/785d0d20-9d91-11e5-9802-834bb3955718.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11652755/785d0d20-9d91-11e5-9802-834bb3955718.png" alt="Merged Pull Requests Per Month - By Submitter (Owner, Collaborator or Community)" class="aligncenter" /></a>
+[![Merged Pull Requests Per Month - By Submitter (Owner, Collaborator or Community)](https://cloud.githubusercontent.com/assets/157298/11652755/785d0d20-9d91-11e5-9802-834bb3955718.png)](https://cloud.githubusercontent.com/assets/157298/11652755/785d0d20-9d91-11e5-9802-834bb3955718.png)
 
 ## <a name="Top20IssuesLabels"></a>**Top 20 Issue Labels**
 
 The last thing that I want to do whilst I have the data is to take a look at the most popular *Issue Labels* and see what they tell us about the *type* of work that has been going on since the 3 projects were open sourced.
 
-<a href="https://cloud.githubusercontent.com/assets/157298/11633496/8505205a-9d03-11e5-89fd-33384b20306c.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/157298/11633496/8505205a-9d03-11e5-89fd-33384b20306c.png" alt="Top 20 Issue Labels" class="aligncenter" /></a>
+[![Top 20 Issue Labels](https://cloud.githubusercontent.com/assets/157298/11633496/8505205a-9d03-11e5-89fd-33384b20306c.png)](https://cloud.githubusercontent.com/assets/157298/11633496/8505205a-9d03-11e5-89fd-33384b20306c.png)
 
 Here are a few observations about the results:
 
-- Having [**CodeGen**](https://github.com/dotnet/coreclr/labels/CodeGen) so high on the list is not that surprising considering that [RyuJIT - the next-gen .NET JIT Compiler](http://blogs.msdn.com/b/dotnet/archive/2013/09/30/ryujit-the-next-generation-jit-compiler.aspx) was only released 2 years ago. However, it's a bit worrying that were so *many* issues, especially considering that some of them have [severe consequences](https://github.com/dotnet/coreclr/issues/1296) as the [devs at Stack Overflow](http://nickcraver.com/blog/2015/07/27/why-you-should-wait-on-dotnet-46/) found out! Only slight related, but if you want to find out lots of low-level details about what the JIT does, just take a look at all the issues that [@MikeDN has commented on](https://github.com/dotnet/coreclr/issues?utf8=%E2%9C%93&q=commenter%3Amikedn+type%3Aissue+label%3Acodegen+), unbelievably for someone with that much knowledge he doesn't actually work on the product itself, or even another team at Microsoft!!
-- It's nice to see that all 3 projects have a lots of **"Up for Grabs"** issues, see [Roslyn](https://github.com/dotnet/roslyn/labels/Up%20for%20Grabs"), [CoreCLR](https://github.com/dotnet/coreclr/labels/up-for-grabs) and [CoreFX](https://github.com/dotnet/corefx/labels/up%20for%20grabs), plus the Community seems to be [grabbing them back!](https://github.com/dotnet/corefx/labels/grabbed%20by%20community)
-- Finally, I love the fact that [**Performance**](https://github.com/dotnet/corefx/labels/performance) and [**Optimisation**](https://github.com/dotnet/coreCLR/labels/optimization) are being taken seriously, after all [Performance is a Feature!!](http://mattwarren.org/speaking/")
+- Having [**CodeGen**](https://github.com/dotnet/coreclr/labels/CodeGen) so high on the list is not that surprising considering that [RyuJIT - the next-gen .NET JIT Compiler](http://blogs.msdn.com/b/dotnet/archive/2013/09/30/ryujit-the-next-generation-jit-compiler.aspx) was only released 2 years ago. However, it's a bit worrying that were so *many* issues, especially considering that some of them have [severe consequences](https://github.com/dotnet/coreclr/issues/1296) as the [devs at Stack Overflow](http://nickcraver.com/blog/2015/07/27/why-you-should-wait-on-dotnet-46/) found out! (On a related note, if you want to find out lots of low-level details about what the JIT does, just take a look at all the issues that [@MikeDN has commented on](https://github.com/dotnet/coreclr/issues?utf8=%E2%9C%93&q=commenter%3Amikedn+type%3Aissue+label%3Acodegen+), unbelievably for someone with that much knowledge he doesn't actually work on the product itself, or even another team at Microsoft!!)
+- It's nice to see that all 3 projects have a lots of **"Up for Grabs"** issues, see [Roslyn](https://github.com/dotnet/roslyn/labels/Up%20for%20Grabs), [CoreCLR](https://github.com/dotnet/coreclr/labels/up-for-grabs) and [CoreFX](https://github.com/dotnet/corefx/labels/up%20for%20grabs), plus the Community seems to be [grabbing them back!](https://github.com/dotnet/corefx/labels/grabbed%20by%20community)
+- Finally, I love the fact that [**Performance**](https://github.com/dotnet/corefx/labels/performance) and [**Optimisation**](https://github.com/dotnet/coreCLR/labels/optimization) are being taken seriously, after all [Performance is a Feature!!](http://mattwarren.org/speaking/)
 
 Discuss on [/r/programming](https://www.reddit.com/r/programming/comments/3vyezb/open_source_net_1_year_later/) and [Hacker News](https://news.ycombinator.com/item?id=10700606)
