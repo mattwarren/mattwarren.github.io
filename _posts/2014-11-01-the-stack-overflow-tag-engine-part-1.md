@@ -3,7 +3,7 @@ layout: post
 title: The Stack Overflow Tag Engine – Part 1
 comments: true
 tags: [indexing, lucene, stackoverflow]
-excerpt: 'I first heard about the Stack Overflow [*Tag engine of doom*](http://samsaffron.com/archive/2011/10/28/in-managed-code-we-trust-our-recent-battles-with-the-net-garbage-collector) when I read about [their battle with the .NET Garbage Collector](http://blog.marcgravell.com/2011/10/assault-by-gc.html). If you haven't heard of it before I recommend reading the previous links and then this interesting [case-study on technical debt](http://blog.marcgravell.com/2014/04/technical-debt-case-study-tags.html).'
+excerpt: 'I first heard about the Stack Overflow *Tag engine of doom* when I read about their battle with the .NET Garbage Collector'
 ---
 
 I've added a [**Resources**]({{base}}/resources/)</a> and [**Speaking**]({{base}}/speaking/) page to my site, check them out if you want to learn more.
