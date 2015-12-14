@@ -12,6 +12,7 @@ url:                 http://mattwarren.github.io
 # Don't use baseurl, see https://talk.jekyllrb.com/t/what-trouble-happens-if-i-make-all-links-relative-instead-of-absolute/418/2
 baseurl:             ''
 paginate:            5
+excerpt_separator:   '<!--more-->'
 
 # About/contact
 author:
