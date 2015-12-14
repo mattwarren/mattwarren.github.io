@@ -30,8 +30,8 @@ Note: it will let you know if there were questions excluded due to your preferen
 <a href="https://mattwarrendotorg.files.wordpress.com/2015/08/questions-hidden-due-to-ignored-tag-preferences.png" target="_blank"><img src="https://mattwarrendotorg.files.wordpress.com/2015/08/questions-hidden-due-to-ignored-tag-preferences.png" alt="Questions hidden due to Ignored Tag preferences" width="458" height="72" class="aligncenter size-full wp-image-1100" /></a>
 
 Now most people probably have just a few exclusions and maybe 10's at most, but fortunately <a href="https://twitter.com/leppie" target="_blank">@leppie</a> a Stack Overflow <a href="http://stackoverflow.com/users/15541/leppie" target="_blank">*power-user*</a> got in touch with me and shared his list of preferences. 
- 
- https://gist.github.com/leppie/4d9b84abd8c2d06d6ef4
+
+<script src="https://gist.github.com/leppie/4d9b84abd8c2d06d6ef4.js"></script>
 
 You'll need to scroll across to appreciate this full extent of this list, but here's some statistics to help you:
 
