@@ -24,6 +24,11 @@ version:             1.0.0
 # Use the following plug-ins
 gems:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
-#  - redcarpet
+  - redcarpet
 
+# See http://milanaryal.com/2015/writing-on-github-pages-and-jekyll-using-markdown/
+# and http://ajoz.github.io/2014/06/29/i-want-my-github-flavored-markdown/
+# For tables see https://george-hawkins.github.io/basic-gfm-jekyll/redcarpet-extensions.html
 markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
