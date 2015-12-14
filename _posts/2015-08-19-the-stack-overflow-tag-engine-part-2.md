@@ -3,7 +3,7 @@ layout: post
 title: The Stack Overflow Tag Engine – Part 2
 comments: true
 tags: [indexing, stackoverflow, trigrams]
-excerpt: 'This is the long-delayed part 2 of a mini-series looking at what it *might* take to build the Stack Overflow Tag Engine, if you haven't read <a href="http://mattwarren.org/2014/11/01/the-stack-overflow-tag-engine-part-1/" target="_blank">part 1</a>, I recommend reading it first.'
+excerpt: <p>This is the long-delayed part 2 of a mini-series looking at what it *might* take to build the Stack Overflow Tag Engine</p>
 ---
 
 I've added a [**Resources**]({{base}}/resources/)</a> and [**Speaking**]({{base}}/speaking/) page to my site, check them out if you want to learn more. There's also a video available of my NDC London 2014 talk ["Performance is a Feature!"]({{base}}/speaking/#NDCLondon2014).
