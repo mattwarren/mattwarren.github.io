@@ -9,7 +9,7 @@ I've added a <a href="http://mattwarren.org/resources/" target="_blank">**Resour
 
 ---------------------------------------
 
-#### <a name="Recap"></a>**Recap of Stack Overflow Tag Engine**
+## <a name="Recap"></a>**Recap of Stack Overflow Tag Engine**
 
 This is the long-delayed part 2 of a mini-series looking at what it *might* take to build the Stack Overflow Tag Engine, if you haven't read <a href="http://mattwarren.org/2014/11/01/the-stack-overflow-tag-engine-part-1/" target="_blank">part 1</a>, I recommend reading it first.
 
@@ -17,7 +17,7 @@ Since the first part was published, Stack Overflow published a nice performance 
 
 <a href="https://stackexchange.com/performance" target="_blank"><img src="https://mattwarrendotorg.files.wordpress.com/2015/01/tag-server-infographic.png" alt="Tag Engine infographic" width="560" height="321" class="aligncenter size-full wp-image-1068" /></a>
 
-### <a name="IgnoredTags"></a>**Ignored Tag Preferences**
+## <a name="IgnoredTags"></a>**Ignored Tag Preferences**
 
 In <a href="http://mattwarren.org/2014/11/01/the-stack-overflow-tag-engine-part-1/" target="_blank">part 1</a>, I only really covered the simple things, i.e. a basic search for all the questions that contain a given tag, along with multiple sort orders (by score, view count, etc). But the real Tag Engine does much more than that, for instance:  
 
@@ -39,7 +39,7 @@ You'll need to scroll across to appreciate this full extent of this list, but he
 - The tags and wildcards expand to **7,677** tags in total (out of a possible 30,529 tags)
 - There are **6,428,251** questions (out of 7,990,787) that have at least one of the 7,677 tags in them!
 
-#### <a name="Wildcards"></a>**Wildcards**
+## <a name="Wildcards"></a>**Wildcards**
 
 If you want to see the wildcard expansion in action you can visit the url's below:
 
@@ -72,7 +72,7 @@ foreach (var wildcard in wildcardsToExpand)
 
 This works fine with a few wildcards, but it's not very efficient. Even on a relatively small data-set containing 32,000 tags, it's slow when comparing it to 210 `wildcardsToExpand`, taking over a second. After chatting to a few of the Stack Overflow developers on Twitter, they consider a Tag Engine query that takes longer than 500 milliseconds to be slow, so a second just to apply the wildcards is unacceptable.
 
-#### <a name="TrigramIndex"></a>**Trigram Index**
+## <a name="TrigramIndex"></a>**Trigram Index**
 
 So can we do any better? Well it turns out that that there is a really nice technique for doing <a href="https://swtch.com/~rsc/regexp/regexp4.html" target="_blank">Regular Expression Matching with a Trigram Index</a> that is used in <a href="https://code.google.com/p/chromium/codesearch" target="_blank">Google Code Search</a>. I'm not going to explain all the details, the linked page has a very readable explanation. But basically what you do is create an *inverted index* of the tags and search the index instead. That way you aren't affected so much by the amount of wilcards, because you are only searching via an index rather than a full search that runs over the whole list of tags. 
 
@@ -97,7 +97,7 @@ For example if you want to match any tags that contain *java* any where in the t
 
 and you now know that the tags with index *0* and *5* are the only matches because they have `jav` and `ava` (*6* and *12* don't have both)
 
-### <a name="Results"></a>**Results**
+## <a name="Results"></a>**Results**
 
 On my laptop I get the results shown below, where `Contains` is the naive way shown above and `Regex` is an *attempt* to make it faster by using compiled Regex queries (which was actually slower)
 
@@ -111,7 +111,7 @@ As you can see, the inverted index using Trigrams is a clear winner. If you are 
 
 In this post I showed *one way* that the Tag Engine could implement wildcards matching. As I don't work at Stack Overflow there's no way of knowing if they use the same method or not, but at the very least my method is pretty quick!
 
-### <a name="FuturePosts"></a>**Future Posts**
+## <a name="FuturePosts"></a>**Future Posts**
 
 But there's still more things to implement, in future posts I hope to cover the following:
 

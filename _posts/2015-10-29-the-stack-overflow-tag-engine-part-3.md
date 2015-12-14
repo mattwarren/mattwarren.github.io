@@ -9,7 +9,7 @@ This is the part 3 of a mini-series looking at what it *might* take to build the
 
 ---------------------------------------
 
-### <a name="ComplexBooleanQueries"></a>**Complex boolean queries**
+## <a name="ComplexBooleanQueries"></a>**Complex boolean queries**
 
 One of the most powerful features of the Stack Overflow Tag Engine is that it allows you to do complex boolean queries against multiple Tag, for instance:
 - <a href="http://stackoverflow.com/questions/tagged/.net+or+jquery-" target="_blank">.net OR (NOT jquery)</a>
@@ -42,7 +42,7 @@ foreach (var id in queryInfo[tag1])
 
 The main problem is that we have to scan through all the ids for `tag1` until we have enough matches, i.e. `foreach (var id in queryInfo[tag1])`. In addition we have to initially load up the `HashSet` with all the ids for `tag2`, so that we can check matches. So this method takes longer as we skip more and more questions, i.e. for larger value of `skip` or if there are a large amount of `tagsToExclude` (i.e. "*Ignored Tags*" see <a href="mattwarren.org/2015/08/19/the-stack-overflow-tag-engine-part-2/#IgnoredTags" target="_blank">Part 2 for more infomation</a>).
 
-#### <a name="Bitmaps"></a>**Bitmaps**
+## <a name="Bitmaps"></a>**Bitmaps**
 
 So can we do any better, well yes, there is a fairly established mechanism for doing these types of queries, known as <a href="http://lemire.me/blog/archives/2008/08/20/the-mythical-bitmap-index/" target="_blank">**Bitmap indexes**</a>. To use these you have to pre-calculate an index in which each bit is set to `1` to indicate a match and `0` otherwise. In our scenario this looks so: 
 
@@ -59,7 +59,7 @@ for (int i = 0; i < numBits / 8; i++)
 
 The main drawback is that we have to create a Bitmap index for *each* tag (`C#`, `.NET`, `Java`, etc) for *every* sort order (`LastActivityDate`, `CreationDate`, `Score`, `ViewCount`, `AnswerCount`), so we soon use up a *lot* of memory. The Sept 2014 Stack Overflow dataset contains just under 8 million questions and so at 8 questions per byte, a single Bitmap needs 976KB or 0.95MB. This adds up to an impressive **149GB** (0.95MB * 32,000 Tags * 5 sort orders).
 
-#### <a name="CompressedBitmaps"></a>**Compressed Bitmaps**
+## <a name="CompressedBitmaps"></a>**Compressed Bitmaps**
 
 Fortunately there is a way to heavily compress the Bitmaps using a form of <a href="http://en.wikipedia.org/wiki/Run-length_encoding" target="_blank">Run-length encoding</a>, to do this I made use of the <a href="https://github.com/lemire/csharpewah" target="_blank">C# version</a> of the excellent <a href="https://github.com/lemire/javaewah" target="_blank">EWAH library</a>. This library is based on the research carried out in the paper <a href="http://arxiv.org/abs/0901.3751" target="_blank">Sorting improves word-aligned bitmap indexes</a> by <a href="https://twitter.com/lemire" target="_blank">Daniel Lemire</a> and others. By using EWAH it has the added benefit that you don't need to uncompress the Bitmap to perform the bitwise operations, they can be done in-place (for an idea of how this is done take a look at <a href="https://github.com/mattwarren/StackOverflowTagServer/commit/20561e60e1b7d90ff0bb023ec8cf89494d0705f5" target="_blank">this commit where I added a single in-place `AndNot` function</a> to the existing library). 
 
@@ -114,7 +114,7 @@ As you can see it's not until we get over 64,000 bits (62,016 to be precise) tha
 
 So over the entire Stack Overflow data set of 32,000 Tags, the Bitmaps compress down to  an impressive **1.17GB**, compared to 149GB uncompressed!
 
-#### <a name="Results"></a>**Results**
+## <a name="Results"></a>**Results**
 
 But do queries against compressed Bitmaps actually perform faster than the naive queries using `HashSets` (see code above). Well yes they do and in some cases the difference is significant.
 
@@ -134,7 +134,7 @@ If you are interested the results for all the query types are available:
 - <a href="https://mattwarrendotorg.files.wordpress.com/2015/10/or-queries-with-exclusions.png" target="_blank">OR Queries</a> 
 - <a href="https://mattwarrendotorg.files.wordpress.com/2015/10/or-not-queries-with-exclusions.png" target="_blank">OR NOT Queries</a>
 
-#### <a name="FurtherReading"></a>**Further Reading**
+## <a name="FurtherReading"></a>**Further Reading**
 
 - Bitmaps
   - <a href="http://lemire.me/blog/archives/2008/08/20/the-mythical-bitmap-index/" target="_blank">The mythical bitmap index</a>
@@ -149,7 +149,7 @@ If you are interested the results for all the query types are available:
   - <a href="https://issues.apache.org/jira/browse/LUCENE-5983" target="_blank" />Usage of Bitmaps indexes in Lucene</a>
   - <a href="https://groups.google.com/forum/m/#!topic/druid-development/_kw2jncIlp0" target="_blank">Compressed Bitmaps implemented in Druid</a>
 
-### <a name="FuturePosts"></a>**Future Posts**
+## <a name="FuturePosts"></a>**Future Posts**
 
 But there's still more things to implement, in future posts I hope to cover the following:
 

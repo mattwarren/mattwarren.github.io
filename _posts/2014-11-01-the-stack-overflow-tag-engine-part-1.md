@@ -9,7 +9,7 @@ I've added a <a href="http://mattwarren.org/resources/" target="_blank">**Resour
 
 ---------------------------------------
 
-#### <a name="Introduction"></a>**Stack Overflow Tag Engine**
+## <a name="Introduction"></a>**Stack Overflow Tag Engine**
 
 I first heard about the Stack Overflow <a href="http://samsaffron.com/archive/2011/10/28/in-managed-code-we-trust-our-recent-battles-with-the-net-garbage-collector" target="_blank">*Tag engine of doom*</a> when I read about <a href="http://blog.marcgravell.com/2011/10/assault-by-gc.html" target="_blank">their battle with the .NET Garbage Collector</a>. If you haven't heard of it before I recommend reading the previous links and then this interesting <a href="http://blog.marcgravell.com/2014/04/technical-debt-case-study-tags.html" target="_blank">case-study on technical debt</a>.
 
@@ -17,7 +17,7 @@ But if you've ever visited <a href="http://www.stackoverflow.com" target="_blank
 
 <a href="http://stackoverflow.com/questions/tagged/.net" target="_blank"><img src="https://mattwarrendotorg.files.wordpress.com/2014/10/dotnet-tag.png?w=900" alt="dotNet Tag" class="aligncenter" /></a>
 
-#### <a name="TagAPI"></a>**Tag API**
+## <a name="TagAPI"></a>**Tag API**
 As well as simple searches, you can also tailor the results with more complex queries (you may need to be logged into the site for these links to work), so you can search for:
 
 - <a href="http://stackoverflow.com/questions/tagged/.net+or+jquery-" target="_blank">questions tagged with .NET but not jQuery</a>
@@ -27,7 +27,7 @@ As well as simple searches, you can also tailor the results with more complex qu
 
 It's worth noting that all these searches take your personal preferences into account. So if you have asked to have any tags excluded, questions containing these tags are filtered out. You can see your preferences by going to your account page and clicking on *Preferences*, the *Ignored Tags* are then listed at the bottom of the page. Apparently some power-users on the site have 100's of ignored tags, so dealing with these is a non-trivial problem.
 
-#### <a name="DataSet"></a>**Publicly available Question Data set**
+## <a name="DataSet"></a>**Publicly available Question Data set**
 
 As I said I wanted to see what was involved in building a version of the Tag Engine. Fortunately, data from <a href="https://archive.org/details/stackexchange" target="_blank">all the Stack Exchange sites</a> is available to download. To keep things simple I just worked with the posts (not their entire history of edits), so I downloaded <a href="https://archive.org/download/stackexchange/stackoverflow.com-Posts.7z" target="_blank">stackoverflow.com-Posts.7z</a> (warning direct link to 5.7 GB file), which appears to contain data up-to the middle of September 2014. To give an idea of what is in the data set, a typical question looks like the .xml below. For the Tag Engine we only need the items highlighted in red, because it is only providing an index into the actual questions themselves, so we ignore any **content** and just look at the **meta-data**.
 
@@ -60,7 +60,7 @@ Min AnswerCount 0
 
 Yes that's right, there is actually a Stack Overflow questions with <a href="http://stackoverflow.com/questions/184618/what-is-the-best-comment-in-source-code-you-have-ever-encountered" target="_blank">1.9 million views</a>, not surprisingly it's locked for editing, but it's also considered "not constructive"! The same question also has 518 answers, the most of any on the site and if you're wondering, the question with the highest score has an impressive 8192 votes and is titled <a href="http://stackoverflow.com/questions/11227809/why-is-processing-a-sorted-array-faster-than-an-unsorted-array" target="_blank">Why is processing a sorted array faster than an unsorted array?</a>
 
-#### <a name="CreatingAnIndex"></a>**Creating an Index**
+## <a name="CreatingAnIndex"></a>**Creating an Index**
 So what does the index actually look like, well it's basically a series of sorted lists (`List<int>`) that contain an offset into the main `List<Question>` that contains all the <a href="https://github.com/mattwarren/StackOverflowTagServer/blob/master/Shared/Question.cs" target="_blank">`Question`</a> data. Or in a diagram, something like this:
 
 <a href="https://mattwarrendotorg.files.wordpress.com/2014/11/indexing-explanation.png" target="_blank"><img src="https://mattwarrendotorg.files.wordpress.com/2014/11/indexing-explanation.png?w=760" alt="Indexing explanation" width="660" height="165" class="aligncenter size-large wp-image-1020" /></a>
@@ -102,7 +102,7 @@ Once that's all done, I ended up with an API that you can query in the browser. 
 
 <a href="https://pbs.twimg.com/media/B0BU8CRCcAAte5f.png:large" target="_blank"><img src="https://pbs.twimg.com/media/B0BU8CRCcAAte5f.png:large" width="610" height="600" class="aligncenter" /></a>
 
-#### <a name="NextTime"></a>**Next time**
+## <a name="NextTime"></a>**Next time**
 Now that the basic index is setup, next time I'll be looking at how to handle:
 
 - Complex boolean queries `.net or jquery- and c#`
