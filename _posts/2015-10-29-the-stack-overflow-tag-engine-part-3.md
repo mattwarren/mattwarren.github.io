@@ -13,10 +13,10 @@ This is the part 3 of a mini-series looking at what it *might* take to build the
 
 One of the most powerful features of the Stack Overflow Tag Engine is that it allows you to do complex boolean queries against multiple Tag, for instance:
 
-- <a href="http://stackoverflow.com/questions/tagged/.net+or+jquery-" target="_blank">.net OR (NOT jquery)</a>
-- <a href="http://stackoverflow.com/questions/tagged/.net+or+jquery-+javascript" target="_blank">.net OR (NOT jquery) AND javascript</a>
+- [.net OR (NOT jquery)](href="http://stackoverflow.com/questions/tagged/.net+or+jquery-)
+- [.net OR (NOT jquery) AND javascript](http://stackoverflow.com/questions/tagged/.net+or+jquery-+javascript)
 
-A simple way of implementing this is to write code like below, which makes use of a <a href="https://msdn.microsoft.com/en-us/library/bb359438(v=vs.110).aspx" target="_blank">`HashSet`</a> to let us efficiently do lookups to see if a particular questions should be included or excluded. 
+A simple way of implementing this is to write code like below, which makes use of a [`HashSet`](https://msdn.microsoft.com/en-us/library/bb359438(v=vs.110).aspx) to let us efficiently do lookups to see if a particular questions should be included or excluded. 
 
 ``` csharp
 var result = new List<Question>(pageSize);
@@ -41,11 +41,11 @@ foreach (var id in queryInfo[tag1])
 }
 ```
 
-The main problem is that we have to scan through all the ids for `tag1` until we have enough matches, i.e. `foreach (var id in queryInfo[tag1])`. In addition we have to initially load up the `HashSet` with all the ids for `tag2`, so that we can check matches. So this method takes longer as we skip more and more questions, i.e. for larger value of `skip` or if there are a large amount of `tagsToExclude` (i.e. "*Ignored Tags*" see <a href="mattwarren.org/2015/08/19/the-stack-overflow-tag-engine-part-2/#IgnoredTags" target="_blank">Part 2 for more infomation</a>).
+The main problem is that we have to scan through all the ids for `tag1` until we have enough matches, i.e. `foreach (var id in queryInfo[tag1])`. In addition we have to initially load up the `HashSet` with all the ids for `tag2`, so that we can check matches. So this method takes longer as we skip more and more questions, i.e. for larger value of `skip` or if there are a large amount of `tagsToExclude` (i.e. "*Ignored Tags*" see [Part 2 for more infomation]({{base}}/2015/08/19/the-stack-overflow-tag-engine-part-2/#IgnoredTags).
 
 ## <a name="Bitmaps"></a>**Bitmaps**
 
-So can we do any better, well yes, there is a fairly established mechanism for doing these types of queries, known as <a href="http://lemire.me/blog/archives/2008/08/20/the-mythical-bitmap-index/" target="_blank">**Bitmap indexes**</a>. To use these you have to pre-calculate an index in which each bit is set to `1` to indicate a match and `0` otherwise. In our scenario this looks so: 
+So can we do any better, well yes, there is a fairly established mechanism for doing these types of queries, known as [**Bitmap indexes**](http://lemire.me/blog/archives/2008/08/20/the-mythical-bitmap-index/). To use these you have to pre-calculate an index in which each bit is set to `1` to indicate a match and `0` otherwise. In our scenario this looks so: 
 
 <a href="https://mattwarrendotorg.files.wordpress.com/2015/10/bit-map-indexing-explanation.png" target="_blank"><img src="https://mattwarrendotorg.files.wordpress.com/2015/10/bit-map-indexing-explanation.png" alt="Bit Map Indexing explanation" width="660" height="145" class="aligncenter size-full wp-image-1120" /></a>
 
@@ -62,7 +62,7 @@ The main drawback is that we have to create a Bitmap index for *each* tag (`C#`,
 
 ## <a name="CompressedBitmaps"></a>**Compressed Bitmaps**
 
-Fortunately there is a way to heavily compress the Bitmaps using a form of <a href="http://en.wikipedia.org/wiki/Run-length_encoding" target="_blank">Run-length encoding</a>, to do this I made use of the <a href="https://github.com/lemire/csharpewah" target="_blank">C# version</a> of the excellent <a href="https://github.com/lemire/javaewah" target="_blank">EWAH library</a>. This library is based on the research carried out in the paper <a href="http://arxiv.org/abs/0901.3751" target="_blank">Sorting improves word-aligned bitmap indexes</a> by <a href="https://twitter.com/lemire" target="_blank">Daniel Lemire</a> and others. By using EWAH it has the added benefit that you don't need to uncompress the Bitmap to perform the bitwise operations, they can be done in-place (for an idea of how this is done take a look at <a href="https://github.com/mattwarren/StackOverflowTagServer/commit/20561e60e1b7d90ff0bb023ec8cf89494d0705f5" target="_blank">this commit where I added a single in-place `AndNot` function</a> to the existing library). 
+Fortunately there is a way to heavily compress the Bitmaps using a form of [Run-length encoding](http://en.wikipedia.org/wiki/Run-length_encoding), to do this I made use of the [C# version](https://github.com/lemire/csharpewah) of the excellent [EWAH library](https://github.com/lemire/javaewah). This library is based on the research carried out in the paper [Sorting improves word-aligned bitmap indexes](http://arxiv.org/abs/0901.3751) by [Daniel Lemire](https://twitter.com/lemire and others. By using EWAH it has the added benefit that you don't need to uncompress the Bitmap to perform the bitwise operations, they can be done in-place (for an idea of how this is done take a look at [this commit where I added a single in-place `AndNot` function](https://github.com/mattwarren/StackOverflowTagServer/commit/20561e60e1b7d90ff0bb023ec8cf89494d0705f5) to the existing library). 
 
 However if you don't want to read the <a href="http://arxiv.org/abs/0901.3751" target="_blank">research paper</a>, the diagram below shows how the Bitmap is compressed into 64-bit `words` that have 1 or more bits set, plus runs of repeating zeros or ones. So `31 0x00` indicates that 31 instances of a `64-bit word` (with all the bits set to `0`) have be encoded as a single value, rather than as 31 individual `words`.
 
