@@ -388,6 +388,10 @@ tbody tr:nth-child(odd) th {
   padding-bottom: 1em;
 }
 
+.share img {
+  display: inline;
+}
+
 
 /*
  * Pagination
