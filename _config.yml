@@ -24,8 +24,9 @@ version:             1.0.0
 # Use the following plug-ins
 gems:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
-  - kramdown
+#  - kramdown
 
-markdown:     kramdown
-kramdown:
-  input: GFM
+# Try to use kramdown, because it supports code-block surrounded with ```
+#markdown:     kramdown
+#kramdown:
+#  input: GFM

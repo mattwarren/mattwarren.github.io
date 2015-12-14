@@ -17,7 +17,7 @@ One of the most powerful features of the Stack Overflow Tag Engine is that it al
 
 A simple way of implementing this is to write code like below, which makes use of a <a href="https://msdn.microsoft.com/en-us/library/bb359438(v=vs.110).aspx" target="_blank">`HashSet`</a> to let us efficiently do lookups to see if a particular questions should be included or excluded. 
 
-``` csharp
+{% highlight csharp %}
 var result = new List<Question>(pageSize);
 var andHashSet = new HastSet<int>(queryInfo[tag2]);
 foreach (var id in queryInfo[tag1])
@@ -28,7 +28,7 @@ foreach (var id in queryInfo[tag1])
 	baseQueryCounter++;
 	if (questions[id].Tags.Any(t => tagsToExclude.Contains(t)))	
 	{
-		excludedCounter++;	
+		excludedCounter++;
 	}
 	else if (andHashSet.Remove(item))
 	{
@@ -38,7 +38,7 @@ foreach (var id in queryInfo[tag1])
 			itemsSkipped++;
 	}
 }
-```
+{% endhighlight %}
 
 The main problem is that we have to scan through all the ids for `tag1` until we have enough matches, i.e. `foreach (var id in queryInfo[tag1])`. In addition we have to initially load up the `HashSet` with all the ids for `tag2`, so that we can check matches. So this method takes longer as we skip more and more questions, i.e. for larger value of `skip` or if there are a large amount of `tagsToExclude` (i.e. "*Ignored Tags*" see <a href="mattwarren.org/2015/08/19/the-stack-overflow-tag-engine-part-2/#IgnoredTags" target="_blank">Part 2 for more infomation</a>).
 
@@ -50,12 +50,12 @@ So can we do any better, well yes, there is a fairly established mechanism for d
 
 Then it is just a case of doing the relevant bitwise operations against the bits (a `byte` at a time), for example if you want to get the questions that have the `C#` `AND` `Java` Tags, you do the following:
 
-``` csharp
+{% highlight csharp %}
 for (int i = 0; i < numBits / 8; i++)
 {
 	result[i] = bitSetCSharp[i] & bitSetJava[i];
 }
-```
+{% endhighlight %}
 
 The main drawback is that we have to create a Bitmap index for *each* tag (`C#`, `.NET`, `Java`, etc) for *every* sort order (`LastActivityDate`, `CreationDate`, `Score`, `ViewCount`, `AnswerCount`), so we soon use up a *lot* of memory. The Sept 2014 Stack Overflow dataset contains just under 8 million questions and so at 8 questions per byte, a single Bitmap needs 976KB or 0.95MB. This adds up to an impressive **149GB** (0.95MB * 32,000 Tags * 5 sort orders).
 
@@ -65,7 +65,7 @@ Fortunately there is a way to heavily compress the Bitmaps using a form of <a hr
 
 However if you don't want to read the <a href="http://arxiv.org/abs/0901.3751" target="_blank">research paper</a>, the diagram below shows how the Bitmap is compressed into 64-bit `words` that have 1 or more bits set, plus runs of repeating zeros or ones. So `31 0x00` indicates that 31 instances of a `64-bit word` (with all the bits set to `0`) have be encoded as a single value, rather than as 31 individual `words`.
 
-```
+{% highlight text %}
 0 0x00
 1 words
         [   0]=                   17,  2 bits set ->
@@ -91,7 +91,7 @@ However if you don't want to read the <a href="http://arxiv.org/abs/0901.3751" t
         [   0]=            536870912,  1 bits set ->
  		{0000000000000000000000000000000000100000000000000000000000000000}
 ....
-```
+{% endhighlight %}
 
 To give an idea of the space savings that can be achieved, the table below shows the size in bytes for compressed Bitmaps that have varying amounts of individual bit set to `1` (for comparision uncompressed Bitmaps are 1,000,000 bytes or 0.95MB)
 
