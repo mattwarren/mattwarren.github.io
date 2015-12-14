@@ -390,6 +390,11 @@ tbody tr:nth-child(odd) th {
 
 .share img {
   display: inline;
+  vertical-align: middle;
+  margin-top: 0em;
+  margin-right: 0.5em;
+  margin-bottom: 0em;
+  margin-left: 0.5em;
 }
 
 
