@@ -3,7 +3,7 @@ layout: post
 title: The Stack Overflow Tag Engine – Part 1
 comments: true
 tags: [indexing, lucene, stackoverflow]
-excerpt_separator: <!--more-->
+excerpt: 'I first heard about the Stack Overflow [*Tag engine of doom*](http://samsaffron.com/archive/2011/10/28/in-managed-code-we-trust-our-recent-battles-with-the-net-garbage-collector) when I read about [their battle with the .NET Garbage Collector](http://blog.marcgravell.com/2011/10/assault-by-gc.html). If you haven't heard of it before I recommend reading the previous links and then this interesting [case-study on technical debt](http://blog.marcgravell.com/2014/04/technical-debt-case-study-tags.html).'
 ---
 
 I've added a [**Resources**]({{base}}/resources/)</a> and [**Speaking**]({{base}}/speaking/) page to my site, check them out if you want to learn more.
@@ -13,7 +13,7 @@ I've added a [**Resources**]({{base}}/resources/)</a> and [**Speaking**]({{base}
 ## <a name="Introduction"></a>**Stack Overflow Tag Engine**
 
 I first heard about the Stack Overflow <a href="http://samsaffron.com/archive/2011/10/28/in-managed-code-we-trust-our-recent-battles-with-the-net-garbage-collector" target="_blank">*Tag engine of doom*</a> when I read about <a href="http://blog.marcgravell.com/2011/10/assault-by-gc.html" target="_blank">their battle with the .NET Garbage Collector</a>. If you haven't heard of it before I recommend reading the previous links and then this interesting <a href="http://blog.marcgravell.com/2014/04/technical-debt-case-study-tags.html" target="_blank">case-study on technical debt</a>.
-<!--more-->
+
 But if you've ever visited <a href="http://www.stackoverflow.com" target="_blank">Stack Overflow</a> you will have used it, maybe without even realising. It powers the pages under `stackoverflow.com/questions/tagged`, for instance you can find the questions tagged <a href="http://stackoverflow.com/questions/tagged/.net" target="_blank">.NET</a>, <a href="http://stackoverflow.com/questions/tagged/c%23" target="_blank">C#</a> or <a href="http://stackoverflow.com/questions/tagged/java" target="_blank">Java</a> and you get a page like this (note the related tags down the right-hand side):
 
 <a href="http://stackoverflow.com/questions/tagged/.net" target="_blank"><img src="https://mattwarrendotorg.files.wordpress.com/2014/10/dotnet-tag.png?w=900" alt="dotNet Tag" class="aligncenter" /></a>
