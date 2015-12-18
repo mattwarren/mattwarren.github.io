@@ -126,7 +126,7 @@ And that is the basics of how you can modify any .NET method, it seems relativel
 
 If you want to run my demo, you need to open the solution file under <a href="https://github.com/mattwarren/DDD2011_ProfilerDemo/tree/master/step5_main_injected_method_object_array" target="_blank">step5_main_injected_method_object_array</a> and set "ProfilerHost" as the "Start-up Project" (right-click on the project in VS) before you run. When you run it, you should see something like this:
 
-<a href="https://mattwarrendotorg.files.wordpress.com/2014/12/mocking-in-action.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/12/mocking-in-action.png" alt="Mocking in action" width="730" height="312" class="aligncenter size-full wp-image-735" /></a>
+<a href="https://mattwarren.github.io/images/2014/12/mocking-in-action.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/12/mocking-in-action.png" alt="Mocking in action" width="730" height="312" class="aligncenter size-full wp-image-735" /></a>
 
 You can see the C# code that controls the mocking below. At the moment the API in the demo is fairly limited, it only lets you turn mocking on/off and set the value that is returned from the mocked method.
 

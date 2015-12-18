@@ -228,11 +228,11 @@ These results were produced by running the code in RELEASE mode and launching th
 
 As seen in the chart below the best results for **64-bit** (red) were achieved when we unrolled the loop ("ProfileDirectWithStoreUnrolled"). There are other other results that were faster, but in these the actual code we wanted to profile was optimised away by the JITter ("Profile via an Action", "ProfileDirect" and "ProfileDirectWithConsume").
 
-<a href="https://mattwarrendotorg.files.wordpress.com/2014/09/math-sqrt-results-graph.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/09/math-sqrt-results-graph.png?w=660" alt="Math.Sqrt() - results graph" width="660" height="352" class="alignnone size-large wp-image-867" /></a>
+<a href="https://mattwarren.github.io/images/2014/09/math-sqrt-results-graph.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/09/math-sqrt-results-graph.png?w=660" alt="Math.Sqrt() - results graph" width="660" height="352" class="alignnone size-large wp-image-867" /></a>
 
 **Update (2014-09-23):** The correct results are in the chart below
 
-<a href="https://mattwarrendotorg.files.wordpress.com/2014/09/math-sqrt-results-graph-after-reddit-fixes.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/09/math-sqrt-results-graph-after-reddit-fixes.png" alt="Math.Sqrt() - results graph - AFTER Reddit fixes" width="1008" height="489" class="aligncenter size-full wp-image-902" /></a>
+<a href="https://mattwarren.github.io/images/2014/09/math-sqrt-results-graph-after-reddit-fixes.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/09/math-sqrt-results-graph-after-reddit-fixes.png" alt="Math.Sqrt() - results graph - AFTER Reddit fixes" width="1008" height="489" class="aligncenter size-full wp-image-902" /></a>
 
 #### **CLR JIT Compiler - 32-bit v. 64-bit**
 
@@ -290,7 +290,7 @@ Here's a list of all the code samples and other data used in making this post:
  1. <a href="https://gist.github.com/mattwarren/69070616cf0efbb68a79#file-benchmarking-cs-L270" target="_blank">Profile Direct, storing the result (BROKEN)</a>
  1. <a href="https://gist.github.com/mattwarren/69070616cf0efbb68a79#file-benchmarking-cs-L292" target="_blank">Profile Direct, storing the result (FIXED)</a>
  1. <a href="https://gist.github.com/mattwarren/69070616cf0efbb68a79#file-benchmarking-cs-L339" target="_blank">Profile Direct, storing the result, unrolled 10 times</a>
-2. <a href="https://mattwarrendotorg.files.wordpress.com/2014/09/benchmark-results-math-sqrt1.xlsx" target="_blank">Spreadsheet of results</a> **Updated (2014-09-23)**
+2. <a href="https://mattwarren.github.io/images/2014/09/benchmark-results-math-sqrt1.xlsx" target="_blank">Spreadsheet of results</a> **Updated (2014-09-23)**
 3. Generated assembly code **Updated (2014-09-23)**:
  1. <a href="https://gist.github.com/mattwarren/02ca1567cecbd6ea68a0" target="_blank">Profile via a `Action`</a>
  1. <a href="https://gist.github.com/mattwarren/dcd546babf76986125ea" target="_blank">Profile Direct</a>

@@ -34,7 +34,7 @@ I'm not in any way being critical or dismissive of these improvements. GC is a r
 
 But how do you detect GC pauses, well the first thing to do is take a look at the properties of the process using the excellent <a href="http://technet.microsoft.com/en-gb/sysinternals/bb896653.aspx" title="Process Explorer" target="_blank">Process Explorer</a> tool from <a href="http://technet.microsoft.com/en-gb/sysinternals" title="Sysinternals" target="_blank">Sysinternals</a> (imagine Task Manager on steroids). It will give you a summary like the one below, the number of <em>Gen 0/1/2 Collections</em> and <em>% Time in GC</em> are the most interesting values to look at.
 
-<a href="https://mattwarrendotorg.files.wordpress.com/2014/06/time-in-gc.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/06/time-in-gc.png" alt="Time in GC" width="483" height="459" class="aligncenter size-full wp-image-337" /></a>
+<a href="https://mattwarren.github.io/images/2014/06/time-in-gc.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/06/time-in-gc.png" alt="Time in GC" width="483" height="459" class="aligncenter size-full wp-image-337" /></a>
 
 But the limitation of this is that it has no context, what <em>% of time in GC</em> is too high, how many <em>Gen 2 collections</em> are too many? What effect does GC actually have on your program, in terms of pauses that a customer will experience?
 
@@ -97,17 +97,17 @@ The test was left running for 10 mins, in each of the following GC modes:
 
 The results are below, you can clearly see that Server modes offer lower pauses than the Workstation modes and that Interactive (concurrent) mode is also an improvement over Batch mode. The graph shows pause times on the Y axis (so lower is better) and the X axis plots the percentiles, scaled logarithmically.
 
-<a href="https://mattwarrendotorg.files.wordpress.com/2014/06/gc-pause-times-comparision.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/06/gc-pause-times-comparision.png" alt="GC Pause Times - comparision" width="1008" height="644" class="aligncenter size-full wp-image-367" /></a>
+<a href="https://mattwarren.github.io/images/2014/06/gc-pause-times-comparision.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/06/gc-pause-times-comparision.png" alt="GC Pause Times - comparision" width="1008" height="644" class="aligncenter size-full wp-image-367" /></a>
 
 If we take a closer look at just the 99% percentile, i.e. the value (at) which "1 in 100" pauses are less than, the difference is even clearer. Here you can see that the Workstation modes have pauses upto 25 milliseconds, compared to 10 milliseconds for the Server modes.
 
-<a href="https://mattwarrendotorg.files.wordpress.com/2014/06/gc-pause-times-upto-99-comparision.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/06/gc-pause-times-upto-99-comparision.png" alt="GC Pause Times - upto 99% comparision" width="651" height="198" class="aligncenter size-full wp-image-395" /></a>
+<a href="https://mattwarren.github.io/images/2014/06/gc-pause-times-upto-99-comparision.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/06/gc-pause-times-upto-99-comparision.png" alt="GC Pause Times - upto 99% comparision" width="651" height="198" class="aligncenter size-full wp-image-395" /></a>
 
 <h4><strong>SustainedLowLatency Mode</strong></h4>
 
 As a final test, the program was run using the new <a href="http://msdn.microsoft.com/library/system.runtime.gclatencymode(v=vs.110).aspx" title="Sustained low-latency GC mode" target="_blank">SustainedLowLatency</a> mode, to see what effect that has. In the graph below you can see this offers lower pause times, although it isn't able to sustain these for an unlimited period of time. After 10 minutes we start to see longer pauses compared to those we saw when running the test for just 5 minutes.
 
-<a href="https://mattwarrendotorg.files.wordpress.com/2014/06/gc-pause-times-comparision-including-sustainedlowlatency.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/06/gc-pause-times-comparision-including-sustainedlowlatency.png" alt="GC Pause Times - comparision including SustainedLowLatency" width="1008" height="454" class="aligncenter size-full wp-image-401" /></a>
+<a href="https://mattwarren.github.io/images/2014/06/gc-pause-times-comparision-including-sustainedlowlatency.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/06/gc-pause-times-comparision-including-sustainedlowlatency.png" alt="GC Pause Times - comparision including SustainedLowLatency" width="1008" height="454" class="aligncenter size-full wp-image-401" /></a>
 
 It's worth noting that there is a trade-off to take into account when using this mode, <a href="http://msdn.microsoft.com/en-US/library/bb384202(v=vs.110).aspx" title="Sustained low-latency GC mode" target="_blank">SustainedLowLatency mode is</a>:
 
@@ -116,7 +116,7 @@ It's worth noting that there is a trade-off to take into account when using this
   This mode results in a larger managed heap size than other modes. Because it does not compact the managed heap, higher fragmentation is possible. Ensure that sufficient memory is available.
 </blockquote>
 
-All the data used in these tests can be found in the spreadsheet <a href="https://mattwarrendotorg.files.wordpress.com/2014/06/gc-pause-times-comparision.xlsx">GC Pause Times - comparision</a>
+All the data used in these tests can be found in the spreadsheet <a href="https://mattwarren.github.io/images/2014/06/gc-pause-times-comparision.xlsx">GC Pause Times - comparision</a>
 
 <a href="http://www.reddit.com/r/csharp/comments/28ghp8/measuring_the_impact_of_the_net_garbage_collector/" target="_blank">Discuss on the csharp sub-reddit</a>
 

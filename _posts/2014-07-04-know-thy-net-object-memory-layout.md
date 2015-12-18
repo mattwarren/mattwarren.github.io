@@ -103,7 +103,7 @@ Once the debugger has connected back to VS, you can type the following commands 
 
 If all that works, you will end up with an output like below:
 
-<a href="https://mattwarrendotorg.files.wordpress.com/2014/07/hdrhistogram-field-layout.png"><img src="http://mattwarrendotorg.files.wordpress.com/2014/07/hdrhistogram-field-layout.png" alt="HdrHistogram - field layout" width="772" height="581" class="alignnone size-full wp-image-584" /></a>
+<a href="https://mattwarren.github.io/images/2014/07/hdrhistogram-field-layout.png"><img src="http://mattwarrendotorg.files.wordpress.com/2014/07/hdrhistogram-field-layout.png" alt="HdrHistogram - field layout" width="772" height="581" class="alignnone size-full wp-image-584" /></a>
 
 <h3><strong>Update (2014-09-03)</strong></h3>
 
@@ -121,13 +121,13 @@ By putting this code into my project, I was able to verify that it gives exactly
 
 After all these steps we end up with the results shown in the images below, where the rows are ordered by the "Offset" value.
 
-[caption width="649" align="aligncenter"]<a href="https://mattwarrendotorg.files.wordpress.com/2014/07/hdrhistogram-with-hierachy2.png"><img src="http://mattwarrendotorg.files.wordpress.com/2014/07/hdrhistogram-with-hierachy2.png" alt="HdrHistogram (with Hierachy)" width="649" height="501" class="alignnone size-full wp-image-568 aligncenter" /></a> AbstractHistogramBase.cs -&gt; AbstractHistogram.cs -&gt; Histogram.cs [/caption]
+[caption width="649" align="aligncenter"]<a href="https://mattwarren.github.io/images/2014/07/hdrhistogram-with-hierachy2.png"><img src="http://mattwarrendotorg.files.wordpress.com/2014/07/hdrhistogram-with-hierachy2.png" alt="HdrHistogram (with Hierachy)" width="649" height="501" class="alignnone size-full wp-image-568 aligncenter" /></a> AbstractHistogramBase.cs -&gt; AbstractHistogram.cs -&gt; Histogram.cs [/caption]
 
 You can see that with the class hierarchy in place, the fields remain grouped as we want them to (shown by the orange/green/blue highlighting). What is interesting is that the JITter has still rearranged fields within a single group, preferring to put Int64 (long) fields before Int32 (int) fields in this case. This is seen by comparing the ordering of the "Field" column with the "Offset" one, where the values in the "Field" column represent the original ordering of the fields as they appear in the source code.
 
 However when we put all the fields in a single class, we lose the grouping:
 
-[caption width="498" align="aligncenter"]<a href="https://mattwarrendotorg.files.wordpress.com/2014/07/histogramallinoneclass2.png"><img src="http://mattwarrendotorg.files.wordpress.com/2014/07/histogramallinoneclass2.png" alt="HistogramAllInOneClass" width="498" height="501" class="alignnone size-full wp-image-569 aligncenter" /></a> Equivalent fields all in one class[/caption]
+[caption width="498" align="aligncenter"]<a href="https://mattwarren.github.io/images/2014/07/histogramallinoneclass2.png"><img src="http://mattwarrendotorg.files.wordpress.com/2014/07/histogramallinoneclass2.png" alt="HistogramAllInOneClass" width="498" height="501" class="alignnone size-full wp-image-569 aligncenter" /></a> Equivalent fields all in one class[/caption]
 
 <h3><strong>Alternative Technique</strong></h3>
 
@@ -152,4 +152,4 @@ public class HistogramAllInOneClass
 }
 [/code]
 
-If you are interested, the full results of this test <a href="https://mattwarrendotorg.files.wordpress.com/2014/07/hdrhistogram-field-layout1.xlsx" target="_blank">are available</a>
+If you are interested, the full results of this test <a href="https://mattwarren.github.io/images/2014/07/hdrhistogram-field-layout1.xlsx" target="_blank">are available</a>
