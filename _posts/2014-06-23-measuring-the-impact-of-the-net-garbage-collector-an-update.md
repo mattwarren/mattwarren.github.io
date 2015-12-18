@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Measuring the impact of the .NET Garbage Collector - An Update
-date: 2014-06-23 16:43
-author: matthewwarren
 comments: true
 categories: [Performance]
 ---
@@ -57,7 +55,7 @@ He also suggested some tweaks to make to the code (emphasis mine):
 
 Based on these 2 suggestions, the code to record the timings becomes the following:
 
-[code lang=csharp]
+``` csharp
 var timer = new Stopwatch();
 var sleepTimeInMsecs = 1;
 while (true)
@@ -74,7 +72,7 @@ while (true)
   _histogram.recordValueWithExpectedInterval(
         timer.ElapsedMilliseconds - sleepTimeInMsecs, 1);
 }
-[/code]
+```
 
 To see what difference this made to the graphs I re-ran the test, this time just in Server GC mode. You can see the changes on the graph below, the dotted lines are the original (inaccurate) mode and the solid lines show the results after they have been corrected for coordinated omission.
 <a href="https://mattwarren.github.io/images/2014/06/gc-pause-times-comparision-corrected-for-coordinated-omission.png" target="_blank"><img src="http://mattwarren.github.io/images/2014/06/gc-pause-times-comparision-corrected-for-coordinated-omission.png?w=1008" alt="GC Pause Times - comparision (Corrected for Coordinated Omission)" width="1008" height="642" class="aligncenter size-large wp-image-426" /></a>
@@ -83,7 +81,7 @@ To see what difference this made to the graphs I re-ran the test, this time just
 
 This is an interesting subject and after becoming aware of it, I've spent some time reading up on it and trying to understand it more deeply. One way to comprehend it, is to take a look at the code in HdrHistogram that handles it:
 
-[code lang=csharp]
+``` csharp
 recordCountAtValue(count, value);
 if (expectedIntervalBetweenValueSamples &lt;=0)
     return;
@@ -94,7 +92,7 @@ for (long missingValue = value - expectedIntervalBetweenValueSamples;
 {
     recordCountAtValue(count, missingValue);
 }
-[/code]
+```
 
 As you can see it fills in all the missing values, from 0 to the value you are actually storing.
 

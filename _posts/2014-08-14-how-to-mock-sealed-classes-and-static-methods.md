@@ -1,8 +1,6 @@
 ---
 layout: post
 title: How to mock sealed classes and static methods
-date: 2014-08-14 12:00
-author: matthewwarren
 comments: true
 categories: [.NET Profiling, dynamic code generation, JustMock, Mocking, TypeMock, Uncategorized]
 ---
@@ -12,7 +10,7 @@ categories: [.NET Profiling, dynamic code generation, JustMock, Mocking, TypeMoc
 
 Firstly it's worth covering how regular mocking frameworks work with virtual methods or interfaces. Suppose you have a class you want to mock, like so:
 
-[code lang=csharp]
+``` csharp
 public class TestingMocking
 {
   public virtual void MockMe()
@@ -20,11 +18,11 @@ public class TestingMocking
     ..
   }
 }
-[/code]
+```
 
 At runtime the framework will generate a <em>mocked</em> class like the one below. As it inherits from <code>TestingMocking</code> you can use it instead of your original class, but the <em>mocked</em> method will be called instead.
 
-[code lang=csharp]
+``` csharp
 public class DynamicProxy : TestingMocking
 {
   public override void MockMe()
@@ -32,7 +30,7 @@ public class DynamicProxy : TestingMocking
     ..
   }
 }
-[/code]
+```
 
 This is achieved using the <a href="http://msdn.microsoft.com/en-us/library/system.reflection.emit.dynamicmethod(v=vs.110).aspx" target="_blank">DynamicMethod</a> class available in <a href="http://msdn.microsoft.com/en-us/library/System.Reflection.Emit(v=vs.110).aspx" target="_blank">System.Reflection.Emit</a>, this <a href="http://www.mindscapehq.com/blog/index.php/2011/11/27/reflection-performance-and-runtime-code-generation/" target="_blank">blog post</a> contains a nice overview and <a href="https://twitter.com/billwagner" target="_blank">Bill Wagner</a> has put together a <a href="https://bitbucket.org/BillWagner/codemashstuntcoding/src/c449bf1c6b703b34d1e086f1a0f527757f4720c2/StuntCodingUtilities/DynamicConverter.cs?at=default#cl-14" target="_blank">more complete example</a> that gives you a better idea of what is involved. I found that once you discover dynamic code generation is possible, you realise that it is used everywhere, for instance:
 
@@ -57,7 +55,7 @@ To start with the <a href="http://msdn.microsoft.com/en-us/library/ms404386(v=vs
 
 By using the profiling API and in particular the <a href="http://msdn.microsoft.com/en-us/library/ms230586(v=vs.110).aspx" target="_blank">JITCompilationStarted method</a>, we are able to modify the IL of any method being run by the CLR (user code or the .NET runtime), before the JITer compiles it to machine code and it is executed. This means that we can modify a method that originally looks like this:
 
-[code lang=csharp]
+``` csharp
 public sealed class ClassToMock
 {
   public static int StaticMethodToMock()
@@ -66,11 +64,11 @@ public sealed class ClassToMock
     return 42;
   }
 }
-[/code]
+```
 
 So that instead it does this:
 
-[code lang=csharp]
+``` csharp
 public sealed class ClassToMock
 {
   public static int StaticMethodToMock()
@@ -83,11 +81,11 @@ public sealed class ClassToMock
     return 42;
   }
 }
-[/code]
+```
 
 For reference, the original IL looks like this:
 
-[code lang=csharp]
+``` assembly
 IL_0000 ( 0) nop
 IL_0001 ( 1) ldstr (70)00023F    //&quot;StaticMethodToMockWhatWeWantToDo called, returning 42&quot;
 IL_0006 ( 6) call (06)000006     //call Console.WriteLine(..)
@@ -97,11 +95,11 @@ IL_000E (14) stloc.0
 IL_000F (15) br IL_0014
 IL_0014 (20) ldloc.0
 IL_0015 (21) ret
-[/code]
+```
 
 and after code injection, it ends up like this:
 
-[code lang=csharp]
+``` assembly
 IL_0000 ( 0) ldstr (70)000135
 IL_0005 ( 5) call (0A)00001B     //call ShouldMock(string methodNameAndPath)
 IL_000A (10) brfalse.s IL_0012
@@ -116,7 +114,7 @@ IL_0020 (32) stloc.0
 IL_0021 (33) br IL_0026
 IL_0026 (38) ldloc.0
 IL_0027 (39) ret
-[/code]
+```
 
 And that is the basics of how you can modify any .NET method, it seems relatively simple when you know how! In my simple demo I just add in the relevant IL so that a mocked method is called instead, you can see the C++ code needed to achieve this <a href="https://github.com/mattwarren/DDD2011_ProfilerDemo/blob/master/step5_main_injected_method_object_array/DDDProfiler/CodeInjection.cpp#L279" target="_blank">here</a>. Of course in reality it's much more complicated, my <a href="https://github.com/mattwarren/DDD2011_ProfilerDemo/commit/9f804cec8ef11b802e020e648180b436a429833f" target="_blank">simple demo</a> only deals with a very simplistic scenario, a static method that returns an <code>int</code>. The commercial products that do this are way more powerful and have to deal with all the issues that you can encounter when you are <strong>re-writing code at the IL level</strong>, for instance if you aren't careful you get exceptions like this:
 
@@ -130,7 +128,7 @@ If you want to run my demo, you need to open the solution file under <a href="ht
 
 You can see the C# code that controls the mocking below. At the moment the API in the demo is fairly limited, it only lets you turn mocking on/off and set the value that is returned from the mocked method.
 
-[code lang=csharp]
+``` csharp
 static void Main(string[] args)
 {
   // Without mocking enabled (the default)
@@ -151,11 +149,12 @@ static void Main(string[] args)
   Console.WriteLine(&quot;Result: &quot; + result);
   Console.WriteLine(new string(&#039;#&#039;, 90) + &quot;n&quot;);
 }
-[/code]
+```
 
 <h4><strong>Other Uses for IL re-writing</strong></h4>
 
 Again once you learn about this mechanism, you realise that it is used in lots of places, for instance
+
 - profilers, see <a href="http://stackoverflow.com/questions/6527597/how-does-the-redgate-profiler-actually-work/6528758#6528758" target="_blank">this SO answer</a> for more info (<a href="http://www.red-gate.com/products/dotnet-development/ants-performance-profiler/" target="_blank">Ants</a> and <a href="http://www.jetbrains.com/profiler/" target="_blank">JetBrains</a>)
 - test coverage (<a href="http://www.ncover.com/" target="_blank">NCover</a>)
 - productions monitoring systems

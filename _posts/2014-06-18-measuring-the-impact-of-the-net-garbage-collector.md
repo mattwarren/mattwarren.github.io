@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Measuring the impact of the .NET Garbage Collector
-date: 2014-06-18 13:03
-author: matthewwarren
 comments: true
 categories: [Garbage Collection, Performance, Performance]
 ---
@@ -42,7 +40,7 @@ But the limitation of this is that it has no context, what <em>% of time in GC</
 
 To gain a better understanding, I've used some of the ideas from the excellent <a href="http://www.azulsystems.com/downloads/jHiccup" target="_blank">jHiccup</a> Java tool. Very simply, it starts a new thread in which the following code runs:
 
-[code lang=csharp]
+``` csharp
 var timer = new Stopwatch();
 while (true)
 {
@@ -56,7 +54,7 @@ while (true)
     _histogram.recordValue(timer.ElapsedMilliseconds);
   }
 }
-[/code]
+```
 
 Any pauses that this thread experiences will also be seen by the other threads running in the program and whilst these pauses aren't <em>guaranteed</em> to be caused by the GC, it's the most likely culprit.
 
@@ -64,7 +62,7 @@ Any pauses that this thread experiences will also be seen by the other threads r
 
 To trigger garbage collection, the test program also runs several threads, each executing the code below. In a loop, each thread creates a large <code>string</code> and a <code>byte array</code>, to simulate what a web server might be doing when generating a response to a web request (for instance from de-serialising some Json and creating a HTML page). Then to ensure that the objects are kept around long enough, they are both put into a Least Recently Used (LRU) cache, that holds the 2000 most recent items.
 
-[code lang=csharp]
+``` csharp
 processingThreads[i] = new Thread(() =&gt;
 {
   var threadCounter = 0;
@@ -82,7 +80,7 @@ processingThreads[i] = new Thread(() =&gt;
     Thread.Sleep(1); // So we don&#039;t thrash the CPU!!!!
   }
 });
-[/code]
+```
 
 <h4><strong>Test Results</strong></h4>
 

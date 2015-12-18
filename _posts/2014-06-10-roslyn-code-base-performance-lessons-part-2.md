@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Roslyn code base - performance lessons (part 2)
-date: 2014-06-10 14:00
-author: matthewwarren
 comments: true
 categories: [C#, open source, Performance, Performance Lessons, Roslyn]
 ---
@@ -62,7 +60,7 @@ Another strategy used is <a>object pooling</a> where rather than <em>newing</em>
 
 We can see how this was handled in Roslyn in the code below from <a href="http://source.roslyn.codeplex.com/#Microsoft.CodeAnalysis.Workspaces/Formatting/StringBuilderPool.cs" target="_blank">StringBuilderPool</a>, that makes use of the more generic <a href="http://source.roslyn.codeplex.com/#Microsoft.CodeAnalysis.Workspaces/Utilities/ObjectPools/PooledObject.cs#12" target="_blank">ObjectPool</a> infrastructure and <a href="http://source.roslyn.codeplex.com/#Microsoft.CodeAnalysis.Workspaces/Utilities/ObjectPools/SharedPools.cs#c5905bf81da0a7e8" target="_blank">helper classes</a>. Obviously it was such a widely used pattern that they build a generic class to handle the bulk of the work, making it easy to write an implementation for a specific type, including StringBuilder, Dictionary, HashSet and Stream.
 
-[code lang=csharp]
+``` csharp
 internal static class StringBuilderPool
 {
   public static StringBuilder Allocate()
@@ -81,13 +79,13 @@ internal static class StringBuilderPool
     return builder.ToString();
   }
 }
-[/code]
+```
 
 Having a class like this makes sense, a large part of compiling is parsing and building strings. Not only do they use a StringBuilder to save lots of temporary String allocations, but they also re-use StringBuilder objects to save the GC the work of having to clean up these.
 
 Interestingly enough this technique has also been used inside the .NET framework itself, you can see this in the code below from <a href="http://referencesource.microsoft.com/#mscorlib/system/text/stringbuildercache.cs#40" target="_blank">StringBuilderCache.cs</a>. Again, the comment shows that the optimisation was debated and a trade-off between memory usage and efficiency was weighed up.
 
-[code lang=csharp]
+``` csharp
 internal static class StringBuilderCache
 {
   // The value 360 was chosen in discussion with performance experts as a compromise between using
@@ -133,22 +131,22 @@ internal static class StringBuilderCache
     return result;
   }
 }
-[/code]
+```
 
 Which you then use like this:
 
-[code lang=csharp]
+``` csharp
 var builder = StringBuilderCache.Acquire();
 // use the builder as normal, i.e. builder.Append(..)
 string data = StringBuilderCache.GetStringAndRelease(builder);
-[/code]
+```
 
 <h4><strong>Specialised Collections</strong> <a name="SpecialisedCollections"></a></h4>
 
 Finally there are several examples where custom collections were written to ensure that excessive memory overhead wasn't created. For instance in the code below from <a href="http://source.roslyn.codeplex.com/#Microsoft.CodeAnalysis.CSharp/Symbols/Metadata/PE/PENamedTypeSymbol.cs#673" target="_blank">PENamesTypeSymbol.cs</a>, you can clearly see that specific collections are re-used whenever there are 0, 1 or up-to 6 items. 
 The comment clearly spells out the trade-off, so whilst these collections aren't as efficient when doing lookups (<em>O(n)</em> v <em>O(log n)</em>), they are more efficient in terms of space and so the trade-off is worth it. It's also interesting to note that the size of <em>6</em> wasn't chose randomly, in their tests they found that 50% of the time there were 6 items or fewer, so these optimisations will give a performance gain in the <em>majority</em> of scenarios.
 
-[code lang=csharp]
+``` csharp
 private static ICollection&lt;string&gt; CreateReadOnlyMemberNames(HashSet&lt;string&gt; names)
 {
   switch (names.Count)
@@ -171,7 +169,7 @@ private static ICollection&lt;string&gt; CreateReadOnlyMemberNames(HashSet&lt;st
       return SpecializedCollections.ReadOnlySet(names);
   }
 }
-[/code]
+```
 
 <h4><strong>Summary</strong></h4>
 

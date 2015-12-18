@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Roslyn code base - performance lessons (part 1)
-date: 2014-06-05 11:53
-author: matthewwarren
 comments: true
 categories: [C#, open source, Performance, Performance Lessons, Roslyn]
 ---

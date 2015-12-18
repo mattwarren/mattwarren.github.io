@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Know thy .NET object memory layout (Updated 2014-09-03)
-date: 2014-07-04 17:34
-author: matthewwarren
 comments: true
 categories: [.NET, false-sharing, memory layout, Performance, SOS]
 ---
@@ -81,7 +79,7 @@ Debugger.Launch();
 
 GC.KeepAlive(combinedHistogram); // put a breakpoint on this line
 GC.KeepAlive(testHistogram);
-[/code]
+```
 
 Then to actually test it, you need to perform the following steps:
 
@@ -150,6 +148,6 @@ public class HistogramAllInOneClass
 
   ...
 }
-[/code]
+```
 
 If you are interested, the full results of this test <a href="https://mattwarren.github.io/images/2014/07/hdrhistogram-field-layout1.xlsx" target="_blank">are available</a>
