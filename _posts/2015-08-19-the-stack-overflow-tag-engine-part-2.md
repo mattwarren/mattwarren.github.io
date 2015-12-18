@@ -12,7 +12,7 @@ I've added a [**Resources**]({{base}}/resources/)</a> and [**Speaking**]({{base}
 
 ## <a name="Recap"></a>**Recap of Stack Overflow Tag Engine**
 
-This is the long-delayed part 2 of a mini-series looking at what it *might* take to build the Stack Overflow Tag Engine, if you haven't read <a href="http://mattwarren.org/2014/11/01/the-stack-overflow-tag-engine-part-1/" target="_blank">part 1</a>, I recommend reading it first.
+This is the long-delayed part 2 of a mini-series looking at what it *might* take to build the Stack Overflow Tag Engine, if you haven't read <a href="{{base}}/2014/11/01/the-stack-overflow-tag-engine-part-1/" target="_blank">part 1</a>, I recommend reading it first.
 
 Since the first part was published, Stack Overflow published a nice performance report, giving some more stats on the Tag Engine Servers. As you can see they run the Tag Engine on some pretty powerful servers, but only have a peak CPU usage of 10%, which means there's plenty of overhead available. It's a nice way of being able to cope with surges in demand or busy times of the day.
 
@@ -20,7 +20,7 @@ Since the first part was published, Stack Overflow published a nice performance 
 
 ## <a name="IgnoredTags"></a>**Ignored Tag Preferences**
 
-In <a href="http://mattwarren.org/2014/11/01/the-stack-overflow-tag-engine-part-1/" target="_blank">part 1</a>, I only really covered the simple things, i.e. a basic search for all the questions that contain a given tag, along with multiple sort orders (by score, view count, etc). But the real Tag Engine does much more than that, for instance:  
+In <a href="{{base}}/2014/11/01/the-stack-overflow-tag-engine-part-1/" target="_blank">part 1</a>, I only really covered the simple things, i.e. a basic search for all the questions that contain a given tag, along with multiple sort orders (by score, view count, etc). But the real Tag Engine does much more than that, for instance:  
 
 <a href="https://twitter.com/marcgravell/status/522515630248189953" target="_blank"><img src="https://mattwarren.github.io/images/2015/08/tweet-wildcard-exclusions.png" alt="Tweet - Wildcard exclusions" width="634" height="318" class="aligncenter size-full wp-image-1099" /></a>
 

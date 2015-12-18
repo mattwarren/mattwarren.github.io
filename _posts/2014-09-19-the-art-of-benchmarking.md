@@ -38,6 +38,7 @@ This post is talking about **micro** and **nano** benchmarks, that is ones where
 
 #### <a name="first_attempt"></a> **First attempt**
 Let's start with a <a href="http://stackoverflow.com/questions/1047218/benchmarking-small-code-samples-in-c-can-this-implementation-be-improved/1048708#1048708" target="_blank">nice example</a> available from Stack Overflow: 
+
 ``` csharp
 static void Profile(string description, int iterations, Action func) 
 {
@@ -61,6 +62,7 @@ static void Profile(string description, int iterations, Action func)
 ```
 
 You then use it like this:
+
 ``` csharp
 Profile("a description", how_many_iterations_to_run, () =>
 {
@@ -145,6 +147,7 @@ One of the main problems with writing benchmarks is that you are often fighting 
 **Aside:** For a full list of all the optimisations that the .NET JIT Compiler performs, see this <a href="http://stackoverflow.com/questions/4043821/performance-differences-between-debug-and-release-builds/4045073#4045073" target="_blank">very thorough SO answer</a>.
 
 So let's fix the original code, by storing the result of `Math.Sqrt` in a variable:
+
 ``` csharp
 private static double result;
 static void ProfileDirect(string description, int iterations) 
@@ -243,6 +246,7 @@ You might have noticed that the 32-bit and 64-bit results in the graph vary per 
 However one benefit of <a href="http://blogs.msdn.com/b/dotnet/archive/2013/09/30/ryujit-the-next-generation-jit-compiler.aspx" target="_blank">RyuJIT (the next generation JIT Compiler)</a> is that it's a common code base for 32-bit and 64-bit, so when it comes out, everything may change! (BTW *RyuJIT*, <a href="https://twitter.com/matthewwarren/status/512176548678742016" target="_blank">what a great name</a>)
 
 For reference the assembly code that is generated in both cases is available:
+
 - <a href="https://gist.github.com/mattwarren/c44a08eedb46c01aad51" target="_blank">32-bit version</a> where the <a href="http://x86.renejeschke.de/html/file_module_x86_id_116.html" target="_blank">**fsqrt** instruction</a> is used 
 - <a href="https://gist.github.com/mattwarren/faa0ebf6a1b5ff81a08e" target="_blank">64-bit version</a> where the <a href="http://x86.renejeschke.de/html/file_module_x86_id_300.html" target="_blank">**sqrtsd** instruction</a> is used
 

@@ -5,7 +5,7 @@ comments: true
 tags: [Performance, Performance Lessons]
 ---
 
-In <a href="http://mattwarren.org/2014/09/01/stackoverflow-performance-lessons-part-1/" target="_blank">Part 1</a> I looked at some of the more general performance issues that can be learnt from Stack Overflow (the team/product), in Part 2 I'm looking at some of the examples of **coding** performance lessons.
+In <a href="{{base}}/2014/09/01/stackoverflow-performance-lessons-part-1/" target="_blank">Part 1</a> I looked at some of the more general performance issues that can be learnt from Stack Overflow (the team/product), in Part 2 I'm looking at some of the examples of **coding** performance lessons.
 
 ---------------------------------------
 
@@ -16,7 +16,7 @@ Also, don't optimise anything unless you have measured and profiled first, you w
 ---------------------------------------
 
 #### **Battles with the .NET Garbage Collector**
-I first learnt about the performance work done in Stack Overflow (the site/company), when I read the post on their <a href="http://samsaffron.com/archive/2011/10/28/in-managed-code-we-trust-our-recent-battles-with-the-net-garbage-collector" target="_blank">battles with the .NET Garbage Collector (GC)</a>. If you haven't read it, the short summary is that they were experiencing page load times that would suddenly spike to the 100's of msecs, compared to the normal sub 10 msecs they were use to. After investigating for a few days they narrowed the problem down to the behaviour of the GC. GC pauses are a real issue and even the new modes available in .NET 4.5 don't fully eliminate them, see my <a href="http://mattwarren.org/2014/06/23/measuring-the-impact-of-the-net-garbage-collector-an-update/" target="_blank">previous investigation for more information</a>.
+I first learnt about the performance work done in Stack Overflow (the site/company), when I read the post on their <a href="http://samsaffron.com/archive/2011/10/28/in-managed-code-we-trust-our-recent-battles-with-the-net-garbage-collector" target="_blank">battles with the .NET Garbage Collector (GC)</a>. If you haven't read it, the short summary is that they were experiencing page load times that would suddenly spike to the 100's of msecs, compared to the normal sub 10 msecs they were use to. After investigating for a few days they narrowed the problem down to the behaviour of the GC. GC pauses are a real issue and even the new modes available in .NET 4.5 don't fully eliminate them, see my <a href="{{base}}/2014/06/23/measuring-the-impact-of-the-net-garbage-collector-an-update/" target="_blank">previous investigation for more information</a>.
 
 One thing to remember is that to make this all happen, they needed the following items in place:
 
@@ -41,6 +41,7 @@ Note: protobuf-net is a binary serialisation library, but doesn't support JSON, 
 <a href="https://github.com/kevin-montrose/Jil#deserialization" target="_blank"><img src="https://camo.githubusercontent.com/5da9a07d6cc6fcf41b1ea9f118f555ed1cb0cd86/687474703a2f2f692e696d6775722e636f6d2f4e58514f53386e2e706e67" class="aligncenter" /></a> 
 
 For instance, instead of writing code like this
+
 ``` csharp
 public T Serialise<T>(string json, bool isJSONP)
 {
@@ -89,6 +90,7 @@ This means that during serialisation there doesn't need to be any *"feature swit
 By doing this the code plays nicely with <a href="//stackoverflow.com/questions/11227809/why-is-processing-a-sorted-array-faster-than-an-unsorted-array/11227902#11227902">CPU branch prediction</a>, because it has a nice predictable pattern that the CPU can easily work with. It also has the added benefit of making the methods smaller, which *may* make then candidates for <a href="http://blogs.msdn.com/b/ericgu/archive/2004/01/29/64717.aspx" target="_blank">in-lining by the the .NET JITter</a>. 
 
 For more examples of optimisations used, see the links below
+
 - <a href="https://github.com/kevin-montrose/Jil/commit/de8d5d49722a0eb3b5f3791ee67f1d55c1d4e3a1" target="_blank">fast skip white space optimisation</a>
 - <a href="https://github.com/kevin-montrose/Jil/commit/11e5dd8049225cb81352178517d55315b92705cf" target="_blank">signed integers optimisation</a>
 

@@ -52,7 +52,7 @@ So how does it achieve this, well it does a few things:
 
 <h3><strong>False sharing</strong></h3>
 
-<strong>Update (2014-09-03):</strong> As pointed out by Nitsan in <a href="http://mattwarren.org/2014/07/04/know-thy-net-object-memory-layout/comment-page-1/#comment-152">the comments</a>, I got the wrong end of the stick with this entire section. It's not about false-sharing at all, it's the opposite, I'll quote him to make sure I get it right this time!
+<strong>Update (2014-09-03):</strong> As pointed out by Nitsan in <a href="{{base}}/2014/07/04/know-thy-net-object-memory-layout/comment-page-1/#comment-152">the comments</a>, I got the wrong end of the stick with this entire section. It's not about false-sharing at all, it's the opposite, I'll quote him to make sure I get it right this time!
 
 <blockquote>
   The effort made in HdrHistogram towards controlling field ordering is not about False Sharing but rather towards ensuring certain fields are more likely to be loaded together as they are clumped together, thus avoiding a potential extra read miss.

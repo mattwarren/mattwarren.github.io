@@ -6,11 +6,11 @@ author: matthewwarren
 comments: true
 categories: [Garbage Collection, Performance, Performance]
 ---
-There is an <a href="http://mattwarren.org/2014/06/23/measuring-the-impact-of-the-net-garbage-collector-an-update/" title="Measuring the impact of the .NET Garbage Collector – An Update" target="_blank">update to this post</a>, based on feedback I received.
+There is an <a href="{{base}}/2014/06/23/measuring-the-impact-of-the-net-garbage-collector-an-update/" title="Measuring the impact of the .NET Garbage Collector – An Update" target="_blank">update to this post</a>, based on feedback I received.
 
 <hr />
 
-In my <a href="http://mattwarren.org/2014/06/10/roslyn-code-base-performance-lessons-part-2/" title="Roslyn code base – performance lessons (part 2)" target="_blank">last post</a> I talked about the techniques that the Roslyn team used to minimise the effect of the Garbage Collector (GC). Firstly I guess its worth discussing what the actual issue is.
+In my <a href="{{base}}/2014/06/10/roslyn-code-base-performance-lessons-part-2/" title="Roslyn code base – performance lessons (part 2)" target="_blank">last post</a> I talked about the techniques that the Roslyn team used to minimise the effect of the Garbage Collector (GC). Firstly I guess its worth discussing what the actual issue is.
 
 <h4><strong>GC Pauses and Latency</strong></h4>
 

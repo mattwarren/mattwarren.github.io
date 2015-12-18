@@ -5,7 +5,7 @@ comments: true
 tags: [open source, Performance, Performance, Performance Lessons, stackoverflow]
 ---
 
-This post is part of a semi-regular series, you can find the other entries <a href="http://mattwarren.org/2014/06/05/roslyn-code-base-performance-lessons-part-1/" target="_blank">here</a> and <a href="http://mattwarren.org/2014/06/10/roslyn-code-base-performance-lessons-part-2/" target="_blank">here</a>
+This post is part of a semi-regular series, you can find the other entries <a href="{{base}}/2014/06/05/roslyn-code-base-performance-lessons-part-1/" target="_blank">here</a> and <a href="{{base}}/2014/06/10/roslyn-code-base-performance-lessons-part-2/" target="_blank">here</a>
 
 ---------------------------------------
 
@@ -15,7 +15,6 @@ Before diving into any of the technical or coding aspects of performance, it is 
 But anyone can come up with a catchy line like **"Performance is a Feature!!"**, it only means something if you actually carry it out. Well it's clear that Stack Overflow have done just this, not only is it a <a href="http://www.alexa.com/siteinfo/stackoverflow.com" target="_blank">Top 100 website</a>, but they've done the whole thing with <a href="http://highscalability.com/blog/2014/7/21/stackoverflow-update-560m-pageviews-a-month-25-servers-and-i.html" target="_blank">very few servers</a> and several of those are running <a href="http://blog.cellfish.se/2014/07/lying-with-statistics-and-stackoverflow.html" target="_blank">at only 15% of their capacity</a>, so they can scale up if needed and/or deal with large traffic bursts.
 
 **Update (2/9/2014 9:25:35 AM):** Nick Craver <a href="https://twitter.com/Nick_Craver/status/506452974647140352" target="_blank">tweeted me</a> to say that the High Scalability post is a bad summarisation (apparently they have got things wrong before), so take what it says with a grain of salt!
- 
 
 **Aside:** If you want even more information about their set-up, I definitely recommend reading the <a href="https://news.ycombinator.com/item?id=8064534" target="_blank">Hacker News discussion</a> and <a href="http://nickcraver.com/blog/2013/11/22/what-it-takes-to-run-stack-overflow/" target="_blank">this post</a> from <a href="https://twitter.com/Nick_Craver" target="_blank">Nick Craver</a>, one of the Stack Overflow developers.
 

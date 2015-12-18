@@ -12,7 +12,7 @@ Measuring performance accurately is hard. But it is a whole lot easier if someon
 
 <hr />
 
-This is an update to my <a href="http://mattwarren.org/2014/06/18/measuring-the-impact-of-the-net-garbage-collector/" title="Measuring the impact of the .NET Garbage Collector" target="_blank">previous post</a>, if you haven't read that, you might want to go back and read it first.
+This is an update to my <a href="{{base}}/2014/06/18/measuring-the-impact-of-the-net-garbage-collector/" title="Measuring the impact of the .NET Garbage Collector" target="_blank">previous post</a>, if you haven't read that, you might want to go back and read it first.
 
 After I published that post, Gil Tene (<a href="http://twitter.com/giltene" title="Gil Tene - Twitter" target="_blank">@GilTene</a>) the author of <a href="http://www.azulsystems.com/downloads/jHiccup" target="_blank">jHiccup</a>, was kind enough to send me an email pointing out a few things I got wrong! It's great that he took the time to do this and so (with his permission), I'm going to talk through his comments.
 
