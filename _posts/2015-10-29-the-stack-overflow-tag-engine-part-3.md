@@ -140,10 +140,10 @@ If you are interested the results for all the query types are available:
 
 - Bitmaps
   - [The mythical bitmap index](http://lemire.me/blog/archives/2008/08/20/the-mythical-bitmap-index/)
-  - [Roaring Bitmaps (a newer/faster compressed Bit Map implementation)](http://roaringbitmap.org/)
+  - [Roaring Bitmaps](http://roaringbitmap.org/) (a newer/faster compressed Bit Map implementation)
   - [When is a bitmap faster than an integer list](http://lemire.me/blog/archives/2012/10/23/when-is-a-bitmap-faster-than-an-integer-list/)
-  - [Using bitmap indexes in databases]<a href="http://kellabyte.com/2013/03/05/using-bitmap-indexes-in-databases/)
-  - [Interesting Hacker News discussion on Roaring Bitmaps]<a href="https://news.ycombinator.com/item?id=8796997)
+  - [Using bitmap indexes in databases](http://kellabyte.com/2013/03/05/using-bitmap-indexes-in-databases/)
+  - [Interesting Hacker News discussion on Roaring Bitmaps](https://news.ycombinator.com/item?id=8796997)
   - [Research into different Bitmap implementations](http://ascr-discovery.science.doe.gov/2008/12/more-than-a-bit-faster/)
 - Real-world usage
   - [How GitHub used Bitmaps to speed up repository cloning](http://githubengineering.com/counting-objects/)
@@ -157,7 +157,7 @@ But there's still more things to implement, in future posts I hope to cover the 
 
 - Currently my implementation doesn't play nicely with the Garbage Collector and it does lots of allocations. I will attempt to replicate the "no-allocations" rule that Stack Overflow have after [their battle with the .NET GC](http://blog.marcgravell.com/2011/10/assault-by-gc.html)
 
-[![Nick_Craver Tweet]({{base}}/images/2015/10/nick_craver-tweet.png)](https://twitter.com/Nick_Craver/status/636516399435923456))
+[![Nick_Craver Tweet]({{base}}/images/2015/10/nick_craver-tweet.png)](https://twitter.com/Nick_Craver/status/636516399435923456)
 
 - [How a DDOS attack on TagServer](http://stackstatus.net/post/107352821074/outage-postmortem-january-6th-2015) *might* have been caused
 
