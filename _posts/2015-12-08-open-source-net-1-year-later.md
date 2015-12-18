@@ -43,6 +43,7 @@ So now that we can get the data we need, what results do we get.
 | CoreCLR | 86 | 298 | 487 | 871 |
 | CoreFX | 334 | 911 | 735 | 1980 |
 | | | | | |
+| | | | | |
 | **Total** | 901 | 3076 | 2818 |
 
 Here you can see that the Owners and Collaborators do in some cases dominate, e.g. in Roslyn where almost 60% of the issues were opened by them. But in other cases the Community is very active, especially in CoreCLR where Community members are opening more issues than Owners/Collaborators combined. Part of the reason for this is the nature of the different repositories, CoreCLR is the most visible part of the .NET framework as it encompasses most of the libraries that .NET developers would use on a day-to-day basis, so it's not surprising that the Community has lots of suggestions for improvements or bug fixes. In addition, the CoreCLR has been around for a much longer time and so the Community has had more time to use it and find out the parts it doesn't like. Whereas Roslyn is a much newer project so there has been less time to use it, plus finding bugs in a compiler is by its nature harder to do.
