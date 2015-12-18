@@ -60,7 +60,7 @@ public sealed class ClassToMock
 {
   public static int StaticMethodToMock()
   {
-    Console.WriteLine(&quot;StaticMethodToMock called, returning 42&quot;);
+    Console.WriteLine("StaticMethodToMock called, returning 42");
     return 42;
   }
 }
@@ -74,10 +74,10 @@ public sealed class ClassToMock
   public static int StaticMethodToMock()
   {
     // Inject the IL to do this instead!!
-    if (Mocked.ShouldMock(&quot;Profilier.ClassToMock.StaticMethodToMock&quot;))
+    if (Mocked.ShouldMock("Profilier.ClassToMock.StaticMethodToMock"))
       return Mocked.MockedMethod();
 
-    Console.WriteLine(&quot;StaticMethodToMock called, returning 42&quot;);
+    Console.WriteLine("StaticMethodToMock called, returning 42");
     return 42;
   }
 }
@@ -87,7 +87,7 @@ For reference, the original IL looks like this:
 
 ``` asm
 IL_0000 ( 0) nop
-IL_0001 ( 1) ldstr (70)00023F    //&quot;StaticMethodToMockWhatWeWantToDo called, returning 42&quot;
+IL_0001 ( 1) ldstr (70)00023F    //"StaticMethodToMockWhatWeWantToDo called, returning 42"
 IL_0006 ( 6) call (06)000006     //call Console.WriteLine(..)
 IL_000B (11) nop
 IL_000C (12) ldc.i4.s 2A         //return 42;
@@ -106,7 +106,7 @@ IL_000A (10) brfalse.s IL_0012
 IL_000C (12) call (0A)00001C     //call MockedMethod()
 IL_0011 (17) ret
 IL_0012 (18) nop
-IL_0013 (19) ldstr (70)00023F    //&quot;StaticMethodToMockWhatWeWantToDo called, returning 42&quot;
+IL_0013 (19) ldstr (70)00023F    //"StaticMethodToMockWhatWeWantToDo called, returning 42"
 IL_0018 (24) call (06)000006     //call Console.WriteLine(..)
 IL_001D (29) nop
 IL_001E (30) ldc.i4.s 2A         //return 42;
@@ -133,21 +133,21 @@ static void Main(string[] args)
 {
   // Without mocking enabled (the default)
   Console.WriteLine(new string(&#039;#&#039;, 90));
-  Console.WriteLine(&quot;Calling ClassToMock.StaticMethodToMock() (a static method in a sealed class)&quot;);
+  Console.WriteLine("Calling ClassToMock.StaticMethodToMock() (a static method in a sealed class)");
   var result = ClassToMock.StaticMethodToMock();
-  Console.WriteLine(&quot;Result: &quot; + result);
-  Console.WriteLine(new string(&#039;#&#039;, 90) + &quot;n&quot;);
+  Console.WriteLine("Result: " + result);
+  Console.WriteLine(new string(&#039;#&#039;, 90) + "n");
 
   // With mocking enabled, doesn&#039;t call into the static method, calls the mocked version instead
   Console.WriteLine(new string(&#039;#&#039;, 90));
   Mocked.SetReturnValue = 1;
-  Console.WriteLine(&quot;Turning ON mocking of &quot;Profilier.ClassToMock.StaticMethodToMock&quot;&quot;);
-  Mocked.Configure(&quot;ProfilerTarget.ClassToMock.StaticMethodToMock&quot;, mockMethod: true);
+  Console.WriteLine("Turning ON mocking of "Profilier.ClassToMock.StaticMethodToMock"");
+  Mocked.Configure("ProfilerTarget.ClassToMock.StaticMethodToMock", mockMethod: true);
 
-  Console.WriteLine(&quot;Calling ClassToMock.StaticMethodToMock() (a static method in a sealed class)&quot;);
+  Console.WriteLine("Calling ClassToMock.StaticMethodToMock() (a static method in a sealed class)");
   result = ClassToMock.StaticMethodToMock();
-  Console.WriteLine(&quot;Result: &quot; + result);
-  Console.WriteLine(new string(&#039;#&#039;, 90) + &quot;n&quot;);
+  Console.WriteLine("Result: " + result);
+  Console.WriteLine(new string(&#039;#&#039;, 90) + "n");
 }
 ```
 
