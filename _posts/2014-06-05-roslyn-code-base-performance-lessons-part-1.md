@@ -2,7 +2,7 @@
 layout: post
 title: Roslyn code base - performance lessons (part 1)
 comments: true
-categories: [C#, open source, Performance, Performance Lessons, Roslyn]
+tags: [C#, open source, Performance, Performance Lessons, Roslyn]
 ---
 At <a href="http://www.buildwindows.com/" target="_blank">Build 2014</a> Microsoft open source their next-generation C#/VB.NET compiler, called <a href="http://msdn.microsoft.com/en-us/vstudio/roslyn.aspx" target="_blank">Roslyn</a>. The project is <a href="https://roslyn.codeplex.com/" target="_blank">hosted on codeplex</a> and you can even <a href="http://source.roslyn.codeplex.com/" target="_blank">browse the source</a>, using the new Reference Source browser, which is itself <a href="http://www.hanselman.com/blog/AnnouncingTheNewRoslynpoweredNETFrameworkReferenceSource.aspx" target="_blank">powered by Roslyn</a> (that's some crazy, meta-recursion going on there!).
 

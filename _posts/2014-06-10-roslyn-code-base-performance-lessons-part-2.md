@@ -2,7 +2,7 @@
 layout: post
 title: Roslyn code base - performance lessons (part 2)
 comments: true
-categories: [C#, open source, Performance, Performance Lessons, Roslyn]
+tags: [C#, open source, Performance, Performance Lessons, Roslyn]
 ---
 In my <a href="{{base}}/2014/06/05/roslyn-code-base-performance-lessons-part-1/" target="_blank">previous post</a>, I talked about some of the general performance lessons that can be learnt from the <a href="https://roslyn.codeplex.com/" target="_blank">Roslyn</a>&nbsp;project. This post builds on that and looks at specific examples from the code base.
 

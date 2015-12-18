@@ -2,7 +2,7 @@
 layout: post
 title: Measuring the impact of the .NET Garbage Collector - An Update
 comments: true
-categories: [Performance]
+tags: [Performance]
 ---
 <h4><strong>tl;dr</strong></h4>
 

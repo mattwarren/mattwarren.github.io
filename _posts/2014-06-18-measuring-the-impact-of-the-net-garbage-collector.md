@@ -2,7 +2,7 @@
 layout: post
 title: Measuring the impact of the .NET Garbage Collector
 comments: true
-categories: [Garbage Collection, Performance, Performance]
+tags: [Garbage Collection, Performance, Performance]
 ---
 There is an <a href="{{base}}/2014/06/23/measuring-the-impact-of-the-net-garbage-collector-an-update/" title="Measuring the impact of the .NET Garbage Collector – An Update" target="_blank">update to this post</a>, based on feedback I received.
 
