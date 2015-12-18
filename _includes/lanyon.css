@@ -309,7 +309,8 @@ a.sidebar-nav-item:focus {
 
 .page,
 .post {
-  margin-bottom: 4em;
+  margin-bottom: 2em;
+  border-bottom: 1px solid #eee;
 }
 
 /* Blog post or page title */
