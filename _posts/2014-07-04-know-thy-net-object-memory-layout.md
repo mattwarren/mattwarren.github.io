@@ -72,8 +72,7 @@ To test out the difference between the Histogram with a class-hierarchy and with
 
 ``` csharp
 Histogram testHistogram = new Histogram(3600000000000L, 3);
-HistogramAllInOneClass combinedHistogram = 
-            new HistogramAllInOneClass();
+HistogramAllInOneClass combinedHistogram = new HistogramAllInOneClass();
 
 Debugger.Launch();
 
@@ -135,7 +134,7 @@ To achieve the same effect you can use the <a href="http://msdn.microsoft.com/en
 [StructLayout(LayoutKind.Explicit, Size = 28, CharSet = CharSet.Ansi)]
 public class HistogramAllInOneClass
 {
-  // &amp;quot;Cold&amp;quot; accessed fields. Not used in the recording code path:
+  // "Cold" accessed fields. Not used in the recording code path:
   [FieldOffset(0)]
   internal long identity;
 

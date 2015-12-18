@@ -65,17 +65,17 @@ internal static class StringBuilderPool
 {
   public static StringBuilder Allocate()
   {
-    return SharedPools.Default&lt;StringBuilder&gt;().AllocateAndClear();
+    return SharedPools.Default<StringBuilder>().AllocateAndClear();
   }
 
   public static void Free(StringBuilder builder)
   {
-    SharedPools.Default&lt;StringBuilder&gt;().ClearAndFree(builder);
+    SharedPools.Default<StringBuilder>().ClearAndFree(builder);
   }
 
   public static string ReturnAndFree(StringBuilder builder)
   {
-    SharedPools.Default&lt;StringBuilder&gt;().ForgetTrackedObject(builder);
+    SharedPools.Default<StringBuilder>().ForgetTrackedObject(builder);
     return builder.ToString();
   }
 }
@@ -98,14 +98,14 @@ internal static class StringBuilderCache
 
   public static StringBuilder Acquire(int capacity = StringBuilder.DefaultCapacity)
   {
-    if(capacity &lt;= MAX_BUILDER_SIZE)
+    if(capacity <= MAX_BUILDER_SIZE)
     {
       StringBuilder sb = StringBuilderCache.CachedInstance;
       if (sb != null)
       {
         // Avoid stringbuilder block fragmentation by getting a new StringBuilder
         // when the requested size is larger than the current capacity
-        if (capacity &lt;= sb.Capacity)
+        if (capacity <= sb.Capacity)
         {
           StringBuilderCache.CachedInstance = null;
           sb.Clear();
@@ -118,7 +118,7 @@ internal static class StringBuilderCache
 
   public static void Release(StringBuilder sb)
   {
-    if (sb.Capacity &lt;= MAX_BUILDER_SIZE)
+    if (sb.Capacity <= MAX_BUILDER_SIZE)
     {
       StringBuilderCache.CachedInstance = sb;
     }
@@ -147,12 +147,12 @@ Finally there are several examples where custom collections were written to ensu
 The comment clearly spells out the trade-off, so whilst these collections aren't as efficient when doing lookups (<em>O(n)</em> v <em>O(log n)</em>), they are more efficient in terms of space and so the trade-off is worth it. It's also interesting to note that the size of <em>6</em> wasn't chose randomly, in their tests they found that 50% of the time there were 6 items or fewer, so these optimisations will give a performance gain in the <em>majority</em> of scenarios.
 
 ``` csharp
-private static ICollection&lt;string&gt; CreateReadOnlyMemberNames(HashSet&lt;string&gt; names)
+private static ICollection<string> CreateReadOnlyMemberNames(HashSet<string> names)
 {
   switch (names.Count)
   {
     case 0:
-      return SpecializedCollections.EmptySet&lt;string&gt;();
+      return SpecializedCollections.EmptySet<string>();
     case 1:
       return SpecializedCollections.SingletonCollection(names.First());
     case 2:
@@ -163,7 +163,7 @@ private static ICollection&lt;string&gt; CreateReadOnlyMemberNames(HashSet&lt;st
       // PERF: Small collections can be implemented as ImmutableArray.
       // While lookup is O(n), when n is small, the memory savings are more valuable.
       // Size 6 was chosen because that represented 50% of the names generated in the Picasso end to end.
-      // This causes boxing, but that&#039;s still superior to a wrapped HashSet
+      // This causes boxing, but that's still superior to a wrapped HashSet
       return ImmutableArray.CreateRange(names);
     default:
       return SpecializedCollections.ReadOnlySet(names);

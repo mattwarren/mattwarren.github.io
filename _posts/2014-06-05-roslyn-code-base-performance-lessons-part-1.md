@@ -14,12 +14,12 @@ There's also some nice info available, for instance you can <a href="http://sour
 
 <blockquote>
 <pre><strong>ProjectCount=50
-DocumentCount=4366
-LinesOfCode=2355329
-BytesOfCode=96850461
-DeclaredSymbols=124312
-DeclaredTypes=6649
-PublicTypes=2076</strong></pre>
+DocumentCount=4,366
+LinesOfCode=2,355,329
+BytesOfCode=96,850,461
+DeclaredSymbols=124,312
+DeclaredTypes=6,649
+PublicTypes=2,076</strong></pre>
 </blockquote>
 
 That's ~2.3 million lines of code, across over 4300 files! (HT to Slaks for <a href="http://blog.slaks.net/2014-02-24/inside-the-new-net-reference-source/#toc_2" target="_blank">pointing out this functionality</a>)
