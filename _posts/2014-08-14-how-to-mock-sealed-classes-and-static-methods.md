@@ -132,22 +132,22 @@ You can see the C# code that controls the mocking below. At the moment the API i
 static void Main(string[] args)
 {
   // Without mocking enabled (the default)
-  Console.WriteLine(new string(&#039;#&#039;, 90));
+  Console.WriteLine(new string('#', 90));
   Console.WriteLine("Calling ClassToMock.StaticMethodToMock() (a static method in a sealed class)");
   var result = ClassToMock.StaticMethodToMock();
   Console.WriteLine("Result: " + result);
-  Console.WriteLine(new string(&#039;#&#039;, 90) + "n");
+  Console.WriteLine(new string('#', 90) + "n");
 
-  // With mocking enabled, doesn&#039;t call into the static method, calls the mocked version instead
-  Console.WriteLine(new string(&#039;#&#039;, 90));
+  // With mocking enabled, doesn't call into the static method, calls the mocked version instead
+  Console.WriteLine(new string('#', 90));
   Mocked.SetReturnValue = 1;
-  Console.WriteLine("Turning ON mocking of "Profilier.ClassToMock.StaticMethodToMock"");
+  Console.WriteLine("Turning ON mocking of Profilier.ClassToMock.StaticMethodToMock");
   Mocked.Configure("ProfilerTarget.ClassToMock.StaticMethodToMock", mockMethod: true);
 
   Console.WriteLine("Calling ClassToMock.StaticMethodToMock() (a static method in a sealed class)");
   result = ClassToMock.StaticMethodToMock();
   Console.WriteLine("Result: " + result);
-  Console.WriteLine(new string(&#039;#&#039;, 90) + "n");
+  Console.WriteLine(new string('#', 90) + "n");
 }
 ```
 
