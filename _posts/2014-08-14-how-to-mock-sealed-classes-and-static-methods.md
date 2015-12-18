@@ -85,7 +85,7 @@ public sealed class ClassToMock
 
 For reference, the original IL looks like this:
 
-``` assembly
+``` asm
 IL_0000 ( 0) nop
 IL_0001 ( 1) ldstr (70)00023F    //&quot;StaticMethodToMockWhatWeWantToDo called, returning 42&quot;
 IL_0006 ( 6) call (06)000006     //call Console.WriteLine(..)
@@ -99,7 +99,7 @@ IL_0015 (21) ret
 
 and after code injection, it ends up like this:
 
-``` assembly
+``` asm
 IL_0000 ( 0) ldstr (70)000135
 IL_0005 ( 5) call (0A)00001B     //call ShouldMock(string methodNameAndPath)
 IL_000A (10) brfalse.s IL_0012
