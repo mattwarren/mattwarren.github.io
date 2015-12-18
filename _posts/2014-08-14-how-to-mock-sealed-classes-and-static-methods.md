@@ -118,13 +118,13 @@ IL_0027 (39) ret
 
 And that is the basics of how you can modify any .NET method, it seems relatively simple when you know how! In my simple demo I just add in the relevant IL so that a mocked method is called instead, you can see the C++ code needed to achieve this <a href="https://github.com/mattwarren/DDD2011_ProfilerDemo/blob/master/step5_main_injected_method_object_array/DDDProfiler/CodeInjection.cpp#L279" target="_blank">here</a>. Of course in reality it's much more complicated, my <a href="https://github.com/mattwarren/DDD2011_ProfilerDemo/commit/9f804cec8ef11b802e020e648180b436a429833f" target="_blank">simple demo</a> only deals with a very simplistic scenario, a static method that returns an <code>int</code>. The commercial products that do this are way more powerful and have to deal with all the issues that you can encounter when you are <strong>re-writing code at the IL level</strong>, for instance if you aren't careful you get exceptions like this:
 
-<a href="https://twitter.com/matthewwarren/status/497876741650907136" target="_blank"><img src="https://pbs.twimg.com/media/BujQQePCYAAA0CA.png:large" width="876" height="232" class="aligncenter" /></a>
+<a href="https://twitter.com/matthewwarren/status/497876741650907136" target="_blank"><img src="https://pbs.twimg.com/media/BujQQePCYAAA0CA.png:large"/></a>
 
 <h4><strong>Running the demo code</strong></h4>
 
 If you want to run my demo, you need to open the solution file under <a href="https://github.com/mattwarren/DDD2011_ProfilerDemo/tree/master/step5_main_injected_method_object_array" target="_blank">step5_main_injected_method_object_array</a> and set "ProfilerHost" as the "Start-up Project" (right-click on the project in VS) before you run. When you run it, you should see something like this:
 
-<a href="https://mattwarren.github.io/images/2014/12/mocking-in-action.png" target="_blank"><img src="http://mattwarren.github.io/images/2014/12/mocking-in-action.png" alt="Mocking in action" width="730" height="312" class="aligncenter size-full wp-image-735" /></a>
+<a href="https://mattwarren.github.io/images/2014/12/mocking-in-action.png" target="_blank"><img src="http://mattwarren.github.io/images/2014/12/mocking-in-action.png" alt="Mocking in action"/></a>
 
 You can see the C# code that controls the mocking below. At the moment the API in the demo is fairly limited, it only lets you turn mocking on/off and set the value that is returned from the mocked method.
 

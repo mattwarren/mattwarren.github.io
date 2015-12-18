@@ -16,19 +16,19 @@ This is the long-delayed part 2 of a mini-series looking at what it *might* take
 
 Since the first part was published, Stack Overflow published a nice performance report, giving some more stats on the Tag Engine Servers. As you can see they run the Tag Engine on some pretty powerful servers, but only have a peak CPU usage of 10%, which means there's plenty of overhead available. It's a nice way of being able to cope with surges in demand or busy times of the day.
 
-<a href="https://stackexchange.com/performance" target="_blank"><img src="https://mattwarren.github.io/images/2015/01/tag-server-infographic.png" alt="Tag Engine infographic" width="560" height="321" class="aligncenter size-full wp-image-1068" /></a>
+<a href="https://stackexchange.com/performance" target="_blank"><img src="https://mattwarren.github.io/images/2015/01/tag-server-infographic.png" alt="Tag Engine infographic"/></a>
 
 ## <a name="IgnoredTags"></a>**Ignored Tag Preferences**
 
 In <a href="{{base}}/2014/11/01/the-stack-overflow-tag-engine-part-1/" target="_blank">part 1</a>, I only really covered the simple things, i.e. a basic search for all the questions that contain a given tag, along with multiple sort orders (by score, view count, etc). But the real Tag Engine does much more than that, for instance:  
 
-<a href="https://twitter.com/marcgravell/status/522515630248189953" target="_blank"><img src="https://mattwarren.github.io/images/2015/08/tweet-wildcard-exclusions.png" alt="Tweet - Wildcard exclusions" width="634" height="318" class="aligncenter size-full wp-image-1099" /></a>
+<a href="https://twitter.com/marcgravell/status/522515630248189953" target="_blank"><img src="https://mattwarren.github.io/images/2015/08/tweet-wildcard-exclusions.png" alt="Tweet - Wildcard exclusions"/></a>
 
 What is he talking about here? Well any time you do a *tag* search, after the actual search has been done per-user exclusions can then be applied. These exclusions are configurable and allow you to set *"Ignored Tags"*, i.e. tags that you don't want to see questions for. Then when you do a search, it will exclude these questions from the results. 
 
 Note: it will let you know if there were questions excluded due to your preferences, which is a pretty nice user-experience. If that happens, you get this message: (it can also be configured so that matching questions are greyed out instead):
 
-<a href="https://mattwarren.github.io/images/2015/08/questions-hidden-due-to-ignored-tag-preferences.png" target="_blank"><img src="https://mattwarren.github.io/images/2015/08/questions-hidden-due-to-ignored-tag-preferences.png" alt="Questions hidden due to Ignored Tag preferences" width="458" height="72" class="aligncenter size-full wp-image-1100" /></a>
+<a href="https://mattwarren.github.io/images/2015/08/questions-hidden-due-to-ignored-tag-preferences.png" target="_blank"><img src="https://mattwarren.github.io/images/2015/08/questions-hidden-due-to-ignored-tag-preferences.png" alt="Questions hidden due to Ignored Tag preferences"/></a>
 
 Now most people probably have just a few exclusions and maybe 10's at most, but fortunately <a href="https://twitter.com/leppie" target="_blank">@leppie</a> a Stack Overflow <a href="http://stackoverflow.com/users/15541/leppie" target="_blank">*power-user*</a> got in touch with me and shared his list of preferences. 
 

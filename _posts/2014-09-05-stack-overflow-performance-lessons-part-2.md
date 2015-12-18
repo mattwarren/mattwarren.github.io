@@ -25,7 +25,7 @@ One thing to remember is that to make this all happen, they needed the following
 - **Storing outliers** - these spikes rarely happened so <a href="http://blog.serverfault.com/2011/07/25/a-non-foolish-consistency/" target="_blank">having detailed metrics was needed</a>, averages hide too much information. 
 - **Good knowledge of the .NET GC** - according to the article, it took them 3 weeks to identify and fix this issue *"So Marc and I set off on a 3 week adventure to resolve the memory pressure."*
 
-<a href="http://samsaffron.com/archive/2011/10/28/in-managed-code-we-trust-our-recent-battles-with-the-net-garbage-collector" target="_blank"><img src="http://discuss.samsaffron.com/uploads/default/33/d648623b9cb32f38.png" width="478" height="328" class="aligncenter" /></a>
+<a href="http://samsaffron.com/archive/2011/10/28/in-managed-code-we-trust-our-recent-battles-with-the-net-garbage-collector" target="_blank"><img src="http://discuss.samsaffron.com/uploads/default/33/d648623b9cb32f38.png"/></a>
 
 You can read all the gory details of the fix and the follow-up in the posts below, but the **tl;dr** is that they removed of all the work that the .NET Garbage Collector had to do, thus eliminating the pauses:
 

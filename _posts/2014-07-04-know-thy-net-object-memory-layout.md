@@ -19,7 +19,7 @@ Recently I've spent some time porting HdrHistogram from <a href="https://github.
 <li>Minimising the overhead needed to perform the measurements, so as to not impact your application</li>
 </ol>
 
-You can find a full explanation of what is does and how point 1) in achieved in the <a href="http://giltene.github.io/HdrHistogram/" target="_blank">project readme</a>.
+You can find a full explanation of what is does and how point 1) is achieved in the <a href="http://giltene.github.io/HdrHistogram/" target="_blank">project readme</a>.
 
 <h3><strong>Minimising overhead</strong></h3>
 
@@ -58,7 +58,7 @@ So how does it achieve this, well it does a few things:
 
 <del datetime="2014-09-03T08:35:56+00:00">So what is false sharing, to find out more I recommend reading Martin Thompson's <a href="http://mechanical-sympathy.blogspot.co.uk/2011/07/false-sharing.html" target="_blank">excellent post</a> and this <a href="http://psy-lob-saw.blogspot.co.uk/2014/06/notes-on-false-sharing.html" target="_blank">equally good one</a> from Nitsan Wakart. But if you're too lazy to do that, it's summed up by the image below (from Martin's post).</del>
 
-[caption width="557" align="aligncenter"]<a href="http://mechanical-sympathy.blogspot.co.uk/2011/07/false-sharing.html" target="_blank"><img src="http://mattwarren.github.io/images/2014/07/8ad85-cache-line.png" width="557" height="603" alt="CPU Cache lines" class="aligncenter" /></a> Image from the Mechanical Sympathy blog[/caption]
+[caption width="557" align="aligncenter"]<a href="http://mechanical-sympathy.blogspot.co.uk/2011/07/false-sharing.html" target="_blank"><img src="http://mattwarren.github.io/images/2014/07/8ad85-cache-line.png" alt="CPU Cache lines" class="aligncenter" /></a> Image from the Mechanical Sympathy blog[/caption]
 
 <del datetime="2014-09-03T08:35:56+00:00">The problem is that a CPU pulls data into its cache in lines, even if your code only wants to read a single variable/field. If 2 threads are reading from 2 fields (X and Y in the image) that are next to each other in memory, the CPU running a thread will invalidate the cache of the other CPU when it pulls in a line of memory. This invalidation costs time and in high-performance situations can slow down your program.</del>
 
@@ -70,7 +70,7 @@ To do this you need to drop down into the debugger and use the excellent <a href
 
 To test out the difference between the Histogram with a class-hierarchy and without, the following code was written (you can find HistogramAllInOneClass in <a href="//gist.github.com/mattwarren/d7e56a3709d347862141" target="_blank">this gist</a>):
 
-[code lang="csharp"]
+``` csharp
 Histogram testHistogram = new Histogram(3600000000000L, 3);
 HistogramAllInOneClass combinedHistogram = 
             new HistogramAllInOneClass();
@@ -101,7 +101,7 @@ Once the debugger has connected back to VS, you can type the following commands 
 
 If all that works, you will end up with an output like below:
 
-<a href="https://mattwarren.github.io/images/2014/07/hdrhistogram-field-layout.png"><img src="http://mattwarren.github.io/images/2014/07/hdrhistogram-field-layout.png" alt="HdrHistogram - field layout" width="772" height="581" class="alignnone size-full wp-image-584" /></a>
+<a href="https://mattwarren.github.io/images/2014/07/hdrhistogram-field-layout.png"><img src="http://mattwarren.github.io/images/2014/07/hdrhistogram-field-layout.png" alt="HdrHistogram - field layout"/></a>
 
 <h3><strong>Update (2014-09-03)</strong></h3>
 
@@ -119,19 +119,19 @@ By putting this code into my project, I was able to verify that it gives exactly
 
 After all these steps we end up with the results shown in the images below, where the rows are ordered by the "Offset" value.
 
-[caption width="649" align="aligncenter"]<a href="https://mattwarren.github.io/images/2014/07/hdrhistogram-with-hierachy2.png"><img src="http://mattwarren.github.io/images/2014/07/hdrhistogram-with-hierachy2.png" alt="HdrHistogram (with Hierachy)" width="649" height="501" class="alignnone size-full wp-image-568 aligncenter" /></a> AbstractHistogramBase.cs -&gt; AbstractHistogram.cs -&gt; Histogram.cs [/caption]
+[caption width="649" align="aligncenter"]<a href="https://mattwarren.github.io/images/2014/07/hdrhistogram-with-hierachy2.png"><img src="http://mattwarren.github.io/images/2014/07/hdrhistogram-with-hierachy2.png" alt="HdrHistogram (with Hierachy)"/></a> AbstractHistogramBase.cs -&gt; AbstractHistogram.cs -&gt; Histogram.cs [/caption]
 
 You can see that with the class hierarchy in place, the fields remain grouped as we want them to (shown by the orange/green/blue highlighting). What is interesting is that the JITter has still rearranged fields within a single group, preferring to put Int64 (long) fields before Int32 (int) fields in this case. This is seen by comparing the ordering of the "Field" column with the "Offset" one, where the values in the "Field" column represent the original ordering of the fields as they appear in the source code.
 
 However when we put all the fields in a single class, we lose the grouping:
 
-[caption width="498" align="aligncenter"]<a href="https://mattwarren.github.io/images/2014/07/histogramallinoneclass2.png"><img src="http://mattwarren.github.io/images/2014/07/histogramallinoneclass2.png" alt="HistogramAllInOneClass" width="498" height="501" class="alignnone size-full wp-image-569 aligncenter" /></a> Equivalent fields all in one class[/caption]
+[caption width="498" align="aligncenter"]<a href="https://mattwarren.github.io/images/2014/07/histogramallinoneclass2.png"><img src="http://mattwarren.github.io/images/2014/07/histogramallinoneclass2.png" alt="HistogramAllInOneClass"/></a> Equivalent fields all in one class[/caption]
 
 <h3><strong>Alternative Technique</strong></h3>
 
 To achieve the same effect you can use the <a href="http://msdn.microsoft.com/en-us/library/system.runtime.interopservices.structlayoutattribute(v=vs.110).aspx" target="_blank">StructLayout attribute</a>, but this requires that you calculate all the offsets yourself, which can be cumbersome:
 
-[code lang="csharp"]
+``` csharp
 [StructLayout(LayoutKind.Explicit, Size = 28, CharSet = CharSet.Ansi)]
 public class HistogramAllInOneClass
 {

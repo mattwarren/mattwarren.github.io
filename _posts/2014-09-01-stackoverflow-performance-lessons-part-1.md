@@ -10,7 +10,7 @@ This post is part of a semi-regular series, you can find the other entries <a hr
 ---------------------------------------
 
 Before diving into any of the technical or coding aspects of performance, it is really important to understand that the main lesson to take-away from Stack Overflow (the team/product) is that they **take performance seriously**. You can see this from the <a href="http://blog.codinghorror.com/performance-is-a-feature/" target="_blank">blog post</a> that Jeff Atwood wrote, it's a part of their culture and has been from the beginning:
-<a href="http://blog.codinghorror.com/performance-is-a-feature/" target="_blank"><img src="http://mattwarren.github.io/images/2014/08/performance-is-a-feature-coding-horror-blog.png" alt="performance is a feature - coding horror blog" width="741" height="278" class="aligncenter size-full wp-image-661" /></a>
+<a href="http://blog.codinghorror.com/performance-is-a-feature/" target="_blank"><img src="http://mattwarren.github.io/images/2014/08/performance-is-a-feature-coding-horror-blog.png" alt="performance is a feature - coding horror blog"/></a>
 
 But anyone can come up with a catchy line like **"Performance is a Feature!!"**, it only means something if you actually carry it out. Well it's clear that Stack Overflow have done just this, not only is it a <a href="http://www.alexa.com/siteinfo/stackoverflow.com" target="_blank">Top 100 website</a>, but they've done the whole thing with <a href="http://highscalability.com/blog/2014/7/21/stackoverflow-update-560m-pageviews-a-month-25-servers-and-i.html" target="_blank">very few servers</a> and several of those are running <a href="http://blog.cellfish.se/2014/07/lying-with-statistics-and-stackoverflow.html" target="_blank">at only 15% of their capacity</a>, so they can scale up if needed and/or deal with large traffic bursts.
 
@@ -42,7 +42,7 @@ Another non-technical lesson is that Stack Overflow are committed to doing thing
 - <a href="http://blog.marcgravell.com/2014/04/technical-debt-case-study-tags.html" target="_blank">TagServer</a> - a custom .NET service that was written to make the <a href="http://stackoverflow.com/tags" target="_blank">complex tag searches</a> quicker than they would be if done directly in SQL Server. 
 - <a href="https://github.com/opserver/Opserver" target="_blank">Opserver</a> - fully featured monitoring tool, giving their operation engineers a deep-insight into what their servers are doing in production.
 
-<a href="http://miniprofiler.com" target="_blank"><img src="http://i.imgur.com/PsjLY.png" width="532" height="310" class="aligncenter" /></a>
+<a href="http://miniprofiler.com" target="_blank"><img src="http://i.imgur.com/PsjLY.png"/></a>
  
 All these examples show that they are not afraid to write their own tools when the existing ones aren't up-to scratch, don't have the features they need or don't give the performance they require.
 
@@ -50,9 +50,9 @@ All these examples show that they are not afraid to write their own tools when t
 
 As shown by the development of Opserver, they care about <a target="_blank">measuring performance accurately</a> even (or especially) in production. Take a look at the images below and you can see not only the detailed level of information they keep, but how it is displayed in a way that makes is easy to see what is going on (there are also <a href="http://imgur.com/a/dawwf" target="_blank">more screenshots<a /> available).
 
-<a href="http://imgur.com/a/dawwf" target="_blank"><img src="http://i.imgur.com/HHvv83i.png" width="849" height="389" class="aligncenter" /></a>
+<a href="http://imgur.com/a/dawwf" target="_blank"><img src="http://i.imgur.com/HHvv83i.png"/></a>
 
-<a href="http://imgur.com/a/dawwf" target="_blank"><img src="http://i.imgur.com/NoWh8tS.png" width="849" height="389" class="aligncenter" /></a>
+<a href="http://imgur.com/a/dawwf" target="_blank"><img src="http://i.imgur.com/NoWh8tS.png"/></a>
 
 Finally I really like their guidelines for achieving good observability in a production system. They serve as a really good check-list of things you need to do if you want to have any chance of knowing what your system up to in production. I would image these steps and the resulting screens they designed into Opserver have been built up over several years of monitoring and fixing issues in the Stack Overflow sites, so they are battle-hardened!
 

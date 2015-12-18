@@ -75,7 +75,7 @@ while (true)
 ```
 
 To see what difference this made to the graphs I re-ran the test, this time just in Server GC mode. You can see the changes on the graph below, the dotted lines are the original (inaccurate) mode and the solid lines show the results after they have been corrected for coordinated omission.
-<a href="https://mattwarren.github.io/images/2014/06/gc-pause-times-comparision-corrected-for-coordinated-omission.png" target="_blank"><img src="http://mattwarren.github.io/images/2014/06/gc-pause-times-comparision-corrected-for-coordinated-omission.png?w=1008" alt="GC Pause Times - comparision (Corrected for Coordinated Omission)" width="1008" height="642" class="aligncenter size-large wp-image-426" /></a>
+<a href="https://mattwarren.github.io/images/2014/06/gc-pause-times-comparision-corrected-for-coordinated-omission.png" target="_blank"><img src="http://mattwarren.github.io/images/2014/06/gc-pause-times-comparision-corrected-for-coordinated-omission.png?w=1008" alt="GC Pause Times - comparision (Corrected for Coordinated Omission)" /></a>
 
 <h4><strong>Correcting for Coordinated Omission</strong></h4>
 
