@@ -50,9 +50,9 @@ Here you can see that the Owners and Collaborators do in some cases dominate, e.
 
 | **Project** | **Owner** | **Collaborator** | **Community** | **Total** |
 | ----------- | --------- | ---------------- | ------------- | --------- |
-| **Roslyn** | 465 | 2093 | 118 | 2676 |
-| **CoreCLR** | 378 | 567 | 201 | 1146 |
-| **CoreFX** | 516 | 1409 | 464 | 2389 |
+| Roslyn | 465 | 2093 | 118 | 2676 |
+| CoreCLR | 378 | 567 | 201 | 1146 |
+| CoreFX | 516 | 1409 | 464 | 2389 |
 | **Total** | **1359** | **4069** | **783** | **6211** |
 
 However if we look at Merged Pull Requests, we can see that that the overall amount of Community contributions across the 3 projects is much lower, only accounting for roughly 12%. This however isn't that surprising, there's a much higher bar for getting a pull request accepted. Firstly, if the project is using this mechanism, you have to pick an issue that is ["*up for grabs*"](https://github.com/dotnet/corefx/labels/up%20for%20grabs), then you have to get any [API changes through a review](http://blogs.msdn.com/b/dotnet/archive/2015/01/08/api-review-process-for-net-core.aspx), then finally you have to meet any comparability/performance/correctness issues that come up during the code review itself. So actually 12% is a pretty good result as there is a non--trivial amount of work involved in getting your PR merged, especially considering most Community members will be working in their spare time. 
