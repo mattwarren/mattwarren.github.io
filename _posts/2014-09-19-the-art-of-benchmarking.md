@@ -13,7 +13,7 @@ Benchmarking is hard, it's very easy to end up "*not measuring, what you think y
 
 **Update (2014-09-23):** Sigh - I made a pretty big mistake in these benchmarks, fortunately Reddit user <a href="http://www.reddit.com/user/zvrba" target="_blank">zvrba</a> corrected me:
 
-<a href="http://www.reddit.com/r/programming/comments/2guj0t/the_art_of_benchmarking_aka_fighting_the_jit/" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/09/reddit-post-showing-my-mistake.png" alt="Reddit post showing my mistake" width="666" height="169" class="aligncenter size-full wp-image-901" /></a>
+<a href="http://www.reddit.com/r/programming/comments/2guj0t/the_art_of_benchmarking_aka_fighting_the_jit/" target="_blank"><img src="http://mattwarren.github.io/images/2014/09/reddit-post-showing-my-mistake.png" alt="Reddit post showing my mistake" width="666" height="169" class="aligncenter size-full wp-image-901" /></a>
 
 Yep, can't argue with that, see [Results](#results) and [Resources](#resources) below for the individual updates.
 
@@ -228,11 +228,11 @@ These results were produced by running the code in RELEASE mode and launching th
 
 As seen in the chart below the best results for **64-bit** (red) were achieved when we unrolled the loop ("ProfileDirectWithStoreUnrolled"). There are other other results that were faster, but in these the actual code we wanted to profile was optimised away by the JITter ("Profile via an Action", "ProfileDirect" and "ProfileDirectWithConsume").
 
-<a href="https://mattwarren.github.io/images/2014/09/math-sqrt-results-graph.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/09/math-sqrt-results-graph.png?w=660" alt="Math.Sqrt() - results graph" width="660" height="352" class="alignnone size-large wp-image-867" /></a>
+<a href="https://mattwarren.github.io/images/2014/09/math-sqrt-results-graph.png" target="_blank"><img src="http://mattwarren.github.io/images/2014/09/math-sqrt-results-graph.png?w=660" alt="Math.Sqrt() - results graph" width="660" height="352" class="alignnone size-large wp-image-867" /></a>
 
 **Update (2014-09-23):** The correct results are in the chart below
 
-<a href="https://mattwarren.github.io/images/2014/09/math-sqrt-results-graph-after-reddit-fixes.png" target="_blank"><img src="http://mattwarrendotorg.files.wordpress.com/2014/09/math-sqrt-results-graph-after-reddit-fixes.png" alt="Math.Sqrt() - results graph - AFTER Reddit fixes" width="1008" height="489" class="aligncenter size-full wp-image-902" /></a>
+<a href="https://mattwarren.github.io/images/2014/09/math-sqrt-results-graph-after-reddit-fixes.png" target="_blank"><img src="http://mattwarren.github.io/images/2014/09/math-sqrt-results-graph-after-reddit-fixes.png" alt="Math.Sqrt() - results graph - AFTER Reddit fixes" width="1008" height="489" class="aligncenter size-full wp-image-902" /></a>
 
 #### **CLR JIT Compiler - 32-bit v. 64-bit**
 
