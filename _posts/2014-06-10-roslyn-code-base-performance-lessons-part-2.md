@@ -38,14 +38,12 @@ There are several techniques used in the Roslyn code base that either minimise o
 
 Within the .NET framework there are many methods that cause allocations, for instance String.Trim(..) or any LINQ methods. To combat this we can find several examples where code was specifically re-written, for example:
 
-<ul>
-<li><code>// PERF: Avoid calling string.Trim() because that allocates a new substring</code>
-from <a href="http://source.roslyn.codeplex.com/#Microsoft.CodeAnalysis.CSharp/Compiler/DocumentationCommentCompiler.cs#731" target="_blank">DocumentationCommentCompiler.cs</a></li>
-<li><code>// PERF: Expansion of "assemblies.Any(a =</code>&gt; <code>a.NamespaceNames.Contains(namespaceName))" to avoid allocating a lambda.</code> 
-from <a href="http://source.roslyn.codeplex.com/#Microsoft.CodeAnalysis.Workspaces/Shared/Extensions/IAssemblySymbolExtensions.cs#17" target="_blank">IAssemblySymbolExtensions.cs</a> </li>
-<li><code>// PERF: Beware ImmutableArray.Builder.Sort allocates a Comparer wrapper object</code>
-from <a href="http://source.roslyn.codeplex.com/#Microsoft.CodeAnalysis/Collections/ImmutableArrayExtensions.cs#439" target="_blank">ImmutableArrayExtensions.cs</a></li>
-</ul>
+- ```// PERF: Avoid calling string.Trim() because that allocates a new substring```
+from <a href="http://source.roslyn.codeplex.com/#Microsoft.CodeAnalysis.CSharp/Compiler/DocumentationCommentCompiler.cs#731" target="_blank">DocumentationCommentCompiler.cs</a>
+- ```// PERF: Expansion of "assemblies.Any(a => a.NamespaceNames.Contains(namespaceName))" to avoid allocating a lambda.```
+from <a href="http://source.roslyn.codeplex.com/#Microsoft.CodeAnalysis.Workspaces/Shared/Extensions/IAssemblySymbolExtensions.cs#17" target="_blank">IAssemblySymbolExtensions.cs</a>
+- ```// PERF: Beware ImmutableArray.Builder.Sort allocates a Comparer wrapper object```
+from <a href="http://source.roslyn.codeplex.com/#Microsoft.CodeAnalysis/Collections/ImmutableArrayExtensions.cs#439" target="_blank">ImmutableArrayExtensions.cs</a>
 
 Another good lesson is that each improvement is annotated with a "<code>// PERF:</code>" comment to explain the reasoning, I guess this is to prevent another developer coming along and re-factoring the code to something more readable (at the expense of performance).
 

@@ -65,7 +65,7 @@ while (true)
   timer.Stop();
 
   // Record the pause (using the old method, for comparison)
-  if (timer.ElapsedMilliseconds &gt; 2)   
+  if (timer.ElapsedMilliseconds > 2)
     _oldhistogram.recordValue(timer.ElapsedMilliseconds);  
 
   // more accurate method, correct for coordinated omission

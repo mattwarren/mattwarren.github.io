@@ -58,7 +58,7 @@ Finally I really like their guidelines for achieving good observability in a pro
 
 > **5 Steps to Achieving Good Observability:**
 In order to achieve good observability an SRE team (often in conduction with the rest of the organization) needs to do the following steps.
-&gt;
+
 - Instrument your systems by publishing metrics and events
 - Gather those metrics and events in a queryable data store(s)
 - Make that data readily accessible
