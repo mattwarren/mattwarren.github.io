@@ -148,8 +148,8 @@ If you are interested the results for all the query types are available:
 - Real-world usage
   - [How GitHub used Bitmaps to speed up repository cloning](http://githubengineering.com/counting-objects/)
   - [Roaring Bitmap implementation in Elastic Search](https://www.elastic.co/blog/frame-of-reference-and-roaring-bitmaps)
-  - [Usage of Bitmaps indexes in Lucene](https://issues.apache.org/jira/browse/LUCENE-5983))
-  - [Compressed Bitmaps implemented in Druid](https://groups.google.com/forum/m/#!topic/druid-development/_kw2jncIlp0))
+  - [Usage of Bitmaps indexes in Lucene](https://issues.apache.org/jira/browse/LUCENE-5983)
+  - [Compressed Bitmaps implemented in Druid](https://groups.google.com/forum/m/#!topic/druid-development/_kw2jncIlp0)
 
 ## <a name="FuturePosts"></a>**Future Posts**
 

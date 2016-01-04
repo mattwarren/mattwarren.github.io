@@ -37,9 +37,9 @@ As I said I wanted to see what was involved in building a version of the Tag Eng
 Below is the output of the code that runs on start-up and processes the data, you can see there are just over 7.9 millions questions in the data set, taking up just over 2GB of memory, when read into a <a href="https://github.com/mattwarren/StackOverflowTagServer/blob/master/Shared/Question.cs" target="_blank">`List<Question>`</a>.
 
 ```
-Took 00:00:31.623 to DE-serialise 7,990,787 Stack Overflow Questions, used 2136.50 MB of memory
-Took 00:01:14.229 (74,229 ms) to group all the tags, used 2799.32 MB of memory
-Took 00:00:34.148 (34,148 ms) to create all the "related" tags info, used 362.57 MB of memory
+Took 00:00:31.623 to DE-serialise 7,990,787 Stack Overflow Questions, used 2136.50 MB
+Took 00:01:14.229 (74,229 ms) to group all the tags, used 2799.32 MB
+Took 00:00:34.148 (34,148 ms) to create all the "related" tags info, used 362.57 MB
 Took 00:01:31.662 (91,662 ms) to sort the 191,025 arrays
 After SETUP - Using 4536.21 MB of memory in total
 ```
@@ -64,7 +64,7 @@ Yes that's right, there is actually a Stack Overflow questions with <a href="htt
 ## <a name="CreatingAnIndex"></a>**Creating an Index**
 So what does the index actually look like, well it's basically a series of sorted lists (`List<int>`) that contain an offset into the main `List<Question>` that contains all the <a href="https://github.com/mattwarren/StackOverflowTagServer/blob/master/Shared/Question.cs" target="_blank">`Question`</a> data. Or in a diagram, something like this:
 
-<a href="https://mattwarren.github.io/images/2014/11/indexing-explanation.png" target="_blank"><img src="https://mattwarren.github.io/images/2014/11/indexing-explanation.png?w=760" alt="Indexing explanation"/></a>
+<a href="https://mattwarren.github.io/images/2014/09/indexing-explanation.png" target="_blank"><img src="https://mattwarren.github.io/images/2014/09/indexing-explanation.png" alt="Indexing explanation"/></a>
 
 **Note:** This is very similar to the way that <a href="http://lucene.apache.org/" target="_blank">Lucene</a> indexes data.
 
@@ -101,7 +101,7 @@ var result = queryInfo[tag]
 
 Once that's all done, I ended up with an API that you can query in the browser. Note that the timing is the time taken on the server-side, but it is correct, basic queries against a single tag are lightening quick!
 
-<a href="https://pbs.twimg.com/media/B0BU8CRCcAAte5f.png:large" target="_blank"><img src="https://pbs.twimg.com/media/B0BU8CRCcAAte5f.png:large"/></a>
+<a href="https://mattwarren.github.io/images/2014/10/API Usage in Chrome.png" target="_blank"><img src="https://mattwarren.github.io/images/2014/10/API Usage in Chrome.png"/></a>
 
 ## <a name="NextTime"></a>**Next time**
 Now that the basic index is setup, next time I'll be looking at how to handle:
