@@ -48,7 +48,7 @@ All these examples show that they are not afraid to write their own tools when t
 
 ### **Measure, profile and display**
 
-As shown by the development of Opserver, they care about <a target="_blank">measuring performance accurately</a> even (or especially) in production. Take a look at the images below and you can see not only the detailed level of information they keep, but how it is displayed in a way that makes is easy to see what is going on (there are also <a href="http://imgur.com/a/dawwf" target="_blank">more screenshots<a /> available).
+As shown by the development of Opserver, they care about measuring performance accurately even (or especially) in production. Take a look at the images below and you can see not only the detailed level of information they keep, but how it is displayed in a way that makes is easy to see what is going on (there are also <a href="http://imgur.com/a/dawwf" target="_blank">more screenshots</a> available).
 
 <a href="http://imgur.com/a/dawwf" target="_blank"><img src="http://i.imgur.com/HHvv83i.png"/></a>
 
