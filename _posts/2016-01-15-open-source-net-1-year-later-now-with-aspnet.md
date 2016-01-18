@@ -5,7 +5,7 @@ comments: true
 tags: [.NET, Analytics, Open Source, AspNet]
 ---
 
-In the [previous post]({{base}}/2015/12/08/open-source-net-1-year-later/) I looked at the community involvement in the year since Microsoft open-sourced large parts of the .NET framework. Although as Isaac Abraham pointed out in the comments "parts of .NET have been open source for quite a bit more than a year – the F# compiler and FSharp.Core have been for quite a while now".
+In the [previous post]({{base}}/2015/12/08/open-source-net-1-year-later/) I looked at the community involvement in the year since Microsoft open-sourced large parts of the .NET framework. 
 
 As a follow-up I'm going to repeat that analysis, but this time focussing on the repositories that sit under the [**ASP.NET**](https://github.com/aspnet) umbrella project:
 
@@ -31,7 +31,7 @@ There are some notable exceptions, e.g. [@shanselman](https://github.com/shansel
 
 ## <a name="Results"></a>Results
 
-So after all this analysis, what results did I get. Well overall, the Community involvement accounts for just over 60% over the "Issues Created" and 33% of the "Merged Pull Requests (PRs)". However the amount of PRs is skewed by Entity Framework which has a much higher involvement from Microsoft employees, if this is ignored the Community proportion of PRs increases to 44%.
+So after all this analysis, what results did I get. Well overall, the Community involvement accounts for just over **60%** over the "Issues Created" and **33%** of the "Merged Pull Requests (PRs)". However the amount of PRs is skewed by Entity Framework which has a much higher involvement from Microsoft employees, if this is ignored the Community proportion of PRs increases to **44%**.
 
 ### Issues Created (Nov 2013 - Dec 2015)
 | **Project** | **Microsoft** | **Community** | **Total** |
@@ -65,4 +65,49 @@ In addition, whilst the Community involvement is easier to see with the Issues p
 
 [![Merged Pull Requests Per Month - By Submitter (Microsoft or Community)](https://cloud.githubusercontent.com/assets/157298/12142522/9f72726a-b470-11e5-8333-aec772ff9f6b.png)](https://cloud.githubusercontent.com/assets/157298/12142522/9f72726a-b470-11e5-8333-aec772ff9f6b.png)
 
+### <a name="TotalNumberOfPeopleContributing"></a>**Total Number of People Contributing**
+
+It's also interesting to look at the total number of different people who contributed to each project. By doing this you get a real sense of the size of the Community contribution, it's not just a small amount of people doing a lot of work, it's spread across a large amount of people.
+
+This table shows the number of different GitHub users who opened an Issue or created PRs that was Merged: 
+
+| **Project** | **Microsoft** | **Community** | **Total** |
+| :---------- | ------------: | ------------: | --------: |
+| aspnet/**MVC** | 39 | 395 | 434 |
+| aspnet/**dnx** | 46 | 421 | 467 |
+| aspnet/**EntityFramework** | 31 | 570 | 601 |
+| aspnet/**KestrelHttpServer** | 22 | 95 | 117 |
+| **Total** | **138** | **1481** | **1619** |
+
+## <a name="FSharp"></a> **FSharp**
+
+In the comments of my first post, Isaac Abraham correctly pointed out:
+
+> parts of .NET have been open source for quite a bit more than a year – the F# compiler and FSharp.Core have been for quite a while now.
+
+So, to address this, I will take a quick look at the main FSharp repositories:
+
+- [**microsoft/visualfsharp**](github.com/microsoft/visualfsharp) 
+- [**fsharp/fsharp**](https://github.com/fsharp/fsharp)
+
+As Isaac explained, the relationship is: 
+
+> Essentially visualfsharp is the Microsoft-owned repo Visual F#. The other is the community owned one. The former one feeds directly into tools like Visual F# tooling in Visual Studio etc.; the latter feeds into things like Xamarin etc. There’s a (slightly out of date) [diagram that explains the relationship](http://fsharp.github.io/2014/06/18/fsharp-contributions.html), and this is another useful resource http://fsharp.github.io/.
+
+### FSharp - Issues Created (Dec 2010 - Dec 2015)
+| **Project** | **Microsoft** | **Community** | **Total** |
+| :---------- | ------------: | ------------: | --------: |
+| fsharp/fsharp | 9 | 312 | 321 |
+| microsoft/visualfsharp | 161 | 367 | 528 |
+| **Total** | **170** | **679** | **849** |
+
+### FSharp - Merged Pull Requests (May 2011 - Dec 2015)
+| **Project** | **Microsoft** | **Community** | **Total** |
+| :---------- | ------------: | ------------: | --------: |
+| fsharp/fsharp | 27 | 134 | 161 |
+| microsoft/visualfsharp | 36 | 33 | 69 |
+| **Total** | **63** | **167** | **230** |
+
 ## <a name="Conclusion"></a>Conclusion
+
+I think that it's fair to say that the Community has responded to Microsoft making more and more of their code Open Source. There have been a significant amount of Community contributions across several projects, over a decent amount of time. Whilst you could argue that it took Microsoft a long time to open source their code, it seems that .NET developers are happy they have done it, as shown by a sizeable Community response.
