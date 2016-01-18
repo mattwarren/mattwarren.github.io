@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Example content
+date: 2014-02-01
 ---
 
 <div class="message">
