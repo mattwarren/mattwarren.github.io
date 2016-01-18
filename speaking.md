@@ -32,7 +32,7 @@ Thanks to <a href="twitter.com/craigtptech" target="_blank">@craigtptech</a> for
 <blockquote>Matt starts by asking Why does performance matter? What do we need to know? and When do we need to optimize performance?</blockquote>
 
 <blockquote>
-  Matt does suggest that we need to be careful and land somewhere in the middle of the spectrum between “optimizing everything all the time” (which can back us into a corner) versus “don’t optimize anything” (the extreme end of the “performance optimization is the root of all evil” approach).
+  Matt does suggest that we need to be careful and land somewhere in the middle of the spectrum between "optimizing everything all the time" (which can back us into a corner) versus "don't optimize anything" (the extreme end of the "performance optimization is the root of all evil" approach).
 </blockquote>
 
 One of my slides was tweeted by an attendee and at last count had over <strong>500 re-tweets</strong>, it seems like a lot of people really like statistics and in particular <a href="http://en.wikipedia.org/wiki/Hans_Rosling" target="_blank">Hans Rosling</a>!!
