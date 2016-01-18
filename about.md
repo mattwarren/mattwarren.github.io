@@ -4,7 +4,7 @@ title: About
 ---
 
 <p class="message">
-  I'm a .NET (C#) coder, who loves measuring, finding and fixing performance issues
+  I'm a .NET (C#) coder, who loves measuring, finding and fixing performance issues. 
   I'm also a contributor to <a href="https://github.com/PerfDotNet/BenchmarkDotNet" target="_blank">BenchmarkDotNet</a> amongst other things.
 </p>
 
