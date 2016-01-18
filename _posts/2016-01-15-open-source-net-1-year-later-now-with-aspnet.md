@@ -69,7 +69,7 @@ In addition, whilst the Community involvement is easier to see with the Issues p
 
 It's also interesting to look at the total number of different people who contributed to each project. By doing this you get a real sense of the size of the Community contribution, it's not just a small amount of people doing a lot of work, it's spread across a large amount of people.
 
-This table shows the number of different GitHub users who opened an Issue or created PRs that was Merged: 
+This table shows the number of different GitHub users (per project) who opened an Issue or created a PR that was Merged: 
 
 | **Project** | **Microsoft** | **Community** | **Total** |
 | :---------- | ------------: | ------------: | --------: |
@@ -90,9 +90,9 @@ So, to address this, I will take a quick look at the main FSharp repositories:
 - [**microsoft/visualfsharp**](github.com/microsoft/visualfsharp) 
 - [**fsharp/fsharp**](https://github.com/fsharp/fsharp)
 
-As Isaac explained, the relationship is: 
+As Isaac explained, their relationship is: 
 
-> Essentially visualfsharp is the Microsoft-owned repo Visual F#. The other is the community owned one. The former one feeds directly into tools like Visual F# tooling in Visual Studio etc.; the latter feeds into things like Xamarin etc. There’s a (slightly out of date) [diagram that explains the relationship](http://fsharp.github.io/2014/06/18/fsharp-contributions.html), and this is another useful resource http://fsharp.github.io/.
+> ... visualfsharp is the Microsoft-owned repo Visual F#. The other is the community owned one. The former one feeds directly into tools like Visual F# tooling in Visual Studio etc.; the latter feeds into things like Xamarin etc. There’s a (slightly out of date) [diagram that explains the relationship](http://fsharp.github.io/2014/06/18/fsharp-contributions.html), and this is another useful resource http://fsharp.github.io/.
 
 ### FSharp - Issues Created (Dec 2010 - Dec 2015)
 | **Project** | **Microsoft** | **Community** | **Total** |
