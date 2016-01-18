@@ -4,27 +4,10 @@ title: About
 ---
 
 <p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
+  I'm a .NET (C#) coder, who loves measuring, finding and fixing performance issues
+  I'm also a contributor to <a href="https://github.com/PerfDotNet/BenchmarkDotNet" target="_blank">BenchmarkDotNet</a> amongst other things.
 </p>
 
-In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+You can find me on <a href="https://github.com/mattwarren/" target="_blank">github</a>, <a href="http://stackoverflow.com/users/4500/matt-warren" target="_blank">stackoverflow</a> and <a href="https://twitter.com/matthewwarren" target="_blank">twitter</a>
 
-There are currently two themes built on Poole:
-
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
-
-Learn more and contribute on [GitHub](https://github.com/poole).
-
-## Setup
-
-Some fun facts about the setup of this project include:
-
-* Built for [Jekyll](http://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
-* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
-
-Thanks for reading!
+I'm also a husband, father and <a href="http://www.sloughbaptistchurch.org.uk/" target="_blank">Christian</a>, I even preach at my local church <a href="http://sloughbaptistchurch.sermon.net/main/main/10063654" target="_blank">occasionally</a>!
