@@ -87,7 +87,7 @@ In the comments of my first post, Isaac Abraham correctly pointed out:
 
 So, to address this, I will take a quick look at the main FSharp repositories:
 
-- [**microsoft/visualfsharp**](github.com/microsoft/visualfsharp) 
+- [**microsoft/visualfsharp**](https://github.com/microsoft/visualfsharp) 
 - [**fsharp/fsharp**](https://github.com/fsharp/fsharp)
 
 As Isaac explained, their relationship is: 
