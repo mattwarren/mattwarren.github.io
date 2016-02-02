@@ -14,7 +14,7 @@ Well that was my original plan, but if you go an look at the [.NET Framework GC 
 
 [![gc.cpp on GitHub](https://cloud.githubusercontent.com/assets/157298/12352478/49f74242-bb7e-11e5-8028-5df72943f58a.png)](https://github.com/dotnet/coreclr/blob/master/src/gc/gc.cpp)
 
-This is because the file is **36,915** lines long and 1.19MB in size! Now before you send a PR to Microsoft that chops it up into smaller bits, you might want to read this [discussion on reorganizing gc.cpp](https://github.com/dotnet/coreclr/issues/408). It turns out you are not the only one who's had that idea and your PR will probably be rejected, for some [specific reasons](https://github.com/dotnet/coreclr/issues/408#issuecomment-78014795).
+This is because the file is **36,915** lines long and **1.19MB** in size! Now before you send a PR to Microsoft that chops it up into smaller bits, you might want to read this [discussion on reorganizing gc.cpp](https://github.com/dotnet/coreclr/issues/408). It turns out you are not the only one who's had that idea and your PR will probably be rejected, for some [specific reasons](https://github.com/dotnet/coreclr/issues/408#issuecomment-78014795).
 
 ### <a name="GoalsOfTheGC"></a>**Goals of the GC**
 
@@ -28,19 +28,19 @@ So I'm not going to be able to read and understand a 36 KLOC .cpp source file an
 - **Each GC should be fast**. Many workloads have low latency requirements.
 - **Managed code developers shouldn’t need to know much about the GC to achieve good memory utilization** (relative to their workload). – The GC should tune itself to satisfy different memory usage patterns.
 
-So there's some interesting goals in there, in particular they have highlighted that the goal of ensuring developers don't have to know much about the GC to make it efficient. This is probably one of the main differences between the .NET and Java GC implementations, as explained in an answer to the Stack Overflow question ["*.Net vs Java Garbage Collector*"](http://stackoverflow.com/questions/492703/net-vs-java-garbage-collector/492821#492821)
+So there's some interesting goals in there, in particular they twice included the goal of ensuring developers don't have to know much about the GC to make it efficient. This is probably one of the main differences between the .NET and Java GC implementations, as explained in an answer to the Stack Overflow question ["*.Net vs Java Garbage Collector*"](http://stackoverflow.com/questions/492703/net-vs-java-garbage-collector/492821#492821)
 
-> A difference between ~~Sun~~Oracle's and Microsoft's GC implementation 'ethos' is one of configurability.
+> A difference between Oracle's and Microsoft's GC implementation 'ethos' is one of configurability.
 > 
-> ~~Sun~~Oracle's provides a vast number of options (at the command line) to tweaks aspects of the GC or switch it between different modes. Many options are of the -X or -XX to indicate their lack of support across different versions or vendors. The CLR by contrast provides next to no configurability; your only real option is the use of the server or client collectors which optimise for throughput verses latency respectively.
+> Oracle's provides a vast number of options (at the command line) to tweaks aspects of the GC or switch it between different modes. Many options are of the -X or -XX to indicate their lack of support across different versions or vendors. The CLR by contrast provides next to no configurability; your only real option is the use of the server or client collectors which optimise for throughput verses latency respectively.
 
 ----
 
 ### <a name="NETGCSample"></a>**.NET GC Sample**
 
-So now we have an idea about what the goals of the GC are, lets take a look at how it goes about things. Fortunately those nice developers at Microsoft released a [GC Sample](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp) that shows you, at a very basic level, how you can use the full .NET GC in your own code. After building the sample (and [finding a few bugs in the process](https://github.com/dotnet/coreclr/pull/2582)), I was able to get a simple, single-threaded GC up and running.
+So now we have an idea about what the goals of the GC are, lets take a look at how it goes about things. Fortunately those nice developers at Microsoft released a [GC Sample](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp) that shows you, at a basic level, how you can use the full .NET GC in your own code. After building the sample (and [finding a few bugs in the process](https://github.com/dotnet/coreclr/pull/2582)), I was able to get a simple, single-threaded GC up and running.
 
-What's interesting about the sample application is that is clearly shows you what actions the .NET Runtime has to perform to make the GC work. At a high-level, the process that the runtime needs to go through to allocate an object is:
+What's interesting about the sample application is that is clearly shows you what actions the .NET Runtime has to perform to make the GC work. So for instance, at a high-level the process that the runtime needs to go through to allocate an object is the following:
 
 1. `AllocateObject(..)` 
   - See below for the code and explanation of the allocation process
@@ -51,7 +51,7 @@ What's interesting about the sample application is that is clearly shows you wha
 
 ### <a name="AllocatingAnObject"></a>**Allocating an Object**
 
-[`AllocateObject(..)` code from GCSample.cpp](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp#L56-L80)
+[`AllocateObject(..)` code from GCSample.cpp](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp#L55-L79)
 
 ``` csharp
 Object * AllocateObject(MethodTable * pMT)
@@ -81,14 +81,14 @@ Object * AllocateObject(MethodTable * pMT)
 }
 ```
 
-Again the BOTR comes in handy here, as it gives us a clear overview of the process, from ["Design of Allocator"](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md#design-of-allocator):
+Well, what's going on here, again the BOTR comes in handy as it gives us a clear overview of the process, from ["Design of Allocator"](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md#design-of-allocator):
 
 > When the GC gives out memory to the allocator, it does so in terms of allocation contexts. The size of an allocation context is defined by the allocation quantum.
 
 > - Allocation contexts are smaller regions of a given heap segment that are each dedicated for use by a given thread. On a single-processor (meaning 1 logical processor) machine, a single context is used, which is the generation 0 allocation context.
 > - The Allocation quantum is the size of memory that the allocator allocates each time it needs more memory, in order to perform object allocations within an allocation context. The allocation is typically 8k and the average size of managed objects are around 35 bytes, enabling a single allocation quantum to be used for many object allocations.
 
-This shows how is is possible for the .NET GC to make allocating an object (or memory) such a cheap operation. Because of all the work that is has done in the background, the majority of the time an  object allocation happens, it is just a case of incrementing a pointer by the number of bytes needed to hold the new object. This is what the code in the first 1/2 of the `AllocateObject(..)` function (above) is doing, it's bumping up the free-space pointer (`acontext->alloc_ptr`) and giving out a pointer to the newly created space.
+This shows how is is possible for the .NET GC to make allocating an object (or memory) such a cheap operation. Because of all the work that is has done in the background, the majority of the time an  object allocation happens, it is just a case of incrementing a pointer by the number of bytes needed to hold the new object. This is what the code in the first 1/2 of the `AllocateObject(..)` function (above) is doing, it's bumping up the free-space pointer (`acontext->alloc_ptr`) and giving out a pointer to the newly created space in memory.
 
 It's only when the current **allocation context** doesn't have enough space that things get more complicated and potentially more expensive. At this point `GCHeap::GetGCHeap()->Alloc(..)` is called which may in turn trigger a GC collection before a new allocation context can be provided.
 
@@ -101,7 +101,7 @@ Finally, it's worth looking at the goals that the allocator is designed to achie
 - **Memory integrity:** The GC always zeroes out the memory for newly allocated objects to prevent object references pointing at random memory.
 - **Keeping the heap crawlable:** The allocator makes sure to make a free object out of left over memory in each allocation quantum. For example, if there is 30 bytes left in an allocation quantum and the next object is 40 bytes, the allocator will make the 30 bytes a free object and get a new allocation quantum.
 
-This shows an advantage of GC systems, namely that you get efficient CPU cache usage because memory is allocated in units and so objects created one after the other (on the same thread), will sit next to each other in memory.
+One of the interesting items this highlights is an advantage of GC systems, namely that you get efficient [CPU cache usage because](http://mechanical-sympathy.blogspot.co.uk/2012/08/memory-access-patterns-are-important.html) memory is allocated in units. This means that objects created one after the other (on the same thread), will sit next to each other in memory.
 
 ----
 
