@@ -6,7 +6,7 @@ tags: [indexing, stackoverflow, trigrams]
 excerpt: <p>This is the long-delayed part 2 of a mini-series looking at what it might take to build the Stack Overflow Tag Engine</p>
 ---
 
-I've added a [**Resources**]({{base}}/resources/)</a> and [**Speaking**]({{base}}/speaking/) page to my site, check them out if you want to learn more. There's also a video available of my NDC London 2014 talk ["Performance is a Feature!"]({{base}}/speaking/#NDCLondon2014).
+I've added a [**Resources**]({{base}}/resources/) and [**Speaking**]({{base}}/speaking/) page to my site, check them out if you want to learn more. There's also a video available of my NDC London 2014 talk ["Performance is a Feature!"]({{base}}/speaking/#NDCLondon2014).
 
 ---------------------------------------
 

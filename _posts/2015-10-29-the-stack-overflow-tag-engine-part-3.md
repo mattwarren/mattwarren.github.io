@@ -5,7 +5,7 @@ comments: true
 tags: [bitmaps, indexing, stackoverflow]
 ---
 
-This is the part 3 of a mini-series looking at what it *might* take to build the Stack Overflow Tag Engine, if you haven't read [part 1]({{base}}/2014/11/01/the-stack-overflow-tag-engine-part-1/) or [part 2]({{base}}/images/2015/08/19/the-stack-overflow-tag-engine-part-2/), I recommend reading them first.
+This is the part 3 of a mini-series looking at what it *might* take to build the Stack Overflow Tag Engine, if you haven't read [part 1]({{base}}/2014/11/01/the-stack-overflow-tag-engine-part-1/) or [part 2]({{base}}/2015/08/19/the-stack-overflow-tag-engine-part-2/), I recommend reading them first.
 
 ---------------------------------------
 
@@ -41,7 +41,7 @@ foreach (var id in queryInfo[tag1])
 }
 ```
 
-The main problem is that we have to scan through all the ids for `tag1` until we have enough matches, i.e. `foreach (var id in queryInfo[tag1])`. In addition we have to initially load up the `HashSet` with all the ids for `tag2`, so that we can check matches. So this method takes longer as we skip more and more questions, i.e. for larger value of `skip` or if there are a large amount of `tagsToExclude` (i.e. "*Ignored Tags*"), see [Part 2 for more infomation]({{base}}/images/2015/08/19/the-stack-overflow-tag-engine-part-2/#IgnoredTags).
+The main problem is that we have to scan through all the ids for `tag1` until we have enough matches, i.e. `foreach (var id in queryInfo[tag1])`. In addition we have to initially load up the `HashSet` with all the ids for `tag2`, so that we can check matches. So this method takes longer as we skip more and more questions, i.e. for larger value of `skip` or if there are a large amount of `tagsToExclude` (i.e. "*Ignored Tags*"), see [Part 2 for more infomation]({{base}}/2015/08/19/the-stack-overflow-tag-engine-part-2/#IgnoredTags).
 
 ## <a name="Bitmaps"></a>**Bitmaps**
 
