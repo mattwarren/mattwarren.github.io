@@ -2,7 +2,6 @@
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
 permalink:           pretty
-relative_permalinks: true
 
 # Setup
 title:               'Performance is a Feature!'
@@ -31,7 +30,9 @@ exclude: [README.md, LICENSE.md]
 # and http://ajoz.github.io/2014/06/29/i-want-my-github-flavored-markdown/
 # For tables see https://github.com/george-hawkins/basic-gfm-jekyll
 # and https://george-hawkins.github.io/basic-gfm-jekyll/redcarpet-extensions.html
-markdown: redcarpet
+
+# https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+markdown: kramdown
 
 redcarpet:
     extensions: ["no_intra_emphasis", "tables", "autolink", "strikethrough", "with_toc_data"]
