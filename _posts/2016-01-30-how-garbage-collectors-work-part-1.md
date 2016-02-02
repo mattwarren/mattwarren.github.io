@@ -20,7 +20,7 @@ This is because the file is **36,915** lines long and 1.19MB in size! Now before
 
 So I'm not going to be able to read and understand a 36 KLOC .cpp source file any time soon, instead I tried a different approach and started off by looking through the excellent Book-of-the-Runtime (BOTR) section on ["Design of the Collector"](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md#design-of-the-collector). This very helpfully lists the following items as the goals of the .NET GC (emphasis mine):
 
-> The GC strives to manage memory **extremely efficiently** and require** very little effort from people who write "managed code"**. Efficient means:
+> The GC strives to manage memory **extremely efficiently** and require **very little effort from people who write managed code**. Efficient means:
 >
 > - GCs should occur often enough to **avoid the managed heap containing a significant amount (by ratio or absolute count) of unused but allocated objects** (garbage), and therefore use memory unnecessarily.
 - GCs should happen as **infrequently as possible to avoid using otherwise useful CPU time**, even though frequent GCs would result in lower memory usage.
