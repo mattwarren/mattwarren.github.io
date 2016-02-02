@@ -4,7 +4,7 @@ layout: post
 title: How Garbage Collectors Work - Part 1
 comments: true
 tags: [Garbage Collectors, GC, .NET]
-date: 2016-02-03
+date: 2016-02-01
 
 ---
 
