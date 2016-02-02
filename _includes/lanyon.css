@@ -307,13 +307,10 @@ a.sidebar-nav-item:focus {
  * page is wrapped in `.page` and is only used on the page layout.
  */
 
-.page {
+.page,
+.post {
   margin-bottom: 2em;
   border-bottom: 1px solid #eee;
-}
-
-.post {
-  margin-bottom: 1em;
 }
 
 /* Blog post or page title */

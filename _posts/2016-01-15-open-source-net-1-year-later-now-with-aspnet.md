@@ -95,6 +95,7 @@ As Isaac explained, their relationship is:
 > ... visualfsharp is the Microsoft-owned repo Visual F#. The other is the community owned one. The former one feeds directly into tools like Visual F# tooling in Visual Studio etc.; the latter feeds into things like Xamarin etc. There’s a (slightly out of date) [diagram that explains the relationship](http://fsharp.github.io/2014/06/18/fsharp-contributions.html), and this is another useful resource http://fsharp.github.io/.
 
 ### FSharp - Issues Created (Dec 2010 - Dec 2015)
+
 | **Project** | **Microsoft** | **Community** | **Total** |
 | :---------- | ------------: | ------------: | --------: |
 | fsharp/fsharp | 9 | 312 | 321 |
@@ -102,6 +103,7 @@ As Isaac explained, their relationship is:
 | **Total** | **170** | **679** | **849** |
 
 ### FSharp - Merged Pull Requests (May 2011 - Dec 2015)
+
 | **Project** | **Microsoft** | **Community** | **Total** |
 | :---------- | ------------: | ------------: | --------: |
 | fsharp/fsharp | 27 | 134 | 161 |
