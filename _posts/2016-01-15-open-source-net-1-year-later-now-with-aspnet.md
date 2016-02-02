@@ -34,6 +34,7 @@ There are some notable exceptions, e.g. [@shanselman](https://github.com/shansel
 So after all this analysis, what results did I get. Well overall, the Community involvement accounts for just over **60%** over the "Issues Created" and **33%** of the "Merged Pull Requests (PRs)". However the amount of PRs is skewed by Entity Framework which has a much higher involvement from Microsoft employees, if this is ignored the Community proportion of PRs increases to **44%**.
 
 ### Issues Created (Nov 2013 - Dec 2015)
+
 | **Project** | **Microsoft** | **Community** | **Total** |
 | :---------- | ------------: | ------------: | --------: |
 | aspnet/**MVC** | 716 | 1380 | 2096 |
@@ -43,6 +44,7 @@ So after all this analysis, what results did I get. Well overall, the Community 
 | **Total** | **2768** | **4189** | **6957** |
 
 ### Merged Pull Requests (Nov 2013 - Dec 2015)
+
 | **Project** | **Microsoft** | **Community** | **Total** |
 | :---------- | ------------: | ------------: | --------: |
 | aspnet/**MVC** | 385 | 228 | 613 |
