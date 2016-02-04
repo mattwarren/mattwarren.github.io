@@ -20,7 +20,7 @@ This is because the file is **36,915** lines long and **1.19MB** in size! Now be
 
 ### Goals of the GC
 
-So I'm not going to be able to read and understand a 36 KLOC .cpp source file any time soon, instead I tried a different approach and started off by looking through the excellent Book-of-the-Runtime (BOTR) section on ["Design of the Collector"](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md#design-of-the-collector). This very helpfully lists the following items as the goals of the .NET GC (emphasis mine):
+So I'm not going to be able to read and understand a 36 KLOC .cpp source file any time soon, instead I tried a different approach and started off by looking through the excellent Book-of-the-Runtime (BOTR) section on ["Design of the Collector"](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md#design-of-the-collector). This very helpfully lists the following goals of the .NET GC (emphasis mine):
 
 > The GC strives to manage memory **extremely efficiently** and require **very little effort from people who write managed code**. Efficient means:
 >
@@ -30,7 +30,7 @@ So I'm not going to be able to read and understand a 36 KLOC .cpp source file an
 - **Each GC should be fast**. Many workloads have low latency requirements.
 - **Managed code developers shouldn’t need to know much about the GC to achieve good memory utilization** (relative to their workload). – The GC should tune itself to satisfy different memory usage patterns.
 
-So there's some interesting goals in there, in particular they twice included the goal of ensuring developers don't have to know much about the GC to make it efficient. This is probably one of the main differences between the .NET and Java GC implementations, as explained in an answer to the Stack Overflow question ["*.Net vs Java Garbage Collector*"](http://stackoverflow.com/questions/492703/net-vs-java-garbage-collector/492821#492821)
+So there's some interesting points in there, in particular they twice included the goal of ensuring developers don't have to know much about the GC to make it efficient. This is probably one of the main differences between the .NET and Java GC implementations, as explained in an answer to the Stack Overflow question ["*.Net vs Java Garbage Collector*"](http://stackoverflow.com/questions/492703/net-vs-java-garbage-collector/492821#492821)
 
 > A difference between Oracle's and Microsoft's GC implementation 'ethos' is one of configurability.
 > 
@@ -40,9 +40,9 @@ So there's some interesting goals in there, in particular they twice included th
 
 ### .NET GC Sample
 
-So now we have an idea about what the goals of the GC are, lets take a look at how it goes about things. Fortunately those nice developers at Microsoft released a [GC Sample](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp) that shows you, at a basic level, how you can use the full .NET GC in your own code. After building the sample (and [finding a few bugs in the process](https://github.com/dotnet/coreclr/pull/2582)), I was able to get a simple, single-threaded GC up and running.
+So now we have an idea about what the goals of the GC are, lets take a look at how it goes about things. Fortunately those nice developers at Microsoft released a [GC Sample](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp) that shows you, at a basic level, how you can use the full .NET GC in your own code. After building the sample (and [finding a few bugs in the process](https://github.com/dotnet/coreclr/pull/2582)), I was able to get a simple, single-threaded Workstation GC up and running.
 
-What's interesting about the sample application is that is clearly shows you what actions the .NET Runtime has to perform to make the GC work. So for instance, at a high-level the process that the runtime needs to go through to allocate an object is the following:
+What's interesting about the sample application is that it clearly shows you what actions the .NET Runtime has to perform to make the GC work. So for instance, at a high-level the runtime needs to go through the following process to allocate an object:
 
 1. `AllocateObject(..)` 
   - See below for the code and explanation of the allocation process
@@ -51,7 +51,7 @@ What's interesting about the sample application is that is clearly shows you wha
 1. `ErectWriteBarrier(..)`
   - For more information see "Marking the Card Table" below
 
-### Allocating an Object
+#### Allocating an Object
 
 [`AllocateObject(..)` code from GCSample.cpp](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp#L55-L79)
 
@@ -90,11 +90,11 @@ Well, what's going on here, again the BOTR comes in handy as it gives us a clear
 > - Allocation contexts are smaller regions of a given heap segment that are each dedicated for use by a given thread. On a single-processor (meaning 1 logical processor) machine, a single context is used, which is the generation 0 allocation context.
 > - The Allocation quantum is the size of memory that the allocator allocates each time it needs more memory, in order to perform object allocations within an allocation context. The allocation is typically 8k and the average size of managed objects are around 35 bytes, enabling a single allocation quantum to be used for many object allocations.
 
-This shows how is is possible for the .NET GC to make allocating an object (or memory) such a cheap operation. Because of all the work that is has done in the background, the majority of the time an  object allocation happens, it is just a case of incrementing a pointer by the number of bytes needed to hold the new object. This is what the code in the first 1/2 of the `AllocateObject(..)` function (above) is doing, it's bumping up the free-space pointer (`acontext->alloc_ptr`) and giving out a pointer to the newly created space in memory.
+This shows how is is possible for the .NET GC to make allocating an object (or memory) such a cheap operation. Because of all the work that it has done in the background, the majority of the time an  object allocation happens, it is just a case of incrementing a pointer by the number of bytes needed to hold the new object. This is what the code in the first half of the `AllocateObject(..)` function (above) is doing, it's bumping up the free-space pointer (`acontext->alloc_ptr`) and giving out a pointer to the newly created space in memory.
 
 It's only when the current **allocation context** doesn't have enough space that things get more complicated and potentially more expensive. At this point `GCHeap::GetGCHeap()->Alloc(..)` is called which may in turn trigger a GC collection before a new allocation context can be provided.
 
-Finally, it's worth looking at the goals that the allocator is designed to achieve, again from the BOTR:
+Finally, it's worth looking at the goals that the allocator was designed to achieve, again from the BOTR:
 
 > - **Triggering a GC when appropriate:** The allocator triggers a GC when the allocation budget (a threshold set by the collector) is exceeded or when the allocator can no longer allocate on a given segment. The allocation budget and managed segments are discussed in more detail later.
 - **Preserving object locality:** Objects allocated together on the same heap segment will be stored at virtual addresses close to each other.
@@ -103,14 +103,12 @@ Finally, it's worth looking at the goals that the allocator is designed to achie
 - **Memory integrity:** The GC always zeroes out the memory for newly allocated objects to prevent object references pointing at random memory.
 - **Keeping the heap crawlable:** The allocator makes sure to make a free object out of left over memory in each allocation quantum. For example, if there is 30 bytes left in an allocation quantum and the next object is 40 bytes, the allocator will make the 30 bytes a free object and get a new allocation quantum.
 
-One of the interesting items this highlights is an advantage of GC systems, namely that you get efficient [CPU cache usage because](http://mechanical-sympathy.blogspot.co.uk/2012/08/memory-access-patterns-are-important.html) memory is allocated in units. This means that objects created one after the other (on the same thread), will sit next to each other in memory.
+One of the interesting items this highlights is an advantage of GC systems, namely that you get efficient [CPU cache usage or good object locality](http://mechanical-sympathy.blogspot.co.uk/2012/08/memory-access-patterns-are-important.html) because memory is allocated in units. This means that objects created one after the other (on the same thread), will sit next to each other in memory.
 
-----
-
-### Marking the "Card Table"
+#### Marking the "Card Table"
 
 The 3rd part of the process of allocating an object was a call to [ErectWriteBarrier(Object ** dst, Object * ref)
-](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp#L90-L105)
+](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp#L90-L105), that function looks like this:
 
 ```
 inline void ErectWriteBarrier(Object ** dst, Object * ref)
@@ -132,17 +130,25 @@ inline void ErectWriteBarrier(Object ** dst, Object * ref)
 
 ```
 
-Now this is probably an entire post on it's own and fortunately other people have already done the work for me, if you are interested in finding our more take a look at the [links at the end of this post](#further-information).
+Now explaining what is going on here is probably an entire post on it's own and fortunately other people have already done the work for me, if you are interested in finding our more take a look at the [links at the end of this post](#further-information). 
 
-From [Back To Basics: Generational Garbage Collection](http://blogs.msdn.com/b/abhinaba/archive/2009/03/02/back-to-basics-generational-garbage-collection.aspx)
+But in summary, the card-table is an optimisation that allows the GC to collect a single Generation (e.g. Gen 0), but still know about objects that are referenced from other, older generations. For instance if you had an array, `myArray = new MyClass[100]` that was in Gen 1 and you wrote the following code `myArray[5] = new MyClass()`, a write barrier would be set-up to indicate that the `MyClass` object was referenced by a given section of Gen 1 memory. 
+
+Then, when the GC wants to perform the mark phase for a Gen 0, in order to find all the live-objects it uses the card-table to tell it in which memory section(s) of other Generations it needs to look. This way it can find references from those older objects to the ones stored in Gen 0. This is a space/time tradeoff, the card-table represents 4KB sections of memory, so it still has to scan through that 4KB chunk, but it's better than having to scan the entire contents of the Gen 1 memory when it wants to carry of a Gen 0 collection.
+
+If it didn't do this extra check (via the card-table), then any Gen 0 objects that were only referenced by older objects (i.e. those in Gen 1/2) would not be considered "live" and would then be collected. See the image below for what this looks like in practice:
 
 ![Write barrier + card-table](http://blogs.msdn.com/blogfiles/abhinaba/WindowsLiveWriter/BackToBasicsGenerationalGarbageCollectio_115F4/image_18.png)
 
+Image taken from [Back To Basics: Generational Garbage Collection](http://blogs.msdn.com/b/abhinaba/archive/2009/03/02/back-to-basics-generational-garbage-collection.aspx)
+
 ----
 
-### GC and Execution Engine (EE) Interaction
+### GC and Execution Engine Interaction
 
-(see the [real implementation](https://github.com/dotnet/coreclr/blob/master/src/vm/gcenv.ee.cpp) for how the methods are really implemented)
+The final part of the GC sample that I will be looking at is the way in which the GC needs to interact with the .NET Runtime Execution Engine (EE). The EE is responsible for actually running or coordinating all the low-level things that the .NET runtime needs to-do, such as creating threads, reserving memory and so it acts as an interface to the OS, via [Windows](https://github.com/mattwarren/GCSample/blob/master/sample/gcenv.windows.cpp) and [Unix](https://github.com/mattwarren/GCSample/blob/master/sample/gcenv.unix.cpp) implementations.
+
+To understand this interaction between the GC and the EE, it's helpful to look at all the functions the GC expects the EE to make available:
 
 - `void GCToEEInterface::SuspendEE(GCToEEInterface::SUSPEND_REASON reason)`
 - `void GCToEEInterface::RestartEE(bool bFinishedGC)`
@@ -164,7 +170,7 @@ From [Back To Basics: Generational Garbage Collection](http://blogs.msdn.com/b/a
 - `void GCToEEInterface::SyncBlockCacheDemote(int /*max_gen*/)`
 - `void GCToEEInterface::SyncBlockCachePromotionsGranted(int /*max_gen*/)`
 
-Sample output:
+If you want to see how the .NET Runtime performs these "tasks", you can take a look at the [real implementation](https://github.com/dotnet/coreclr/blob/master/src/vm/gcenv.ee.cpp). However in the GC Sample these methods are mostly [stubbed out](https://github.com/mattwarren/GCSample/blob/90d07fdff32d370a3977978854d2d221027e1780/sample/gcenv.ee.cpp#L147-L165) stubbed out as no-ops. So that I could get an idea of the flow of the GC during a collection, I just added a simple `print(..)` statement to each one, then it's possible to see when the GC calls them and in what order. Now when I run the run the GC Sample I get the following output:
 
 ```
 GCToEEInterface::SuspendEE(SUSPEND_REASON = 1)
@@ -177,7 +183,7 @@ GCToEEInterface::GcDone(condemned = 0)
 GCToEEInterface::RestartEE(bFinishedGC = TRUE)
 ```
 
-**[WKS GC with concurrent GC off](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md#wks-gc-with-concurrent-gc-off)** from the BOTR:
+Which fortunately corresponds nicely with the GC phases for **[WKS GC with concurrent GC off](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md#wks-gc-with-concurrent-gc-off)** as outlined in the BOTR:
 
 > 1. User thread runs out of allocation budget and triggers a GC.
 1. GC calls SuspendEE to suspend managed threads.
@@ -192,70 +198,15 @@ GCToEEInterface::RestartEE(bFinishedGC = TRUE)
 
 ### Further Information
 
+If you want to find out any more information about Garbage Collectors, here is a list of useful links:
+
 - General
   - [Baby's First Garbage Collector](http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/)
   - [Writing a Simple Garbage Collector in C](http://web.engr.illinois.edu/%7Emaplant2/gc.html)
 - Marking the Card Table
-  - ["Making Generations Work with Write Barriers"](https://msdn.microsoft.com/en-us/library/ms973837.aspx)
+  - [Making Generations Work with Write Barriers](https://msdn.microsoft.com/en-us/library/ms973837.aspx)
   - [Generational GC in Python and Ruby](http://patshaughnessy.net/2013/10/30/generational-gc-in-python-and-ruby)
   - [NET Memory Management Concepts](https://www.jetbrains.com/dotmemory/help/NET_Memory_Management_Concepts.html)
   - [Back-to-basics Generational GC](http://blogs.msdn.com/b/abhinaba/archive/2009/03/02/back-to-basics-generational-garbage-collection.aspx)
   - [Garbage Collection in the Java HotSpot Virtual Machine](http://www.devx.com/Java/Article/21977)
   - [Understanding GC pauses in JVM, HotSpot's minor GC](http://www.cncoders.net/article/6981/)
-
-----
-
-**[Allow users to specify a no GC region (on behalf of maonis)](https://github.com/dotnet/coreclr/commit/4f74a99e296d929945413c5a65d0c61bb7f2c32a)**
-This mode lets users to specify an allocation amount for which no GCs would happen. Sometimes during the absolutely performance critical paths users have the desire to allocate without interference from the GC. **If there is enough memory**, GC will not kick in while this mode is set.
-
-a.k.a  the [GC.TryStartNoGCRegion(Int64) method](https://msdn.microsoft.com/en-us/library/dn906201.aspx)
-
-----
-
-### GC Sample Code Layout
-
-**GC Sample Code (under \sample)**
-
-- GCSample.cpp
-- gcenv.h
-- gcenv.ee.cpp
-- gcenv.windows.cpp
-- gcenv.unix.cpp
-
-**GC Sample Environment (under \env)**
-
-- common.cpp 
-- common.h
-- etmdummy.g
-- gcenv.base.h
-- gcenv.ee.h
-- gcenv.interlocked.h
-- gcenv.interlocked.inl
-- gcenv.object.h
-- gcenv.os.h
-- gcenv.structs.h
-- gcenv.sync.h
-
-
-**GC Code (top-level folder)**
-
-- gc.cpp (36,911 lines long!!)
-- gc.h 
-- gccommon.cpp
-- gcdesc.h
-- gcee.cpp
-- gceewks.cpp
-- gcimpl.h
-- gcrecord.h
-- gcscan.cpp
-- gcscan.h
-- gcsvr.cpp
-- gcwks.cpp
-- handletable.h
-- handletable.inl
-- handletablecache.cpp
-- gandletablecore.cpp
-- handletablepriv.h
-- handletablescan.cpp
-- objecthandle.cpp
-- objecthandle.h
