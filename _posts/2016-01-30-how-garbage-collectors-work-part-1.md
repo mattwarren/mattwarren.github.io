@@ -176,10 +176,10 @@ GCToEEInterface::GcScanRoots(condemned = 0, max_gen = 2)
 GCToEEInterface::GcDone(condemned = 0)
 GCToEEInterface::RestartEE(bFinishedGC = TRUE)
 ```
-From https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md
 
-> **WKS GC with concurrent GC off**
-1. User thread runs out of allocation budget and triggers a GC.
+**[WKS GC with concurrent GC off](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md#wks-gc-with-concurrent-gc-off)** from the BOTR:
+
+> 1. User thread runs out of allocation budget and triggers a GC.
 1. GC calls SuspendEE to suspend managed threads.
 1. GC decides which generation to condemn.
 1. Mark phase runs.
