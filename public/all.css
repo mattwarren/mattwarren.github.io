@@ -5,6 +5,11 @@
 Idea from https://developmentseed.org/blog/2011/09/09/jekyll-github-pages/#can-it-aggregate-css-and-javascript
 {% endcomment %}
 
+{% comment %}
+In CSS "Last rule declaration has a higher priority", see https://en.wikipedia.org/wiki/Cascading_Style_Sheets#Sources
+So lanyon is put AFTER poole, becaue poole is the base style, but lanyon extendeds/overrides it
+{% endcomment %}
+
 {% include poole.css %}
 {% include syntax.css %}
 {% include lanyon.css %}

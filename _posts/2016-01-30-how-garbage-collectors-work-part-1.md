@@ -10,6 +10,8 @@ date: 2016-02-01
 
 This series is an attempt to learn more about how a real-life "Garbage Collector" (GC) works internally, i.e. not so much "*what it does*", but "*how it does it*" at a low-level. I will be mostly be concentrating on the .NET GC, because I'm a .NET developer and because it's recently been [Open Sourced]({{base}}/2015/12/08/open-source-net-1-year-later/) so we can actually look at the code.
 
+**Note:** If you do want to learn about what a GC does, I really recommend the talk [Everything you need to know about .NET memory](https://vimeo.com/113632451) by Ben Emmett, it's a fantastic talk that uses lego to explain what the .NET GC does (the [slides are also available](http://www.slideshare.net/benemmett/net-memory-management-ndc-london))
+
 Well that was my original plan, but if you go an look at the [.NET Framework GC code](https://github.com/dotnet/coreclr/blob/master/src/gc/gc.cpp) on GitHub you are presented with the message "*This file has been truncated,...*":
 
 [![gc.cpp on GitHub](https://cloud.githubusercontent.com/assets/157298/12352478/49f74242-bb7e-11e5-8028-5df72943f58a.png)](https://github.com/dotnet/coreclr/blob/master/src/gc/gc.cpp)
@@ -108,7 +110,7 @@ One of the interesting items this highlights is an advantage of GC systems, name
 ### <a name="MarkingTheCardTable"></a>**Marking the "Card Table"**
 
 The 3rd part of the process of allocating an object was a call to [ErectWriteBarrier(Object ** dst, Object * ref)
-](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp#L91-L106)
+](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp#L90-L105)
 
 ```
 inline void ErectWriteBarrier(Object ** dst, Object * ref)
@@ -130,21 +132,11 @@ inline void ErectWriteBarrier(Object ** dst, Object * ref)
 
 ```
 
-Now this is probably an entire post on it's own and fortunately other people have already done the work for me
+Now this is probably an entire post on it's own and fortunately other people have already done the work for me, if you are interested in finding our more take a look at the [links at the end of this post](#FurtherInformation).
 
 From [Back To Basics: Generational Garbage Collection](http://blogs.msdn.com/b/abhinaba/archive/2009/03/02/back-to-basics-generational-garbage-collection.aspx)
 
 ![Write barrier + card-table](http://blogs.msdn.com/blogfiles/abhinaba/WindowsLiveWriter/BackToBasicsGenerationalGarbageCollectio_115F4/image_18.png)
-
-Also see ["Making Generations Work with Write Barriers"](https://msdn.microsoft.com/en-us/library/ms973837.aspx)
-
-Other links:
-- https://www.jetbrains.com/dotmemory/help/NET_Memory_Management_Concepts.html
-- http://blogs.msdn.com/b/abhinaba/archive/2009/03/02/back-to-basics-generational-garbage-collection.aspx
-- http://www.devx.com/Java/Article/21977
-- http://blogs.msdn.com/b/abhinaba/archive/2009/03/02/back-to-basics-generational-garbage-collection.aspx
-- http://patshaughnessy.net/2013/10/30/generational-gc-in-python-and-ruby
-- http://www.cncoders.net/article/6981/
 
 ----
 
@@ -184,13 +176,33 @@ GCToEEInterface::GcScanRoots(condemned = 0, max_gen = 2)
 GCToEEInterface::GcDone(condemned = 0)
 GCToEEInterface::RestartEE(bFinishedGC = TRUE)
 ```
+From https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md
+
+**WKS GC with concurrent GC off**
+
+1. User thread runs out of allocation budget and triggers a GC.
+1. GC calls SuspendEE to suspend managed threads.
+1. GC decides which generation to condemn.
+1. Mark phase runs.
+1. Plan phase runs and decides if a compacting GC should be done.
+1. If so relocate and compact phase runs. Otherwise, sweep phase runs.
+1. GC calls RestartEE to resume managed threads.
+1. User thread resumes running.
 
 ----
 
-### <a name="FurtherInformation"></a>**Further Information**
+### **Further Information**
 
-[Baby's First Garbage Collector](http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/)
-[Writing a Simple Garbage Collector in C](http://web.engr.illinois.edu/%7Emaplant2/gc.html)
+- General
+  - [Baby's First Garbage Collector](http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/)
+  - [Writing a Simple Garbage Collector in C](http://web.engr.illinois.edu/%7Emaplant2/gc.html)
+- Marking the Card Table
+  - ["Making Generations Work with Write Barriers"](https://msdn.microsoft.com/en-us/library/ms973837.aspx)
+  - [Generational GC in Python and Ruby](http://patshaughnessy.net/2013/10/30/generational-gc-in-python-and-ruby)
+- [NET Memory Management Concepts](https://www.jetbrains.com/dotmemory/help/NET_Memory_Management_Concepts.html)
+- [Back-to-basics Generational GC](http://blogs.msdn.com/b/abhinaba/archive/2009/03/02/back-to-basics-generational-garbage-collection.aspx)
+- [Garbage Collection in the Java HotSpot Virtual Machine - See more at: http://www.devx.com/Java/Article/21977#sthash.6zgHlWbr.dpuf](http://www.devx.com/Java/Article/21977)
+- [Understanding GC pauses in JVM, HotSpot's minor GC](http://www.cncoders.net/article/6981/)
 
 ----
 
@@ -201,9 +213,10 @@ a.k.a  the [GC.TryStartNoGCRegion(Int64) method](https://msdn.microsoft.com/en-u
 
 ----
 
-### <a name="GCSampleCodeLayout"></a>**GC Sample Code Layout**
+### **GC Sample Code Layout**
 
 GC Sample Code (under \sample)
+
 - GCSample.cpp
 - gcenv.h
 - gcenv.ee.cpp
@@ -211,6 +224,7 @@ GC Sample Code (under \sample)
 - gcenv.unix.cpp
 
 GC Sample Environment (under \env)
+
 - common.cpp 
 - common.h
 - etmdummy.g
@@ -225,6 +239,7 @@ GC Sample Environment (under \env)
 
 
 GC Code (top-level folder)
+
 - gc.cpp (36,911 lines long!!)
 - gc.h 
 - gccommon.cpp
