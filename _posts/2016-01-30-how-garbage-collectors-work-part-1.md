@@ -107,8 +107,8 @@ One of the interesting items this highlights is an advantage of GC systems, name
 
 ### Marking the "Card Table"
 
-The 3rd part of the process of allocating an object was a call to [ErectWriteBarrier(Object \*\* dst, Object \* ref)
-](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp#L90-L105), that function looks like this:
+The 3rd part of the process of allocating an object was a call to [ErectWriteBarrier(..)
+](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp#L90-L105), which looks like this:
 
 ```
 inline void ErectWriteBarrier(Object ** dst, Object * ref)
@@ -127,7 +127,6 @@ inline void ErectWriteBarrier(Object ** dst, Object * ref)
             *pCardByte = 0xFF;
     }
 }
-
 ```
 
 Now explaining what is going on here is probably an entire post on it's own and fortunately other people have already done the work for me, if you are interested in finding our more take a look at the [links at the end of this post](#further-information). 
@@ -170,7 +169,7 @@ To understand this interaction between the GC and the EE, it's helpful to look a
 - `void GCToEEInterface::SyncBlockCacheDemote(int /*max_gen*/)`
 - `void GCToEEInterface::SyncBlockCachePromotionsGranted(int /*max_gen*/)`
 
-If you want to see how the .NET Runtime performs these "tasks", you can take a look at the [real implementation](https://github.com/dotnet/coreclr/blob/master/src/vm/gcenv.ee.cpp). However in the GC Sample these methods are mostly [stubbed out](https://github.com/mattwarren/GCSample/blob/90d07fdff32d370a3977978854d2d221027e1780/sample/gcenv.ee.cpp#L147-L165) stubbed out as no-ops. So that I could get an idea of the flow of the GC during a collection, I just added a simple `print(..)` statement to each one, then it's possible to see when the GC calls them and in what order. Now when I run the run the GC Sample I get the following output:
+If you want to see how the .NET Runtime performs these "tasks", you can take a look at the [real implementation](https://github.com/dotnet/coreclr/blob/master/src/vm/gcenv.ee.cpp). However in the GC Sample these methods are mostly [stubbed out](https://github.com/mattwarren/GCSample/blob/90d07fdff32d370a3977978854d2d221027e1780/sample/gcenv.ee.cpp#L147-L165) as no-ops. So that I could get an idea of the flow of the GC during a collection, I added simple `print(..)` statements to each one, then when I ran the GC Sample I got the following output:
 
 ```
 GCToEEInterface::SuspendEE(SUSPEND_REASON = 1)
@@ -210,3 +209,53 @@ If you want to find out any more information about Garbage Collectors, here is a
   - [Back-to-basics Generational GC](http://blogs.msdn.com/b/abhinaba/archive/2009/03/02/back-to-basics-generational-garbage-collection.aspx)
   - [Garbage Collection in the Java HotSpot Virtual Machine](http://www.devx.com/Java/Article/21977)
   - [Understanding GC pauses in JVM, HotSpot's minor GC](http://www.cncoders.net/article/6981/)
+
+----
+
+## GC Sample Code Layout (for reference)
+
+**GC Sample Code (under \sample)**
+
+- GCSample.cpp
+- gcenv.h
+- gcenv.ee.cpp
+- gcenv.windows.cpp
+- gcenv.unix.cpp
+
+**GC Sample Environment (under \env)**
+
+- common.cpp 
+- common.h
+- etmdummy.g
+- gcenv.base.h
+- gcenv.ee.h
+- gcenv.interlocked.h
+- gcenv.interlocked.inl
+- gcenv.object.h
+- gcenv.os.h
+- gcenv.structs.h
+- gcenv.sync.h
+
+
+**GC Code (top-level folder)**
+
+- gc.cpp (36,911 lines long!!)
+- gc.h 
+- gccommon.cpp
+- gcdesc.h
+- gcee.cpp
+- gceewks.cpp
+- gcimpl.h
+- gcrecord.h
+- gcscan.cpp
+- gcscan.h
+- gcsvr.cpp
+- gcwks.cpp
+- handletable.h
+- handletable.inl
+- handletablecache.cpp
+- gandletablecore.cpp
+- handletablepriv.h
+- handletablescan.cpp
+- objecthandle.cpp
+- objecthandle.h
