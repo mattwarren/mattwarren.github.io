@@ -149,37 +149,37 @@ The final part of the GC sample that I will be looking at is the way in which th
 
 To understand this interaction between the GC and the EE, it's helpful to look at all the functions the GC expects the EE to make available:
 
-- `void GCToEEInterface::SuspendEE(GCToEEInterface::SUSPEND_REASON reason)`
-- `void GCToEEInterface::RestartEE(bool bFinishedGC)`
-- `void GCToEEInterface::GcScanRoots(promote_func* fn, int condemned, int max_gen, ScanContext* sc)`
-- `void GCToEEInterface::GcStartWork(int condemned, int max_gen)`
-- `void GCToEEInterface::AfterGcScanRoots(int condemned, int max_gen, ScanContext* sc)`
-- `void GCToEEInterface::GcBeforeBGCSweepWork()`
-- `void GCToEEInterface::GcDone(int condemned)`
-- `bool GCToEEInterface::RefCountedHandleCallbacks(Object * pObject)`
-- `bool GCToEEInterface::IsPreemptiveGCDisabled(Thread * pThread)`
-- `void GCToEEInterface::EnablePreemptiveGC(Thread * pThread)`
-- `void GCToEEInterface::DisablePreemptiveGC(Thread * pThread)`
-- `void GCToEEInterface::SetGCSpecial(Thread * pThread)`
-- `alloc_context * GCToEEInterface::GetAllocContext(Thread * pThread)`
-- `bool GCToEEInterface::CatchAtSafePoint(Thread * pThread)`
-- `void GCToEEInterface::AttachCurrentThread()`
-- `void GCToEEInterface::GcEnumAllocContexts (enum_alloc_context_func* fn, void* param)`
-- `void GCToEEInterface::SyncBlockCacheWeakPtrScan(HANDLESCANPROC /*scanProc*/, uintptr_t /*lp1*/, uintptr_t /*lp2*/)`
-- `void GCToEEInterface::SyncBlockCacheDemote(int /*max_gen*/)`
-- `void GCToEEInterface::SyncBlockCachePromotionsGranted(int /*max_gen*/)`
+- `void SuspendEE(GCToEEInterface::SUSPEND_REASON reason)`
+- `void RestartEE(bool bFinishedGC)`
+- `void GcScanRoots(promote_func* fn, int condemned, int max_gen, ScanContext* sc)`
+- `void GcStartWork(int condemned, int max_gen)`
+- `void AfterGcScanRoots(int condemned, int max_gen, ScanContext* sc)`
+- `void GcBeforeBGCSweepWork()`
+- `void GcDone(int condemned)`
+- `bool RefCountedHandleCallbacks(Object * pObject)`
+- `bool IsPreemptiveGCDisabled(Thread * pThread)`
+- `void EnablePreemptiveGC(Thread * pThread)`
+- `void DisablePreemptiveGC(Thread * pThread)`
+- `void SetGCSpecial(Thread * pThread)`
+- `alloc_context * etAllocContext(Thread * pThread)`
+- `bool CatchAtSafePoint(Thread * pThread)`
+- `void AttachCurrentThread()`
+- `void GcEnumAllocContexts (enum_alloc_context_func* fn, void* param)`
+- `void SyncBlockCacheWeakPtrScan(HANDLESCANPROC /*scanProc*/, uintptr_t /*lp1*/, uintptr_t /*lp2*/)`
+- `void SyncBlockCacheDemote(int /*max_gen*/)`
+- `void SyncBlockCachePromotionsGranted(int /*max_gen*/)`
 
 If you want to see how the .NET Runtime performs these "tasks", you can take a look at the [real implementation](https://github.com/dotnet/coreclr/blob/master/src/vm/gcenv.ee.cpp). However in the GC Sample these methods are mostly [stubbed out](https://github.com/mattwarren/GCSample/blob/90d07fdff32d370a3977978854d2d221027e1780/sample/gcenv.ee.cpp#L147-L165) as no-ops. So that I could get an idea of the flow of the GC during a collection, I added simple `print(..)` statements to each one, then when I ran the GC Sample I got the following output:
 
 ```
-GCToEEInterface::SuspendEE(SUSPEND_REASON = 1)
-GCToEEInterface::GcEnumAllocContexts(..)
-GCToEEInterface::GcStartWork(condemned = 0, max_gen = 2)
-GCToEEInterface::GcScanRoots(condemned = 0, max_gen = 2)
-GCToEEInterface::AfterGcScanRoots(condemned = 0, max_gen = 2)
-GCToEEInterface::GcScanRoots(condemned = 0, max_gen = 2)
-GCToEEInterface::GcDone(condemned = 0)
-GCToEEInterface::RestartEE(bFinishedGC = TRUE)
+SuspendEE(SUSPEND_REASON = 1)
+GcEnumAllocContexts(..)
+GcStartWork(condemned = 0, max_gen = 2)
+GcScanRoots(condemned = 0, max_gen = 2)
+AfterGcScanRoots(condemned = 0, max_gen = 2)
+GcScanRoots(condemned = 0, max_gen = 2)
+GcDone(condemned = 0)
+RestartEE(bFinishedGC = TRUE)
 ```
 
 Which fortunately corresponds nicely with the GC phases for **[WKS GC with concurrent GC off](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md#wks-gc-with-concurrent-gc-off)** as outlined in the BOTR:
