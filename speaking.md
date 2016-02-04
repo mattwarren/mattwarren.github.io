@@ -27,7 +27,7 @@ Click below to see the video of my talk at NDC London 2014:
 Starting with the premise that "Performance is a Feature", this session will look at how to measure, what to measure and how get the best performance from your .NET code. We will look at real-world examples from the Roslyn code-base and StackOverflow.
 </br></br></br>
 
-Thanks to <a href="twitter.com/craigtptech" target="_blank">@craigtptech</a> for the image and also for his <a href="http://blog.craigtp.co.uk/post/DDD-East-Anglia-2014-Review" target="_blank">excellent write up</a>, I've included a few quotes below:
+Thanks to <a href="https://twitter.com/craigtptech" target="_blank">@craigtptech</a> for the image and also for his <a href="http://blog.craigtp.co.uk/post/DDD-East-Anglia-2014-Review" target="_blank">excellent write up</a>, I've included a few quotes below:
 
 <blockquote>Matt starts by asking Why does performance matter? What do we need to know? and When do we need to optimize performance?</blockquote>
 
