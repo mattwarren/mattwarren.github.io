@@ -132,7 +132,7 @@ inline void ErectWriteBarrier(Object ** dst, Object * ref)
 
 ```
 
-Now this is probably an entire post on it's own and fortunately other people have already done the work for me, if you are interested in finding our more take a look at the [links at the end of this post](#FurtherInformation).
+Now this is probably an entire post on it's own and fortunately other people have already done the work for me, if you are interested in finding our more take a look at the [links at the end of this post](#further-information).
 
 From [Back To Basics: Generational Garbage Collection](http://blogs.msdn.com/b/abhinaba/archive/2009/03/02/back-to-basics-generational-garbage-collection.aspx)
 
@@ -179,8 +179,7 @@ GCToEEInterface::RestartEE(bFinishedGC = TRUE)
 From https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md
 
 > **WKS GC with concurrent GC off**
-
-> 1. User thread runs out of allocation budget and triggers a GC.
+1. User thread runs out of allocation budget and triggers a GC.
 1. GC calls SuspendEE to suspend managed threads.
 1. GC decides which generation to condemn.
 1. Mark phase runs.
@@ -199,10 +198,10 @@ From https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-co
 - Marking the Card Table
   - ["Making Generations Work with Write Barriers"](https://msdn.microsoft.com/en-us/library/ms973837.aspx)
   - [Generational GC in Python and Ruby](http://patshaughnessy.net/2013/10/30/generational-gc-in-python-and-ruby)
-- [NET Memory Management Concepts](https://www.jetbrains.com/dotmemory/help/NET_Memory_Management_Concepts.html)
-- [Back-to-basics Generational GC](http://blogs.msdn.com/b/abhinaba/archive/2009/03/02/back-to-basics-generational-garbage-collection.aspx)
-- [Garbage Collection in the Java HotSpot Virtual Machine - See more at: http://www.devx.com/Java/Article/21977#sthash.6zgHlWbr.dpuf](http://www.devx.com/Java/Article/21977)
-- [Understanding GC pauses in JVM, HotSpot's minor GC](http://www.cncoders.net/article/6981/)
+  - [NET Memory Management Concepts](https://www.jetbrains.com/dotmemory/help/NET_Memory_Management_Concepts.html)
+  - [Back-to-basics Generational GC](http://blogs.msdn.com/b/abhinaba/archive/2009/03/02/back-to-basics-generational-garbage-collection.aspx)
+  - [Garbage Collection in the Java HotSpot Virtual Machine](http://www.devx.com/Java/Article/21977)
+  - [Understanding GC pauses in JVM, HotSpot's minor GC](http://www.cncoders.net/article/6981/)
 
 ----
 
