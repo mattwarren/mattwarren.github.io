@@ -18,7 +18,7 @@ Well that was my original plan, but if you go an look at the [.NET Framework GC 
 
 This is because the file is **36,915** lines long and **1.19MB** in size! Now before you send a PR to Microsoft that chops it up into smaller bits, you might want to read this [discussion on reorganizing gc.cpp](https://github.com/dotnet/coreclr/issues/408). It turns out you are not the only one who's had that idea and your PR will probably be rejected, for some [specific reasons](https://github.com/dotnet/coreclr/issues/408#issuecomment-78014795).
 
-### <a name="GoalsOfTheGC"></a>**Goals of the GC**
+### Goals of the GC
 
 So I'm not going to be able to read and understand a 36 KLOC .cpp source file any time soon, instead I tried a different approach and started off by looking through the excellent Book-of-the-Runtime (BOTR) section on ["Design of the Collector"](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md#design-of-the-collector). This very helpfully lists the following items as the goals of the .NET GC (emphasis mine):
 
@@ -38,7 +38,7 @@ So there's some interesting goals in there, in particular they twice included th
 
 ----
 
-### <a name="NETGCSample"></a>**.NET GC Sample**
+### .NET GC Sample
 
 So now we have an idea about what the goals of the GC are, lets take a look at how it goes about things. Fortunately those nice developers at Microsoft released a [GC Sample](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp) that shows you, at a basic level, how you can use the full .NET GC in your own code. After building the sample (and [finding a few bugs in the process](https://github.com/dotnet/coreclr/pull/2582)), I was able to get a simple, single-threaded GC up and running.
 
@@ -51,7 +51,7 @@ What's interesting about the sample application is that is clearly shows you wha
 1. `ErectWriteBarrier(..)`
   - For more information see "Marking the Card Table" below
 
-### <a name="AllocatingAnObject"></a>**Allocating an Object**
+### Allocating an Object
 
 [`AllocateObject(..)` code from GCSample.cpp](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp#L55-L79)
 
@@ -107,7 +107,7 @@ One of the interesting items this highlights is an advantage of GC systems, name
 
 ----
 
-### <a name="MarkingTheCardTable"></a>**Marking the "Card Table"**
+### Marking the "Card Table"
 
 The 3rd part of the process of allocating an object was a call to [ErectWriteBarrier(Object ** dst, Object * ref)
 ](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp#L90-L105)
@@ -140,7 +140,7 @@ From [Back To Basics: Generational Garbage Collection](http://blogs.msdn.com/b/a
 
 ----
 
-### <a name="GCandEEInteraction"></a>**GC and Execution Engine (EE) Interaction**
+### GC and Execution Engine (EE) Interaction
 
 (see the [real implementation](https://github.com/dotnet/coreclr/blob/master/src/vm/gcenv.ee.cpp) for how the methods are really implemented)
 
@@ -191,7 +191,7 @@ From https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-co
 
 ----
 
-### **Further Information**
+### Further Information
 
 - General
   - [Baby's First Garbage Collector](http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/)
@@ -213,9 +213,9 @@ a.k.a  the [GC.TryStartNoGCRegion(Int64) method](https://msdn.microsoft.com/en-u
 
 ----
 
-### **GC Sample Code Layout**
+### GC Sample Code Layout
 
-GC Sample Code (under \sample)
+**GC Sample Code (under \sample)**
 
 - GCSample.cpp
 - gcenv.h
@@ -223,7 +223,7 @@ GC Sample Code (under \sample)
 - gcenv.windows.cpp
 - gcenv.unix.cpp
 
-GC Sample Environment (under \env)
+**GC Sample Environment (under \env)**
 
 - common.cpp 
 - common.h
@@ -238,7 +238,7 @@ GC Sample Environment (under \env)
 - gcenv.sync.h
 
 
-GC Code (top-level folder)
+**GC Code (top-level folder)**
 
 - gc.cpp (36,911 lines long!!)
 - gc.h 
