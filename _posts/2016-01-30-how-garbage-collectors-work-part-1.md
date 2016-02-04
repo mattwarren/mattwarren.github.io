@@ -8,19 +8,19 @@ date: 2016-02-01
 
 ---
 
-This series is an attempt to learn more about how a real-life "Garbage Collector" (GC) works internally, i.e. not so much "*what it does*", but "*how it does it*" at a low-level. I will be mostly be concentrating on the .NET GC, because I'm a .NET developer and because it's recently been [Open Sourced]({{base}}/2015/12/08/open-source-net-1-year-later/) so we can actually look at the code.
+This series is an attempt to learn more about how a real-life "Garbage Collector" (GC) works internally, i.e. not so much "*what it does*", but "*how it does it*" at a low-level. I will be mostly be concentrating on the .NET GC, because I'm a .NET developer and also because it's recently been [Open Sourced]({{base}}/2015/12/08/open-source-net-1-year-later/) so we can actually look at the code.
 
 **Note:** If you do want to learn about what a GC does, I really recommend the talk [Everything you need to know about .NET memory](https://vimeo.com/113632451) by Ben Emmett, it's a fantastic talk that uses lego to explain what the .NET GC does (the [slides are also available](http://www.slideshare.net/benemmett/net-memory-management-ndc-london))
 
-Well that was my original plan, but if you go an look at the [.NET Framework GC code](https://github.com/dotnet/coreclr/blob/master/src/gc/gc.cpp) on GitHub you are presented with the message "*This file has been truncated,...*":
+Well, trying to understand what the .NET GC does by looking at the source was my original plan, but if you go and take a look at the [code on GitHub](https://github.com/dotnet/coreclr/blob/master/src/gc/gc.cpp) you will be presented with the message "*This file has been truncated,...*":
 
 [![gc.cpp on GitHub](https://cloud.githubusercontent.com/assets/157298/12352478/49f74242-bb7e-11e5-8028-5df72943f58a.png)](https://github.com/dotnet/coreclr/blob/master/src/gc/gc.cpp)
 
 This is because the file is **36,915** lines long and **1.19MB** in size! Now before you send a PR to Microsoft that chops it up into smaller bits, you might want to read this [discussion on reorganizing gc.cpp](https://github.com/dotnet/coreclr/issues/408). It turns out you are not the only one who's had that idea and your PR will probably be rejected, for some [specific reasons](https://github.com/dotnet/coreclr/issues/408#issuecomment-78014795).
 
-### Goals of the GC
+## Goals of the GC
 
-So I'm not going to be able to read and understand a 36 KLOC .cpp source file any time soon, instead I tried a different approach and started off by looking through the excellent Book-of-the-Runtime (BOTR) section on ["Design of the Collector"](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md#design-of-the-collector). This very helpfully lists the following goals of the .NET GC (emphasis mine):
+So, as I'm not going to be able to read and understand a 36 KLOC .cpp source file any time soon, instead I tried a different approach and started off by looking through the excellent Book-of-the-Runtime (BOTR) section on the ["Design of the Collector"](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md#design-of-the-collector). This very helpfully lists the following goals of the .NET GC (**emphasis** mine):
 
 > The GC strives to manage memory **extremely efficiently** and require **very little effort from people who write managed code**. Efficient means:
 >
@@ -34,15 +34,15 @@ So there's some interesting points in there, in particular they twice included t
 
 > A difference between Oracle's and Microsoft's GC implementation 'ethos' is one of configurability.
 > 
-> Oracle's provides a vast number of options (at the command line) to tweaks aspects of the GC or switch it between different modes. Many options are of the -X or -XX to indicate their lack of support across different versions or vendors. The CLR by contrast provides next to no configurability; your only real option is the use of the server or client collectors which optimise for throughput verses latency respectively.
+> Oracle provides a vast number of options (at the command line) to tweak aspects of the GC or switch it between different modes. Many options are of the -X or -XX to indicate their lack of support across different versions or vendors. The CLR by contrast provides next to no configurability; your only real option is the use of the server or client collectors which optimise for throughput verses latency respectively.
 
 ----
 
-### .NET GC Sample
+## .NET GC Sample
 
 So now we have an idea about what the goals of the GC are, lets take a look at how it goes about things. Fortunately those nice developers at Microsoft released a [GC Sample](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp) that shows you, at a basic level, how you can use the full .NET GC in your own code. After building the sample (and [finding a few bugs in the process](https://github.com/dotnet/coreclr/pull/2582)), I was able to get a simple, single-threaded Workstation GC up and running.
 
-What's interesting about the sample application is that it clearly shows you what actions the .NET Runtime has to perform to make the GC work. So for instance, at a high-level the runtime needs to go through the following process to allocate an object:
+What's interesting about the sample application is that it clearly shows you what actions the [.NET Runtime has to perform to make the GC work](https://github.com/mattwarren/GCSample/blob/master/sample/GCSample.cpp#L11-L37). So for instance, at a high-level the runtime needs to go through the following process to allocate an object:
 
 1. `AllocateObject(..)` 
   - See below for the code and explanation of the allocation process
@@ -51,7 +51,7 @@ What's interesting about the sample application is that it clearly shows you wha
 1. `ErectWriteBarrier(..)`
   - For more information see "Marking the Card Table" below
 
-#### Allocating an Object
+### Allocating an Object
 
 [`AllocateObject(..)` code from GCSample.cpp](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp#L55-L79)
 
@@ -83,7 +83,7 @@ Object * AllocateObject(MethodTable * pMT)
 }
 ```
 
-Well, what's going on here, again the BOTR comes in handy as it gives us a clear overview of the process, from ["Design of Allocator"](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md#design-of-allocator):
+To understand what's going on here, the BOTR again comes in handy as it gives us a clear overview of the process, from ["Design of Allocator"](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/garbage-collection.md#design-of-allocator):
 
 > When the GC gives out memory to the allocator, it does so in terms of allocation contexts. The size of an allocation context is defined by the allocation quantum.
 
@@ -105,9 +105,9 @@ Finally, it's worth looking at the goals that the allocator was designed to achi
 
 One of the interesting items this highlights is an advantage of GC systems, namely that you get efficient [CPU cache usage or good object locality](http://mechanical-sympathy.blogspot.co.uk/2012/08/memory-access-patterns-are-important.html) because memory is allocated in units. This means that objects created one after the other (on the same thread), will sit next to each other in memory.
 
-#### Marking the "Card Table"
+### Marking the "Card Table"
 
-The 3rd part of the process of allocating an object was a call to [ErectWriteBarrier(Object ** dst, Object * ref)
+The 3rd part of the process of allocating an object was a call to [ErectWriteBarrier(Object \*\* dst, Object \* ref)
 ](https://github.com/dotnet/coreclr/blob/master/src/gc/sample/GCSample.cpp#L90-L105), that function looks like this:
 
 ```
@@ -144,7 +144,7 @@ Image taken from [Back To Basics: Generational Garbage Collection](http://blogs.
 
 ----
 
-### GC and Execution Engine Interaction
+## GC and Execution Engine Interaction
 
 The final part of the GC sample that I will be looking at is the way in which the GC needs to interact with the .NET Runtime Execution Engine (EE). The EE is responsible for actually running or coordinating all the low-level things that the .NET runtime needs to-do, such as creating threads, reserving memory and so it acts as an interface to the OS, via [Windows](https://github.com/mattwarren/GCSample/blob/master/sample/gcenv.windows.cpp) and [Unix](https://github.com/mattwarren/GCSample/blob/master/sample/gcenv.unix.cpp) implementations.
 
@@ -196,7 +196,7 @@ Which fortunately corresponds nicely with the GC phases for **[WKS GC with concu
 
 ----
 
-### Further Information
+## Further Information
 
 If you want to find out any more information about Garbage Collectors, here is a list of useful links:
 
