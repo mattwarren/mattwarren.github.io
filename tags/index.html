@@ -8,7 +8,7 @@ title: Tags
 
 {% capture tags %}
   {% for tag in site.tags %}
-    {{ tag[0].gsub(' ', '-') }}
+    {{ tag[0] tag[1] }}
   {% endfor %}
 {% endcapture %}
 {% assign sortedtags = tags | split:' ' | sort %}
