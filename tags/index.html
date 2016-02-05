@@ -15,7 +15,7 @@ title: Tags
 
 {% for tag in sortedtags %}
   {% assign originaltag = tag | replace:'-',' ' %}
-  <h3 id="{{ tag }}">({{ originaltag }})</h3>
+  <h3 id="{{ tag }}">{{ originaltag }}</h3>
   <ul>
   {% for post in site.tags[originaltag]) %}
     <li>
