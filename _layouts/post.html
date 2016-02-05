@@ -2,14 +2,10 @@
 layout: default
 ---
 
-<!-- See http://www.minddust.com/post/tags-and-categories-on-github-pages/ -->
 {% assign post = page %}
 {% if post.tags.size > 0 %}
     {% for post_tag in post.tags %}
         {% for data_tag in site.data.tags %}
-            {% if data_tag.slug == post_tag %}
-                {% assign tag = data_tag %}
-            {% endif %}
         {% endfor %}
     {% endfor %}
 {% endif %}
