@@ -3,10 +3,6 @@ layout: default
 ---
 
 {% assign post = page %}
-{% if post.tags.size > 0 %}
-    {% for post_tag in post.tags %}
-    {% endfor %}
-{% endif %}
 
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
