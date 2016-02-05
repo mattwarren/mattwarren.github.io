@@ -4,8 +4,8 @@
 permalink:           pretty
 
 # Setup
-title:               'Performance is a Feature!'
-tagline:             ''
+title:               'Matt Warren'
+tagline:             'Performance is a Feature!'
 description:         ''
 url:                 http://mattwarren.github.io
 # Don't use baseurl, see https://talk.jekyllrb.com/t/what-trouble-happens-if-i-make-all-links-relative-instead-of-absolute/418/2
