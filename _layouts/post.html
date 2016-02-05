@@ -11,8 +11,7 @@ layout: default
 <div class="share">
   <strong>Tags:</strong>
   {% for tag in page.tags %}
-  {% assign originaltag = tag | replace:' ','-' %}
-  <span><a href="{{ base }}tags/#{{ originaltag }}">{{ tag }}</a>, </span>
+  <span><a href="{{ base }}tags/#blah">{{ tag }}</a>, </span>
   {% endfor %}
 </div>
 
