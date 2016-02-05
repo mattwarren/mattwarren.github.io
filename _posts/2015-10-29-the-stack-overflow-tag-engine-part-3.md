@@ -2,7 +2,7 @@
 layout: post
 title: The Stack Overflow Tag Engine – Part 3
 comments: true
-tags: [bitmaps, indexing, stackoverflow]
+tags: [indexing, stackoverflow]
 ---
 
 This is the part 3 of a mini-series looking at what it *might* take to build the Stack Overflow Tag Engine, if you haven't read [part 1]({{base}}/2014/11/01/the-stack-overflow-tag-engine-part-1/) or [part 2]({{base}}/2015/08/19/the-stack-overflow-tag-engine-part-2/), I recommend reading them first.

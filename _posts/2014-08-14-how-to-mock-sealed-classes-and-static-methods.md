@@ -2,7 +2,7 @@
 layout: post
 title: How to mock sealed classes and static methods
 comments: true
-tags: [.NET Profiling, dynamic code generation, JustMock, Mocking, TypeMock]
+tags: [.NET Profiling, dynamic code generation, Mocking]
 ---
 <a href="http://www.typemock.com/" target="_blank">Typemock</a> &amp; <a href="http://www.telerik.com/products/mocking.aspx" target="_blank">JustMock</a> are 2 commercially available mocking tools that let you achieve something that should be impossible. Unlike all other mocking frameworks, they let you mock <strong>sealed classes, static</strong> and <strong>non-virtual methods</strong>, but how do they do this?
 
