@@ -10,8 +10,8 @@ layout: default
 
 <div class="share">
   <strong>Tags:</strong>
-  {% for tag in page.tags %}
-  <a href="">{{ tag }}, </a>
+  {% for page_tag in page.tags %}
+  <span>{{ page_tag }}, </span>
   {% endfor %}
 </div>
 
