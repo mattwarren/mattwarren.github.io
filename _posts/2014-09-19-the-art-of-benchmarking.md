@@ -305,20 +305,20 @@ Here's a list of all the code samples and other data used in making this post:
 There's lots of really good information out there related to writing benchmarks and understanding what the .NET JIT compiler is doing, below are just some of the links I've found:
 
 - **Writing good benchmarks**
- - http://www.yoda.arachsys.com/csharp/benchmark.html 
- - http://blogs.msmvps.com/jonskeet/2009/01/26/benchmarking-made-easy/
- - http://blogs.msdn.com/b/vancem/archive/2009/02/06/measureit-update-tool-for-doing-microbenchmarks.aspx     
- - http://measureitdotnet.codeplex.com/
+  - http://www.yoda.arachsys.com/csharp/benchmark.html 
+  - http://blogs.msmvps.com/jonskeet/2009/01/26/benchmarking-made-easy/
+  - http://blogs.msdn.com/b/vancem/archive/2009/02/06/measureit-update-tool-for-doing-microbenchmarks.aspx     
+  - http://measureitdotnet.codeplex.com/
 - **JIT Optimisations, including method in-lining and dead code eliminations**
- - http://blogs.microsoft.co.il/sasha/2007/02/27/jit-optimizations-inlining-and-interface-method-dispatching-part-1-of-n/
- - http://blogs.microsoft.co.il/sasha/2007/08/12/jit-optimizations-inlining-and-interface-method-dispatching-part-2-of-n/
- - http://blogs.microsoft.co.il/sasha/2012/01/20/aggressive-inlining-in-the-clr-45-jit/
- - http://blogs.microsoft.co.il/sasha/2012/06/22/micro-benchmarking-done-wrong-and-for-the-wrong-reasons/
- - http://blogs.msdn.com/b/ericgu/archive/2004/01/29/64717.aspx
- - http://blogs.msdn.com/b/jmstall/archive/2006/03/13/dead-code-elimination.aspx
- - http://blogs.msdn.com/b/vancem/archive/2008/08/19/to-inline-or-not-to-inline-that-is-the-question.aspx
- - http://stackoverflow.com/questions/4043821/performance-differences-between-debug-and-release-builds/4045073#4045073
+  - http://blogs.microsoft.co.il/sasha/2007/02/27/jit-optimizations-inlining-and-interface-method-dispatching-part-1-of-n/
+  - http://blogs.microsoft.co.il/sasha/2007/08/12/jit-optimizations-inlining-and-interface-method-dispatching-part-2-of-n/
+  - http://blogs.microsoft.co.il/sasha/2012/01/20/aggressive-inlining-in-the-clr-45-jit/
+  - http://blogs.microsoft.co.il/sasha/2012/06/22/micro-benchmarking-done-wrong-and-for-the-wrong-reasons/
+  - http://blogs.msdn.com/b/ericgu/archive/2004/01/29/64717.aspx
+  - http://blogs.msdn.com/b/jmstall/archive/2006/03/13/dead-code-elimination.aspx
+  - http://blogs.msdn.com/b/vancem/archive/2008/08/19/to-inline-or-not-to-inline-that-is-the-question.aspx
+  - http://stackoverflow.com/questions/4043821/performance-differences-between-debug-and-release-builds/4045073#4045073
 - **Inspecting generated assembly code**
- - http://blogs.msdn.com/b/vancem/archive/2006/02/20/535807.aspx
- - http://www.cuttingedge.it/blogs/steven/downloads/Program_InlinableMethodTests.cs
- - http://www.philosophicalgeek.com/2014/07/25/using-windbg-to-answer-implementation-questions-for-yourself-can-a-delegate-invocation-be-inlined/
+  - http://blogs.msdn.com/b/vancem/archive/2006/02/20/535807.aspx
+  - http://www.cuttingedge.it/blogs/steven/downloads/Program_InlinableMethodTests.cs
+  - http://www.philosophicalgeek.com/2014/07/25/using-windbg-to-answer-implementation-questions-for-yourself-can-a-delegate-invocation-be-inlined/
