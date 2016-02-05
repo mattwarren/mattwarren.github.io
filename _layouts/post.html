@@ -5,8 +5,6 @@ layout: default
 {% assign post = page %}
 {% if post.tags.size > 0 %}
     {% for post_tag in post.tags %}
-        {% for data_tag in site.data.tags %}
-        {% endfor %}
     {% endfor %}
 {% endif %}
 
