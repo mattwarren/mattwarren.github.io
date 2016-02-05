@@ -2,7 +2,7 @@
 layout: post
 title: Know thy .NET object memory layout (Updated 2014-09-03)
 comments: true
-tags: [.NET, false-sharing, memory layout, Performance, SOS]
+tags: [.NET, false-sharing, memory layout, Performance]
 ---
 Apologies to <a href="https://twitter.com/nitsanw" target="_blank">Nitsan Wakart</a>, from whom I shamelessly stole the <a href="http://psy-lob-saw.blogspot.co.uk/2013/05/know-thy-java-object-memory-layout.html" target="_blank">title of this post</a>!
 
