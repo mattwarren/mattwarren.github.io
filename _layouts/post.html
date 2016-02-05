@@ -2,10 +2,16 @@
 layout: default
 ---
 
+<div class="post">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <span class="post-date">{{ page.date | date_to_string }} - {{ page.content | number_of_words }} words</span>
+  {{ content }}
+</div>
+
 <div class="share">
   <strong>Tags:</strong>
-  {% for page_tag in page.tags %}
-  <span>{{ page_tag }}, </span>
+  {% for tag in post.tags %}
+  <a href="">{{ tag }}, </a>
   {% endfor %}
 </div>
 
@@ -17,6 +23,8 @@ layout: default
   <a target="_blank" title="Share on Facebook" href="https://facebook.com/sharer.php?u={{site.url}}{{post.url}}&amp;t={{post.title | uri_escape}}"><img src="{{site.url}}/images/social/Facebook.svg" height=27 width=27></a>&nbsp;
   <a target="_blank" title="Share on LinkedIn" href="http://www.linkedin.com/shareArticle?mini=true&amp;{{site.url}}{{post.url}}&amp;title={{post.title | uri_escape}}"><img src="{{site.url}}/images/social/LinkedIn.svg" height=27 width=27></a>&nbsp;
 </div>
+
+{% include comments.html %}
 
 <div class="related">
   <h2>Related Posts</h2>
