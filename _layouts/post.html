@@ -30,7 +30,7 @@ layout: default
 <div class="share">
   <strong>Tags:</strong>
   {% for page_tag in page.tags %}
-  <a href="{{ base }}/tags/#{{ page_tag }}">{{ page_tag | replace:' ','-' }}</a>, 
+  <a href="{{ base }}/tags/#{{ page_tag | replace:' ','-' }}">{{ page_tag }}</a>, 
   {% endfor %}
 </div>
 
