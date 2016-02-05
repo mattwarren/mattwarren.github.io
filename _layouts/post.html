@@ -10,8 +10,8 @@ layout: default
 
 <div class="share">
   <strong>Tags:</strong>
-  {% for tag in page.tags %}
-  <a href="http://mattwarren.github.io/tags/#.NET">{{ tag }}</a>,
+  {% for page_tag in page.tags %}
+  <a href="http://mattwarren.github.io/tags/#.NET">{{ page_tag }}</a>,
   {% endfor %}
 </div>
 
