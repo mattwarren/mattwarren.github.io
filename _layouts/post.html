@@ -10,9 +10,9 @@ layout: default
 
 <div class="share">
   <strong>Tags:</strong>
-  {% for page_tag in page.tags %}
-  {% assign originaltag = page_tag | replace:'-',' ' %}
-  <span><a href="{{ base }}tags/#{{ originaltag }}">{{ page_tag }}</a>, </span>
+  {% for tag in page.tags %}
+  {% assign originaltag = tag | replace:' ','-' %}
+  <span><a href="{{ base }}tags/#{{ originaltag }}">{{ tag }}</a>, </span>
   {% endfor %}
 </div>
 
