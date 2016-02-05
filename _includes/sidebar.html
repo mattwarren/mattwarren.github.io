@@ -25,7 +25,7 @@
       {% endif %}
     {% endfor %}
 
-    <a class="sidebar-nav-item" href="{{ site.baseurl }}/tags/">Posts by Tag</a>
+    <a class="sidebar-nav-item{% if page.url contains '/tags/' %} active{% endif %}" href="{{ site.baseurl }}/tags/">Posts by Tag</a>
 
     <a class="sidebar-nav-item" href="{{ site.author.twitterUrl }}">Twitter</a>
     <a class="sidebar-nav-item" href="{{ site.author.github }}">Github</a>
