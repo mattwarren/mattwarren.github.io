@@ -564,13 +564,13 @@ a.pagination-item:hover {
 }
 
 // for tag cloud and archives
-ul#tag-cloud {
+ul.tag-cloud {
   list-style: none;
   padding: 0;
   text-align: justify; 
   font-size: 16px;
-  li {
-    display: inline-block;
-    margin: 0 12px 12px 0; 
-  }
+}
+ul.tag-cloud li {
+  display: inline-block;
+  margin: 0 12px 12px 0; 
 }
