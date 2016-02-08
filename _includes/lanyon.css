@@ -564,7 +564,7 @@ a.pagination-item:hover {
 }
 
 // for tag cloud and archives
-.tag-cloud {
+ul#tag-cloud {
   list-style: none;
   padding: 0;
   text-align: justify; 
