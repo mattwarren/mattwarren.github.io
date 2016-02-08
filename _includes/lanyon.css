@@ -573,4 +573,7 @@ ul.tag-cloud {
 ul.tag-cloud li {
   display: inline-block;
   margin: 0 12px 12px 0; 
+  background: #ECF0F3;
+  padding: 3px 5px;
+  border-radius: 5px;
 }
