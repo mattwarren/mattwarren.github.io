@@ -11,7 +11,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Page Scroll Depth Tracking (feeds into Google Tag Manager) -->
 <script>
 jQuery(function() {
-  jQuery.scrollDepth();
+  jQuery.scrollDepth({
+    pixelDepth: false,
+    userTiming: false,
+  );
 });
 </script>
 <!-- Page Scroll Depth Tracking -->
