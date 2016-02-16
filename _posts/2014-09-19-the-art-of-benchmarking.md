@@ -2,7 +2,7 @@
 layout: post
 title: The Art of Benchmarking (Updated 2014-09-23)
 comments: true
-tags: [benchmarking, JIT Compiler, Performance]
+tags: [Benchmarking, JIT Compiler, Performance]
 ---
 
 #### **tl;dr**
