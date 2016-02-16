@@ -78,7 +78,7 @@ Finally, as well as offering general advice, Cate also took the time to help me 
 
 ## The End Result
 
-After the mentoring with Cate took place I was accepted to talk at [ProgSCon London 2016](http://www.progscon.co.uk/talks), so obviously the tips she gave me and re-write of my abstract made a difference!!
+After the mentoring with Cate took place I was accepted to talk at [ProgSCon London 2016](http://www.progscon.co.uk/talks), so obviously the tips and re-write of my abstract made a big difference!!
 
 [![Talk at ProgSCon London]({{ base }}/images/2016/02/Talk at ProgSCon London.png)](http://www.progscon.co.uk/program)
 
