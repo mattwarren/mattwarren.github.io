@@ -10,12 +10,12 @@ date: 2016-02-16
 
 I've been reading the excellent [Technically Speaking](https://tinyletter.com/techspeak/archive) newsletter for a while now and when they announced they would be running a [mentoring program](http://www.catehuston.com/blog/2015/12/07/running-a-mentoring-program/), I jumped at the chance and applied straight away. The idea was that each applicant had to set themselves speaking goals or identify areas they wanted to improve and then if you were selected [@techspeakdigest](https://twitter.com/techspeakdigest) would set you up with a mentor.
 
-I was fortunate enough to be selected and assigned to [Cate](https://twitter.com/catehstn) one of the authors of the newsletter, who is also a fairly prolific [conference speaker](http://www.catehuston.com/blog/talks/). As part of scheme I had to identify the areas that I wanted to improve during the hour-long mentoring session, which for were:
+I was fortunate enough to be chosen and assigned to [Cate](https://twitter.com/catehstn) one of the authors of the newsletter, who is also a prolific [conference speaker](http://www.catehuston.com/blog/talks/). As part of scheme I had to identify the areas that I wanted to improve during the hour-long mentoring session, which for me were:
 
 - Turning an outline into a good abstract.
 - Tips for getting a talk accepted via a CFP submission
 
-I've previously done [some talks]({{base}}/speaking) and they seemed to be well received, but I wanted to expand the range of topics I covered and try and speak at some other conferences.
+I've previously done [some talks]({{base}}/speaking) and they seemed to be well received, but I wanted to expand the range of topics I talked about and try and speak at some other conferences.
 
 ## Writing a Good Abstract
 ----
@@ -58,7 +58,7 @@ She then went onto offer some really great tips about what conferences were look
 
 ----
 
-Finally, as well as offering general advice, Cate also took the time to help me re-write an existing abstract. I've put the "before" and "after" below, so you can see the difference. Whilst it's hard to see someone pick apart something you're written, I do agree that the "after" reads much better and sounds more compelling! 
+Finally, as well as offering general advice, Cate also took the time to help me re-write an existing abstract I'd put together. I've included the "before" and "after" below, so you can see the difference. Whilst it's hard to see someone pick apart what you're written, I do agree that the "after" reads much better and sounds more compelling than the "before"! 
 
 ### Before
 
@@ -76,9 +76,9 @@ Finally, as well as offering general advice, Cate also took the time to help me 
 >
 > If you aren’t already benchmarking your code this talk will offer some starting points. We’ll look at how to accurately benchmark in .NET and things to avoid. Along the way we’ll also discover some surprising code optimisations!
 
-----
+## The End Result
 
-After the mentoring took place I applied for and was accepted to talk at [ProgSCon London 2016](http://www.progscon.co.uk/talks), so something must've worked!!
+After the mentoring with Cate took place I was accepted to talk at [ProgSCon London 2016](http://www.progscon.co.uk/talks), so obviously the tips she gave me and re-write of my abstract made a difference!!
 
 [![Talk at ProgSCon London]({{ base }}/images/2016/02/Talk at ProgSCon London.png)](http://www.progscon.co.uk/program)
 
