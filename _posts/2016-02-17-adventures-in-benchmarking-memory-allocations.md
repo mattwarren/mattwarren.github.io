@@ -116,7 +116,7 @@ Nice and clear, accessing the same data via the `IDictionary` interface causes a
 
 Now this scenario might seem a bit contrived and I have to admit that I knew the answer before I started investigating it, however it did originate from a real-life issue, discovered by [Ben Adams](https://twitter.com/ben_a_adams). For the full background take a look at the CoreCLR GitHub issue, [Avoid enumeration allocation via interface](https://github.com/dotnet/coreclr/issues/1579), but as shown below this was identified because in Kestrel/ASP.NET the request/resposne headers are kept in an `IDictionary` data structure and so cause an additional 128 MBytes of garbage per second, when running at 1 Million requests per/second.
 
-![Dictionary v IDictionary - In Kestrel and ASPNET]({{ base }}/images/2016/02/Dictionary v IDictionary - In Kestrel and ASPNET.png)
+[![Dictionary v IDictionary - In Kestrel and ASPNET]({{ base }}/images/2016/02/Dictionary v IDictionary - In Kestrel and ASPNET.png)](https://github.com/dotnet/coreclr/issues/1579#issuecomment-141432753)
 
 Finally, what is the technical explanation of the additional allocations, quoting from [Stephen Toub of Microsoft](https://github.com/dotnet/coreclr/issues/1579#issuecomment-141133843)  
 
@@ -128,7 +128,7 @@ and then [further down the same issue](https://github.com/dotnet/coreclr/issues/
 
 ## Implementation Details
 
-This is all made possible be the excellent [Gargage Collection ETW Events](https://msdn.microsoft.com/en-us/library/ff356162(v=vs.110).aspx) that the .NET runtime produces. In particular the [GCAllocationTick_V2 Event](https://msdn.microsoft.com/en-us/library/ff356162(v=vs.110).aspx#gcallocationtick_v2_event) that is fired each time approximately 100 KB is allocated. A typical event looks like this (when converted to xml), where we can see that `0x1A060` or 106,592 bytes have just been allocated.
+This is all made possible be the excellent [Gargage Collection ETW Events](https://msdn.microsoft.com/en-us/library/ff356162(v=vs.110).aspx) that the .NET runtime produces. In particular the [GCAllocationTick_V2 Event](https://msdn.microsoft.com/en-us/library/ff356162(v=vs.110).aspx#gcallocationtick_v2_event) that is fired each time approximately 100 KB is allocated. An xml representation of a typical event is shown below, you can see that `0x1A060` or 106,592 bytes have just been allocated.
 
 ``` xml
 <UserData>
@@ -145,7 +145,7 @@ This is all made possible be the excellent [Gargage Collection ETW Events](https
 </UserData> 
 ```
 
-To collect these events BenchmarkDotNet uses the [`logman` tool](https://technet.microsoft.com/en-gb/library/cc753820.aspx) that has been build into Windows since Vista. This runs in the background and collects the specified ETW events until you ask it to stop. These events are written to an `.etl` file that can be read by tools such as [Windows Performance Analyzer](https://msdn.microsoft.com/en-us/library/windows/hardware/hh448170.aspx). Once the ETW events have been collected, BenchmarkDotNet then parses them using the excellent [TraceEvent](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent) library, using code like this:
+To collect these events BenchmarkDotNet uses the [logman tool](https://technet.microsoft.com/en-gb/library/cc753820.aspx) that is built into Windows. This runs in the background and collects the specified ETW events until you ask it to stop. These events are continuously written to an `.etl` file that can then be read by tools such as [Windows Performance Analyzer](https://msdn.microsoft.com/en-us/library/windows/hardware/hh448170.aspx). Once the ETW events have been collected, BenchmarkDotNet then parses them using the excellent [TraceEvent](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent) library, using code like this:
 
 ``` csharp
 using (var source = new ETWTraceEventSource(fileName))
