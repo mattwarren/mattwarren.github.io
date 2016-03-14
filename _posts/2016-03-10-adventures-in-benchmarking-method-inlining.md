@@ -61,7 +61,11 @@ In this case the specific reason that the `Legacy JIT - x86` gives for not inlin
 
 For reference, there is a comprehensive list of [JIT ETW Inlining Event Fail Reasons](https://blogs.msdn.microsoft.com/clrcodegeneration/2009/10/21/jit-etw-inlining-event-fail-reasons/) available on MSDN, although interestingly enough it doesn't include this reason!
 
-However, inlining isn't always a win-win scenario. Because you are copying the same code to 2 locations, it can bloat the amount of memory that your programs needs. So there are some rules that the .NET JITter follows [when deciding whether or not to inline a method](https://blogs.msdn.microsoft.com/davidnotario/2004/11/01/jit-optimizations-inlining-ii/) (Note this list is from 2004, so the rules may well have changed since then)
+However, inlining isn't always a win-win scenario. Because you are copying the same code to 2 locations, it can bloat the amount of memory that your programs needs. 
+
+**Update:** A more recent list of justifications that the [.NET JITter provides for not inlining a method](https://github.com/dotnet/coreclr/blob/master/src/jit/inline.def) is available, thanks to [Andy Ayers](https://github.com/AndyAyersMS) from Microsoft for pointing it out to me.
+
+So there are some rules that the .NET JITter follows [when deciding whether or not to inline a method](https://blogs.msdn.microsoft.com/davidnotario/2004/11/01/jit-optimizations-inlining-ii/) (Note this list is from 2004, so the rules may well have changed since then)
 
 > These are some of the reasons for which we won’t inline a method:
 > 
