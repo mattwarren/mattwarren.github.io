@@ -81,4 +81,4 @@ Here are a few observations about the results:
 - It's nice to see that all 3 projects have a lots of **"Up for Grabs"** issues, see [Roslyn](https://github.com/dotnet/roslyn/labels/Up%20for%20Grabs), [CoreCLR](https://github.com/dotnet/coreclr/labels/up-for-grabs) and [CoreFX](https://github.com/dotnet/corefx/labels/up%20for%20grabs), plus the Community seems to be [grabbing them back!](https://github.com/dotnet/corefx/labels/grabbed%20by%20community)
 - Finally, I love the fact that [**Performance**](https://github.com/dotnet/corefx/labels/performance) and [**Optimisation**](https://github.com/dotnet/coreCLR/labels/optimization) are being taken seriously, after all [Performance is a Feature!!]({{base}}/speaking/)
 
-Discuss on [/r/programming](https://www.reddit.com/r/programming/comments/3vyezb/open_source_net_1_year_later/) and [Hacker News](https://news.ycombinator.com/item?id=10700606)
+Discuss on [/r/programming](https://www.reddit.com/r/programming/comments/3vyezb/open_source_net_1_year_later/) and [Hacker News](https://news.ycombinator.com/item?id=10697993)

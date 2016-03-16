@@ -1,11 +1,9 @@
 ---
-
 layout: post
 title: Learning How Garbage Collectors Work - Part 1
 comments: true
 tags: [Garbage Collectors, .NET]
 date: 2016-02-04
-
 ---
 
 This series is an attempt to learn more about how a real-life "Garbage Collector" (GC) works internally, i.e. not so much "*what it does*", but "*how it does it*" at a low-level. I will be mostly be concentrating on the .NET GC, because I'm a .NET developer and also because it's recently been [Open Sourced]({{base}}/2015/12/08/open-source-net-1-year-later/) so we can actually look at the code.
