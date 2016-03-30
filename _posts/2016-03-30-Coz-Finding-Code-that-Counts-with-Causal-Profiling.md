@@ -79,9 +79,13 @@ Results taken from a [presentation by Charlie Curtsinger](http://www.cs.grinnell
 | dedup | 9% | 14.38% |
 | ferred | 21% | 0.00% |
 
+You can explore these results in the [interactive viewer](http://plasma-umass.github.io/coz/) that has been developed alongside the tool. For instance the image below shows the lines on code in the SQLite source base that Coz identifies as having the maximum impact, positive or negative (click for full-size version):
+
+[![SQLite - lines of code with max impact]({{ base }}/images/2016/03/SQLite - lines of code with max impact.png)]({{ base }}/images/2016/03/SQLite - lines of code with max impact.png)
+
 ## Summary
 
-It's worth pointing out that Coz is currently a *prototype* causal profiler, that at the moment only currently runs on Linux (but will work with unmodified executables). However the ideas presented in the paper could be ported to other OSes, programming languages or runtimes. For instance work has already begun on a [Go version](https://morsmachine.dk/causalprof) that only required a [few modifications to the runtime](https://github.com/golang/go/compare/master...DanielMorsing:causalprof) to get a prototype up and running. 
+It's worth pointing out that Coz is currently a *prototype* causal profiler, that at the moment only runs on Linux, but doesn't require you to modify your executable. However the ideas presented in the paper could be ported to other OSes, programming languages or runtimes. For instance work has already begun on a [Go version](https://morsmachine.dk/causalprof) that only required a [few modifications to the runtime](https://github.com/golang/go/compare/master...DanielMorsing:causalprof) to get a prototype up and running. 
 
 It would be great to see something like this for .NET, any takers?
 
@@ -92,11 +96,11 @@ It would be great to see something like this for .NET, any takers?
 If you want to find out any more information about Coz, here is a list of useful links:
 
 - The Coz paper ["Finding Code that Counts with Causal Profiling"](http://sigops.org/sosp/sosp15/current/2015-Monterey/printable/090-curtsinger.pdf)
-- [Comprehensive write-up on the paper](http://blog.acolyer.org/2015/10/14/coz-finding-code-that-counts-with-causal-profling/) from the morning paper
+- [Comprehensive (and more in-depth) write-up](http://blog.acolyer.org/2015/10/14/coz-finding-code-that-counts-with-causal-profling/) on the paper from "the morning paper" blog
 - [Coz GitHub repository](https://github.com/plasma-umass/coz)
   - [Getting started with Coz](https://github.com/plasma-umass/coz#using-coz)
   - [Coz profiling modes](https://github.com/plasma-umass/coz#profiling-modes)
 - Presentation by [Charlie Curtsinger](http://www.cs.grinnell.edu/~curtsinger/research/) (one of the authors of Coz)
   - [Video](https://www.youtube.com/watch?v=jE0V-p1odPg)
   - [Slides](http://www.cs.grinnell.edu/~curtsinger/files/coz_slides.pdf)
-- [Causal Profiling for Go](https://morsmachine.dk/causalprof) and attempt to implement Coz within the Go runtime
+- [Causal Profiling for Go](https://morsmachine.dk/causalprof) is an attempt to implement Coz within the Go runtime
