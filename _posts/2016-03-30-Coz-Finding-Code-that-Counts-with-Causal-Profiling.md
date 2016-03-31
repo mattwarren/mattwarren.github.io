@@ -64,7 +64,7 @@ As shown in the comparison below (click for larger version), a regular profiler 
 
 ## Results
 
-However their research was not only done on contrived programs, they also looked at several read-world projects including:
+However their research was not only done on contrived programs, they also looked at several real-world projects including:
 
 - [SQLite](https://www.sqlite.org/)
 - [PARSEC benchmark suite](http://parsec.cs.princeton.edu/overview.htm)
