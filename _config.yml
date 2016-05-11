@@ -21,6 +21,10 @@ author:
   twitterUrl:        https://twitter.com/matthewwarren
   github:            https://github.com/mattwarren/
 
+# For the Jekyll SEO plugin https://github.com/jekyll/jekyll-seo-tag#usage
+twitter:
+  username: matthewwarren
+  
 # Custom vars
 version:             1.0.0
 
