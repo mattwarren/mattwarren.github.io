@@ -34,10 +34,18 @@ exclude: [README.md, LICENSE.md]
 # https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
 markdown: kramdown
 
-redcarpet:
-    extensions: ["no_intra_emphasis", "tables", "autolink", "strikethrough", "with_toc_data"]
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+#redcarpet:
+#    extensions: ["no_intra_emphasis", "tables", "autolink", "strikethrough", "with_toc_data"]
 
 # Use the following plug-ins
 gems:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-paginate
+  - rouge
+  - jekyll-seo-tag
