@@ -7,7 +7,7 @@ permalink:           pretty
 title:               'Performance is a Feature!'
 tagline:             ''
 description:         ''
-url:                 http://mattwarren.github.io
+url:                 http://www.mattwarren.org
 # Don't use baseurl, see https://talk.jekyllrb.com/t/what-trouble-happens-if-i-make-all-links-relative-instead-of-absolute/418/2
 baseurl:             ''
 paginate:            10
