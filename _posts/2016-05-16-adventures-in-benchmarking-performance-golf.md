@@ -24,6 +24,7 @@ I also have to give Nick credit for making me aware of the term ["Performance Go
 In this post I'm not going to concentrate too much on this particular benchmark, but instead I'm going to use it as an example of what I believe a good benchmarking library should provide for you. Full disclaimer, I'm one of the authors of [BenchmarkDotNet](https://github.com/PerfDotNet/BenchmarkDotNet#team), so I admit I might be biased!
 
 I think that a good benchmarking tool should offer the following features: 
+
 - [Benchmark Scaffolding](#benchmark-scaffolding)
 - [Diagnose what is going on](#diagnose-what-is-going-on)
 - [Consistent, Reliable and Clear Results](#consistent-reliable-and-clear-results)
