@@ -13,7 +13,7 @@ Benchmarking is hard, it's very easy to end up "*not measuring, what you think y
 
 **Update (2014-09-23):** Sigh - I made a pretty big mistake in these benchmarks, fortunately Reddit user <a href="http://www.reddit.com/user/zvrba" target="_blank">zvrba</a> corrected me:
 
-<a href="http://www.reddit.com/r/programming/comments/2guj0t/the_art_of_benchmarking_aka_fighting_the_jit/" target="_blank"><img src="http://mattwarren.github.io/images/2014/09/reddit-post-showing-my-mistake.png" alt="Reddit post showing my mistake"/></a>
+<a href="http://www.reddit.com/r/programming/comments/2guj0t/the_art_of_benchmarking_aka_fighting_the_jit/" target="_blank"><img src="{{ base }}/images/2014/09/reddit-post-showing-my-mistake.png" alt="Reddit post showing my mistake"/></a>
 
 Yep, can't argue with that, see [Results](#results) and [Resources](#resources) below for the individual updates.
 
@@ -57,7 +57,8 @@ static void Profile(string description, int iterations, Action func)
     }
     watch.Stop();
     Console.Write(description);
-    Console.WriteLine(" Time Elapsed {0} ms", watch.Elapsed.TotalMilliseconds);
+    Console.WriteLine("Time Elapsed {0} ms", 
+                      watch.Elapsed.TotalMilliseconds);
 }
 ```
 
@@ -101,13 +102,15 @@ static void ProfileDirect(string description, int iterations)
     }
     watch.Stop();
     Console.WriteLine("ProfileDirect - " + description);
-    Console.WriteLine("{0:0.00} ms ({1:N0} ticks) (over {2:N0} iterations), {3:N0} ops/millisecondn",
-                      watch.ElapsedMilliseconds, watch.ElapsedTicks, iterations, 
-                      (double)iterations / watch.ElapsedMilliseconds);
+    Console.WriteLine(
+        "{0:0.00} ms ({1:N0} ticks) (over {2:N0} iterations), {3:N0} ops/milliseconds",
+        watch.ElapsedMilliseconds, watch.ElapsedTicks, iterations, 
+        (double)iterations / watch.ElapsedMilliseconds);
 }
 ``` 
 
 And the results:
+
 > ProfileDirect - 2.00 ms (7,822 ticks) (over 10,000,000 iterations), **5,000,000 ops/millisecond**
 
 That's 5 million operations per millisecond, I know CPU's are fast, but that seems quite high! 
@@ -168,15 +171,17 @@ static void ProfileDirect(string description, int iterations)
     }
     watch.Stop();
     Console.WriteLine("ProfileDirect - " + description);
-    Console.WriteLine("{0:0.00} ms ({1:N0} ticks) (over {2:N0} iterations), {3:N0} ops/millisecondn",
-                      watch.ElapsedMilliseconds, watch.ElapsedTicks, iterations, 
-                      (double)iterations / watch.ElapsedMilliseconds);
+    Console.WriteLine(
+        "{0:0.00} ms ({1:N0} ticks) (over {2:N0} iterations), {3:N0} ops/milliseconds",
+        watch.ElapsedMilliseconds, watch.ElapsedTicks, 
+        iterations, (double)iterations / watch.ElapsedMilliseconds);
 }
 ```
 
 **Note**: `result` has to be a class-level field, it can't be local to the method, i.e. `double result = Math.Sqrt(123.456)`. This is because the JITter is clever enough to figure out that the local field isn't accessed outside of the method and optimise it away, again you are always fighting against the JITter.
 
 So now the results look like this, which is a bit more sane!
+
 > ProfileDirectWithStore - 68.00 ms (180,801 ticks) (over 10,000,000 iterations), **147,059 ops/millisecond**
 
 #### **Loop-unrolling**
@@ -187,39 +192,41 @@ To fix this we can unroll the loop, so that we execute `Math.Sqrt(..)` multiple 
 ``` csharp
 static void ProfileDirectWithStoreUnrolledx10(string description, int iterations)
 {
-	// clean up
-	GC.Collect();
-	GC.WaitForPendingFinalizers();
-	GC.Collect();
+    // clean up
+    GC.Collect();
+    GC.WaitForPendingFinalizers();
+    GC.Collect();
 
-	// warm up
-	var temp = Math.Sqrt(123.456);
+    // warm up
+    var temp = Math.Sqrt(123.456);
 
-	var watch = new Stopwatch();
-	watch.Start();
-	var loops = iterations / 10;
-	for (int i = 0; i < loops; i++)
-	{
-		result = Math.Sqrt(123.456); 
-		result = Math.Sqrt(123.456);
-		result = Math.Sqrt(123.456);
-		result = Math.Sqrt(123.456);
-		result = Math.Sqrt(123.456);
-		result = Math.Sqrt(123.456);
-		result = Math.Sqrt(123.456);
-		result = Math.Sqrt(123.456);
-		result = Math.Sqrt(123.456);
-		result = Math.Sqrt(123.456);
-	}
-	watch.Stop();
-	Console.WriteLine("ProfileDirectWithStoreUnrolled x10 - " + description);
-	Console.WriteLine("{0:0.00} ms ({1:N0} ticks) (over {2:N0} iterations), {3:N0} ops/millisecondn",
-					watch.ElapsedMilliseconds, watch.ElapsedTicks, iterations,
-					(double)iterations / watch.ElapsedMilliseconds);
+    var watch = new Stopwatch();
+    watch.Start();
+    var loops = iterations / 10;
+    for (int i = 0; i < loops; i++)
+    {
+        result = Math.Sqrt(123.456); 
+        result = Math.Sqrt(123.456);
+        result = Math.Sqrt(123.456);
+        result = Math.Sqrt(123.456);
+        result = Math.Sqrt(123.456);
+        result = Math.Sqrt(123.456);
+        result = Math.Sqrt(123.456);
+        result = Math.Sqrt(123.456);
+        result = Math.Sqrt(123.456);
+        result = Math.Sqrt(123.456);
+    }
+    watch.Stop();
+    Console.WriteLine("ProfileDirectWithStoreUnrolled x10 - " + description);
+    Console.WriteLine(
+        "{0:0.00} ms ({1:N0} ticks) (over {2:N0} iterations), {3:N0} ops/milliseconds",
+        watch.ElapsedMilliseconds, watch.ElapsedTicks, iterations,
+        (double)iterations / watch.ElapsedMilliseconds);
 }
 ```
 
 And now the result is:
+
 > ProfileDirectWithStoreUnrolled x10 -
 47.00 ms (124,582 ticks) (over 10,000,000 iterations), **212,766 ops/millisecond**
 
@@ -231,11 +238,11 @@ These results were produced by running the code in RELEASE mode and launching th
 
 As seen in the chart below the best results for **64-bit** (red) were achieved when we unrolled the loop ("ProfileDirectWithStoreUnrolled"). There are other other results that were faster, but in these the actual code we wanted to profile was optimised away by the JITter ("Profile via an Action", "ProfileDirect" and "ProfileDirectWithConsume").
 
-<a href="https://mattwarren.github.io/images/2014/09/math-sqrt-results-graph.png" target="_blank"><img src="http://mattwarren.github.io/images/2014/09/math-sqrt-results-graph.png?w=660" alt="Math.Sqrt() - results graph"/></a>
+<a href="{{ base }}/images/2014/09/math-sqrt-results-graph.png" target="_blank"><img src="{{ base }}/images/2014/09/math-sqrt-results-graph.png" alt="Math.Sqrt() - results graph"/></a>
 
 **Update (2014-09-23):** The correct results are in the chart below
 
-<a href="https://mattwarren.github.io/images/2014/09/math-sqrt-results-graph-after-reddit-fixes.png" target="_blank"><img src="http://mattwarren.github.io/images/2014/09/math-sqrt-results-graph-after-reddit-fixes.png" alt="Math.Sqrt() - results graph - AFTER Reddit fixes"/></a>
+<a href="{{ base }}/images/2014/09/math-sqrt-results-graph-after-reddit-fixes.png" target="_blank"><img src="{{ base }}/images/2014/09/math-sqrt-results-graph-after-reddit-fixes.png" alt="Math.Sqrt() - results graph - AFTER Reddit fixes"/></a>
 
 #### **CLR JIT Compiler - 32-bit v. 64-bit**
 
@@ -294,7 +301,7 @@ Here's a list of all the code samples and other data used in making this post:
  1. <a href="https://gist.github.com/mattwarren/69070616cf0efbb68a79#file-benchmarking-cs-L270" target="_blank">Profile Direct, storing the result (BROKEN)</a>
  1. <a href="https://gist.github.com/mattwarren/69070616cf0efbb68a79#file-benchmarking-cs-L292" target="_blank">Profile Direct, storing the result (FIXED)</a>
  1. <a href="https://gist.github.com/mattwarren/69070616cf0efbb68a79#file-benchmarking-cs-L339" target="_blank">Profile Direct, storing the result, unrolled 10 times</a>
-2. <a href="https://mattwarren.github.io/images/2014/09/benchmark-results-math-sqrt1.xlsx" target="_blank">Spreadsheet of results</a> **Updated (2014-09-23)**
+2. <a href="{{ base }}/images/2014/09/benchmark-results-math-sqrt1.xlsx" target="_blank">Spreadsheet of results</a> **Updated (2014-09-23)**
 3. Generated assembly code **Updated (2014-09-23)**:
  1. <a href="https://gist.github.com/mattwarren/02ca1567cecbd6ea68a0" target="_blank">Profile via a `Action`</a>
  1. <a href="https://gist.github.com/mattwarren/dcd546babf76986125ea" target="_blank">Profile Direct</a>

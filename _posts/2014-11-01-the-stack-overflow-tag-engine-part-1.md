@@ -16,7 +16,7 @@ I first heard about the Stack Overflow <a href="http://samsaffron.com/archive/20
 
 But if you've ever visited <a href="http://www.stackoverflow.com" target="_blank">Stack Overflow</a> you will have used it, maybe without even realising. It powers the pages under `stackoverflow.com/questions/tagged`, for instance you can find the questions tagged <a href="http://stackoverflow.com/questions/tagged/.net" target="_blank">.NET</a>, <a href="http://stackoverflow.com/questions/tagged/c%23" target="_blank">C#</a> or <a href="http://stackoverflow.com/questions/tagged/java" target="_blank">Java</a> and you get a page like this (note the related tags down the right-hand side):
 
-<a href="http://stackoverflow.com/questions/tagged/.net" target="_blank"><img src="https://mattwarren.github.io/images/2014/10/dotnet-tag.png?w=900" alt="dotNet Tag" class="aligncenter" /></a>
+<a href="http://stackoverflow.com/questions/tagged/.net" target="_blank"><img src="{{ base }}/images/2014/10/dotnet-tag.png" alt="dotNet Tag" class="aligncenter" /></a>
 
 ## <a name="TagAPI"></a>**Tag API**
 As well as simple searches, you can also tailor the results with more complex queries (you may need to be logged into the site for these links to work), so you can search for:
@@ -32,7 +32,7 @@ It's worth noting that all these searches take your personal preferences into ac
 
 As I said I wanted to see what was involved in building a version of the Tag Engine. Fortunately, data from <a href="https://archive.org/details/stackexchange" target="_blank">all the Stack Exchange sites</a> is available to download. To keep things simple I just worked with the posts (not their entire history of edits), so I downloaded <a href="https://archive.org/download/stackexchange/stackoverflow.com-Posts.7z" target="_blank">stackoverflow.com-Posts.7z</a> (warning direct link to 5.7 GB file), which appears to contain data up-to the middle of September 2014. To give an idea of what is in the data set, a typical question looks like the .xml below. For the Tag Engine we only need the items highlighted in red, because it is only providing an index into the actual questions themselves, so we ignore any **content** and just look at the **meta-data**.
 
-<a href="https://mattwarren.github.io/images/2014/10/sample-question-parts-used-highlighted-in-red.png" target="_blank"><img src="https://mattwarren.github.io/images/2014/10/sample-question-parts-used-highlighted-in-red.png?w=600" alt="Sample Question" class="aligncenter" /></a>
+<a href="{{ base }}/images/2014/10/sample-question-parts-used-highlighted-in-red.png" target="_blank"><img src="{{ base }}/images/2014/10/sample-question-parts-used-highlighted-in-red.png" alt="Sample Question" class="aligncenter" /></a>
 
 Below is the output of the code that runs on start-up and processes the data, you can see there are just over 7.9 millions questions in the data set, taking up just over 2GB of memory, when read into a <a href="https://github.com/mattwarren/StackOverflowTagServer/blob/master/Shared/Question.cs" target="_blank">`List<Question>`</a>.
 
@@ -64,7 +64,7 @@ Yes that's right, there is actually a Stack Overflow questions with <a href="htt
 ## <a name="CreatingAnIndex"></a>**Creating an Index**
 So what does the index actually look like, well it's basically a series of sorted lists (`List<int>`) that contain an offset into the main `List<Question>` that contains all the <a href="https://github.com/mattwarren/StackOverflowTagServer/blob/master/Shared/Question.cs" target="_blank">`Question`</a> data. Or in a diagram, something like this:
 
-<a href="https://mattwarren.github.io/images/2014/09/indexing-explanation.png" target="_blank"><img src="https://mattwarren.github.io/images/2014/09/indexing-explanation.png" alt="Indexing explanation"/></a>
+<a href="{{ base }}/images/2014/09/indexing-explanation.png" target="_blank"><img src="{{ base }}/images/2014/09/indexing-explanation.png" alt="Indexing explanation"/></a>
 
 **Note:** This is very similar to the way that <a href="http://lucene.apache.org/" target="_blank">Lucene</a> indexes data.
 
@@ -101,7 +101,7 @@ var result = queryInfo[tag]
 
 Once that's all done, I ended up with an API that you can query in the browser. Note that the timing is the time taken on the server-side, but it is correct, basic queries against a single tag are lightening quick!
 
-<a href="https://mattwarren.github.io/images/2014/10/API Usage in Chrome.png" target="_blank"><img src="https://mattwarren.github.io/images/2014/10/API Usage in Chrome.png"/></a>
+<a href="{{ base }}/images/2014/10/API Usage in Chrome.png" target="_blank"><img src="{{ base }}/images/2014/10/API Usage in Chrome.png"/></a>
 
 ## <a name="NextTime"></a>**Next time**
 Now that the basic index is setup, next time I'll be looking at how to handle:
