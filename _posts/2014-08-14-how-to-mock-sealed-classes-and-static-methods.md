@@ -138,7 +138,7 @@ static void Main(string[] args)
   Console.WriteLine("Result: " + result);
   Console.WriteLine(new string('#', 90) + "n");
 
-  // With mocking enabled, doesn't call into the static method, calls the mocked version instead
+  // With mocking enabled, doesn't call the static method, calls mocked version instead
   Console.WriteLine(new string('#', 90));
   Mocked.SetReturnValue = 1;
   Console.WriteLine("Turning ON mocking of Profilier.ClassToMock.StaticMethodToMock");

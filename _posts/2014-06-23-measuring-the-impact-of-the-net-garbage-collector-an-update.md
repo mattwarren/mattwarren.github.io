@@ -83,7 +83,7 @@ This is an interesting subject and after becoming aware of it, I've spent some t
 
 ``` csharp
 recordCountAtValue(count, value);
-if (expectedIntervalBetweenValueSamples <=0)
+if (expectedIntervalBetweenValueSamples <= 0)
     return;
 
 for (long missingValue = value - expectedIntervalBetweenValueSamples;

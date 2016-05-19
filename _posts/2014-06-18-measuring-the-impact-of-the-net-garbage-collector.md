@@ -63,7 +63,7 @@ Any pauses that this thread experiences will also be seen by the other threads r
 To trigger garbage collection, the test program also runs several threads, each executing the code below. In a loop, each thread creates a large <code>string</code> and a <code>byte array</code>, to simulate what a web server might be doing when generating a response to a web request (for instance from de-serialising some Json and creating a HTML page). Then to ensure that the objects are kept around long enough, they are both put into a Least Recently Used (LRU) cache, that holds the 2000 most recent items.
 
 ``` csharp
-processingThreads[i] = new Thread(() =&gt;
+processingThreads[i] = new Thread(() =>
 {
   var threadCounter = 0;
   while (true)
@@ -71,13 +71,13 @@ processingThreads[i] = new Thread(() =&gt;
     var text = new string((char)random.Next(start, end + 1), 1000);
     stringCache.Set(text.GetHashCode(), text);
 
-    // 80K, &gt; 85,000 bytes = LOH and we don&#039;t want these there
+    // Use 80K, If we are > 85,000 bytes = LOH and we don't want these there
     var bytes = new byte[80 * 1024]; 
     random.NextBytes(bytes);
     bytesCache.Set(bytes.GetHashCode(), bytes);
 
     threadCounter++;
-    Thread.Sleep(1); // So we don&#039;t thrash the CPU!!!!
+    Thread.Sleep(1); // So we don't thrash the CPU!!!!
   }
 });
 ```
