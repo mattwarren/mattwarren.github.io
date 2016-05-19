@@ -2,7 +2,7 @@
 layout: post
 title: Adventures in Benchmarking - Memory Allocations
 comments: true
-tags: [Benchmarking, Garbage Collectors, ETW]
+tags: [Adventures in Benchmarking, Benchmarking, Garbage Collectors, ETW]
 ---
 
 For a while now I've been involved in the Open Source [BenchmarkDotNet](https://github.com/PerfDotNet/BenchmarkDotNet) library along with [Andrey Akinshin](https://github.com/AndreyAkinshin) the project owner. Our goal has been to produce a .NET Benchmarking library that is:

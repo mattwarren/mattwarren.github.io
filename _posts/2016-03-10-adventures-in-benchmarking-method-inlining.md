@@ -2,7 +2,7 @@
 layout: post
 title: Adventures in Benchmarking - Method Inlining
 comments: true
-tags: [Benchmarking, Garbage Collectors, ETW]
+tags: [Adventures in Benchmarking, Benchmarking, Garbage Collectors, ETW]
 date: 2016-03-09
 ---
 

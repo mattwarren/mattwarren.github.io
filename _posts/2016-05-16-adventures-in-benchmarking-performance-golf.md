@@ -3,7 +3,7 @@
 layout: post
 title: Adventures in Benchmarking - Performance Golf
 comments: true
-tags: [Performance, Optimisations, Benchmarking, Just for fun]
+tags: [Adventures in Benchmarking, Benchmarking, Performance, Optimisations]
 date: 2016-05-16
 
 ---
