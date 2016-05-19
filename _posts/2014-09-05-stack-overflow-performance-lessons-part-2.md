@@ -25,7 +25,7 @@ One thing to remember is that to make this all happen, they needed the following
 - **Storing outliers** - these spikes rarely happened so <a href="http://blog.serverfault.com/2011/07/25/a-non-foolish-consistency/" target="_blank">having detailed metrics was needed</a>, averages hide too much information. 
 - **Good knowledge of the .NET GC** - according to the article, it took them 3 weeks to identify and fix this issue *"So Marc and I set off on a 3 week adventure to resolve the memory pressure."*
 
-<a href="http://samsaffron.com/archive/2011/10/28/in-managed-code-we-trust-our-recent-battles-with-the-net-garbage-collector" target="_blank"><img src="http://discuss.samsaffron.com/uploads/default/33/d648623b9cb32f38.png"/></a>
+<a href="http://samsaffron.com/archive/2011/10/28/in-managed-code-we-trust-our-recent-battles-with-the-net-garbage-collector" target="_blank"><img src="{{ base }}/images/2014/09/Stack Overflow - Battle with the .NET GC.png"/></a>
 
 You can read all the gory details of the fix and the follow-up in the posts below, but the **tl;dr** is that they removed of all the work that the .NET Garbage Collector had to do, thus eliminating the pauses:
 
@@ -38,7 +38,7 @@ You can read all the gory details of the fix and the follow-up in the posts belo
 But if you think that the `struct` based code they wrote is crazy, their JSON serialisation library, Jil, takes things to a new level. This is all in the pursuit of the maximum performance and based on their benchmarks, it seems to be working!
 Note: protobuf-net is a binary serialisation library, but doesn't support JSON, it's only included is a base-line:
 
-<a href="https://github.com/kevin-montrose/Jil#deserialization" target="_blank"><img src="https://camo.githubusercontent.com/5da9a07d6cc6fcf41b1ea9f118f555ed1cb0cd86/687474703a2f2f692e696d6775722e636f6d2f4e58514f53386e2e706e67" class="aligncenter" /></a> 
+<a href="https://github.com/kevin-montrose/Jil#deserialization" target="_blank"><img src="{{ base }}/images/2014/09/Jil Benchmarks.png" class="aligncenter" /></a> 
 
 For instance, instead of writing code like this
 

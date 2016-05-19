@@ -16,7 +16,7 @@ This is the long-delayed part 2 of a mini-series looking at what it *might* take
 
 Since the first part was published, Stack Overflow published a nice performance report, giving some more stats on the Tag Engine Servers. As you can see they run the Tag Engine on some pretty powerful servers, but only have a peak CPU usage of 10%, which means there's plenty of overhead available. It's a nice way of being able to cope with surges in demand or busy times of the day.
 
-<a href="https://stackexchange.com/performance" target="_blank"><img src="{{ base }}/images/2015/01/tag-server-infographic.png" alt="Tag Engine infographic"/></a>
+<a href="https://stackexchange.com/performance" target="_blank"><img src="{{ base }}/images/2015/08/tag-server-infographic.png" alt="Tag Engine infographic"/></a>
 
 ## <a name="IgnoredTags"></a>**Ignored Tag Preferences**
 
