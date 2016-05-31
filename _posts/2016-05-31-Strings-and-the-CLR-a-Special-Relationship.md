@@ -6,7 +6,7 @@ tags: [.NET, CLR, Internals]
 date: 2016-05-31
 ---
 
-Strings and the Common Language Runtime (CLR) have a special relationship, but it's a bit different (and way less political) than the UK <-> US *special relationship* that is often talked about.
+Strings and the Common Language Runtime (CLR) have a *special relationship*, but it's a bit different (and way less political) than the UK <-> US *special relationship* that is often talked about.
 
 [![UK and US - Special Relationship]({{ base }}/images/2016/05/UK and US - Special Relationship.png)](http://www.bbc.com/news/uk-36084672) 
 
@@ -70,7 +70,7 @@ private:
     WCHAR   m_Characters[0];
 ```
 
-## String Allocations
+## Fast String Allocations
 
 In a typical .NET program, one of the most common ways that you would allocate strings dynamically is either via `StringBuilder` or `String.Format` (which uses `StringBuilder` under the hood).
 
@@ -175,7 +175,7 @@ EXTERN_C Object* AllocateStringFastMP (CLR_I4 cch);
 EXTERN_C Object* AllocateStringFastUP (CLR_I4 cch);
 ```
 
-## String Length
+## Optimised String Length
 
 The final example of the "special relationship" is shown by how the string `Length` property is optimised by the run-time. Finding the length of a string is a very common operation and because .NET [strings are immutable](https://msdn.microsoft.com/en-us/library/362314fe.aspx) should also be very quick, because the value can be calculated once and then cached.
 
@@ -227,5 +227,4 @@ In one word **performance**, strings are widely used in .NET programs and theref
 Interesingly enought one of the .NET developers recently made a comment about this on a [GitHub issue](https://github.com/dotnet/coreclr/issues/4703#issuecomment-216071622), in response to a query asking why more string functions weren't implemented in managed code they said:
 
 > We have looked into this in the past and moved everything that could be moved without significant perf loss. Moving more depends on having pretty good managed optimizations for all coreclr architectures.
-
 > This makes sense to consider only once RyuJIT or better codegen is available for all architectures that coreclr runs on (x86, x64, arm, arm64).
