@@ -228,3 +228,7 @@ Interestingly enough one of the .NET developers recently made a comment about th
 
 > We have looked into this in the past and moved everything that could be moved without significant perf loss. Moving more depends on having pretty good managed optimizations for all coreclr architectures.
 > This makes sense to consider only once RyuJIT or better codegen is available for all architectures that coreclr runs on (x86, x64, arm, arm64).
+
+----
+
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=11811061) or [/r/programming](https://www.reddit.com/r/programming/comments/4ly6uy/strings_and_the_clr_a_special_relationship/)
