@@ -102,7 +102,7 @@ internal extern static String FastAllocateString(int length);
 
 This method is marked as `extern` and has the `[MethodImplAttribute(MethodImplOptions.InternalCall)]` attribute applied and as we saw earlier this implies it will be implemented in un-managed code by the CLR. It turns out that eventually the call stack ends up in a hand-written assembly function, called **AllocateStringFastMP_InlineGetThread** from [JitHelpers_InlineGetThread.asm](https://github.com/dotnet/coreclr/blob/19a88d8a92e08c8506f6e69c3964dc77329c108a/src/vm/amd64/JitHelpers_InlineGetThread.asm#L159-L204)
 
-This also shows something else we talked about earlier. The assembly code is actually allocating the memory needed for the string, based on the required length that was passed in my the calling code.
+This also shows something else we talked about earlier. The assembly code is actually allocating the memory needed for the string, based on the required length that was passed in by the calling code.
 
 ``` clojure
 LEAF_ENTRY AllocateStringFastMP_InlineGetThread, _TEXT
