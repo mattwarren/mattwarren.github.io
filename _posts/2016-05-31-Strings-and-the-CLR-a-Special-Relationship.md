@@ -224,7 +224,7 @@ DWORD   GetStringLength()   { LIMITED_METHOD_DAC_CONTRACT; return( m_StringLengt
 
 In one word **performance**, strings are widely used in .NET programs and therefore need to be as optimised, space efficient and cache-friendly as possible. That's why they gone to great length, including implementing methods in assembly and ensuring that the JIT can optimised code as much as possible.
 
-Interesingly enought one of the .NET developers recently made a comment about this on a [GitHub issue](https://github.com/dotnet/coreclr/issues/4703#issuecomment-216071622), in response to a query asking why more string functions weren't implemented in managed code they said:
+Interestingly enough one of the .NET developers recently made a comment about this on a [GitHub issue](https://github.com/dotnet/coreclr/issues/4703#issuecomment-216071622), in response to a query asking why more string functions weren't implemented in managed code they said:
 
 > We have looked into this in the past and moved everything that could be moved without significant perf loss. Moving more depends on having pretty good managed optimizations for all coreclr architectures.
 > This makes sense to consider only once RyuJIT or better codegen is available for all architectures that coreclr runs on (x86, x64, arm, arm64).
