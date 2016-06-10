@@ -14,7 +14,7 @@ This relationship means that [Strings](https://msdn.microsoft.com/en-us/library/
 
 ## String layout in memory
 
-Firstly strings differ from any other data type in the CLR (other than arrays) in that their size isn't fixed. Normally the .NET GC knows the size of an object when it's being allocated, because it's based on the size of the fields/properties within the object and they don't change. However in .NET a string object doesn't contain a pointer to the actual string data, which is then stored elsewhere on the heap. That raw data, the actually bytes that make up the text are contained within the string object itself. That means that the memory representation of a string looks like this:
+Firstly strings differ from any other data type in the CLR (other than arrays) in that their size isn't fixed. Normally the .NET GC knows the size of an object when it's being allocated, because it's based on the size of the fields/properties within the object and they don't change. However in .NET a string object doesn't contain a pointer to the actual string data, which is then stored elsewhere on the heap. That raw data, the actual bytes that make up the text are contained within the string object itself. That means that the memory representation of a string looks like this:
 
 ![Memory Layout - CLR String]({{ base }}/images/2016/05/Memory Layout - CLR String.png)
 
