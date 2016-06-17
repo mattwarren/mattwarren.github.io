@@ -13,3 +13,4 @@ So lanyon is put AFTER poole, becaue poole is the base style, but lanyon extende
 {% include poole.css %}
 {% include syntax.css %}
 {% include lanyon.css %}
+{% include gifplayer.css %}
