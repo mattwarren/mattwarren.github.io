@@ -48,7 +48,20 @@
     
     <!-- Wire-up the Gif Player https://github.com/rubentd/gifplayer and http://rubentd.com/gifplayer/ -->
     <script>
-      $('.gifplayer').gifplayer();
+      if ( $('.gifplayer').length ) {
+        $('.gifplayer').gifplayer({
+          onPlay: function(){
+            // Wire up Google Analytics, so we know when the GIF is played
+            ga('send', {
+              hitType: 'event',
+              eventCategory: 'GifVideo',
+              eventAction: 'Play',
+              // Is there a better way of doing this?? html is <img .. gifId="<SOME ID>" />
+              eventLabel: this.context.attributes.gifId === undefined ? "Unknown" : this.context.attributes.gifId.value
+            });
+          },
+        });
+      }
     </script>
   </body>
 </html>
