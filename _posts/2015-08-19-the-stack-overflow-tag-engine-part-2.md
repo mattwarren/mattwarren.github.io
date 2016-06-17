@@ -2,7 +2,7 @@
 layout: post
 title: The Stack Overflow Tag Engine – Part 2
 comments: true
-tags: [indexing, stackoverflow]
+tags: [indexing, stackoverflow, Tag Engine]
 excerpt: <p>This is the long-delayed part 2 of a mini-series looking at what it might take to build the Stack Overflow Tag Engine</p>
 ---
 

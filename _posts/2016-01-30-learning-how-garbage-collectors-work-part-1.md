@@ -159,11 +159,11 @@ To understand this interaction between the GC and the EE, it's helpful to look a
 - `void EnablePreemptiveGC(Thread * pThread)`
 - `void DisablePreemptiveGC(Thread * pThread)`
 - `void SetGCSpecial(Thread * pThread)`
-- `alloc_context * etAllocContext(Thread * pThread)`
+- `alloc_context * GetAllocContext(Thread * pThread)`
 - `bool CatchAtSafePoint(Thread * pThread)`
 - `void AttachCurrentThread()`
 - `void GcEnumAllocContexts (enum_alloc_context_func* fn, void* param)`
-- `void SyncBlockCacheWeakPtrScan(HANDLESCANPROC /*scanProc*/, uintptr_t /*lp1*/, uintptr_t /*lp2*/)`
+- `void SyncBlockCacheWeakPtrScan(HANDLESCANPROC, uintptr_t, uintptr_t)`
 - `void SyncBlockCacheDemote(int /*max_gen*/)`
 - `void SyncBlockCachePromotionsGranted(int /*max_gen*/)`
 
