@@ -66,7 +66,7 @@ As you can see in the image below (courtesy of the [.NET Blog](https://blogs.msd
 
 ### Foreground (Blocking) GC flow
 
-So calculating the pauses for a **Foreground** GC (this means all Gen 0/1 GCs and full blocking GCs) is relatively straightforward, using the info from the [excellent blog post](from https://blogs.msdn.microsoft.com/maoni/2014/12/25/gc-etw-events-3/) by [Maoni Stephens](https://github.com/Maoni0/) the main developer on the .NET GC:
+So calculating the pauses for a **Foreground** GC (this means all Gen 0/1 GCs and full blocking GCs) is relatively straightforward, using the info from the [excellent blog post](https://blogs.msdn.microsoft.com/maoni/2014/12/25/gc-etw-events-3/) by [Maoni Stephens](https://github.com/Maoni0/) the main developer on the .NET GC:
 
 1. `GCSuspendEE_V1 Event` 
 2. `GCSuspendEEEnd_V1 Event` <– **suspension is done**
