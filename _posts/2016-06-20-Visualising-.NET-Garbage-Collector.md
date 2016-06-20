@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Visualising .NET Garbage Collector
+title: Visualising the .NET Garbage Collector
 comments: true
 tags: [Garbage Collectors, .NET]
 date: 2016-06-20
