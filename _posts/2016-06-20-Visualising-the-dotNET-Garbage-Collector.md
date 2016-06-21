@@ -115,3 +115,7 @@ But there's a few caveats that make it [trickier to calculate the actual time](h
 Finally, if you want a more dramatic way of visualising a "*Stop the World*" or more accurately a "*Stop the Universe*" GC pause, take a look at the video below. The GC pause starts at around 7 seconds in (credit to [Ben Adams](https://twitter.com/ben_a_adams) and [Age of Ascent](https://twitter.com/ageofascent))
 
 <iframe width="774" height="435" src="https://www.youtube.com/embed/BTHimgTauwQ" frameborder="0" allowfullscreen></iframe>
+
+----
+
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=11941874)
