@@ -12,7 +12,7 @@ Just over a week ago the [official 1.0 release of .NET Core](https://blogs.msdn.
 
 > the .NET Core runtime, libraries and tools and the ASP.NET Core libraries.
 
-However along-side a completely new, revamped, xplat version of the .NET runtime, the development experience has been changed, with the [`dotnet` based tooling](https://docs.microsoft.com/en-us/dotnet/articles/core/tools/dotnet) now available (**Note**: the *tooling* itself is currently still in preview and it's [expected to be RTM](https://github.com/dotnet/core/blob/master/roadmap.md#planned-11-features) later this year)
+However alongside a completely new, revamped, xplat version of the .NET runtime, the development experience has been changed, with the [`dotnet` based tooling](https://docs.microsoft.com/en-us/dotnet/articles/core/tools/dotnet) now available (**Note**: the *tooling* itself is currently still in preview and it's [expected to be RTM](https://github.com/dotnet/core/blob/master/roadmap.md#planned-11-features) later this year)
 
 So you can now write:
 
@@ -103,7 +103,7 @@ Finally, once all the housekeeping is done control is handed off to [`corehost`]
 
 ### Executing a .NET Assembly
 
-At last we get to the point at which the .NET code is loaded and executed, via the code shown below, taken from [unixinterface.cpp](https://github.com/dotnet/coreclr/blob/release/1.0.0/src/dlls/mscoree/unixinterface.cpp#L156-L244):
+At last we get to the point at which the .NET dll/assembly is loaded and executed, via the code shown below, taken from [unixinterface.cpp](https://github.com/dotnet/coreclr/blob/release/1.0.0/src/dlls/mscoree/unixinterface.cpp#L156-L244):
 
 ``` cpp
 hr = host->SetStartupFlags(startupFlags);
@@ -139,11 +139,12 @@ hr = host->CreateAppDomainWithManager(
     (DWORD *)domainId);
 ```
 
-This code is using the [ICLRRuntimeHost Interface](https://msdn.microsoft.com/en-us/library/ms164408(v=vs.110).aspx), which is part of the COM based hosting API for the CLR. Despite the file name, it is actually from the Windows version of the CLI tooling. In the xplat world of the CoreCLR the hosting API that was originally written for Unix has been replicated across all the platforms so that a common interface is available for any tools that want to use it, see the following GitHub issues for more information:
-- [Refactor the Unix hosting API](https://github.com/dotnet/coreclr/issues/1234)
-- [Expose the Unix hosting API on Windows too](https://github.com/dotnet/coreclr/issues/1256)
-- [Expose Unix hosting API on Windows](https://github.com/dotnet/coreclr/pull/1295)
-- [Unix Hosting API](https://github.com/dotnet/coreclr/blob/master/src/dlls/mscoree/mscorwks_ntdef.src#L20-L24)
+This is making use of the [ICLRRuntimeHost Interface](https://msdn.microsoft.com/en-us/library/ms164408(v=vs.110).aspx), which is part of the COM based hosting API for the CLR. Despite the file name, it is actually from the Windows version of the CLI tooling. In the xplat world of the CoreCLR the hosting API that was originally written for Unix has been replicated across all the platforms so that a common interface is available for any tools that want to use it, see the following GitHub issues for more information:
+
+* [Refactor the Unix hosting API](https://github.com/dotnet/coreclr/issues/1234)
+* [Expose the Unix hosting API on Windows too](https://github.com/dotnet/coreclr/issues/1256)
+* [Expose Unix hosting API on Windows](https://github.com/dotnet/coreclr/pull/1295)
+* [Unix Hosting API](https://github.com/dotnet/coreclr/blob/master/src/dlls/mscoree/mscorwks_ntdef.src#L20-L24)
 
 **And that's it, your .NET code is now running, simple really!!**
 
