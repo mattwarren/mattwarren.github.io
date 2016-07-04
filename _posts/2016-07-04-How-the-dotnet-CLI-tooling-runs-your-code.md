@@ -69,7 +69,7 @@ The main task that the `corehost` application performs is to calculate and locat
 - 99 **Managed** dlls [("Adding runtime asset..")](https://gist.github.com/mattwarren/428234f1f4508486f4ba3a4e6543bf2e)
 - 136 **Native** dlls [("Adding native asset..")](https://gist.github.com/mattwarren/919f54d760f045c47b4833a345abde57)
 
-There are so many individual individual files because the CoreCLR operates on a "pay-for-play" model, from [Motivation Behind .NET Core](https://docs.asp.net/en/1.0.0-rc1/conceptual-overview/dotnetcore.html#motivation-behind-net-core):
+There are so many individual files because the CoreCLR operates on a "pay-for-play" model, from [Motivation Behind .NET Core](https://docs.asp.net/en/1.0.0-rc1/conceptual-overview/dotnetcore.html#motivation-behind-net-core):
 
 >  By factoring the CoreFX libraries and allowing individual applications to pull in only those parts of CoreFX they require (a so-called **“pay-for-play” model**), server-based applications built with ASP.NET 5 can minimize their dependencies.
 
