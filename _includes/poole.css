@@ -397,6 +397,36 @@ tbody tr:nth-child(odd) th {
   margin-left: 0.5em;
 }
 
+.site-nav {
+    font-size: 16px;
+    font-family: "PT Sans", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: -.025rem;
+    line-height: 2.2;
+    position: relative;
+}
+.site-nav .page-link:not(:first-child) {
+    margin-left: 25px;
+}
+.site-nav .social-list {
+    position: absolute;
+    right: 4px;
+    top: 3px;
+}
+.site-nav .social-list a {
+    margin-left: 4px;
+}
+.site-nav .social-list a svg {
+    transition: transform 0.1s;
+}
+.site-nav .social-list a:hover svg {
+    transform: translateY(-1px) scale(1.2, 1.2);
+}
+.icon>svg {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
 
 /*
  * Pagination
