@@ -7,19 +7,13 @@ date: 2016-08-08
 
 ---
 
-GC pauses are a popular topic, if you do a [google search](https://www.google.com/#q=gc+pauses+in+.net), you'll see lots of articles explaining how to measure and more importantly how to reduce them. This issue is that in most (all) runtimes that have a GC, allocating objects is pretty-much free, but at some point in time the GC will need to clean up all the garbage and to do this is has to *pause* the entire runtime (except if you happen to be using [Azul's pauseless GC for Java](https://www.azul.com/products/zing/pgc/)) 
+GC pauses are a popular topic, if you do a [google search](https://www.google.com/#q=gc+pauses+in+.net), you'll see lots of articles explaining how to measure and more importantly how to reduce them. This issue is that in most runtimes that have a GC, allocating objects is a quick operation, but at some point in time the GC will need to clean up all the garbage and to do this is has to *pause* the entire runtime (except if you happen to be using [Azul's pauseless GC for Java](https://www.azul.com/products/zing/pgc/)). 
 
-In a [previous post]({{ base }}/2016/06/20/Visualising-the-dotNET-Garbage-Collector/) I demonstrated how you can use ETW Events to visualise what the .NET Garbage Collector (GC) is doing. That post included the following image, where the pauses are indicated by the *blue* arrows
+The GC needs to pause the entire runtime so that it can move around objects as part of it's *compaction* phase. If these objects were being referenced by code that was simultaneously executing then all sorts of bad things would happen. So the GC can only make these changes when it knows that no other code is running, hence the need to *pause* the entire runtime. 
 
-[![Background Garbage Collection]({{ base }}/images/2016/06/BackgroundGarbageCollection-Annotated.jpeg)]({{ base }}/images/2016/06/BackgroundGarbageCollection-Annotated.jpeg)
+## GC Flow 
 
-This post is going to be looking at **how** the .NET Runtime brings all the applications threads to a **safe-point** so that the GC can do it's work.
-
-For some background this passage from the excellent [Pro .NET Performance: Optimize Your C# Applications ](https://www.amazon.co.uk/Pro-NET-Performance-Optimize-Applications/dp/1430244585/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=mattonsoft-21&linkId=f18fd47630f046ab8e28512acc728fbb) explains what's going on:
-
-[![Suspending Threads for GC]({{ base }}/images/2016/08/Suspending Threads for GC.png)](https://books.google.co.uk/books?id=fhpYTbos8OkC&pg=PA103&lpg=PA103&dq=GC+safepoints+.NET&source=bl&ots=OcEbYCaMor&sig=XNDl1pSuKRcDU_xc1M6Go64ot2Q&hl=en&sa=X&redir_esc=y#v=onepage&q&f=false)
-
-The GC flow for a Foreground (Blocking GC) is shown below (info taken from the [excellent blog post](https://blogs.msdn.microsoft.com/maoni/2014/12/25/gc-etw-events-3/) by [Maoni Stephens](https://github.com/Maoni0/) the main developer on the .NET GC):
+In a [previous post]({{ base }}/2016/06/20/Visualising-the-dotNET-Garbage-Collector/) I demonstrated how you can use ETW Events to visualise what the .NET Garbage Collector (GC) is doing. That post included the following GC flow for a Foreground/Blocking Collection (info taken from the [excellent blog post](https://blogs.msdn.microsoft.com/maoni/2014/12/25/gc-etw-events-3/) by [Maoni Stephens](https://github.com/Maoni0/) the main developer on the .NET GC):
 
 1. `GCSuspendEE_V1` 
 2. `GCSuspendEEEnd_V1` <– **suspension is done**
@@ -28,11 +22,17 @@ The GC flow for a Foreground (Blocking GC) is shown below (info taken from the [
 5. `GCRestartEEBegin_V1` 
 6. `GCRestartEEEnd_V1` <– **resumption is done.**
 
-Technically the GC itself doesn't actually perform a suspension, it calls [into the *Execution Engine* (EE)](https://github.com/dotnet/coreclr/blob/master/src/vm/gcenv.ee.cpp#L26-L36) and asks that to suspend all the running threads. So based on the flow above were are talking about what happens between 1) `GCSuspendEE_V1` and 2) `GCSuspendEEEnd_V1`. This suspension needs to be as quick as possible, because the time taken contributes to the overall *GC pause*. Therefore the *Time To Safe Point* (TTSP) as it's known, is minimised by using several techniques. 
+This post is going to be looking at **how** the .NET Runtime brings all the threads in an application to a **safe-point** so that the GC can do it's work. This corresponds to what happens between step 1) `GCSuspendEE_V1` and 2) `GCSuspendEEEnd_V1` in the flow above.
+
+For some background this passage from the excellent [Pro .NET Performance: Optimize Your C# Applications ](https://www.amazon.co.uk/Pro-NET-Performance-Optimize-Applications/dp/1430244585/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=mattonsoft-21&linkId=f18fd47630f046ab8e28512acc728fbb) explains what's going on:
+
+[![Suspending Threads for GC]({{ base }}/images/2016/08/Suspending Threads for GC.png)](https://books.google.co.uk/books?id=fhpYTbos8OkC&pg=PA103&lpg=PA103&dq=GC+safepoints+.NET&source=bl&ots=OcEbYCaMor&sig=XNDl1pSuKRcDU_xc1M6Go64ot2Q&hl=en&sa=X&redir_esc=y#v=onepage&q&f=false)
+
+Technically the GC itself doesn't actually perform a suspension, it calls [into the *Execution Engine* (EE)](https://github.com/dotnet/coreclr/blob/master/src/vm/gcenv.ee.cpp#L26-L36) and asks that to suspend all the running threads. This suspension needs to be as quick as possible, because the time taken contributes to the overall *GC pause*. Therefore this *Time To Safe Point* (TTSP) as it's known, needs to be minimised, the CLR does this by using several techniques. 
 
 ## GC suspension in Runtime code
 
-Inside code that it controls, the runtime inserts method calls to ensure that ensure threads can regularly *poll* to determine when they need to suspend. For instance take a look at the following code snippet from the [`IndexOfCharArray()`](https://github.com/dotnet/coreclr/blob/deb00ad58acf627763b6c0a7833fa789e3bb1cd0/src/classlibnative/bcltype/stringnative.cpp#L351-L400) method (which is called internally by [`String.IndexOfAny(..)`](https://msdn.microsoft.com/en-us/library/system.string.indexofany(v=vs.110).aspx)). Notice that it contains multiple calls to the macro `FC_GC_POLL_RET()`:
+Inside code that it controls, the runtime inserts method calls to ensure that threads can regularly *poll* to determine when they need to suspend. For instance take a look at the following code snippet from the [`IndexOfCharArray()`](https://github.com/dotnet/coreclr/blob/deb00ad58acf627763b6c0a7833fa789e3bb1cd0/src/classlibnative/bcltype/stringnative.cpp#L351-L400) method (which is called internally by [`String.IndexOfAny(..)`](https://msdn.microsoft.com/en-us/library/system.string.indexofany(v=vs.110).aspx)). Notice that it contains multiple calls to the macro `FC_GC_POLL_RET()`:
 
 ``` cpp
 FCIMPL4(INT32, COMString::IndexOfCharArray, StringObject* thisRef, CHARArray* valueRef, INT32 startIndex, INT32 count)
@@ -86,7 +86,7 @@ Alternatively, in code that the runtime doesn't control things are a bit differe
 
 I'm not going to talk about how the thread-suspension mechanism works, as it's a complex topic, but as always there's an in-depth [section in the BOTR](https://github.com/dotnet/coreclr/blob/775003a4c72f0acc37eab84628fcef541533ba4e/Documentation/botr/threading.md#suspension) that gives all the gory details (in summary it suspends the underlying native thread, via the [Win32 SuspendThread API](https://msdn.microsoft.com/en-us/library/windows/desktop/ms686345(v=vs.85).aspx)). 
 
-You can see [some of the heuristics](https://github.com/dotnet/coreclr/blob/deb00ad58acf627763b6c0a7833fa789e3bb1cd0/src/jit/flowgraph.cpp#L7382-L7462) that the JIT uses to decide whether code is fully or partially interruptible and seeks to find the best trade-off between code quality/size and GC suspension latency. But as a concrete example, if we take the following code that accumulates a counter in a tight loop:
+You can see [some of the heuristics](https://github.com/dotnet/coreclr/blob/deb00ad58acf627763b6c0a7833fa789e3bb1cd0/src/jit/flowgraph.cpp#L7382-L7462) that the JIT uses to decide whether code is fully or partially interruptible as it seeks to find the best trade-off between code quality/size and GC suspension latency. But as a concrete example, if we take the following code that accumulates a counter in a tight loop:
 
 ``` csharp
 public static long TestMethod()
@@ -149,7 +149,7 @@ The method is then classified as *Partially Interruptible*:
 ```
 ([full JIT diagnostic output of **Partially** Interruptible method](https://gist.github.com/mattwarren/06dd970b5364c80d445da4252558a5d3#file-testmethod-partially-interruptible-md))
 
-Interesting enough there seems to be existing functionality where the JIT will insert `JIT_PollGC()` calls into **user** code, available via the [`GCPollType` CLR Configuration flag](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/clr-configuration-knobs.md). However by default it's disabled and in my tests turning it on cause the CoreCLR to exit with some interesting errors. So it appears that currently, the default or supported behaviour is to use thread-suspension on user code, rather than inserting explicit `JIT_PollGC()` calls.
+Interesting enough there seems to be existing functionality in the .NET JIT, where it will insert `JIT_PollGC()` calls into **user** code, available via the [`GCPollType` CLR Configuration flag](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/clr-configuration-knobs.md). However by default it's disabled and in my tests turning it on causes the CoreCLR to exit with some interesting errors. So it appears that currently, the default or supported behaviour is to use thread-suspension on user code, rather than inserting explicit `JIT_PollGC()` calls.
 
 ----
 
