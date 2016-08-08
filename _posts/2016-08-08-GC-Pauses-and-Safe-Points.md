@@ -77,7 +77,7 @@ However calls to `FC_GC_POLL` need to be carefully inserted in the correct locat
 
 ## GC suspension in User code
 
-Alternatively, in code that the runtime doesn't control things are a bit different. Here the JIT analyses the code and classifies is as either:
+Alternatively, in code that the runtime doesn't control things are a bit different. Here the JIT analyses the code and classifies it as either:
 
 - **Partially interruptible**
 - **Fully interruptible** 
