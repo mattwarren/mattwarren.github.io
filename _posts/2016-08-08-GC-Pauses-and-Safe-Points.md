@@ -84,7 +84,7 @@ Alternatively, in code that the runtime doesn't control things are a bit differe
 
 **Partially interruptible** code can only be suspended at explicit GC poll locations (i.e. `FC_GC_POLL` calls) or when it calls into other methods. On the other hand **fully interruptible** code can be interrupted or suspended at any time, as every line within the method is considered a GC safe-point.
 
-I'm not going to talk about how the thread-suspension mechanism works, as it's a complex topic, but as always there's an in-depth [section in the BOTR](https://github.com/dotnet/coreclr/blob/775003a4c72f0acc37eab84628fcef541533ba4e/Documentation/botr/threading.md#suspension) that gives all the gory details (in summary it suspends the underlying native thread, via the [Win32 SuspendThread API](https://msdn.microsoft.com/en-us/library/windows/desktop/ms686345(v=vs.85).aspx)). 
+I'm not going to talk about how the *thread-hijacking* mechanism works (used with *fully interruptible* code), as it's a complex topic, but as always there's an in-depth [section in the BOTR](https://github.com/dotnet/coreclr/blob/775003a4c72f0acc37eab84628fcef541533ba4e/Documentation/botr/threading.md#hijacking) that gives all the gory details. If you don't want to read the whole thing, in summary it suspends the underlying native thread, via the [Win32 SuspendThread API](https://msdn.microsoft.com/en-us/library/windows/desktop/ms686345(v=vs.85).aspx). 
 
 You can see [some of the heuristics](https://github.com/dotnet/coreclr/blob/deb00ad58acf627763b6c0a7833fa789e3bb1cd0/src/jit/flowgraph.cpp#L7382-L7462) that the JIT uses to decide whether code is fully or partially interruptible as it seeks to find the best trade-off between code quality/size and GC suspension latency. But as a concrete example, if we take the following code that accumulates a counter in a tight loop:
 
@@ -137,7 +137,7 @@ public static long TestMethod()
 }
 ```
 
-The method is then classified as *Partially Interruptible*:
+The method is then classified as *Partially Interruptible*, due to the additional `Console.WriteLine(..)` calls:
 
 ``` assembly
 ; Assembly listing for method ConsoleApplication.Program:TestMethod():long
@@ -145,11 +145,10 @@ The method is then classified as *Partially Interruptible*:
 ; optimized code
 ; rsp based frame
 ; partially interruptible
-; Final local variable assignments
 ```
 ([full JIT diagnostic output of **Partially** Interruptible method](https://gist.github.com/mattwarren/06dd970b5364c80d445da4252558a5d3#file-testmethod-partially-interruptible-md))
 
-Interesting enough there seems to be existing functionality in the .NET JIT, where it will insert `JIT_PollGC()` calls into **user** code, available via the [`GCPollType` CLR Configuration flag](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/clr-configuration-knobs.md). However by default it's disabled and in my tests turning it on causes the CoreCLR to exit with some interesting errors. So it appears that currently, the default or supported behaviour is to use thread-suspension on user code, rather than inserting explicit `JIT_PollGC()` calls.
+Interesting enough there seems to be functionality that enables `JIT_PollGC()` calls to be inserted into **user** code as they are compiled by the .NET JIT, this is controlled by the [`GCPollType` CLR Configuration flag](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/clr-configuration-knobs.md). However by default it's disabled and in my tests turning it on causes the CoreCLR to exit with some interesting errors. So it appears that currently, the default or supported behaviour is to use thread-hijacking on user code, rather than inserting explicit `JIT_PollGC()` calls.
 
 ----
 

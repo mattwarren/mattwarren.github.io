@@ -68,12 +68,12 @@ As you can see in the image below (courtesy of the [.NET Blog](https://blogs.msd
 
 So calculating the pauses for a **Foreground** GC (this means all Gen 0/1 GCs and full blocking GCs) is relatively straightforward, using the info from the [excellent blog post](https://blogs.msdn.microsoft.com/maoni/2014/12/25/gc-etw-events-3/) by [Maoni Stephens](https://github.com/Maoni0/) the main developer on the .NET GC:
 
-1. `GCSuspendEE_V1 Event` 
-2. `GCSuspendEEEnd_V1 Event` <– **suspension is done**
-3. `GCStart_V1 Event` 
-4. `GCEnd_V1 Event` <– **actual GC is done**
-5. `GCRestartEEBegin_V1 Event` 
-6. `GCRestartEEEnd_V1 Event` <– **resumption is done.**
+1. `GCSuspendEE_V1` 
+2. `GCSuspendEEEnd_V1` <– **suspension is done**
+3. `GCStart_V1` 
+4. `GCEnd_V1` <– **actual GC is done**
+5. `GCRestartEEBegin_V1` 
+6. `GCRestartEEEnd_V1` <– **resumption is done.**
 
 So the pause is just the difference between the timestamp of the `GCSuspendEEEnd_V1` event and that of the `GCRestartEEEnd_V1`.
 
@@ -81,22 +81,22 @@ So the pause is just the difference between the timestamp of the `GCSuspendEEEnd
 
 However for **Background** GC (Gen 2) it is more complicated, again from [Maoni's blog post](https://blogs.msdn.microsoft.com/maoni/2014/12/25/gc-etw-events-3/):
 
-1. `GCSuspendEE_V1 Event` 
-2. `GCSuspendEEEnd_V1 Event`
-3. `GCStart_V1 Event` <– **Background GC starts**
-4. `GCRestartEEBegin_V1 Event` 
-5. `GCRestartEEEnd_V1 Event` <– **done with the initial suspension**
-6. `GCSuspendEE_V1 Event` 
-7. `GCSuspendEEEnd_V1 Event` 
-8. `GCRestartEEBegin_V1 Event` 
-9. `GCRestartEEEnd_V1 Event` <– **done with Background GC’s own suspension**
-10. `GCSuspendEE_V1 Event` 
-11. `GCSuspendEEEnd_V1 Event` <– **suspension for Foreground GC is done**
-12. `GCStart_V1 Event` 
-13. `GCEnd_V1 Event` <– **Foreground GC is done**
-14. `GCRestartEEBegin_V1 Event` 
-15. `GCRestartEEEnd_V1 Event` <– **resumption for Foreground GC is done**
-16. `GCEnd_V1 Event` <– **Background GC ends**
+1. `GCSuspendEE_V1` 
+2. `GCSuspendEEEnd_V1`
+3. `GCStart_V1` <– **Background GC starts**
+4. `GCRestartEEBegin_V1` 
+5. `GCRestartEEEnd_V1` <– **done with the initial suspension**
+6. `GCSuspendEE_V1` 
+7. `GCSuspendEEEnd_V1` 
+8. `GCRestartEEBegin_V1` 
+9. `GCRestartEEEnd_V1` <– **done with Background GC’s own suspension**
+10. `GCSuspendEE_V1` 
+11. `GCSuspendEEEnd_V1` <– **suspension for Foreground GC is done**
+12. `GCStart_V1` 
+13. `GCEnd_V1` <– **Foreground GC is done**
+14. `GCRestartEEBegin_V1` 
+15. `GCRestartEEEnd_V1` <– **resumption for Foreground GC is done**
+16. `GCEnd_V1` <– **Background GC ends**
 
 It's a bit easier to understand these steps by using an annotated version of the image from the [MSDN page on GC](https://msdn.microsoft.com/en-us/library/ee787088(v=vs.110).aspx#background_garbage_collection) (the numbers along the bottom correspond to the steps above)
 
