@@ -113,7 +113,7 @@ Here are the results I got with the .NET Framework 4.6.1, running on a [4 Core (
 
 The final column is the largest `totalSize` value that can be passed into `TryStartNoGCRegion(long totalSize)`, this was found by experimentation/trial-and-error.
 
-**Note:** The main difference between **Server** and **Workstation** is that in Workstation mode there is [only one heap]({{ base }}/images/2016/08/GC Heaps - Workstation - 32-bit.png), whereas in Sever mode there is [one heap per logical CPU]({{ base }}/images/2016/08/GC Heaps - Server - 32-bit.png). 
+**Note:** The main difference between **Server** and **Workstation** is that in Workstation mode there is [only one heap]({{ base }}/images/2016/08/GC Heaps - Workstation - 32-bit.png), whereas in Server mode there is [one heap per logical CPU]({{ base }}/images/2016/08/GC Heaps - Server - 32-bit.png). 
 
 ----
 
