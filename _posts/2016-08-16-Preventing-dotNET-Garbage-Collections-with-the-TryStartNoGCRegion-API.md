@@ -2,7 +2,7 @@
 layout: post
 title: Preventing .NET Garbage Collections with the TryStartNoGCRegion API
 comments: true
-tags: [CLR, GC, Pauses]
+tags: [CLR, Garbage Collectors, Pauses]
 date: 2016-08-16
 
 ---
@@ -95,6 +95,8 @@ However if you visit the linked article on *GC Fundamentals*, it has no exact fi
 The size of segments allocated by the garbage collector is implementation-specific and is subject to change at any time, including in periodic updates. **Your app should never make assumptions about or depend on a particular segment size**, nor should it attempt to configure the amount of memory available for segment allocations.
 
 **Excellent, that's very helpful!?**
+
+**So let me get this straight, to prevent `TryStartNoGCRegion` from throwing an exception, we have to pass in a `totalSize` value that isn't larger than the size of an ephemeral segment, but we're not allowed to know the actual value of an ephemeral segment, in-case we assume too much!!**
 
 So where does that leave us?
 
