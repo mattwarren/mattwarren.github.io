@@ -158,7 +158,7 @@ Interesting enough there seems to be functionality that enables `JIT_PollGC()` c
 - [How local variable usage infomation is maintained in .net clr source code](http://stackoverflow.com/questions/30416520/how-local-variable-usage-infomation-is-maintained-in-net-clr-source-code)
 - [Thread.Suspend, Garbage Collection, and Safe Points](https://msdn.microsoft.com/en-us/library/678ysw69(v=vs.110).aspx)
 - [LLVM as a code generator for the CoreCLR - With a particular emphasis on GC
-](llvm.org/devmtg/2015-04/slides/LLILC_Euro_LLVM_2015.pptx)
+](http://llvm.org/devmtg/2015-04/slides/LLILC_Euro_LLVM_2015.pptx)
 - [Comments on "SuspendRuntime" and "Redirection vs. Hijacking:" in `threadsuspend.cpp`](https://github.com/dotnet/coreclr/blob/6f26329518b08055c090315eee5db533e42f39ae/src/vm/threadsuspend.cpp#L4784-L4822)
 - [Comments on "Suspending The Runtime", "Cooperative Mode" and "Partially/Fully Interuptible Code" in `threads.h`](https://github.com/dotnet/coreclr/blob/6f26329518b08055c090315eee5db533e42f39ae/src/vm/threads.h#L36-L132)
 - [What Every Developer Must Know About Fast Garbage Collection (+ more)](http://geekswithblogs.net/akraus1/archive/2014/03/24/155766.aspx)
