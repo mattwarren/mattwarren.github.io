@@ -16,11 +16,15 @@ redirect_from:
   - /tag/jit-compiler/
   - /tag/net-profiling/feed/
   - /tag/mocking/
+  - /tag/roslyn/
+  - /category/performance-lessons/
+  - /category/performance/
+  - /tag/net-profiling/
 ---
 
 <ul class="tag-cloud">
 {% for tag in site.tags %}
-  <li style="font-size: {{ tag | last | size | times: 100 | divided_by: site.tags.size | plus: 70  }}%">
+  <li style="font-size: {{ tag | last | size | times: 300 | divided_by: site.tags.size | plus: 70  }}%">
     <a href="#{{ tag | first | slugize | replace:' ','-' }}">
       {{ tag | first }}
     </a>

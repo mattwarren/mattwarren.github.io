@@ -2,7 +2,7 @@
 layout: post
 title: Stack Overflow - performance lessons (part 1)
 comments: true
-tags: [Open Source, Performance, Performance Lessons, stackoverflow]
+tags: [Open Source, Performance, Performance Lessons, Stack Overflow]
 ---
 
 This post is part of a semi-regular series, you can find the other entries <a href="{{base}}/2014/06/05/roslyn-code-base-performance-lessons-part-1/" target="_blank">here</a> and <a href="{{base}}/2014/06/10/roslyn-code-base-performance-lessons-part-2/" target="_blank">here</a>

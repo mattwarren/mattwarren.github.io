@@ -2,7 +2,7 @@
 layout: post
 title: How the dotnet CLI tooling runs your code
 comments: true
-tags: [dotnet, CLI, CoreCLR]
+tags: [CLI, CoreCLR]
 date: 2016-07-04
 excerpt: <p>Just over a week ago the <a href="https://blogs.msdn.microsoft.com/dotnet/2016/06/27/announcing-net-core-1-0/">official 1.0 release of .NET Core</a> was announced, the release includes:</p><blockquote><p>the .NET Core runtime, libraries and tools and the ASP.NET Core libraries.</p></blockquote></p>
 

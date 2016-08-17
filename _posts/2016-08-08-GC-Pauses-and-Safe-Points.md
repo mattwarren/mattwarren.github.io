@@ -2,7 +2,7 @@
 layout: post
 title: GC Pauses and Safe Points
 comments: true
-tags: [CLR, Garbage Collectors, Safepoints]
+tags: [CLR, Garbage Collectors]
 date: 2016-08-08
 
 ---

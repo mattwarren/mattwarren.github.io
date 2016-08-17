@@ -2,7 +2,7 @@
 layout: post
 title: Preventing .NET Garbage Collections with the TryStartNoGCRegion API
 comments: true
-tags: [CLR, Garbage Collectors, Pauses]
+tags: [CLR, Garbage Collectors]
 date: 2016-08-16
 
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: Strings and the CLR - a Special Relationship
 comments: true
-tags: [.NET, CLR, Internals]
+tags: [CLR, Internals]
 date: 2016-05-31
 ---
 
