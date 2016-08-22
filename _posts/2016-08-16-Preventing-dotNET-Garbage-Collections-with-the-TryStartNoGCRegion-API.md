@@ -85,20 +85,24 @@ Personally I would go with a variation of 3), use WinDbg, but automate it using 
 
 ### Segment Size
 
-However even when you know how many bytes will be allocated within the *No GC Region*, you still need to ensure that it's less that the maximum amount allowed, because if you specify a value too large an `ArgumentOutOfRangeException` exception is thrown. From the [MSDN docs](https://msdn.microsoft.com/en-us/library/dn906201(v=vs.110).aspx) (emphasis mine):
+**Update:** It turns out that I completely missed the section on segment sizes on the MSDN page, thanks to Maoni for [pointing this out to me](https://github.com/dotnet/coreclr/issues/6809#issuecomment-241238416). In the [section on "Generations"](https://msdn.microsoft.com/en-us/library/ee787088(v=vs.110).aspx#generations) there is the following chart (which fortunately correlates with my findings below):
 
-> The amount of memory in bytes to allocate without triggering a garbage collection. **It must be less than or equal to the size of an ephemeral segment**. For information on the size of an ephemeral segment, see the "Ephemeral generations and segments" section in the [Fundamentals of Garbage Collection article](https://msdn.microsoft.com/en-us/library/ee787088(v=vs.110).aspx).
+![Default Segment Sizes]({{ base }}/images/2016/08/Default Segment Sizes (from MSDN page).png)  
 
-However if you visit the linked article on *GC Fundamentals*, it has no exact figure for the size of an *ephemeral segment*, it does however have [this stark warning](https://msdn.microsoft.com/en-us/library/ee787088(v=vs.110).aspx#Anchor_2):
+<del>However even when you know how many bytes will be allocated within the *No GC Region*, you still need to ensure that it's less that the maximum amount allowed, because if you specify a value too large an `ArgumentOutOfRangeException` exception is thrown. From the [MSDN docs](https://msdn.microsoft.com/en-us/library/dn906201(v=vs.110).aspx) (emphasis mine):</del>
 
-> **Important**
-The size of segments allocated by the garbage collector is implementation-specific and is subject to change at any time, including in periodic updates. **Your app should never make assumptions about or depend on a particular segment size**, nor should it attempt to configure the amount of memory available for segment allocations.
+> <del> The amount of memory in bytes to allocate without triggering a garbage collection. **It must be less than or equal to the size of an ephemeral segment**. For information on the size of an ephemeral segment, see the "Ephemeral generations and segments" section in the [Fundamentals of Garbage Collection article](https://msdn.microsoft.com/en-us/library/ee787088(v=vs.110).aspx).</del>
 
-**Excellent, that's very helpful!?**
+<del>However if you visit the linked article on *GC Fundamentals*, it has no exact figure for the size of an *ephemeral segment*, it does however have [this stark warning](https://msdn.microsoft.com/en-us/library/ee787088(v=vs.110).aspx#Anchor_2):</del>
 
-**So let me get this straight, to prevent `TryStartNoGCRegion` from throwing an exception, we have to pass in a `totalSize` value that isn't larger than the size of an ephemeral segment, but we're not allowed to know the actual value of an ephemeral segment, in-case we assume too much!!**
+> <del>**Important**
+The size of segments allocated by the garbage collector is implementation-specific and is subject to change at any time, including in periodic updates. **Your app should never make assumptions about or depend on a particular segment size**, nor should it attempt to configure the amount of memory available for segment allocations.</del>
 
-So where does that leave us?
+<del>**Excellent, that's very helpful!?**</del>
+
+<del>**So let me get this straight, to prevent `TryStartNoGCRegion` from throwing an exception, we have to pass in a `totalSize` value that isn't larger than the size of an ephemeral segment, but we're not allowed to know the actual value of an ephemeral segment, in-case we assume too much!!**</del>
+
+<del>So where does that leave us?</del>
 
 Well fortunately it's possible to figure out the size of an ephemeral or Small Object Heap (SOH) segment using either [VMMap](http://blogs.microsoft.co.il/sasha/2011/07/18/mapping-the-memory-usage-of-net-applications-part-2-vmmap-and-memorydisplay/), or the previously mentioned [CLRMD library](https://github.com/Microsoft/clrmd/blob/master/Documentation/WalkingTheHeap.md) ([code sample available](https://gist.github.com/mattwarren/3dce1aea76c50da850af53a2d453e3c0)).
 
