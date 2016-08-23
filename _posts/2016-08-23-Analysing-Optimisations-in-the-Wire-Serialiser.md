@@ -4,7 +4,6 @@ title: Analysing Optimisations in the Wire Serialiser
 comments: true
 tags: [Benchmarking, Performance, Optimisations]
 date: 2016-08-23
-
 ---
 
 Recently [Roger Johansson](twitter.com/RogerAlsing) wrote a post titled [Wire – Writing one of the fastest .NET serializers](https://rogeralsing.com/2016/08/16/wire-writing-one-of-the-fastest-net-serializers/), describing the optimisation that were implemented to make [Wire](https://github.com/akkadotnet/Wire) as fast as possible. He also followed up that post with a set of [benchmarks](https://twitter.com/RogerAlsing/status/767320145807147008), showing how Wire compared to other .NET serialisers:
@@ -38,7 +37,7 @@ public ValueSerializer GetSerializerByType(Type type)
 }
 ```
 
-into:
+into this:
 
 ``` csharp
 public ValueSerializer GetSerializerByType(Type type)
@@ -57,7 +56,7 @@ public ValueSerializer GetSerializerByType(Type type)
 }
 ```
 
-i.e. replacing a `dictionary` lookup with an `if` statement and caching the `Type` instance of known types, rather than calculating them every time. As you can see the optimisation pays off in some circumstance but not in others, so it's not a clear win. It depends on where the type is in the list of `if` statements. If it's near the beginning (e.g. `System.String`) it'll be quicker than if it's near the end (e.g. `System.Byte[]`), which makes sense as all the other comparisons have to be done first.  
+So it has replaced a `dictionary` lookup with an `if` statement. In addition it is caching the `Type` instance of known types, rather than calculating them every time. As you can see the optimisation pays off in some circumstance but not in others, so it's not a clear win. It depends on where the type is in the list of `if` statements. If it's near the beginning (e.g. `System.String`) it'll be quicker than if it's near the end (e.g. `System.Byte[]`), which makes sense as all the other comparisons have to be done first.  
 
 [![LookingUpValueSerializersByType-Results]({{ base }}/images/2016/08/LookingUpValueSerializersByType-Results.png)]({{ base }}/images/2016/08/LookingUpValueSerializersByType-Results.png)
 
@@ -65,7 +64,7 @@ i.e. replacing a `dictionary` lookup with an `if` statement and caching the `Typ
 
 ### Looking up types when deserializing
 
-The 2nd optimisation worked by removing all unnecessary memory allocations, it did this by:
+The 2nd optimisation works by removing all unnecessary memory allocations, it did this by:
 
 - Using a custom `struct` (value type) rather than a `class`
 - Pre-calculating a hash code once, rather than each time a comparison is needed. 
@@ -75,13 +74,13 @@ The 2nd optimisation worked by removing all unnecessary memory allocations, it d
 
 [Full benchmark code and results](https://gist.github.com/mattwarren/da62343df8fbdc5378df21e49df6a7c3)
 
-**Note:** this demonstrates how BenchmarkDotNet can show you [memory allocations]({{ base }}/2016/02/17/adventures-in-benchmarking-memory-allocations/) as well as the time taken.
+**Note:** these results nicely demonstrate how BenchmarkDotNet can show you [memory allocations]({{ base }}/2016/02/17/adventures-in-benchmarking-memory-allocations/) as well as the time taken.
 
-Interesting they hadn't actually removed all memory allocations as the comparisons between `OptimisedLookup` and `OptimisedLookupCustomComparer` show. So I [sent a P.R](https://github.com/akkadotnet/Wire/pull/76) which removes unnecessary boxing, by using a Custom Comparer rather than the default Struct comparer.
+Interestingly they hadn't actually removed all memory allocations as the comparisons between `OptimisedLookup` and `OptimisedLookupCustomComparer` show. To fix this I [sent a P.R](https://github.com/akkadotnet/Wire/pull/76) which removes unnecessary boxing, by using a Custom Comparer rather than the default `struct` comparer.
 
 ### Byte buffers, allocations and GC
 
-Again removing unnecessary memory allocations were key in this optimisation, most of which can be seen in the [NoAllocBitConverter](https://github.com/akkadotnet/Wire/blob/dev/Wire/NoAllocBitConverter.cs). Clearly serialisation spends *a lot* of time converting from the in-memory representation of an object to the serialised version, i.e. a `byte []`. So several tricks were employed to ensure that temporary memory allocations were either removed or if that wasn't possible, they were done using a buffer from a buffer pool rather than allocating a new one each time (see "Buffer recycling")
+Again removing unnecessary memory allocations were key in this optimisation, most of which can be seen in the [NoAllocBitConverter](https://github.com/akkadotnet/Wire/blob/dev/Wire/NoAllocBitConverter.cs). Clearly serialisation spends *a lot* of time converting from the in-memory representation of an object to the serialised version, i.e. a `byte []`. So several tricks were employed to ensure that temporary memory allocations were either removed completely or if that wasn't possible, they were done by re-using a buffer from a pool rather than allocating a new one each time (see ["Buffer recycling"](https://rogeralsing.com/2016/08/16/wire-writing-one-of-the-fastest-net-serializers/))
 
 [![StringSerialisationDeserialisation-Results]({{ base }}/images/2016/08/StringSerialisationDeserialisation-Results.png)]({{ base }}/images/2016/08/StringSerialisationDeserialisation-Results.png)
 
@@ -89,7 +88,7 @@ Again removing unnecessary memory allocations were key in this optimisation, mos
  
 ### Clever allocations 
 
-This optimisation was perhaps the most interesting, because is was implemented by creating a custom data structure, tailored to the specific needs of Wire. So, rather than using the default [.NET dictionary](https://msdn.microsoft.com/en-us/library/xfhwa508(v=vs.110).aspx), they implemented [FastTypeUShortDictionary](https://github.com/akkadotnet/Wire/blob/36b93703b003d70744fc97e3e400cca411dce1c9/Wire/FastDictionary.cs). In essence this data structure optimises for having only 1 item, but falls back to a regular dictionary when it grows larger. To see this in action, here is the code from the [TryGetValue(..) method](https://github.com/akkadotnet/Wire/blob/36b93703b003d70744fc97e3e400cca411dce1c9/Wire/FastDictionary.cs#L13-L31):
+This optimisation is perhaps the most interesting, because it's implemented by creating a custom data structure, tailored to the specific needs of Wire. So, rather than using the default [.NET dictionary](https://msdn.microsoft.com/en-us/library/xfhwa508(v=vs.110).aspx), they implemented [FastTypeUShortDictionary](https://github.com/akkadotnet/Wire/blob/36b93703b003d70744fc97e3e400cca411dce1c9/Wire/FastDictionary.cs). In essence this data structure optimises for having only 1 item, but falls back to a regular dictionary when it grows larger. To see this in action, here is the code from the [TryGetValue(..) method](https://github.com/akkadotnet/Wire/blob/36b93703b003d70744fc97e3e400cca411dce1c9/Wire/FastDictionary.cs#L13-L31):
 
 ``` csharp
 public bool TryGetValue(Type key, out ushort value)
@@ -131,7 +130,7 @@ If you are interested in how to implement this, see the [Wire compiler source](h
 
 ### Fast creation of empty objects
 
-The final optimisation trick used is also based on dynamic code creation, but this time it is purely dealing with creating empty objects. Again this is something that a serialise does many time, so any optimisations or savings are worth it.
+The final optimisation trick used is also based on dynamic code creation, but this time it is purely dealing with creating empty objects. Again this is something that a serialiser does many time, so any optimisations or savings are worth it.
 
 Basically the benchmark is comparing code like this:
 
@@ -154,7 +153,7 @@ However this trick only works if the `constructor` of the type being created is 
 
 ----
 
-## Summary (FINISH THIS!!)
+## Summary
 
-So it's obvious that [Roger Johansson](https://twitter.com/rogeralsing) and [Szymon Kulec](https://twitter.com/Scooletz) know their optimisations and as a results they have steadily made the Wire serialiser faster and faster. 
+So it's obvious that [Roger Johansson](https://twitter.com/rogeralsing) and [Szymon Kulec](https://twitter.com/Scooletz) (who also [contributed performance improvements](https://blog.scooletz.com/2016/08/09/wire-improvements/)) know their optimisations and as a result they have steadily made the Wire serialiser faster, which makes is an interesting project to learn from. 
  
