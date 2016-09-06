@@ -5,7 +5,7 @@ title: Speaking
 
 <h4><strong>List of talks:</strong></h4>
 
-- [DDD 11 in Reading - 2016](#DDD11Reading)
+- [DeveloperDeveloperDeveloper 11 in Reading - 2016](#DDD11Reading)
 - [ProgSCon London - 2016](#ProgSConLondon2016)
 - [Skills Matter - London .NET UG - 2016](#SkillsMatter2016)
 - [DeveloperSouthCoast - 2015](#DeveloperSouthCoast)
@@ -16,7 +16,7 @@ title: Speaking
 
 <hr />
 
-<h3 id="DDD11Reading"><strong><a href="http://developerdeveloperdeveloper.com/Sessions/Details/47" target="_blank">DDD 11 in Reading - Performance is a Feature!</a></strong></h3>
+<h3 id="DDD11Reading"><strong><a href="http://developerdeveloperdeveloper.com/Sessions/Details/47" target="_blank">DeveloperDeveloperDeveloper 11 in Reading - Performance is a Feature!</a></strong></h3>
 <a href="http://www.progscon.co.uk/talks" target="_blank"><img src="{{ base }}/images/speaking/DDD11-Reading-2016.jpeg" alt="DDD 11 in Reading"/></a>
 There is a [great write-up](https://medium.com/@ZombieCodeKill/developer-developer-developer-11-16d9d3033105) of the day done by [Kevin O'Shaughnessy (@ZombieCodeKill)](https://twitter.com/ZombieCodeKill), who made some excellent notes of my talk, including this quote:
 
