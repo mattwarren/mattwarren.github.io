@@ -44,13 +44,13 @@ But knowing what's inside those heaps is more useful, as [David Fowler](https://
 
 [![David Fowler tweet about Strings]({{ base }}/images/2016/09/David Fowler tweet about Strings.png)](https://twitter.com/davidfowl/status/767585518854938625)
 
-Now we could analyse the memory dump to produce a list of the most frequently occurring strings, as Nick Craver did with a [memory dump from the App Pool of a Stack Overflow server](https://twitter.com/Nick_Craver/status/752822131889729536) (click for larger image):
+Now we could analyse the memory dump to produce a list of the most frequently occurring strings, as [Nick Craver](http://nickcraver.com/) did with a [memory dump from the App Pool of a Stack Overflow server](https://twitter.com/Nick_Craver/status/752822131889729536) (click for larger image):
 
 [![String frequency analysis of a Stack Overflow memory dump]({{ base }}/images/2016/09/String frequency analysis of a Stack Overflow memory dump.jpg)]({{ base }}/images/2016/09/String frequency analysis of a Stack Overflow memory dump.jpg)
 
 However we're going to look more closely at the actual contents of the string and in-particular analyse what the underlying *encoding* is, i.e. `ASCII`, `ISO-8859-1 (Latin-1)` or `Unicode`.
 
-By default the .NET Encoder replaces any characters it can't convert with '�', which is known as the *Unicode Replacement Character*, instead of giving an error. So we will force it to throw an exception, which means we can detect the most *compact* encoding possible. We do this by trying to convert to `ASCII`, `ISO-8859-1 (Latin-1)` and then `Unicode (sequence of UTF-16 code units)` in turn. To see this in action, below is the code from the [`IsASCII(..)` function](https://github.com/mattwarren/HeapStringAnalyser/blob/2161764b11d19a54ef1d0c2d78b796ee4c8bfd62/HeapStringAnalyser/HeapStringAnalyser/Program.cs#L165-L178):
+By default the .NET string Encoder, instead of giving an error, replaces any characters it can't convert with '�' (which is known as the *Unicode Replacement Character*). So we will need to force it to throw an exception. This means we can detect the most *compact* encoding possible, by trying to convert to the raw string data to `ASCII`, `ISO-8859-1 (Latin-1)` and then `Unicode` (sequence of UTF-16 code units) in turn. To see this in action, below is the code from the [`IsASCII(..)` function](https://github.com/mattwarren/HeapStringAnalyser/blob/2161764b11d19a54ef1d0c2d78b796ee4c8bfd62/HeapStringAnalyser/HeapStringAnalyser/Program.cs#L165-L178):
 
 ``` csharp
 private static Encoding asciiEncoder = Encoding.GetEncoding(
@@ -74,9 +74,11 @@ private static bool IsASCII(string text, out byte[] textAsBytes)
 }
 ```
 
-Next we run this on a memory dump of Visual Studio, with the [HeapStringAnalyser source code](https://github.com/mattwarren/HeapStringAnalyser) solution loaded and get the following output:
+Next we run this on a memory dump of Visual Studio with the [HeapStringAnalyser source code](https://github.com/mattwarren/HeapStringAnalyser) solution loaded and get the following output:
  
 [![HeapStringAnalyser - String Info]({{ base }}/images/2016/09/HeapStringAnalyser - String Info.png)]({{ base }}/images/2016/09/HeapStringAnalyser - String Info.png)
+
+The most interesting part is reproduced below: 
 
 ```
 Overall 145,872 "System.String" objects take up 12,391,286 bytes (11.82 MB)
@@ -87,10 +89,10 @@ Actual Encoding that the "System.String" could be stored as (with corresponding 
        10,339,638 bytes ( 145,505 strings) as ASCII
             3,370 bytes (      65 strings) as ISO-8859-1 (Latin-1)
             6,070 bytes (     302 strings) as Unicode
-Total: 10,349,078 bytes (expected: 10,349,078)
+Total: 10,349,078 bytes
 ```
 
-So in this case we can see that out of the 145,872 `String` objects in memory, 145,505 of them could actually be stored as `ASCII`, a further 65 as `ISO-8859-1 (Latin-1)` and only 302 need the full `Unicode` encoding.
+So in this case we can see that out of the 145,872 string objects in memory, 145,505 of them could actually be stored as `ASCII`, a further 65 as `ISO-8859-1 (Latin-1)` and only 302 need the full `Unicode` encoding.
 
 ----
 
