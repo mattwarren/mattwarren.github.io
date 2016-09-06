@@ -5,6 +5,7 @@ title: Speaking
 
 <h4><strong>List of talks:</strong></h4>
 
+- [DDD 11 in Reading - 2016](#DDD11Reading)
 - [ProgSCon London - 2016](#ProgSConLondon2016)
 - [Skills Matter - London .NET UG - 2016](#SkillsMatter2016)
 - [DeveloperSouthCoast - 2015](#DeveloperSouthCoast)
@@ -15,7 +16,21 @@ title: Speaking
 
 <hr />
 
-<h3 id="ProgSConLondon2016"><strong><a href="" target="_blank">ProgSCon London 2016 - Performance and how to measure it</a></strong></h3>
+<h3 id="DDD11Reading"><strong><a href="http://developerdeveloperdeveloper.com/Sessions/Details/47" target="_blank">DDD 11 in Reading - Performance is a Feature!</a></strong></h3>
+<a href="http://www.progscon.co.uk/talks" target="_blank"><img src="{{ base }}/images/speaking/DDD11-Reading-2016.jpeg" alt="DDD 11 in Reading"/></a>
+There is a [great write-up](https://medium.com/@ZombieCodeKill/developer-developer-developer-11-16d9d3033105) of the day done by [Kevin O'Shaughnessy (@ZombieCodeKill)](https://twitter.com/ZombieCodeKill), who made some excellent notes of my talk, including this quote:
+
+<blockquote>
+Performance is a fascinating topic in my opinion, and this was my favorite talk of them all.
+</blockquote>
+
+<b>I'm happy with that!</b>
+
+The slides are [also available](http://www.slideshare.net/mattwarren/performance-is-a-feature-at-ddd-11)
+
+<hr />
+
+<h3 id="ProgSConLondon2016"><strong><a href="http://www.progscon.co.uk/talks" target="_blank">ProgSCon London 2016 - Performance and how to measure it</a></strong></h3>
 <a href="http://www.progscon.co.uk/talks" target="_blank"><img src="{{ base }}/images/speaking/ProgSConLondon2016.png" alt="ProgSCon London 2016"/></a>
 The slides are [now available](http://www.slideshare.net/mattwarren/performance-and-how-to-measure-it-progscon-london-2016)
 
