@@ -32,7 +32,7 @@ The slides are [also available](http://www.slideshare.net/mattwarren/performance
 
 <h3 id="ProgSConLondon2016"><strong><a href="http://www.progscon.co.uk/talks" target="_blank">ProgSCon London 2016 - Performance and how to measure it</a></strong></h3>
 <a href="http://www.progscon.co.uk/talks" target="_blank"><img src="{{ base }}/images/speaking/ProgSConLondon2016.png" alt="ProgSCon London 2016"/></a>
-The slides are [now available](http://www.slideshare.net/mattwarren/performance-and-how-to-measure-it-progscon-london-2016)
+A [recording on the talk](https://www.infoq.com/presentations/dot-net-performance) and [the slides](http://www.slideshare.net/mattwarren/performance-and-how-to-measure-it-progscon-london-2016) are now available
 
 <hr />
 
