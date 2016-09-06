@@ -17,8 +17,8 @@ title: Speaking
 <hr />
 
 <h3 id="DDD11Reading"><strong><a href="http://developerdeveloperdeveloper.com/Sessions/Details/47" target="_blank">DeveloperDeveloperDeveloper 11 in Reading - Performance is a Feature!</a></strong></h3>
-<a href="http://www.progscon.co.uk/talks" target="_blank"><img src="{{ base }}/images/speaking/DDD11-Reading-2016.jpeg" alt="DDD 11 in Reading"/></a>
-There is a [great write-up](https://medium.com/@ZombieCodeKill/developer-developer-developer-11-16d9d3033105) of the day done by [Kevin O'Shaughnessy (@ZombieCodeKill)](https://twitter.com/ZombieCodeKill), who made some excellent notes of my talk, including this quote:
+<a href="{{ base }}/images/speaking/DDD11-Reading-2016.jpeg" target="_blank"><img src="{{ base }}/images/speaking/DDD11-Reading-2016.jpeg" alt="DDD 11 in Reading"/></a>
+Image courtesy of [Kevin O'Shaughnessy (@ZombieCodeKill)](https://twitter.com/ZombieCodeKill), who also did an [great write-up](https://medium.com/@ZombieCodeKill/developer-developer-developer-11-16d9d3033105) of the day including some very thorough notes of my talk and had this to say:
 
 <blockquote>
 Performance is a fascinating topic in my opinion, and this was my favorite talk of them all.
