@@ -8,12 +8,27 @@ permalink: /postsByYear/
 From http://stackoverflow.com/questions/19086284/jekyll-liquid-templating-how-to-group-blog-posts-by-year/19104574#19104574
 {% endcomment %}
 
+{% assign years = site.posts | map: "date" %}
+
 {% for post in site.posts  %}
     {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
     {% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
 
     {% if forloop.first %}
-    <h2 id="{{ this_year }}-ref">{{this_year}}</h2>
+        {% assign year_to_check = this_year %}
+    {% else %}
+        {% assign year_to_check = next_year %}
+    {% endif %}
+    {% assign year_counter = 0 %}
+    {% for date in years %}
+        {% assign year = date | date: "%Y" %}
+        {% if year == year_to_check %}
+            {% assign year_counter = year_counter | plus: 1 %}
+        {% endif %}
+    {% endfor %}
+
+    {% if forloop.first %}
+    <h2 id="{{ this_year }}-ref">{{this_year}} - {{ year_counter }} in Total</h2>
     <ul>
     {% endif %}
 
@@ -24,7 +39,7 @@ From http://stackoverflow.com/questions/19086284/jekyll-liquid-templating-how-to
     {% else %}
         {% if this_year != next_year %}
         </ul>
-        <h2 id="{{ next_year }}-ref">{{next_year}}</h2>
+        <h2 id="{{ next_year }}-ref">{{next_year}} - {{ year_counter }} in Total</h2>
         <ul>
         {% endif %}
     {% endif %}
