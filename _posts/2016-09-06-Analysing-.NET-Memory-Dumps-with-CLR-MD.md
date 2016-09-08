@@ -22,11 +22,11 @@ This post explores some of the things you can achieve by instead using CLR MD, a
 
 This post isn't meant to serve as a *Getting Started* guide, there's already a great set of Tutorials [linked from project README](https://github.com/Microsoft/clrmd#tutorials) that serve that purpose:
 
-- [Getting Started](./Documentation/GettingStarted.md) - A brief introduction to the API and how to create a CLRRuntime instance.
-- [The CLRRuntime Object](./Documentation/ClrRuntime.md) - Basic operations like enumerating AppDomains, Threads, the Finalizer Queue, etc.
-- [Walking the Heap](./Documentation/WalkingTheHeap.md) - Walking objects on the GC heap, working with types in CLR MD.
-- [Types and Fields in CLRMD](./Documentation/TypesAndFields.md) - More information about dealing with types and fields in CLRMD.
-- [Machine Code in CLRMD](./Documentation/MachineCode.md) - Getting access to the native code produced by the JIT or NGEN
+- [Getting Started](https://github.com/Microsoft/clrmd/blob/master/Documentation/GettingStarted.md) - A brief introduction to the API and how to create a CLRRuntime instance.
+- [The CLRRuntime Object](https://github.com/Microsoft/clrmd/blob/master/Documentation/ClrRuntime.md) - Basic operations like enumerating AppDomains, Threads, the Finalizer Queue, etc.
+- [Walking the Heap](https://github.com/Microsoft/clrmd/blob/master/Documentation/WalkingTheHeap.md) - Walking objects on the GC heap, working with types in CLR MD.
+- [Types and Fields in CLRMD](https://github.com/Microsoft/clrmd/blob/master/Documentation/TypesAndFields.md) - More information about dealing with types and fields in CLRMD.
+- [Machine Code in CLRMD](https://github.com/Microsoft/clrmd/blob/master/Documentation/MachineCode.md) - Getting access to the native code produced by the JIT or NGEN
 
 However we will be looking at what else CLR MD allows you to achieve.
 
@@ -105,4 +105,5 @@ Hopefully this post has demonstrated that CLR MD is a powerful tool, if you want
 - [.NET Crash Dump and Live Process Inspection](https://blogs.msdn.microsoft.com/dotnet/2013/05/01/net-crash-dump-and-live-process-inspection/)
 - [ClrMD.Extensions](https://github.com/JeffCyr/ClrMD.Extensions)
 - [Get most duplicated strings from a heap dump using ClrMD](https://blogs.msdn.microsoft.com/kirillosenkov/2014/07/05/get-most-duplicated-strings-from-a-heap-dump-using-clrmd/)
+- [Dumpty - A Dump tool for .Net.](https://github.com/jcdickinson/dumpty)
 - [How to properly work with non-primitive ClrInstanceField values using ClrMD?](http://stackoverflow.com/questions/22150259/how-to-properly-work-with-non-primitive-clrinstancefield-values-using-clrmd/22229543#22229543) 
