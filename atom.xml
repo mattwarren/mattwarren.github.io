@@ -24,7 +24,7 @@ layout: null
    <content type="html">
         {{ post.content | xml_escape }}   
         {% comment %} Enable CodeProject integration {% endcomment %}
-        <a href="http://www.codeproject.com/script/Articles/BlogFeedList.aspx?amid=641373" rel="tag" style="display:none">CodeProject</a>
+        &lt;a href=&quot;http://www.codeproject.com/script/Articles/BlogFeedList.aspx?amid=641373&quot; rel=&quot;tag&quot; style=&quot;display:none&quot;&gt;CodeProject&lt;/a&gt;
     </content>
  </entry>
  {% endfor %}
