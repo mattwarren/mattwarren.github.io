@@ -21,7 +21,11 @@ layout: null
    <link href="{{ site.url }}{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
    <id>{{ site.url }}{{ site.baseurl }}{{ post.id }}</id>
-   <content type="html">{{ post.content | xml_escape }}</content>
+   <content type="html">
+        {{ post.content | xml_escape }}   
+        {% comment %} Enable CodeProject integration {% endcomment %}
+        <a href="http://www.codeproject.com/script/Articles/BlogFeedList.aspx?amid=641373" rel="tag" style="display:none">CodeProject</a>
+    </content>
  </entry>
  {% endfor %}
 
