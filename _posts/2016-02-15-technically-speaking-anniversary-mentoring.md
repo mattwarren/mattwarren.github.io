@@ -5,7 +5,7 @@ title: Technically Speaking - Anniversary Mentoring
 comments: true
 tags: [Speaking]
 date: 2016-02-16
-
+codeproject: false
 ---
 
 I've been reading the excellent [Technically Speaking](https://tinyletter.com/techspeak/archive) newsletter for a while now and when they announced they would be running a [mentoring program](http://www.catehuston.com/blog/2015/12/07/running-a-mentoring-program/), I jumped at the chance and applied straight away. The idea was that each applicant had to set themselves speaking goals or identify areas they wanted to improve and then if you were selected [@techspeakdigest](https://twitter.com/techspeakdigest) would set you up with a mentor.
