@@ -135,7 +135,7 @@ Then, when the GC wants to perform the mark phase for a Gen 0, in order to find 
 
 If it didn't do this extra check (via the card-table), then any Gen 0 objects that were only referenced by older objects (i.e. those in Gen 1/2) would not be considered "live" and would then be collected. See the image below for what this looks like in practice:
 
-![Write barrier + card-table](http://blogs.msdn.com/blogfiles/abhinaba/WindowsLiveWriter/BackToBasicsGenerationalGarbageCollectio_115F4/image_18.png)
+![Write barrier + card-table](https://msdnshared.blob.core.windows.net/media/TNBlogsFS/BlogFileStorage/blogs_msdn/abhinaba/WindowsLiveWriter/BackToBasicsGenerationalGarbageCollectio_115F4/image_18.png)
 
 Image taken from [Back To Basics: Generational Garbage Collection](http://blogs.msdn.com/b/abhinaba/archive/2009/03/02/back-to-basics-generational-garbage-collection.aspx)
 
