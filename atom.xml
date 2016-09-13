@@ -25,7 +25,7 @@ layout: null
         {{ post.content | xml_escape }}
         {% comment %} Huh, this only works if the equality check is reversed!! {% endcomment %}
         {% if (post.codeproject == false) %}
-            The post &lt;a href=&quot;{{ site.url | xml_escape}}{{ post.url | xml_escape}}&quot;&gt;{{ post.title | xml_escape }}&lt;/a&gt; appeared first on my blog &lt;a href=&quot;http://mattwarren.org&quot;&gt;Performance is a Feature!&lt;/a&gt;
+            &lt;p&gt;The post &lt;a href=&quot;{{ site.url | xml_escape}}{{ post.url | xml_escape}}&quot;&gt;{{ post.title | xml_escape }}&lt;/a&gt; first appeared on my blog &lt;a href=&quot;http://mattwarren.org&quot;&gt;Performance is a Feature!&lt;/a&gt;&lt;/p&gt;
             {% comment %} Enable CodeProject integration {% endcomment %}
             &lt;a href=&quot;http://www.codeproject.com/script/Articles/BlogFeedList.aspx?amid=641373&quot; rel=&quot;tag&quot; style=&quot;display:none&quot;&gt;CodeProject&lt;/a&gt;
         {% endif %}
