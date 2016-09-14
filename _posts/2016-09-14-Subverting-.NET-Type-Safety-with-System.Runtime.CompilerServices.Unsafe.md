@@ -76,7 +76,7 @@ So at a high-level the goals of the `System.Runtime.CompilerServices.Unsafe` lib
 1. **Save developers from having to repeatedly write the same `unsafe` code**
   - There are already [code-bases making use of it](https://github.com/dotnet/corefxlab/pull/796), including the [Kestrel the high-performance web server, based on libuv.](https://github.com/aspnet/KestrelHttpServer/pull/1000)
 
-It's also worth pointing out that the library is primarily for use with a `struct` or Value type rather than a `class` or Reference type. You can use it with classes, however you [have to pin them first](https://msdn.microsoft.com/en-us/library/23acw07k(v=vs.110).aspx), so they don't move about in memory whilst you are working with the pointer.
+It's also worth pointing out that the library is primarily for use with a Value Type (int, float, etc) rather than a `class` or Reference type. You can use it with classes, however you [have to pin them first](https://msdn.microsoft.com/en-us/library/23acw07k(v=vs.110).aspx), so they don't move about in memory whilst you are working with the pointer.
 
 ----
 
@@ -167,7 +167,7 @@ Despite providing you with a nice strongly-typed API, you still have to mark you
 
 Strings in C# are immutable and the runtime goes to great lengths to ensure you can't bypass this behaviour. However under-the-hood the String data is just bytes which can be manipulated, indeed the runtime does this manipulation itself inside the `StringBuilder` class.
 
-So using `Unsafe.Write(..)` we can modify the contents of a String - **yay**!!
+So using `Unsafe.Write(..)` we can modify the contents of a String - **yay**!! However it needs to be pointed out that this code will potentially break the behaviour of the String class in many subtle ways, **so don’t ever use it in a real application!!**
 
 ``` csharp
 var text = "ABCDEFGHIJKLMNOPQRSTUVWXKZ";
@@ -194,7 +194,7 @@ pinnedText.Free();
 
 #### **Messing with the CLR type-system**
 
-But we can go even further than that and do a really nasty trick to completely defeat the CLR type-system. This code is horrible and could potentially break the CLR in several ways, so **don't ever use it in a real application!!** 
+But we can go even further than that and do a really nasty trick to completely defeat the CLR type-system. This code is horrible and could potentially break the CLR in several ways, so as before **don't ever use it in a real application!!** 
 
 ``` csharp
 int intValue = 5;
