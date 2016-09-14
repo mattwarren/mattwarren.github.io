@@ -74,7 +74,9 @@ So at a high-level the goals of the `System.Runtime.CompilerServices.Unsafe` lib
 1. **Allow access to functionality that can't be expressed in C#, but is possible in IL**
   - For instance `Unsafe.Sizeof<T>()` allows access to the [Sizeof IL Opcode](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.sizeof(v=vs.110).aspx)
 1. **Save developers from having to repeatedly write the same `unsafe` code**
-  - There are already [code-bases making use of it](https://github.com/dotnet/corefxlab/pull/796)
+  - There are already [code-bases making use of it](https://github.com/dotnet/corefxlab/pull/796), including the [Kestrel the high-performance web server, based on libuv.](https://github.com/aspnet/KestrelHttpServer/pull/1000)
+
+It's also worth pointing out that the library is primarily for use with a `struct` or Value type rather than a `class` or Reference type. You can use it with classes, however you [have to pin them first](https://msdn.microsoft.com/en-us/library/23acw07k(v=vs.110).aspx), so they don't move about in memory whilst you are working with the pointer.
 
 ----
 
