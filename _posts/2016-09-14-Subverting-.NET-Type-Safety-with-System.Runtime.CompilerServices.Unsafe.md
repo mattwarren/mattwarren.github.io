@@ -225,6 +225,7 @@ pinnedInt.Free();
 Which prints out:
 
 > Type: System.Int32, Value: 5
+> 
 > Type: System.Single, Value: 7.006492E-45
 
 Yep, we've managed to convince a `int` (Int32) type that it's actually a `float` (Single) and behave like one instead!!
