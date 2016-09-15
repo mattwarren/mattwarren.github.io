@@ -202,7 +202,7 @@ But we can go even further than that and do a really nasty trick to completely d
 ``` csharp
 int intValue = 5;
 float floatValue = 5.0f;
-object boxedInt = (object)intValue, boxedFloat = (float)floatValue;
+object boxedInt = (object)intValue, boxedFloat = (object)floatValue;
 
 var pinnedFloat = GCHandle.Alloc(boxedFloat, GCHandleType.Pinned);
 var pinnedInt = GCHandle.Alloc(boxedInt, GCHandleType.Pinned);
