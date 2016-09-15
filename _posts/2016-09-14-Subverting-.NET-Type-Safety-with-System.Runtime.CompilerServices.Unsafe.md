@@ -4,6 +4,7 @@ title:  Subverting .NET Type Safety with 'System.Runtime.CompilerServices.Unsafe
 comments: true
 tags: [Debugging, CLR]
 date: 2016-09-14
+excerpt: <p>In which we use <code class="highlighter-rouge">System.Runtime.CompilerServices.Unsafe</code> a generic API (“type-safe” but still “unsafe”) and mess with the C# Type System!</p>
 ---
 
 #### **In which we use `System.Runtime.CompilerServices.Unsafe` a generic API ("type-safe" but still "unsafe") and mess with the C# Type System!**
@@ -77,6 +78,8 @@ So at a high-level the goals of the `System.Runtime.CompilerServices.Unsafe` lib
   - There are already [code-bases making use of it](https://github.com/dotnet/corefxlab/pull/796), including the [Kestrel the high-performance web server, based on libuv.](https://github.com/aspnet/KestrelHttpServer/pull/1000)
 
 It's also worth pointing out that the library is primarily for use with a Value Type (int, float, etc) rather than a `class` or Reference type. You can use it with classes, however you [have to pin them first](https://msdn.microsoft.com/en-us/library/23acw07k(v=vs.110).aspx), so they don't move about in memory whilst you are working with the pointer.
+
+**Update:** It was pointed out to me that [Niels](https://github.com/nietras) wrote an initial implementation of this library [in a separate project](https://github.com/DotNetCross/Memory.Unsafe), before Microsoft made their own version.
 
 ----
 
