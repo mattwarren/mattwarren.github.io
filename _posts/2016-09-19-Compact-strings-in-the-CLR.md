@@ -133,3 +133,7 @@ So stay tuned, one day we might have a more compact, more efficient implementati
 - Report produced by several Oracle Engineers: ["String Density: Performance and Footprint"](http://cr.openjdk.java.net/~shade/density/string-density-report.pdf)
 - Report on ["State of String Density performance (May 5, 2015)"](http://cr.openjdk.java.net/~shade/density/state-of-string-density-v1.txt) in Java
 - What was involved in [optimising the Java implementation](http://www.infoq.com/news/2016/02/compact-strings-Java-JDK9) (tl;dr quite a lot!!)
+
+----
+
+Discuss this post on [/r/programming](https://www.reddit.com/r/programming/comments/53hzrx/compact_strings_in_the_clr_a_proposal/)
