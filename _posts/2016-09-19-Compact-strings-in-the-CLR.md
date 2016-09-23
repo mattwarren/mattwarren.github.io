@@ -22,7 +22,7 @@ Now this is a contrived example, clearly not all strings are simple `ASCII` text
 
 So there is still an overall memory saving if the CLR provided an implementation that stored some strings in a more compact encoding that only takes **1 byte** per character (`ASCII` or even `ISO-8859-1 (Latin-1)`) and the rest as `Unicode` (**2 bytes** per character).
 
-**Aside:** If you are wondering "Why does C# use UTF-16 for strings?" Eric Lippert has a [great post on this exact subject](http://blog.coverity.com/2014/04/09/why-utf-16) and Jon Skeet has something interesting to say about the subject in ["Of Memeory and Strings"](http://codeblog.jonskeet.uk/2011/04/05/of-memory-and-strings/)
+**Aside:** If you are wondering "Why does C# use UTF-16 for strings?" Eric Lippert has a [great post on this exact subject](http://blog.coverity.com/2014/04/09/why-utf-16) and Jon Skeet has something interesting to say about the subject in ["Of Memory and Strings"](http://codeblog.jonskeet.uk/2011/04/05/of-memory-and-strings/)
 
 ### Real-world data
 
@@ -133,6 +133,7 @@ So stay tuned, one day we might have a more compact, more efficient implementati
 - Report produced by several Oracle Engineers: ["String Density: Performance and Footprint"](http://cr.openjdk.java.net/~shade/density/string-density-report.pdf)
 - Report on ["State of String Density performance (May 5, 2015)"](http://cr.openjdk.java.net/~shade/density/state-of-string-density-v1.txt) in Java
 - What was involved in [optimising the Java implementation](http://www.infoq.com/news/2016/02/compact-strings-Java-JDK9) (tl;dr quite a lot!!)
+- [Python's Flexible String Representation](https://www.python.org/dev/peps/pep-0393/)
 
 ----
 

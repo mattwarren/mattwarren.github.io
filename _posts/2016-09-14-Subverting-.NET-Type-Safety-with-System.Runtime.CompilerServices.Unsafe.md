@@ -243,3 +243,7 @@ Fortunately one of the main .NET runtime developers provided a nice list of [wha
 [![Safely using System.Runtime.CompilerServices.Unsafe]({{ base }}/images/2016/09/Safely using System.Runtime.CompilerServices.Unsafe.png)]({{ base }}/images/2016/09/Safely using System.Runtime.CompilerServices.Unsafe.png)
 
 But as with all `unsafe` code, you're asking the runtime to let you do things that you are normally prevented from doing, things that it normally saves you from, so you have to be careful!
+
+----
+
+Discuss this post in [/r/csharp](https://www.reddit.com/r/csharp/comments/52qs09/subverting_net_type_safety_with/) or [/r/programming](https://www.reddit.com/r/programming/comments/52viyd/subverting_net_type_safety_with/)
