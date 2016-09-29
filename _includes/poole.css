@@ -417,6 +417,7 @@ td span.False {
     letter-spacing: -.025rem;
     line-height: 2.2;
     position: relative;
+    padding-right: 110px;
 }
 .site-nav .page-link:not(:first-child) {
     margin-left: 25px;
@@ -431,6 +432,9 @@ td span.False {
 }
 .site-nav .social-list a svg {
     transition: transform 0.1s;
+}
+.site-nav .social-list a:hover { 
+    text-decoration: none; 
 }
 .site-nav .social-list a:hover svg {
     transform: translateY(-1px) scale(1.2, 1.2);
