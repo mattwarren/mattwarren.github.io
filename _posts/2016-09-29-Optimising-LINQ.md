@@ -258,7 +258,8 @@ Well it's certainly possible, as Joe Duffy explains in his [QCon New York talk](
 	- Escape analysis only (JIT)
 	- LINQ calls are optimized by the JIT
 	- LINQ calls are optimized by the compiler
-- An attempt to [manually optimise LINQ](From https://github.com/dotnet/roslyn/issues/10378#issuecomment-248556947)
+- An attempt to [manually optimise LINQ](https://github.com/dotnet/roslyn/issues/10378#issuecomment-248556947)
+- LinqOptimiser [performance results](https://github.com/nessos/LinqOptimizer/wiki/Performance)
 - RoslynLinqRewrite
   - [r/charp discussion](https://www.reddit.com/r/csharp/comments/5310m4/roslynlinqrewrite_compiles_linq_expressions_to/)
   - [r/programming discussion](https://www.reddit.com/r/programming/comments/53nw6w/roslynlinqrewrite_optimize_linq_code_to/)
