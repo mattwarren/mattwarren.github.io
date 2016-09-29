@@ -225,12 +225,13 @@ IEnumerable<int> RoslynLinqRewriteWhereSelect_ProceduralLinq1(int[] _linqitems)
 }
 ```
 
-Which is much more sensible! By using the `yield` keyword it gets the compiler to do the hard work and as a result doesn't have to allocate a temporary list to store the results in. This means that it is *streaming* the values, in the same way the original LINQ code does.
+Which is much more sensible! By using the `yield` keyword it gets the compiler to do the hard work and so doesn't have to allocate a temporary list to store the results in. This means that it is *streaming* the values, in the same way the original LINQ code does.
 
 Lastly we'll look at one more example, this time using a `Count()` expression, i.e.  
 
 ``` csharp
-items.Where(i => i % 10 == 0).Count();
+items.Where(i => i % 10 == 0)
+     .Count();
 ```
 
 Here we can clearly see that both tools significantly reduce the allocations compared to the original LINQ code:
@@ -243,7 +244,9 @@ Here we can clearly see that both tools significantly reduce the allocations com
 
 ### Future options
 
-However even though using RoslynLinqRewrite or LinqOptimiser is pretty painless, we still have to install a 3rd party library into our project. Wouldn't it be even nicer if the .NET runtime did all the optimisations for us?
+However even though using **RoslynLinqRewrite** or **LinqOptimiser** is pretty painless, we still have to install a 3rd party library into our project. 
+
+Wouldn't it be even nicer if the .NET compiler, JITter and/or runtime did all the optimisations for us?
 
 Well it's certainly possible, as Joe Duffy explains in his [QCon New York talk](https://www.infoq.com/news/2016/06/systems-programming-qcon) and [work has already started](https://github.com/dotnet/coreclr/pull/6653) so maybe we won't have to wait too long!! 
  
@@ -251,12 +254,12 @@ Well it's certainly possible, as Joe Duffy explains in his [QCon New York talk](
 
 ### Further Reading:
 
-- RoslynLinqRewrite
-  - [r/charp discussion](https://www.reddit.com/r/csharp/comments/5310m4/roslynlinqrewrite_compiles_linq_expressions_to/)
-  - [r/programming discussion](https://www.reddit.com/r/programming/comments/53nw6w/roslynlinqrewrite_optimize_linq_code_to/)
-  - [HackerNews discussion](https://news.ycombinator.com/item?id=12544987)
 - Options for LINQ optimisation from [State / Direction of C# as a High-Performance Language](https://github.com/dotnet/roslyn/issues/10378#issuecomment-247538865):
 	- Escape analysis only (JIT)
 	- LINQ calls are optimized by the JIT
 	- LINQ calls are optimized by the compiler
 - An attempt to [manually optimise LINQ](From https://github.com/dotnet/roslyn/issues/10378#issuecomment-248556947)
+- RoslynLinqRewrite
+  - [r/charp discussion](https://www.reddit.com/r/csharp/comments/5310m4/roslynlinqrewrite_compiles_linq_expressions_to/)
+  - [r/programming discussion](https://www.reddit.com/r/programming/comments/53nw6w/roslynlinqrewrite_optimize_linq_code_to/)
+  - [HackerNews discussion](https://news.ycombinator.com/item?id=12544987)
