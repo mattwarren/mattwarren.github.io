@@ -150,7 +150,7 @@ abbr[title] {
 /* Code */
 code,
 pre {
-  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-family: Consolas, monaco, monospace;  
 }
 code {
   padding: .25em .5em;
@@ -246,9 +246,22 @@ th {
   padding: .25rem .5rem;
   border: 1px solid #e5e5e5;
 }
+.compactTable td, 
+.compactTable th {
+  padding: .1rem .2rem;
+  border: 1px solid #e5e5e5;
+}
 tbody tr:nth-child(odd) td,
 tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
+}
+td span.True {
+  color: #00FF00;
+  font-weight: bold;
+}
+td span.False {
+  color: #FF0000;
+  font-weight: bold;
 }
 
 
