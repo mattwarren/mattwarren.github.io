@@ -65,6 +65,8 @@ So there's *a lot* going on behind the scenes, but it is actually possible to be
 
 As useful as it is though, I wouldn't recommend turning this on all the time as seeing all those <font color="#FF0000" style="font-weight: bold;">red lines</font> under your code tends to make you a bit paranoid!!
 
+**Aside**: If you don't have Resharper, there is a [Roslyn based Heap Allocation Analyser](https://github.com/mjsabby/RoslynClrHeapAllocationAnalyzer) available that provides similar functionality.
+
 Now before we look at some ways you can reduce the impact of LINQ, it's worth pointing out that LINQ itself does some pretty neat tricks (HT to Oren Novotny for [pointing this out to me](https://twitter.com/onovotny/status/777785367718141952)). For instance the common pattern of having a `Where(..)` followed by a `Select(..)` is [optimised so that only a single iterator is used](https://github.com/dotnet/corefx/blob/master/src/System.Linq/src/System/Linq/Where.cs#L359-L422), not two as you would expect. Likewise two `Select(..)` statements in a row are combined, [so that only a one iterator is needed](https://github.com/dotnet/corefx/blob/master/src/System.Linq/src/System/Linq/Select.cs#L86-L89).
 
 ----
