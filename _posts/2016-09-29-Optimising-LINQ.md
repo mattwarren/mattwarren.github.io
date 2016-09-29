@@ -252,6 +252,10 @@ Well it's certainly possible, as Joe Duffy explains in his [QCon New York talk](
  
 ----
 
+Discuss this post in [/r/programming](https://www.reddit.com/r/programming/comments/551lqy/optimising_linq/)
+
+----
+
 ### Further Reading:
 
 - Options for LINQ optimisation from [State / Direction of C# as a High-Performance Language](https://github.com/dotnet/roslyn/issues/10378#issuecomment-247538865):
