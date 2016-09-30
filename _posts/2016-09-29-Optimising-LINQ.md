@@ -138,22 +138,22 @@ Method | [RoslynLinqRewrite](https://github.com/antiufo/roslyn-linq-rewrite#supp
 ------:|:-----------------:|:-------------:|:----:
 Select 						| <span class="True">✓</span>  | <span class="True">✓</span>  | Yes |
 Where  						| <span class="True">✓</span>  | <span class="True">✓</span>  | Yes |
+ToList 						| <span class="True">✓</span>  | <span class="True">✓</span>  | Yes |
+ToArray 					| <span class="True">✓</span>  | <span class="True">✓</span>  | Yes |
+Count 						| <span class="True">✓</span>  | <span class="True">✓</span>  | Yes |
+ForEach 					| <span class="True">✓</span>  | <span class="True">✓</span>  | Yes |
 Reverse 					| <span class="True">✓</span>  | <span class="False">✗</span> |
 Cast 						| <span class="True">✓</span>  | <span class="False">✗</span> |
 OfType 						| <span class="True">✓</span>  | <span class="False">✗</span> |
 First/FirstOrDefault		| <span class="True">✓</span>  | <span class="False">✗</span> |
 Single/SingleOrDefault		| <span class="True">✓</span>  | <span class="False">✗</span> |
 Last/LastOrDefault			| <span class="True">✓</span>  | <span class="False">✗</span> |
-ToList 						| <span class="True">✓</span>  | <span class="True">✓</span>  | Yes |
-ToArray 					| <span class="True">✓</span>  | <span class="True">✓</span>  | Yes |
 ToDictionary 				| <span class="True">✓</span>  | <span class="False">✗</span> |
-Count 						| <span class="True">✓</span>  | <span class="True">✓</span>  | Yes |
 LongCount 					| <span class="True">✓</span>  | <span class="False">✗</span> |
 Any 						| <span class="True">✓</span>  | <span class="False">✗</span> |
 All 						| <span class="True">✓</span>  | <span class="False">✗</span> |
 ElementAt/ElementAtOrDefault| <span class="True">✓</span>  | <span class="False">✗</span> |
 Contains 					| <span class="True">✓</span>  | <span class="False">✗</span> |
-ForEach 					| <span class="True">✓</span>  | <span class="True">✓</span>  | Yes |
 Aggregate 					| <span class="False">✗</span> | <span class="True">✓</span>  |
 Sum 						| <span class="False">✗</span> | <span class="True">✓</span>  |
 SelectMany					| <span class="False">✗</span> | <span class="True">✓</span>  |
