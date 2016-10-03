@@ -201,3 +201,7 @@ Target type: Md5VsSha256
 ```
 
 If you've used [BenchmarkDotNet](https://perfdotnet.github.io/BenchmarkDotNet) before you'll recognise its output, if not it's output is all the lines starting with `//`. A final note, currently the Console colours from the command aren't displayed, but that [should be fixed sometime soon](https://github.com/dotnet/cli/issues/1977#issuecomment-248635335), which is great because BenchmarkDotNet looks way better in full-colour!!
+
+----
+
+Discuss this post in [/r/csharp](https://www.reddit.com/r/csharp/comments/55oljz/adding_a_verb_to_the_dotnet_cli_tooling/)
