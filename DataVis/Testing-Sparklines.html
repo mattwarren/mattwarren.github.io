@@ -1,0 +1,132 @@
+<!doctype HTML>
+<meta charset = 'utf-8'>
+<html>
+  <head>
+    <link rel='stylesheet' href='http://cdnjs.cloudflare.com/ajax/libs/nvd3/1.1.14-beta/nv.d3.css'>
+
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js' type='text/javascript'></script>
+    <script src='http://d3js.org/d3.v2.min.js' type='text/javascript'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/nvd3/1.1.14-beta/nv.d3.js' type='text/javascript'></script>
+
+    <style>
+    .rChart {
+      display: block;
+      margin-left: auto; 
+      margin-right: auto;
+      width: 650px;
+      height: 70px; //100px;
+    }
+    </style>
+    
+  </head>
+  <body>
+    <!-- All the sparklines are added to this div -->
+    <div id='sparkLines'></div>
+    <div style='text-align:center'>After the div</div>
+
+    <script type='text/javascript'>
+    data = {
+      //"roslyn":[{"index":1,"month":"Nov 2014","value":0},{"index":2,"month":"Dec 2014","value":0},{"index":3,"month":"Jan 2015","value":174},{"index":4,"month":"Feb 2015","value":477},{"index":5,"month":"Mar 2015","value":383},{"index":6,"month":"Apr 2015","value":329},{"index":7,"month":"May 2015","value":381},{"index":8,"month":"Jun 2015","value":305},{"index":9,"month":"Jul 2015","value":306},{"index":10,"month":"Aug 2015","value":360},{"index":11,"month":"Sep 2015","value":385},{"index":12,"month":"Oct 2015","value":449},{"index":13,"month":"Nov 2015","value":395},{"index":14,"month":"Dec 2015","value":338},{"index":15,"month":"Jan 2016","value":328},{"index":16,"month":"Feb 2016","value":687},{"index":17,"month":"Mar 2016","value":498},{"index":18,"month":"Apr 2016","value":410},{"index":19,"month":"May 2016","value":392},{"index":20,"month":"Jun 2016","value":308},{"index":21,"month":"Jul 2016","value":274},{"index":22,"month":"Aug 2016","value":337},{"index":23,"month":"Sep 2016","value":404}],
+      //"coreclr":[{"index":1,"month":"Nov 2014","value":0},{"index":2,"month":"Dec 2014","value":0},{"index":3,"month":"Jan 2015","value":0},{"index":4,"month":"Feb 2015","value":157},{"index":5,"month":"Mar 2015","value":77},{"index":6,"month":"Apr 2015","value":107},{"index":7,"month":"May 2015","value":83},{"index":8,"month":"Jun 2015","value":57},{"index":9,"month":"Jul 2015","value":68},{"index":10,"month":"Aug 2015","value":51},{"index":11,"month":"Sep 2015","value":75},{"index":12,"month":"Oct 2015","value":96},{"index":13,"month":"Nov 2015","value":100},{"index":14,"month":"Dec 2015","value":147},{"index":15,"month":"Jan 2016","value":158},{"index":16,"month":"Feb 2016","value":176},{"index":17,"month":"Mar 2016","value":263},{"index":18,"month":"Apr 2016","value":279},{"index":19,"month":"May 2016","value":224},{"index":20,"month":"Jun 2016","value":262},{"index":21,"month":"Jul 2016","value":176},{"index":22,"month":"Aug 2016","value":163},{"index":23,"month":"Sep 2016","value":162}],
+      //"corefx":[{"index":1,"month":"Nov 2014","value":56},{"index":2,"month":"Dec 2014","value":53},{"index":3,"month":"Jan 2015","value":80},{"index":4,"month":"Feb 2015","value":273},{"index":5,"month":"Mar 2015","value":94},{"index":6,"month":"Apr 2015","value":114},{"index":7,"month":"May 2015","value":127},{"index":8,"month":"Jun 2015","value":138},{"index":9,"month":"Jul 2015","value":174},{"index":10,"month":"Aug 2015","value":161},{"index":11,"month":"Sep 2015","value":214},{"index":12,"month":"Oct 2015","value":275},{"index":13,"month":"Nov 2015","value":221},{"index":14,"month":"Dec 2015","value":185},{"index":15,"month":"Jan 2016","value":252},{"index":16,"month":"Feb 2016","value":298},{"index":17,"month":"Mar 2016","value":327},{"index":18,"month":"Apr 2016","value":301},{"index":19,"month":"May 2016","value":301},{"index":20,"month":"Jun 2016","value":277},{"index":21,"month":"Jul 2016","value":227},{"index":22,"month":"Aug 2016","value":422},{"index":23,"month":"Sep 2016","value":428}],
+      //"cli":[{"index":1,"month":"Nov 2014","value":0},{"index":2,"month":"Dec 2014","value":0},{"index":3,"month":"Jan 2015","value":0},{"index":4,"month":"Feb 2015","value":0},{"index":5,"month":"Mar 2015","value":0},{"index":6,"month":"Apr 2015","value":0},{"index":7,"month":"May 2015","value":0},{"index":8,"month":"Jun 2015","value":0},{"index":9,"month":"Jul 2015","value":0},{"index":10,"month":"Aug 2015","value":0},{"index":11,"month":"Sep 2015","value":0},{"index":12,"month":"Oct 2015","value":78},{"index":13,"month":"Nov 2015","value":120},{"index":14,"month":"Dec 2015","value":227},{"index":15,"month":"Jan 2016","value":268},{"index":16,"month":"Feb 2016","value":265},{"index":17,"month":"Mar 2016","value":295},{"index":18,"month":"Apr 2016","value":404},{"index":19,"month":"May 2016","value":347},{"index":20,"month":"Jun 2016","value":266},{"index":21,"month":"Jul 2016","value":144},{"index":22,"month":"Aug 2016","value":108},{"index":23,"month":"Sep 2016","value":100}],
+      //"corefxlab":[{"index":1,"month":"Nov 2014","value":0},{"index":2,"month":"Dec 2014","value":0},{"index":3,"month":"Jan 2015","value":0},{"index":4,"month":"Feb 2015","value":0},{"index":5,"month":"Mar 2015","value":29},{"index":6,"month":"Apr 2015","value":1},{"index":7,"month":"May 2015","value":2},{"index":8,"month":"Jun 2015","value":0},{"index":9,"month":"Jul 2015","value":2},{"index":10,"month":"Aug 2015","value":15},{"index":11,"month":"Sep 2015","value":25},{"index":12,"month":"Oct 2015","value":23},{"index":13,"month":"Nov 2015","value":21},{"index":14,"month":"Dec 2015","value":13},{"index":15,"month":"Jan 2016","value":33},{"index":16,"month":"Feb 2016","value":14},{"index":17,"month":"Mar 2016","value":5},{"index":18,"month":"Apr 2016","value":2},{"index":19,"month":"May 2016","value":6},{"index":20,"month":"Jun 2016","value":18},{"index":21,"month":"Jul 2016","value":5},{"index":22,"month":"Aug 2016","value":23},{"index":23,"month":"Sep 2016","value":24}]
+    }
+    //console.log("Hi there: " + data);
+
+    //d3.json("data-issues.json", function(error, json) { // original way round
+    d3.json("data-issues.json", function(json, error) {
+      if (error) 
+        return console.warn(error);
+
+      console.log("Got data ");
+      console.log(json);
+      //console.log("Got error " + error);
+      data = json;
+      var dataTypes = Object.keys(data);
+      for (i = 0; i < dataTypes.length; i++) {
+        drawChart(dataTypes[i]);
+      }
+    });
+
+    //$(document).ready(function() {
+    //  var dataTypes = Object.keys(data);
+    //  for (i = 0; i < dataTypes.length; i++) {
+    //    drawChart(dataTypes[i]);
+    //  }
+    //});
+
+    // Code based on http://bl.ocks.org/timelyportfolio/6456824
+    function drawChart(chartId) {
+      var opts = {
+        "id": chartId,
+        "dom": "chart-" + chartId,
+        // Not sure what difference these values makes??!!
+        // By default the svg seems to size to the div (based on the css width/height above!?
+        //"width": 650, //500,
+        //"height": 100, //100,
+        "x": "index",
+        "y": "value",
+        "type": "sparklinePlus",
+      };
+
+      nv.addGraph(function() {
+        var chart = nv.models.sparklinePlus()
+          // default margin = {top: 15, right: 100, bottom: 10, left: 50}
+          // on the right allow for the printed value, on the left allow for the tooltip!!
+          .margin({left:70, right: 50}) // internal border!!
+          .x(function(d) { return d[opts.x] })
+          .y(function(d) { return d[opts.y] })
+          .width(opts.width)
+          .height(opts.height)
+          //.rightAlignValue(true)
+          //.showLastValue(true)
+          // hmm https://nvd3-community.github.io/nvd3/examples/documentation.html#sparkline
+          //.xRange([-20,-10,0,10,20])
+          .xTickFormat(function(d) {
+            // 'd' is the X-value of the current point, i.e. the "index" field!!
+            var current = data[opts.id][d-1];
+            if (current === undefined)
+              return d + " - Unknown";
+            else
+              return current.month;
+          })
+          // if we don't do this the values end up with decimal places, i.e. 40.0, 27.0, etc
+          .yTickFormat(function(d) { return d; });
+
+        d3.select('#sparkLines')
+          .append('div')
+          .attr('id', opts.dom)
+          .attr('class', 'rChart nvd3')
+          .append('svg')
+          //.datum(data.Roslyn)
+          .datum(data[opts.id])
+          .transition().duration(500)
+          .call(chart)
+
+        d3.select("#" + opts.dom)
+          .select('svg')
+          .select('g.nv-sparklineplus') // class='nv-sparklineplus'
+          //.select('g')
+          //.select('g.nv-valueWrap') // class ='nv-sparklineWrap'
+          //.select('text') // being 'inside' the prev 'text' element doesn't work
+          // need a way to get the X/Y offset of the previous text element
+          .append("text").text(function(d, i) { return opts.id; })
+          .attr('style', 'text-anchor: start; fill: rgb(0, 0, 0);')
+          .attr('x', '-20')
+          .attr('y', '25') // if height = 100 use 35, if height = 70 use 25
+          .attr('class', 'nv-currentValue'); // FIND A BETTER WAY, we're sharing a style here?!?
+
+        d3.selectAll('svg')
+          .selectAll('circle.nv-point') // 'nv-minValue', 'nv-maxValue' and 'nv-currentValue'
+          .attr('r', 3)
+
+        // A function to execute each time the window is resized.
+        nv.utils.windowResize(chart.update);
+
+        return chart;
+      });
+    };
+    </script>
+  </body>
+</html>
