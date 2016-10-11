@@ -284,12 +284,6 @@
         // A function to execute each time the window is resized.
         nv.utils.windowResize(chart.update);
 
-        var gEnter = d3.select('g.nv-sparklineWrap');
-        gEnter.select('.nv-hoverArea').select('rect')
-          .on('mousemove', chart.updateValueLine())
-          //.on('click', function() { paused = !paused })
-          //.on('mouseout', function() { index = []; chart.updateValueLine(); });
-
         return chart;
       });     
     };
