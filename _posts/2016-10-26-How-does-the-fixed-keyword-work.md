@@ -218,9 +218,9 @@ So to finish, let's get the final word on pinning from Maoni Stephens, from [Usi
 
 > **When you do need to pin, here are some things to keep in mind:**
 >  
-> 1) Pinning for a short time is cheap.
-> 2) Pinning an older object is not as harmful as pinning a young object.
-> 3) Creating pinned buffers that stay together instead of scattered around. This way you create fewer holes.
+> 1. Pinning for a short time is cheap.
+> 2. Pinning an older object is not as harmful as pinning a young object.
+> 3. Creating pinned buffers that stay together instead of scattered around. This way you create fewer holes.
 
 ----
 
