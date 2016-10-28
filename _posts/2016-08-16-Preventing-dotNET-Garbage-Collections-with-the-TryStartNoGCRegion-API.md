@@ -135,7 +135,7 @@ Around half of the files modified (listed below) are the changes needed to set-u
 - [src/vm/comutilnative.h](https://github.com/dotnet/coreclr/commit/4f74a99e296d929945413c5a65d0c61bb7f2c32a#diff-b8ebb0f0bef52890d69facf86688870e)
 - [src/vm/ecalllist.h](https://github.com/dotnet/coreclr/commit/4f74a99e296d929945413c5a65d0c61bb7f2c32a#diff-3667dffbd11675529c85670ef344242e)
 
-The rest of the changes are where the actual work takes, with all the significant heavy-lifting happening in `gc.cpp`:
+The rest of the changes are where the actual work takes place, with all the significant heavy-lifting happening in `gc.cpp`:
 
 - [src/gc/gc.cpp](https://github.com/dotnet/coreclr/commit/4f74a99e296d929945413c5a65d0c61bb7f2c32a#diff-9b1cf8b32169db5abb15e28386d99a10)
 - [src/gc/gc.h](https://github.com/dotnet/coreclr/commit/4f74a99e296d929945413c5a65d0c61bb7f2c32a#diff-f27aec4c298a7df8ff654eff47e7c0dd)
