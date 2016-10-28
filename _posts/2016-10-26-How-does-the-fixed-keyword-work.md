@@ -230,6 +230,8 @@ So that's it, simple really!!
 
 All the main parts of the .NET runtime do their bit and we get to use a handy feature that lets us drop-down are perform some bare-metal coding!!
 
+Discuss this post in [/r/programming](https://www.reddit.com/r/programming/comments/59qa94/how_does_the_c_fixed_keyword_work/)
+
 ----
 
 ### Further Reading

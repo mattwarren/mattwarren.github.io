@@ -166,4 +166,5 @@ Interesting enough there seems to be functionality that enables `JIT_PollGC()` c
 - [GC Behavior and CLR Thread Hijacking](http://stackoverflow.com/questions/8404245/gc-behavior-and-clr-thread-hijacking/8405187#8405187)
 - [Safely pausing of thread during GC in .NET](http://stackoverflow.com/questions/4418356/safely-pausing-of-thread-during-gc-in-net/4418520#4418520)
 - [CLR and Thread Safe Points](http://osdir.com/ml/windows.devel.dotnet.rotor/2002-08/msg00006.html)
+- [Suspending and resuming threads for GC](https://blogs.msdn.microsoft.com/maoni/2006/06/07/suspending-and-resuming-threads-for-gc/)
  
