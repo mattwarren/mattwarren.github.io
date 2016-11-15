@@ -4,6 +4,7 @@ title: Visualising the .NET Garbage Collector
 comments: true
 tags: [Garbage Collectors, CLR]
 date: 2016-06-20
+gifplayer: true
 ---
 
 As part of an ongoing attempt to learn more about how a real-life Garbage Collector (GC) works (see [part 1]({{ base }}/2016/02/04/learning-how-garbage-collectors-work-part-1/)) and after being inspired by [Julia Evans'](https://twitter.com/b0rk) excellent post [gzip + poetry = awesome](http://jvns.ca/blog/2013/10/24/day-16-gzip-plus-poetry-equals-awesome/) I spent a some time writing a tool to enable a live visualisation of the .NET GC in action. 

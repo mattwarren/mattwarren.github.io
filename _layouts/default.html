@@ -87,6 +87,7 @@
       })(document);
     </script>
     
+    {% if page.gifplayer == true %}
     <!-- Wire-up the Gif Player https://github.com/rubentd/gifplayer and http://rubentd.com/gifplayer/ -->
     <script>
       if ( $('.gifplayer').length ) {
@@ -104,5 +105,6 @@
         });
       }
     </script>
+    {% endif %}
   </body>
 </html>

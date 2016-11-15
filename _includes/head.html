@@ -55,8 +55,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="{{ site.baseurl }}/public/jquery.scrolldepth.min.js"></script>
 
+  {% if page.gifplayer == true %}
   <!-- Include script for the Gif Player https://github.com/rubentd/gifplayer and http://rubentd.com/gifplayer/ -->
   <script src="{{ site.baseurl }}/public/jquery.gifplayer.js"></script>
+  {% endif %}
 
   <!-- https://help.github.com/articles/search-engine-optimization-for-github-pages/ -->
   {% seo %}
