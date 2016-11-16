@@ -3,7 +3,7 @@ data = {}
 dataIssues = {}
 dataPullRequests = {}
 
-d3.json("/dataVis/data-issues.json", function(error, json) {
+d3.json("/datavis/data-issues.json", function(error, json) {
   if (error) 
     return console.warn(error);
   dataIssues = json;
@@ -13,7 +13,7 @@ d3.json("/dataVis/data-issues.json", function(error, json) {
   setupButtonClickHandler();
 });
 
-d3.json("/dataVis/data-pull-requests.json", function(error, json) {
+d3.json("/datavis/data-pull-requests.json", function(error, json) {
   if (error) 
     return console.warn(error);
   dataPullRequests = json;
