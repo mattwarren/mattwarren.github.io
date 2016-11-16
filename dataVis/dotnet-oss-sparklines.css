@@ -1,0 +1,123 @@
+.rChart {
+  display: block;
+  margin-left: auto; 
+  margin-right: auto;
+  width: 650px;
+  height: 980px;
+}
+
+.rChartHeader {
+  font: normal 12px Arial;
+  font-weight: bold;
+  font-size: 1.0em;
+  display: block;
+  margin-left: auto; 
+  margin-right: auto;
+  width: 650px;
+  //height: 980px;
+}
+
+.rChartHeader .alignleft {
+  float: left;
+  padding-left: 30px;
+}
+.rChartHeader .alignright {
+  float: right;
+}
+
+/* Override or Add new styles to NVD3 elements, as necessary */
+/* .nvd3.nv-sparklineplus .nv-currentValue */
+.nvd3.nv-sparklineplus  text.displayValue {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.nv-sparklineplus text.projectName {
+  font-weight: bold;
+  font-size: 1.1em;
+  fill: #ac4142;
+}
+
+/* UGH, we need this for IE (11), otherwise it sizes the svg items with height=150px (due to height:100% in CSS???) */
+.rChart.nvd3 svg {
+  height: 70px;
+}
+
+/* CSS Buttons from http://callmenick.com/post/stylish-css-buttons */
+button {
+  display: inline-block;
+  margin: 0 10px 0 0;
+  //padding: 15px 45px;
+  padding: 5px 15px;
+  //font-size: 48px;
+  font-size: 20px;
+  font-family: "Bitter",serif;
+  line-height: 1.8;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+button:focus {
+  outline: none
+}
+
+section.flat button {
+  color: #fff;
+  background-color: #6496c8;
+  text-shadow: -1px 1px #417cb8;
+  border: none;
+}
+
+section.flat button:hover,
+section.flat button.hover {
+  background-color: #346392;
+  text-shadow: -1px 1px #27496d;
+}
+
+section.flat button:active,
+section.flat button.active {
+  background-color: #27496d;
+  text-shadow: -1px 1px #193047;
+}
+
+section.gradient button {
+  color: #fff;
+  text-shadow: -2px 2px #346392;
+  background-color: #ff9664;
+  background-image: linear-gradient(top, #6496c8, #346392);
+  background-image: -webkit-linear-gradient(top, #6496c8, #346392);
+  box-shadow: inset 0 0 0 1px #27496d;
+  border: none;
+  border-radius: 15px;
+}
+
+section.gradient button:hover,
+section.gradient button.hover {
+  box-shadow: inset 0 0 0 1px #27496d,0 5px 15px #193047;
+}
+
+section.gradient button:active,
+section.gradient button.active {
+  box-shadow: inset 0 0 0 1px #27496d,inset 0 5px 30px #193047;
+}
+
+section.press button {
+  color: #fff;
+  background-color: #6496c8;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px #27496d;
+}
+
+section.press button:hover,
+section.press button.hover {
+  background-color: #417cb8
+}
+
+section.press button:active,
+section.press button.active {
+  background-color: #417cb8;
+  box-shadow: 0 5px #27496d;
+  transform: translateY(5px);
+}

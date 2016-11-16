@@ -1,0 +1,2786 @@
+{
+  "coreclr": {
+    "url": "https://github.com/dotnet/coreclr",
+    "org": "dotnet",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 5,
+        "microsoft": 5,
+        "community": 0
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 177,
+        "microsoft": 108,
+        "community": 69
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 148,
+        "microsoft": 115,
+        "community": 33
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 164,
+        "microsoft": 128,
+        "community": 36
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 93,
+        "microsoft": 73,
+        "community": 20
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 50,
+        "microsoft": 37,
+        "community": 13
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 57,
+        "microsoft": 33,
+        "community": 24
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 83,
+        "microsoft": 61,
+        "community": 22
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 94,
+        "microsoft": 74,
+        "community": 20
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 135,
+        "microsoft": 125,
+        "community": 10
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 148,
+        "microsoft": 124,
+        "community": 24
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 139,
+        "microsoft": 124,
+        "community": 15
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 262,
+        "microsoft": 213,
+        "community": 49
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 273,
+        "microsoft": 211,
+        "community": 62
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 312,
+        "microsoft": 259,
+        "community": 53
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 319,
+        "microsoft": 259,
+        "community": 60
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 382,
+        "microsoft": 302,
+        "community": 80
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 398,
+        "microsoft": 323,
+        "community": 75
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 216,
+        "microsoft": 157,
+        "community": 59
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 253,
+        "microsoft": 193,
+        "community": 60
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 234,
+        "microsoft": 173,
+        "community": 61
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 269,
+        "microsoft": 225,
+        "community": 44
+      }
+    ]
+  },
+  "corefx": {
+    "url": "https://github.com/dotnet/corefx",
+    "org": "dotnet",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 76,
+        "microsoft": 47,
+        "community": 29
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 92,
+        "microsoft": 68,
+        "community": 24
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 143,
+        "microsoft": 114,
+        "community": 29
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 164,
+        "microsoft": 130,
+        "community": 34
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 139,
+        "microsoft": 116,
+        "community": 23
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 157,
+        "microsoft": 141,
+        "community": 16
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 135,
+        "microsoft": 113,
+        "community": 22
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 176,
+        "microsoft": 145,
+        "community": 31
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 184,
+        "microsoft": 146,
+        "community": 38
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 256,
+        "microsoft": 193,
+        "community": 63
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 282,
+        "microsoft": 227,
+        "community": 55
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 378,
+        "microsoft": 344,
+        "community": 34
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 214,
+        "microsoft": 181,
+        "community": 33
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 210,
+        "microsoft": 181,
+        "community": 29
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 358,
+        "microsoft": 316,
+        "community": 42
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 348,
+        "microsoft": 258,
+        "community": 90
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 500,
+        "microsoft": 368,
+        "community": 132
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 432,
+        "microsoft": 285,
+        "community": 147
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 411,
+        "microsoft": 349,
+        "community": 62
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 376,
+        "microsoft": 351,
+        "community": 25
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 266,
+        "microsoft": 216,
+        "community": 50
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 318,
+        "microsoft": 254,
+        "community": 64
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 453,
+        "microsoft": 389,
+        "community": 64
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 507,
+        "microsoft": 433,
+        "community": 74
+      }
+    ]
+  },
+  "roslyn": {
+    "url": "https://github.com/dotnet/roslyn",
+    "org": "dotnet",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 13,
+        "microsoft": 7,
+        "community": 6
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 235,
+        "microsoft": 220,
+        "community": 15
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 313,
+        "microsoft": 301,
+        "community": 12
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 333,
+        "microsoft": 324,
+        "community": 9
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 352,
+        "microsoft": 339,
+        "community": 13
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 206,
+        "microsoft": 192,
+        "community": 14
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 173,
+        "microsoft": 162,
+        "community": 11
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 233,
+        "microsoft": 228,
+        "community": 5
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 274,
+        "microsoft": 262,
+        "community": 12
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 354,
+        "microsoft": 332,
+        "community": 22
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 197,
+        "microsoft": 177,
+        "community": 20
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 223,
+        "microsoft": 191,
+        "community": 32
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 153,
+        "microsoft": 132,
+        "community": 21
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 300,
+        "microsoft": 290,
+        "community": 10
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 337,
+        "microsoft": 315,
+        "community": 22
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 279,
+        "microsoft": 263,
+        "community": 16
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 217,
+        "microsoft": 187,
+        "community": 30
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 265,
+        "microsoft": 250,
+        "community": 15
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 204,
+        "microsoft": 187,
+        "community": 17
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 253,
+        "microsoft": 241,
+        "community": 12
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 267,
+        "microsoft": 252,
+        "community": 15
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 296,
+        "microsoft": 282,
+        "community": 14
+      }
+    ]
+  },
+  "cli": {
+    "url": "https://github.com/dotnet/cli",
+    "org": "dotnet",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 31,
+        "microsoft": 31,
+        "community": 0
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 94,
+        "microsoft": 90,
+        "community": 4
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 78,
+        "microsoft": 73,
+        "community": 5
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 148,
+        "microsoft": 134,
+        "community": 14
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 177,
+        "microsoft": 157,
+        "community": 20
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 203,
+        "microsoft": 190,
+        "community": 13
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 165,
+        "microsoft": 154,
+        "community": 11
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 128,
+        "microsoft": 115,
+        "community": 13
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 115,
+        "microsoft": 104,
+        "community": 11
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 60,
+        "microsoft": 50,
+        "community": 10
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 43,
+        "microsoft": 39,
+        "community": 4
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 49,
+        "microsoft": 42,
+        "community": 7
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 102,
+        "microsoft": 98,
+        "community": 4
+      }
+    ]
+  },
+  "corefxlab": {
+    "url": "https://github.com/dotnet/corefxlab",
+    "org": "dotnet",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 6,
+        "microsoft": 6,
+        "community": 0
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 11,
+        "microsoft": 11,
+        "community": 0
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 33,
+        "microsoft": 33,
+        "community": 0
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 5,
+        "microsoft": 2,
+        "community": 3
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 1,
+        "microsoft": 1,
+        "community": 0
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 17,
+        "microsoft": 17,
+        "community": 0
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 38,
+        "microsoft": 7,
+        "community": 31
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 33,
+        "microsoft": 20,
+        "community": 13
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 50,
+        "microsoft": 48,
+        "community": 2
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 93,
+        "microsoft": 89,
+        "community": 4
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 47,
+        "microsoft": 45,
+        "community": 2
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 32,
+        "microsoft": 10,
+        "community": 22
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 29,
+        "microsoft": 17,
+        "community": 12
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 23,
+        "microsoft": 19,
+        "community": 4
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 15,
+        "microsoft": 15,
+        "community": 0
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 11,
+        "microsoft": 11,
+        "community": 0
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 17,
+        "microsoft": 11,
+        "community": 6
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 25,
+        "microsoft": 23,
+        "community": 2
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 6,
+        "microsoft": 2,
+        "community": 4
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 21,
+        "microsoft": 20,
+        "community": 1
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 38,
+        "microsoft": 32,
+        "community": 6
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 47,
+        "microsoft": 40,
+        "community": 7
+      }
+    ]
+  },
+  "orleans": {
+    "url": "https://github.com/dotnet/orleans",
+    "org": "dotnet",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 33,
+        "microsoft": 15,
+        "community": 18
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 52,
+        "microsoft": 25,
+        "community": 27
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 76,
+        "microsoft": 32,
+        "community": 44
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 47,
+        "microsoft": 18,
+        "community": 29
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 62,
+        "microsoft": 21,
+        "community": 41
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 64,
+        "microsoft": 21,
+        "community": 43
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 59,
+        "microsoft": 20,
+        "community": 39
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 56,
+        "microsoft": 10,
+        "community": 46
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 68,
+        "microsoft": 21,
+        "community": 47
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 76,
+        "microsoft": 33,
+        "community": 43
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 54,
+        "microsoft": 20,
+        "community": 34
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 76,
+        "microsoft": 33,
+        "community": 43
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 71,
+        "microsoft": 37,
+        "community": 34
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 66,
+        "microsoft": 29,
+        "community": 37
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 74,
+        "microsoft": 33,
+        "community": 41
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 45,
+        "microsoft": 24,
+        "community": 21
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 38,
+        "microsoft": 14,
+        "community": 24
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 45,
+        "microsoft": 25,
+        "community": 20
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 69,
+        "microsoft": 33,
+        "community": 36
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 46,
+        "microsoft": 20,
+        "community": 26
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 90,
+        "microsoft": 68,
+        "community": 22
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 90,
+        "microsoft": 71,
+        "community": 19
+      }
+    ]
+  },
+  "mvc": {
+    "url": "https://github.com/aspnet/mvc",
+    "org": "aspnet",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 21,
+        "microsoft": 17,
+        "community": 4
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 21,
+        "microsoft": 13,
+        "community": 8
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 33,
+        "microsoft": 22,
+        "community": 11
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 35,
+        "microsoft": 28,
+        "community": 7
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 41,
+        "microsoft": 30,
+        "community": 11
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 41,
+        "microsoft": 29,
+        "community": 12
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 22,
+        "microsoft": 15,
+        "community": 7
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 21,
+        "microsoft": 18,
+        "community": 3
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 20,
+        "microsoft": 16,
+        "community": 4
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 28,
+        "microsoft": 23,
+        "community": 5
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 20,
+        "microsoft": 11,
+        "community": 9
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 39,
+        "microsoft": 22,
+        "community": 17
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 33,
+        "microsoft": 28,
+        "community": 5
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 27,
+        "microsoft": 19,
+        "community": 8
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 30,
+        "microsoft": 26,
+        "community": 4
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 29,
+        "microsoft": 27,
+        "community": 2
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 31,
+        "microsoft": 30,
+        "community": 1
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 32,
+        "microsoft": 27,
+        "community": 5
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 31,
+        "microsoft": 22,
+        "community": 9
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 19,
+        "microsoft": 12,
+        "community": 7
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 25,
+        "microsoft": 14,
+        "community": 11
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 13,
+        "microsoft": 13,
+        "community": 0
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 16,
+        "microsoft": 8,
+        "community": 8
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 22,
+        "microsoft": 10,
+        "community": 12
+      }
+    ]
+  },
+  "dnx": {
+    "url": "https://github.com/aspnet/dnx",
+    "org": "aspnet",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 25,
+        "microsoft": 20,
+        "community": 5
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 17,
+        "microsoft": 9,
+        "community": 8
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 34,
+        "microsoft": 32,
+        "community": 2
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 50,
+        "microsoft": 38,
+        "community": 12
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 64,
+        "microsoft": 50,
+        "community": 14
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 49,
+        "microsoft": 36,
+        "community": 13
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 58,
+        "microsoft": 47,
+        "community": 11
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 42,
+        "microsoft": 25,
+        "community": 17
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 45,
+        "microsoft": 33,
+        "community": 12
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 42,
+        "microsoft": 29,
+        "community": 13
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 59,
+        "microsoft": 33,
+        "community": 26
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 51,
+        "microsoft": 35,
+        "community": 16
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 14,
+        "microsoft": 8,
+        "community": 6
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 9,
+        "microsoft": 6,
+        "community": 3
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 6,
+        "microsoft": 5,
+        "community": 1
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 4,
+        "microsoft": 2,
+        "community": 2
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 2,
+        "microsoft": 0,
+        "community": 2
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      }
+    ]
+  },
+  "entityframework": {
+    "url": "https://github.com/aspnet/entityframework",
+    "org": "aspnet",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 42,
+        "microsoft": 36,
+        "community": 6
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 41,
+        "microsoft": 36,
+        "community": 5
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 37,
+        "microsoft": 34,
+        "community": 3
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 61,
+        "microsoft": 56,
+        "community": 5
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 77,
+        "microsoft": 55,
+        "community": 22
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 35,
+        "microsoft": 20,
+        "community": 15
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 45,
+        "microsoft": 40,
+        "community": 5
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 58,
+        "microsoft": 44,
+        "community": 14
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 70,
+        "microsoft": 58,
+        "community": 12
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 60,
+        "microsoft": 52,
+        "community": 8
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 80,
+        "microsoft": 67,
+        "community": 13
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 96,
+        "microsoft": 77,
+        "community": 19
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 76,
+        "microsoft": 63,
+        "community": 13
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 54,
+        "microsoft": 45,
+        "community": 9
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 46,
+        "microsoft": 35,
+        "community": 11
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 38,
+        "microsoft": 33,
+        "community": 5
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 63,
+        "microsoft": 53,
+        "community": 10
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 75,
+        "microsoft": 57,
+        "community": 18
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 83,
+        "microsoft": 61,
+        "community": 22
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 80,
+        "microsoft": 70,
+        "community": 10
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 67,
+        "microsoft": 57,
+        "community": 10
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 62,
+        "microsoft": 57,
+        "community": 5
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 37,
+        "microsoft": 30,
+        "community": 7
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 65,
+        "microsoft": 54,
+        "community": 11
+      }
+    ]
+  },
+  "kestrelhttpserver": {
+    "url": "https://github.com/aspnet/kestrelhttpserver",
+    "org": "aspnet",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 1,
+        "microsoft": 0,
+        "community": 1
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 1,
+        "microsoft": 1,
+        "community": 0
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 1,
+        "microsoft": 0,
+        "community": 1
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 2,
+        "microsoft": 1,
+        "community": 1
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 5,
+        "microsoft": 3,
+        "community": 2
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 2,
+        "microsoft": 2,
+        "community": 0
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 2,
+        "microsoft": 0,
+        "community": 2
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 5,
+        "microsoft": 3,
+        "community": 2
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 8,
+        "microsoft": 7,
+        "community": 1
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 19,
+        "microsoft": 13,
+        "community": 6
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 26,
+        "microsoft": 17,
+        "community": 9
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 46,
+        "microsoft": 14,
+        "community": 32
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 46,
+        "microsoft": 8,
+        "community": 38
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 16,
+        "microsoft": 7,
+        "community": 9
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 11,
+        "microsoft": 7,
+        "community": 4
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 19,
+        "microsoft": 18,
+        "community": 1
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 22,
+        "microsoft": 16,
+        "community": 6
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 36,
+        "microsoft": 27,
+        "community": 9
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 18,
+        "microsoft": 11,
+        "community": 7
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 25,
+        "microsoft": 20,
+        "community": 5
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 20,
+        "microsoft": 18,
+        "community": 2
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 21,
+        "microsoft": 17,
+        "community": 4
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 18,
+        "microsoft": 15,
+        "community": 3
+      }
+    ]
+  },
+  "fsharp": {
+    "url": "https://github.com/fsharp/fsharp",
+    "org": "fsharp",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 5,
+        "microsoft": 0,
+        "community": 5
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 4,
+        "microsoft": 2,
+        "community": 2
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 6,
+        "microsoft": 2,
+        "community": 4
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 6,
+        "microsoft": 4,
+        "community": 2
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 3,
+        "microsoft": 3,
+        "community": 0
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 3,
+        "microsoft": 1,
+        "community": 2
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 2,
+        "microsoft": 2,
+        "community": 0
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 17,
+        "microsoft": 9,
+        "community": 8
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 5,
+        "microsoft": 4,
+        "community": 1
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 2,
+        "microsoft": 1,
+        "community": 1
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 5,
+        "microsoft": 2,
+        "community": 3
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 2,
+        "microsoft": 1,
+        "community": 1
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 9,
+        "microsoft": 5,
+        "community": 4
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 1,
+        "microsoft": 0,
+        "community": 1
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 6,
+        "microsoft": 2,
+        "community": 4
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 1,
+        "microsoft": 0,
+        "community": 1
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 5,
+        "microsoft": 5,
+        "community": 0
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 1,
+        "microsoft": 1,
+        "community": 0
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 1,
+        "microsoft": 1,
+        "community": 0
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 6,
+        "microsoft": 6,
+        "community": 0
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 2,
+        "microsoft": 2,
+        "community": 0
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 4,
+        "microsoft": 4,
+        "community": 0
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 4,
+        "microsoft": 3,
+        "community": 1
+      }
+    ]
+  },
+  "fake": {
+    "url": "https://github.com/fsharp/fake",
+    "org": "fsharp",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 11,
+        "microsoft": 0,
+        "community": 11
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 8,
+        "microsoft": 1,
+        "community": 7
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 12,
+        "microsoft": 0,
+        "community": 12
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 17,
+        "microsoft": 0,
+        "community": 17
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 33,
+        "microsoft": 1,
+        "community": 32
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 27,
+        "microsoft": 0,
+        "community": 27
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 24,
+        "microsoft": 0,
+        "community": 24
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 9,
+        "microsoft": 1,
+        "community": 8
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 22,
+        "microsoft": 0,
+        "community": 22
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 27,
+        "microsoft": 0,
+        "community": 27
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 14,
+        "microsoft": 1,
+        "community": 13
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 22,
+        "microsoft": 1,
+        "community": 21
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 16,
+        "microsoft": 0,
+        "community": 16
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 18,
+        "microsoft": 0,
+        "community": 18
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 42,
+        "microsoft": 0,
+        "community": 42
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 16,
+        "microsoft": 0,
+        "community": 16
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 20,
+        "microsoft": 0,
+        "community": 20
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 23,
+        "microsoft": 0,
+        "community": 23
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 14,
+        "microsoft": 0,
+        "community": 14
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 18,
+        "microsoft": 0,
+        "community": 18
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 34,
+        "microsoft": 0,
+        "community": 34
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 20,
+        "microsoft": 0,
+        "community": 20
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 10,
+        "microsoft": 0,
+        "community": 10
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 12,
+        "microsoft": 0,
+        "community": 12
+      }
+    ]
+  },
+  "visualfsharp": {
+    "url": "https://github.com/microsoft/visualfsharp",
+    "org": "microsoft",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 9,
+        "microsoft": 5,
+        "community": 4
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 14,
+        "microsoft": 6,
+        "community": 8
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 3,
+        "microsoft": 0,
+        "community": 3
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 2,
+        "microsoft": 0,
+        "community": 2
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 2,
+        "microsoft": 0,
+        "community": 2
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 1,
+        "microsoft": 0,
+        "community": 1
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 1,
+        "microsoft": 0,
+        "community": 1
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 7,
+        "microsoft": 5,
+        "community": 2
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 10,
+        "microsoft": 7,
+        "community": 3
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 8,
+        "microsoft": 3,
+        "community": 5
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 23,
+        "microsoft": 12,
+        "community": 11
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 24,
+        "microsoft": 16,
+        "community": 8
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 30,
+        "microsoft": 23,
+        "community": 7
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 14,
+        "microsoft": 10,
+        "community": 4
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 41,
+        "microsoft": 29,
+        "community": 12
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 45,
+        "microsoft": 11,
+        "community": 34
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 40,
+        "microsoft": 24,
+        "community": 16
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 51,
+        "microsoft": 33,
+        "community": 18
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 59,
+        "microsoft": 28,
+        "community": 31
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 27,
+        "microsoft": 15,
+        "community": 12
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 52,
+        "microsoft": 47,
+        "community": 5
+      }
+    ]
+  },
+  "vscode": {
+    "url": "https://github.com/microsoft/vscode",
+    "org": "microsoft",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 59,
+        "microsoft": 29,
+        "community": 30
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 40,
+        "microsoft": 25,
+        "community": 15
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 32,
+        "microsoft": 25,
+        "community": 7
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 34,
+        "microsoft": 21,
+        "community": 13
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 40,
+        "microsoft": 19,
+        "community": 21
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 51,
+        "microsoft": 21,
+        "community": 30
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 33,
+        "microsoft": 18,
+        "community": 15
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 49,
+        "microsoft": 18,
+        "community": 31
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 57,
+        "microsoft": 33,
+        "community": 24
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 52,
+        "microsoft": 23,
+        "community": 29
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 65,
+        "microsoft": 44,
+        "community": 21
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 48,
+        "microsoft": 25,
+        "community": 23
+      }
+    ]
+  },
+  "msbuild": {
+    "url": "https://github.com/microsoft/msbuild",
+    "org": "microsoft",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 0,
+        "microsoft": 0,
+        "community": 0
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 6,
+        "microsoft": 5,
+        "community": 1
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 16,
+        "microsoft": 15,
+        "community": 1
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 2,
+        "microsoft": 2,
+        "community": 0
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 9,
+        "microsoft": 9,
+        "community": 0
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 16,
+        "microsoft": 16,
+        "community": 0
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 40,
+        "microsoft": 38,
+        "community": 2
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 41,
+        "microsoft": 38,
+        "community": 3
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 19,
+        "microsoft": 17,
+        "community": 2
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 20,
+        "microsoft": 18,
+        "community": 2
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 19,
+        "microsoft": 14,
+        "community": 5
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 27,
+        "microsoft": 23,
+        "community": 4
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 17,
+        "microsoft": 15,
+        "community": 2
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 27,
+        "microsoft": 25,
+        "community": 2
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 32,
+        "microsoft": 29,
+        "community": 3
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 30,
+        "microsoft": 27,
+        "community": 3
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 45,
+        "microsoft": 40,
+        "community": 5
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 70,
+        "microsoft": 54,
+        "community": 16
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 80,
+        "microsoft": 78,
+        "community": 2
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 87,
+        "microsoft": 85,
+        "community": 2
+      }
+    ]
+  },
+  "typescript": {
+    "url": "https://github.com/microsoft/typescript",
+    "org": "microsoft",
+    "data": [
+      {
+        "index": 1,
+        "month": "Nov 2014",
+        "total": 105,
+        "microsoft": 97,
+        "community": 8
+      },
+      {
+        "index": 2,
+        "month": "Dec 2014",
+        "total": 113,
+        "microsoft": 94,
+        "community": 19
+      },
+      {
+        "index": 3,
+        "month": "Jan 2015",
+        "total": 59,
+        "microsoft": 46,
+        "community": 13
+      },
+      {
+        "index": 4,
+        "month": "Feb 2015",
+        "total": 87,
+        "microsoft": 77,
+        "community": 10
+      },
+      {
+        "index": 5,
+        "month": "Mar 2015",
+        "total": 109,
+        "microsoft": 89,
+        "community": 20
+      },
+      {
+        "index": 6,
+        "month": "Apr 2015",
+        "total": 107,
+        "microsoft": 91,
+        "community": 16
+      },
+      {
+        "index": 7,
+        "month": "May 2015",
+        "total": 86,
+        "microsoft": 62,
+        "community": 24
+      },
+      {
+        "index": 8,
+        "month": "Jun 2015",
+        "total": 101,
+        "microsoft": 79,
+        "community": 22
+      },
+      {
+        "index": 9,
+        "month": "Jul 2015",
+        "total": 110,
+        "microsoft": 82,
+        "community": 28
+      },
+      {
+        "index": 10,
+        "month": "Aug 2015",
+        "total": 93,
+        "microsoft": 74,
+        "community": 19
+      },
+      {
+        "index": 11,
+        "month": "Sep 2015",
+        "total": 92,
+        "microsoft": 75,
+        "community": 17
+      },
+      {
+        "index": 12,
+        "month": "Oct 2015",
+        "total": 108,
+        "microsoft": 92,
+        "community": 16
+      },
+      {
+        "index": 13,
+        "month": "Nov 2015",
+        "total": 87,
+        "microsoft": 78,
+        "community": 9
+      },
+      {
+        "index": 14,
+        "month": "Dec 2015",
+        "total": 86,
+        "microsoft": 71,
+        "community": 15
+      },
+      {
+        "index": 15,
+        "month": "Jan 2016",
+        "total": 84,
+        "microsoft": 73,
+        "community": 11
+      },
+      {
+        "index": 16,
+        "month": "Feb 2016",
+        "total": 122,
+        "microsoft": 103,
+        "community": 19
+      },
+      {
+        "index": 17,
+        "month": "Mar 2016",
+        "total": 77,
+        "microsoft": 65,
+        "community": 12
+      },
+      {
+        "index": 18,
+        "month": "Apr 2016",
+        "total": 162,
+        "microsoft": 157,
+        "community": 5
+      },
+      {
+        "index": 19,
+        "month": "May 2016",
+        "total": 133,
+        "microsoft": 120,
+        "community": 13
+      },
+      {
+        "index": 20,
+        "month": "Jun 2016",
+        "total": 146,
+        "microsoft": 136,
+        "community": 10
+      },
+      {
+        "index": 21,
+        "month": "Jul 2016",
+        "total": 111,
+        "microsoft": 96,
+        "community": 15
+      },
+      {
+        "index": 22,
+        "month": "Aug 2016",
+        "total": 130,
+        "microsoft": 120,
+        "community": 10
+      },
+      {
+        "index": 23,
+        "month": "Sep 2016",
+        "total": 128,
+        "microsoft": 115,
+        "community": 13
+      },
+      {
+        "index": 24,
+        "month": "Oct 2016",
+        "total": 157,
+        "microsoft": 146,
+        "community": 11
+      }
+    ]
+  }
+}
