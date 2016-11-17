@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-us">
 
@@ -317,26 +318,32 @@ jQuery(function() {
 
 <div class="post">
   <h1 class="post-title">Open Source .NET – 2 years later</h1>
-  <span class="post-date">17 Nov 2016 - 346 words</span>
+  <span class="post-date">17 Nov 2016 - 441 words</span>
   
-<link rel="stylesheet" href="/datavis/dotnet-oss-sparklines.css" />
+<link rel="stylesheet" href="/datavis/dotnet-oss.css" />
 
-<script src="/datavis/dotnet-oss-sparklines.js" type="text/javascript"></script>
+<script src="/datavis/dotnet-oss.js" type="text/javascript"></script>
 
 <p>A little over 2 years ago Microsoft announced that they were <a href="http://www.hanselman.com/blog/AnnouncingNET2015NETAsOpenSourceNETOnMacAndLinuxAndVisualStudioCommunity.aspx">open sourcing large parts of the .NET framework</a></p>
 
 <p><a href="https://github.com/dotnet/core/blob/master/release-notes/1.1/1.1.0-preview1-contibutor-list.md">Contributions to .NET Core 1.1.0 Preview 1</a> (Maybe analyse the list and see how many are Community v. Microsoft?</p>
 
+<p>As per <a href="https://twitter.com/shanselman">Scott Hanselman</a></p>
+
+<p><a href="https://twitter.com/poweredbyaltnet/status/798942478195970048"><img src="/images/2016/11/Over 60 of the contributions to dotnetcore come from the community.jpg" alt="Over 60% of the contribution to .NET Core come from the community" /></a></p>
+
 <hr />
 
-<section class="gradient" align="center">
-<!-- <section class="press" align="center"> -->
+<p>Note: Numbers in <span style="color:rgb(0,0,0);font-weight:bold;">black</span> are from the most recent month, with <span style="color:#d62728;font-weight:bold;">red</span> showing the lowest and <span style="color:#2ca02c;font-weight:bold;">green</span> the highest previous value. You can toggle between <strong>Issues</strong> and <strong>Pull Requests</strong> by clicking on the buttons, hover over individual sparklines to get a tooltip showing the per/month values and click on the project name to take you to the GitHub page.</p>
+
+<section class="press" align="center">
+<!-- <section class="gradient" align="center"> -->
   <button id="btnIssues" class="active">Issues</button>
   <button id="btnPRs">Pull Requests</button>
 </section>
 
 <div id="textbox" class="rChartHeader">
-  <!-- The Start/End dates are setup dynamicially, once the data is loaded -->
+  <!-- The Start/End dates are setup dynamically, once the data is loaded -->
   <p id="dataStartDate" class="alignleft"></p>
   <p id="dataEndDate" class="alignright"></p>
 </div>
@@ -345,6 +352,8 @@ jQuery(function() {
 <!-- All the sparklines are added to this div -->
 <div id="sparkLines" class="rChart nvd3">
 </div>
+
+<hr />
 
 <hr />
 

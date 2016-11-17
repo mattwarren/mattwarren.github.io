@@ -1,5 +1,5 @@
 // Initially empty, but gets populated via an Ajax request (below)
-data = {}
+sparklineData = {}
 dataIssues = {}
 dataPullRequests = {}
 
@@ -7,7 +7,7 @@ d3.json("/datavis/data-issues.json", function(error, json) {
   if (error) 
     return console.warn(error);
   dataIssues = json;
-  data = dataIssues;
+  sparklineData = dataIssues;
   updateSparklines();
   setSparklineHeaderText();
   setupButtonClickHandler();
@@ -20,9 +20,9 @@ d3.json("/datavis/data-pull-requests.json", function(error, json) {
 });
 
 function updateSparklines() {
-  var dataTypes = Object.keys(data).sort(function(a, b) { 
-    var aMax = d3.max(data[a].data, function(d) { return d.total; }); 
-    var bMax = d3.max(data[b].data, function(d) { return d.total; }); 
+  var dataTypes = Object.keys(sparklineData).sort(function(a, b) { 
+    var aMax = d3.max(sparklineData[a].data, function(d) { return d.total; }); 
+    var bMax = d3.max(sparklineData[b].data, function(d) { return d.total; }); 
     //return aMax - bMax; // descending
     return bMax - aMax; // ascending
   });
@@ -37,7 +37,7 @@ function updateSparklines() {
 
   for (i = 0; i < dataTypes.length; i++) {  
     if (dataTypes[i] != 'fsharp' && dataTypes[i] != 'fake') {
-      drawChart(dataTypes[i], 'https://github.com/' + data[dataTypes[i]].org + "/" + dataTypes[i]);
+      drawChart(dataTypes[i], 'https://github.com/' + sparklineData[dataTypes[i]].org + "/" + dataTypes[i]);
     }
   }
 }
@@ -67,7 +67,7 @@ function drawChart(chartId, url) {
       .height(opts.height)
       .xTickFormat(function(d) {
         // 'd' is the X-value of the current point, i.e. the "index" field!!
-        var current = data[opts.id].data[d-1];
+        var current = sparklineData[opts.id].data[d-1];
         if (current === undefined)
           return d + " - Unknown";
         else
@@ -87,7 +87,7 @@ function drawChart(chartId, url) {
         .attr('height', opts.height)
       .append('svg')
         .attr('id', opts.dom)
-      .datum(data[opts.id].data)
+      .datum(sparklineData[opts.id].data)
       //.transition().duration(1000)
       .call(chart)
 
@@ -148,7 +148,7 @@ function updateExistingSvg(id, divId, height, url) {
     .select('svg' + divId)
     .select('g.nv-sparklineplus')
     .select('g.nv-valueWrap')
-    .append("text").text(function(d, i) { return d3.max(data[id].data, function(a) { return a.total; }) })
+    .append("text").text(function(d, i) { return d3.max(sparklineData[id].data, function(a) { return a.total; }) })
       .attr('style', 'text-anchor: start; fill: #2ca02c;')
       .attr('x', parseInt(currentText.attr("x")))
       .attr('y', parseInt(currentText.attr("y")) - 18)
@@ -164,7 +164,7 @@ function updateExistingSvg(id, divId, height, url) {
 }
 
 function setSparklineHeaderText() {
-  var firstItem = data[Object.keys(data)[0]];
+  var firstItem = sparklineData[Object.keys(sparklineData)[0]];
   if (firstItem !== undefined) {
     var minDate = firstItem.data[firstItem.data.length - 1].month; 
     var maxDate = firstItem.data[0].month; 
@@ -182,11 +182,11 @@ function setupButtonClickHandler() {
     if ($(this).attr("class") !== "active") {
       $("#btnIssues, #btnPRs").toggleClass("active");
       if ($(this).attr("id") === "btnIssues") {
-        data = dataIssues;
+        sparklineData = dataIssues;
         updateSparklines();
       }
       else if ($(this).attr("id") === "btnPRs") {
-        data = dataPullRequests;
+        sparklineData = dataPullRequests;
         updateSparklines();
       }
     }
