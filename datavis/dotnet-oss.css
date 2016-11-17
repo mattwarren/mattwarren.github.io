@@ -104,3 +104,86 @@ section.press button.active {
 /********************************************/
 /* Styles for Normalized Stacked Bar Charts */
 /********************************************/
+
+/*css to go here*/
+/*body {
+  font-family: "Proxima-Nova",Arial,Helvetica,sans-serif;
+  font-size: 12px;
+}*/
+
+//normalizedStackedBar
+
+.g-hed {
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size:20px; 
+  margin: 3px 0;
+}
+
+.g-source-bold {
+  text-align: left;
+  font-size:11px;
+  font-weight: bold;
+  color: #333333; 
+}
+
+.g-source {
+  margin-bottom: 2px;
+  font-size:11px;
+  color: #999999;
+}
+
+.g-intro {
+  font-size: 18px;
+  margin: 0px 0px 10px 0px;
+  color: #333333;
+}
+
+.g-num-issues {
+  /*fill: #c12726;*/
+  fill: #9ecae1; /* Microsoft Issues */
+}
+  
+.g-num-pull-requests {
+  fill: #a1d99b; /* Microsoft PR's */
+}
+
+.g-num2-issues {
+  /*fill: #e0e0e0;*/
+  fill: #3182bd; /* Community Issues */
+}
+
+.g-num2-pull-requests {
+  fill: #31a354; /* Community PR's */
+}
+
+.g-labels {
+  font-family: "Proxima-Nova",Arial,Helvetica,sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.x.axis line, .y.axis line {
+  display: none;
+}
+
+.x.axis text {
+  display: none;
+}
+
+.domain {
+  display: none;
+}
+
+.y.axis text {
+  font-family: 'Proxima-Nova', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-anchor: end !important;
+  fill: #c12726;
+}
+
+.g-chart {
+  border-bottom: 1px solid #c3cddf;
+}

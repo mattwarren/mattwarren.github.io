@@ -60,12 +60,8 @@
   
   
   
-  <link rel='stylesheet' href='http://cdnjs.cloudflare.com/ajax/libs/nvd3/1.1.14-beta/nv.d3.css'>
-
+  <link rel='stylesheet' href='/datavis/nv.d3.css'>
   <script src="//d3js.org/d3.v3.min.js"></script>
-  <!-- <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js' type='text/javascript'></script> -->
-  <!-- <script src='http://d3js.org/d3.v2.min.js' type='text/javascript'></script> -->
-  <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/nvd3/1.1.14-beta/nv.d3.js' type='text/javascript'></script> -->
   <script src='http://cdnjs.cloudflare.com/ajax/libs/nvd3/1.1.14-beta/nv.d3.min.js' type='text/javascript'></script>
   
 
@@ -318,7 +314,7 @@ jQuery(function() {
 
 <div class="post">
   <h1 class="post-title">Open Source .NET – 2 years later</h1>
-  <span class="post-date">17 Nov 2016 - 441 words</span>
+  <span class="post-date">17 Nov 2016 - 495 words</span>
   
 <link rel="stylesheet" href="/datavis/dotnet-oss.css" />
 
@@ -333,6 +329,8 @@ jQuery(function() {
 <p><a href="https://twitter.com/poweredbyaltnet/status/798942478195970048"><img src="/images/2016/11/Over 60 of the contributions to dotnetcore come from the community.jpg" alt="Over 60% of the contribution to .NET Core come from the community" /></a></p>
 
 <hr />
+
+<h3 id="respository-activity-over-time">Respository activity over time</h3>
 
 <p>Note: Numbers in <span style="color:rgb(0,0,0);font-weight:bold;">black</span> are from the most recent month, with <span style="color:#d62728;font-weight:bold;">red</span> showing the lowest and <span style="color:#2ca02c;font-weight:bold;">green</span> the highest previous value. You can toggle between <strong>Issues</strong> and <strong>Pull Requests</strong> by clicking on the buttons, hover over individual sparklines to get a tooltip showing the per/month values and click on the project name to take you to the GitHub page.</p>
 
@@ -355,64 +353,21 @@ jQuery(function() {
 
 <hr />
 
-<hr />
+<h3 id="participation---community-v-microsoft">Participation - Community v. Microsoft</h3>
 
-<p>Data Vis Tools to us (or maybe just use d3.js directly?)</p>
-
-<p>https://www.runtimerror.com/data-visualization-made-easy-with-contour-js/<br />
-http://c3js.org/gettingstarted.html<br />
-http://c3js.org/examples.html<br />
-http://c3js.org/samples/data_order.html<br />
-http://c3js.org/samples/timeseries.html<br />
-http://c3js.org/samples/chart_bar_stacked.html</p>
-
-<p><strong>Stacked/Grouped Multi-Bar Chart</strong></p>
-
-<p>http://nvd3.org/examples/multiBar.html<br />
-http://bl.ocks.org/mbostock/3943967</p>
-
-<p>https://nvd3-community.github.io/nvd3/examples/multiBarChart.html<br />
-https://nvd3-community.github.io/nvd3/examples/multiBarChart2.html</p>
-
-<hr />
-
-<p>Nice links about Sparkline theory/practice</p>
-
-<ul>
-  <li><a href="http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR">Sparkline theory and practice Edward Tufte</a></li>
-  <li><a href="http://www.tnoda.com/blog/2013-12-19">SVG-based Sparkline with d3.js</a></li>
-</ul>
-
-<p>http://nvd3.org/examples/index.html<br />
-https://nvd3-community.github.io/nvd3/</p>
-
-<p>https://nvd3-community.github.io/nvd3/examples/sparkline.html<br />
-https://github.com/novus/nvd3/blob/master/src/models/sparkline.js<br />
-https://nvd3-community.github.io/nvd3/examples/sparklinePlus.html<br />
-https://github.com/novus/nvd3/blob/master/src/models/sparklinePlus.js</p>
-
-<hr />
-
-<p><strong>PR’s are the life blood of OSS too.</strong> (from https://github.com/Microsoft/visualfsharp/issues/1689#issuecomment-258393676)</p>
-
-<hr />
-
-<p>Ideas</p>
-
-<ul>
-  <li>Put total in brackets at end of Sparklines, i.e. 45 (Total=1,534)</li>
-  <li>Show last 2 years or all the way back to the oldest (fsharp/fake = Feb 2010)</li>
-  <li>Toggle Isssue with Pull Requests</li>
-  <li>Order by Total or Last/Recent number</li>
-</ul>
-
-<h3 id="microsoft-and-oss">Microsoft and OSS</h3>
-
-<p><a href="https://msdn.microsoft.com/magazine/mt788617">“First Word - Any Developer, Any App, Any Platform”</a></p>
-
-<blockquote>
-  <p>Even a year ago, I couldn’t imagine where we’d be. .NET Core, .NET Compiler “Roslyn,” ASP.NET, Visual Studio Code, Xamarin and TypeScript are all open source projects. GitHub just published its 2016 statistics (octoverse.github.com) and <strong>Microsoft is the No. 1 leader in open source contributors</strong>, above Facebook, Docker and Google, with <strong>16,419 unique contributors</strong>. Visual Studio Code (@code) is in the top 10 repositories on GitHub with the most open source contributors with more than 5,855 contributors. I am proud, and humbled, to see how active our open source community is and how much our developer division has led the way in Microsoft embracing open source.</p>
-</blockquote>
+<body>
+  <!-- TODO do this in css styles, not inline!! -->
+  <div class="g-chart-issues">
+    <span style="font-weight:bold;font-size:large;margin-left:150px;"> Issues: </span>
+    <span style="color:#9ecae1;font-weight:bold;font-size:large;margin-left:5px;"> Microsoft </span>
+    <span style="color:#3182bd;font-weight:bold;font-size:large;margin-left:5px;"> Community </span>
+  </div>
+  <div class="g-chart-pull-requests">
+    <span style="font-weight:bold;font-size:large;margin-left:150px;"> Pull Requests: </span>
+    <span style="color:#a1d99b;font-weight:bold;font-size:large;margin-left:5px;"> Microsoft </span>
+    <span style="color:#31a354;font-weight:bold;font-size:large;margin-left:5px;"> Community </span>
+  </div>
+</body>
 
 </div>
 
