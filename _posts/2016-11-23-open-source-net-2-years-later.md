@@ -4,6 +4,7 @@ title: Open Source .NET – 2 years later
 comments: true
 tags: [.NET, Analytics, Open Source, Roslyn, AspNet]
 datavis: true
+excerpt: <p>A little over 2 years ago Microsoft announced that they were <a href="http://www.hanselman.com/blog/AnnouncingNET2015NETAsOpenSourceNETOnMacAndLinuxAndVisualStudioCommunity.aspx">open sourcing large parts of the .NET framework</a> and as <a href="https://twitter.com/shanselman">Scott Hanselman</a> said in his recent <a href="https://channel9.msdn.com/Events/Connect/2016/Keynotes-Scott-Guthrie-and-Scott-Hanselman">Connect keynote</a>, the community has been contributing in a significant way:</p>
 ---
 
 {% raw %}
