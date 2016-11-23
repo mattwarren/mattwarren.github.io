@@ -142,3 +142,5 @@ Whilst not every repo is growing month-by-month, the majority are and those that
 ## Summary
 
 I think that it's clear to see that the Community has got on-board with the new Open-Source Microsoft, producing a sustained level of contributions over the last 2 years, lets hope it continues!
+
+Discuss this post in [/r/programming](https://www.reddit.com/r/programming/comments/5eh17t/open_source_net_2_years_later/)
