@@ -71,8 +71,8 @@
 <meta property="og:title" content="Open Source .NET – 2 years later" />
 <meta name="description" content="" />
 <meta property='og:description' content="" />
-<link rel="canonical" href="http://www.mattwarren.org/2016/11/17/open-source-net-2-years-later/" />
-<meta property='og:url' content='http://www.mattwarren.org/2016/11/17/open-source-net-2-years-later/' />
+<link rel="canonical" href="http://www.mattwarren.org/2016/11/21/open-source-net-2-years-later/" />
+<meta property='og:url' content='http://www.mattwarren.org/2016/11/21/open-source-net-2-years-later/' />
 <meta property="og:site_name" content="Performance is a Feature!" />
 <script type="application/ld+json">
     {
@@ -90,7 +90,7 @@
       "@type": "NewsArticle",
       "headline": "Open Source .NET – 2 years later",
       "image": null,
-      "datePublished": "2016-11-17T00:00:00+00:00",
+      "datePublished": "2016-11-21T00:00:00+00:00",
       "description": ""
     }
   </script>
@@ -314,7 +314,7 @@ jQuery(function() {
 
 <div class="post">
   <h1 class="post-title">Open Source .NET – 2 years later</h1>
-  <span class="post-date">17 Nov 2016 - 495 words</span>
+  <span class="post-date">21 Nov 2016 - 672 words</span>
   
 <link rel="stylesheet" href="/datavis/dotnet-oss.css" />
 
@@ -351,9 +351,19 @@ jQuery(function() {
 <div id="sparkLines" class="rChart nvd3">
 </div>
 
+<p><strong>Write a summary, interesting trends, PRs v Issues, Repos that stand out, etc</strong></p>
+
 <hr />
 
-<h3 id="participation---community-v-microsoft">Participation - Community v. Microsoft</h3>
+<h3 id="methodology---community-v-microsoft">Methodology - Community v. Microsoft</h3>
+
+<p><strong>Write about how I got the data</strong></p>
+
+<h3 id="overall-participation---community-v-microsoft">Overall Participation - Community v. Microsoft</h3>
+
+<p>This data if the total participation from the last 2 years, i.e. <strong>November 2014</strong> to <strong>October 2016</strong></p>
+
+<p>Note: All Pull Requests are Issues are treated equally, so large PRs counts the same as one that fixes a spelling mistake. Whilst this isn’t ideal it ????</p>
 
 <body>
   <!-- TODO do this in css styles, not inline!! -->
@@ -368,6 +378,34 @@ jQuery(function() {
     <span style="color:#31a354;font-weight:bold;font-size:large;margin-left:5px;"> Community </span>
   </div>
 </body>
+
+<hr />
+
+<h3 id="participation-over-time---community-v-microsoft">Participation over time - Community v. Microsoft</h3>
+
+<p>Again, this is from the last 2 years, i.e. <strong>November 2014</strong> to <strong>October 2016</strong></p>
+
+<div id="issuesGraph">
+  <!-- TODO do this in css styles, not inline!! -->
+  <span style="font-weight:bold;font-size:larger;margin-left:30px;"> Issues: </span>
+  <span style="color:#9ecae1;font-weight:bold;font-size:larger;margin-left:5px;"> Microsoft </span>
+  <span style="color:#3182bd;font-weight:bold;font-size:larger;margin-left:5px;"> Community </span>
+  <!-- <form>
+    <label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
+    <label><input type="radio" name="mode" value="grouped"> Grouped</label>
+  </form> -->
+</div>
+
+<div id="pullRequestsGraph">
+  <!-- TODO do this in css styles, not inline!! -->
+  <span style="font-weight:bold;font-size:larger;margin-left:30px;"> Pull Requests: </span>
+  <span style="color:#a1d99b;font-weight:bold;font-size:larger;margin-left:5px;"> Microsoft </span>
+  <span style="color:#31a354;font-weight:bold;font-size:larger;margin-left:5px;"> Community </span>
+  <!-- <form>
+    <label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
+    <label><input type="radio" name="mode" value="grouped"> Grouped</label>
+  </form> -->
+</div>
 
 </div>
 
@@ -388,11 +426,11 @@ jQuery(function() {
 
 <div class="share">
   Share this article:
-  <a target="_blank" title="Share on Twitter" href="https://twitter.com/intent/tweet?url=http://www.mattwarren.org/2016/11/17/open-source-net-2-years-later/&amp;text=Open%20Source%20.NET%20%E2%80%93%202%20years%20later&amp;via=matthewwarren"><img src="/images/social/Twitter.svg" height=27 width=27></a>&nbsp;
-  <a target="_blank" title="Submit to Reddit" href="http://www.reddit.com/submit?url=http://www.mattwarren.org/2016/11/17/open-source-net-2-years-later/&amp;title=Open%20Source%20.NET%20%E2%80%93%202%20years%20later"><img src="/images/social/Reddit.svg" height=27 width=27></a>&nbsp;
-  <a target="_blank" title="Submit to Hacker News" href="https://news.ycombinator.com/submitlink?u=http://www.mattwarren.org/2016/11/17/open-source-net-2-years-later/&amp;t=Open%20Source%20.NET%20%E2%80%93%202%20years%20later"><img src="/images/social/HackerNews.svg" height=27 width=27></a>&nbsp;
-  <a target="_blank" title="Share on Facebook" href="https://facebook.com/sharer.php?u=http://www.mattwarren.org/2016/11/17/open-source-net-2-years-later/&amp;t=Open%20Source%20.NET%20%E2%80%93%202%20years%20later"><img src="/images/social/Facebook.svg" height=27 width=27></a>&nbsp;
-  <a target="_blank" title="Share on LinkedIn" href="http://www.linkedin.com/shareArticle?mini=true&amp;http://www.mattwarren.org/2016/11/17/open-source-net-2-years-later/&amp;title=Open%20Source%20.NET%20%E2%80%93%202%20years%20later"><img src="/images/social/LinkedIn.svg" height=27 width=27></a>&nbsp;
+  <a target="_blank" title="Share on Twitter" href="https://twitter.com/intent/tweet?url=http://www.mattwarren.org/2016/11/21/open-source-net-2-years-later/&amp;text=Open%20Source%20.NET%20%E2%80%93%202%20years%20later&amp;via=matthewwarren"><img src="/images/social/Twitter.svg" height=27 width=27></a>&nbsp;
+  <a target="_blank" title="Submit to Reddit" href="http://www.reddit.com/submit?url=http://www.mattwarren.org/2016/11/21/open-source-net-2-years-later/&amp;title=Open%20Source%20.NET%20%E2%80%93%202%20years%20later"><img src="/images/social/Reddit.svg" height=27 width=27></a>&nbsp;
+  <a target="_blank" title="Submit to Hacker News" href="https://news.ycombinator.com/submitlink?u=http://www.mattwarren.org/2016/11/21/open-source-net-2-years-later/&amp;t=Open%20Source%20.NET%20%E2%80%93%202%20years%20later"><img src="/images/social/HackerNews.svg" height=27 width=27></a>&nbsp;
+  <a target="_blank" title="Share on Facebook" href="https://facebook.com/sharer.php?u=http://www.mattwarren.org/2016/11/21/open-source-net-2-years-later/&amp;t=Open%20Source%20.NET%20%E2%80%93%202%20years%20later"><img src="/images/social/Facebook.svg" height=27 width=27></a>&nbsp;
+  <a target="_blank" title="Share on LinkedIn" href="http://www.linkedin.com/shareArticle?mini=true&amp;http://www.mattwarren.org/2016/11/21/open-source-net-2-years-later/&amp;title=Open%20Source%20.NET%20%E2%80%93%202%20years%20later"><img src="/images/social/LinkedIn.svg" height=27 width=27></a>&nbsp;
 </div>
 
 
@@ -401,8 +439,8 @@ jQuery(function() {
 
 // See http://jekyllrb.com/docs/variables/#page-variables
 var disqus_config = function () {
-  this.page.url = "http://www.mattwarren.org/2016/11/17/open-source-net-2-years-later/";
-  this.page.identifier = "/2016/11/17/open-source-net-2-years-later";
+  this.page.url = "http://www.mattwarren.org/2016/11/21/open-source-net-2-years-later/";
+  this.page.identifier = "/2016/11/21/open-source-net-2-years-later";
   this.page.title = "Open Source .NET – 2 years later";
 };
 

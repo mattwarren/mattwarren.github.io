@@ -7,7 +7,7 @@
   margin-left: auto; 
   margin-right: auto;
   width: 650px;
-  height: 980px;
+  height: 1050px; //980px;
 }
 
 .rChartHeader {
@@ -105,14 +105,6 @@ section.press button.active {
 /* Styles for Normalized Stacked Bar Charts */
 /********************************************/
 
-/*css to go here*/
-/*body {
-  font-family: "Proxima-Nova",Arial,Helvetica,sans-serif;
-  font-size: 12px;
-}*/
-
-//normalizedStackedBar
-
 .g-hed {
   text-align: left;
   text-transform: uppercase;
@@ -186,4 +178,48 @@ section.press button.active {
 
 .g-chart {
   border-bottom: 1px solid #c3cddf;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 70px;
+    height: 58px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: rgb(197, 188, 188);
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+/********************************************/
+/* Styles for Stacked-to-Grouped Bar Charts */
+/********************************************/
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+form {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+div.tooltipOverall {
+    position: absolute;
+    text-align: center;
+    width: 100px;
+    height: 60px;
+    padding: 6px;
+    font: 13px sans-serif;
+    /*background: lightsteelblue;*/
+    background: rgb(197, 188, 188);
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
 }
