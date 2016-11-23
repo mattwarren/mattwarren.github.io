@@ -199,8 +199,8 @@ function updateExistingSvg(id, divId, height, url) {
 function setSparklineHeaderText() {
   var firstItem = sparklineData[Object.keys(sparklineData)[0]];
   if (firstItem !== undefined) {
-    var minDate = firstItem.data[firstItem.data.length - 1].month; 
-    var maxDate = firstItem.data[0].month; 
+    var minDate = firstItem.data[0].month;
+    var maxDate = firstItem.data[firstItem.data.length - 1].month; 
     if (minDate !== undefined && maxDate !== undefined) {
       d3.select('#dataStartDate')
         .text(minDate);
