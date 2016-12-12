@@ -6,7 +6,7 @@ tags: [.NET, Open Source]
 codeproject: false
 ---
 
-This post is completely inspired by (or 'copied from' depending on your point of view) a recent post titled [JAVA PAPERS](http://lowlevelbits.org/java-papers/) (also see the [HackerNews discussion](https://news.ycombinator.com/item?id=13022649)). However, instead of looking at Java and the JVM, I'll be looking a references to research papers in the **.NET language/runtime/compiler source code**. 
+This post is completely inspired by (or 'copied from' depending on your point of view) a recent post titled [JAVA PAPERS](http://lowlevelbits.org/java-papers/) (also see the [HackerNews discussion](https://news.ycombinator.com/item?id=13022649)). However, instead of looking at Java and the JVM, I'll be looking at references to research papers in the **.NET language, runtime and compiler source code**. 
 
 If I've missed any that you know of, please leave a comment below!
 
