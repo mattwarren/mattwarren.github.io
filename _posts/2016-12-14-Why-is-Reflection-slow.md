@@ -12,6 +12,7 @@ It's common knowledge that [reflection in .NET is slow](http://stackoverflow.com
 But first it's worth pointing out that part of the reason reflection isn't fast is that it was never designed to have *high-performance* as one of its goals, from [Type System Overview - 'Design Goals and Non-goals'](https://github.com/dotnet/coreclr/blob/32f0f9721afb584b4a14d69135bea7ddc129f755/Documentation/botr/type-system.md#design-goals-and-non-goals):
 
 > **Goals**
+> 
 > - **Accessing information needed at runtime from executing (non-reflection) code is very fast.**
 - Accessing information needed at compilation time for generating code is straightforward.
 - The garbage collector/stackwalker is able to access necessary information without taking locks, or allocating memory.
@@ -20,12 +21,14 @@ But first it's worth pointing out that part of the reason reflection isn't fast 
 - Type system data structures must be storable in NGEN images.
 
 > **Non-Goals**
+> 
 > - All information in the metadata is directly reflected in the CLR data structures.
 - **All uses of reflection are fast.**
 
 and along the same lines, from [Type Loader Design - 'Key Data Structures'](https://github.com/dotnet/coreclr/blob/32f0f9721afb584b4a14d69135bea7ddc129f755/Documentation/botr/type-loader.md#key-data-structures):
 
 > **EEClass**
+> 
 > MethodTable data are split into "hot" and "cold" structures to improve working set and cache utilization. MethodTable itself is meant to only store "hot" data that are needed in program steady state. **EEClass stores "cold" data that are typically only needed by type loading, JITing or reflection.** Each MethodTable points to one EEClass.
 
 ## How does Reflection work?
@@ -40,7 +43,7 @@ Well there several things that are happening, to illustrate this lets look at th
   -  calling **System.GC.KeepAlive**(..)
 - **System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal**(..) - [link](https://github.com/dotnet/coreclr/blob/b638af3a4dd52fa7b1ea1958164136c72096c25c/src/mscorlib/src/System/Reflection/MethodInfo.cs#L651-L665) 
   - calling stub for **System.RuntimeMethodHandle.InvokeMethod**(..)
-- stub for **System.RuntimeMethodHandle.InvokeMethod**(..)- [link](https://github.com/dotnet/coreclr/blob/e67851210d1c03d730a3bc97a87e8a6713bbf772/src/vm/reflectioninvocation.cpp#L1322-L1732)
+- stub for **System.RuntimeMethodHandle.InvokeMethod**(..) - [link](https://github.com/dotnet/coreclr/blob/e67851210d1c03d730a3bc97a87e8a6713bbf772/src/vm/reflectioninvocation.cpp#L1322-L1732)
 
 Even if you don't click the links and look at the individual C#/cpp methods, you can intuitively tell that there's *alot* of code being executed along the way. But to give you an example, the final method, where the bulk of the work is done, [`System.RuntimeMethodHandle.InvokeMethod` is over 400 LOC](https://github.com/dotnet/coreclr/blob/e67851210d1c03d730a3bc97a87e8a6713bbf772/src/vm/reflectioninvocation.cpp#L1322-L1732)! 
 
@@ -345,10 +348,10 @@ The take-away is that if (and only if) you find yourself with a performance issu
 
 For reference, below is the call-stack or code-flow that the runtime goes through when **Creating a Delegate**
 
-1. [`public static Delegate CreateDelegate(Type type, MethodInfo method)`](https://referencesource.microsoft.com/#mscorlib/system/delegate.cs,0b7fb52ec60c22d3)
-2. [`public static Delegate CreateDelegate(Type type, MethodInfo method, bool throwOnBindFailure)`](https://referencesource.microsoft.com/#mscorlib/system/delegate.cs,944d5aaf940d71d0)
-3. [`internal static Delegate CreateDelegateInternal(RuntimeType rtType, RuntimeMethodInfo rtMethod, Object firstArgument, DelegateBindingFlags flags, ref StackCrawlMark stackMark)`](https://referencesource.microsoft.com/#mscorlib/system/delegate.cs,2a6608b61df78396)
-4.  [`internal static Delegate UnsafeCreateDelegate(RuntimeType rtType, RuntimeMethodInfo rtMethod, Object firstArgument, DelegateBindingFlags flags)`](https://referencesource.microsoft.com/#mscorlib/system/delegate.cs,432a6c045c0ce48d)
-5. [`private extern bool BindToMethodInfo(Object target, IRuntimeMethodInfo method, RuntimeType methodType, DelegateBindingFlags flags);`](https://referencesource.microsoft.com/#mscorlib/system/delegate.cs,06743cb3121175c1)
+1. [`Delegate CreateDelegate(Type type, MethodInfo method)`](https://referencesource.microsoft.com/#mscorlib/system/delegate.cs,0b7fb52ec60c22d3)
+2. [`Delegate CreateDelegate(Type type, MethodInfo method, bool throwOnBindFailure)`](https://referencesource.microsoft.com/#mscorlib/system/delegate.cs,944d5aaf940d71d0)
+3. [`Delegate CreateDelegateInternal(RuntimeType rtType, RuntimeMethodInfo rtMethod, Object firstArgument, DelegateBindingFlags flags, ref StackCrawlMark stackMark)`](https://referencesource.microsoft.com/#mscorlib/system/delegate.cs,2a6608b61df78396)
+4. [`Delegate UnsafeCreateDelegate(RuntimeType rtType, RuntimeMethodInfo rtMethod, Object firstArgument, DelegateBindingFlags flags)`](https://referencesource.microsoft.com/#mscorlib/system/delegate.cs,432a6c045c0ce48d)
+5. [`bool BindToMethodInfo(Object target, IRuntimeMethodInfo method, RuntimeType methodType, DelegateBindingFlags flags);`](https://referencesource.microsoft.com/#mscorlib/system/delegate.cs,06743cb3121175c1)
 6. [`FCIMPL5(FC_BOOL_RET, COMDelegate::BindToMethodInfo, Object* refThisUNSAFE, Object* targetUNSAFE, ReflectMethodObject *pMethodUNSAFE, ReflectClassBaseObject *pMethodTypeUNSAFE, int flags)`](https://github.com/dotnet/coreclr/blob/7200e78258623eb889a46aa7a90818046bd1957d/src/vm/comdelegate.cpp#L802-L879)
 7. [`COMDelegate::BindToMethod(DELEGATEREF *pRefThis, OBJECTREF *pRefFirstArg, MethodDesc *pTargetMethod, MethodTable *pExactMethodType, BOOL fIsOpenDelegate, BOOL fCheckSecurity)`](https://github.com/dotnet/coreclr/blob/7200e78258623eb889a46aa7a90818046bd1957d/src/vm/comdelegate.cpp#L885-L1099)
