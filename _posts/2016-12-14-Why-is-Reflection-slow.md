@@ -213,7 +213,7 @@ public string GetViaReflection()
 
 ### Option 1 - Cache PropertyInfo
 
-Next up, we can gain a small speed boost by keeping a reference to the `PropertyInfo`, rather than fetching it each time. But we're still much slower than accessing the property directly, which demonstrates that there is a considerable cost in the 'invokation' part of reflection.
+Next up, we can gain a small speed boost by keeping a reference to the `PropertyInfo`, rather than fetching it each time. But we're still much slower than accessing the property directly, which demonstrates that there is a considerable cost in the 'invocation' part of reflection.
 
 ``` csharp
 // Setup code, done only once
@@ -241,11 +241,11 @@ public string GetViaFastMember()
 }
 ```
 
-Note that it's doing something slighty different to the other options. It creates a `TypeAccessor` that allows access to **all** the Properties on a type, not just one. But the downside is that, as a result, it takes longer to run. This is because internally it first has to get the `delegate` for the Property you requested (in this case 'Data'), before fetching it's value. However this overhead is pretty small, FastMember is still way faster than Reflection and it's very easy to use, so I recommend you take a look at it first.
+Note that it's doing something slightly different to the other options. It creates a `TypeAccessor` that allows access to **all** the Properties on a type, not just one. But the downside is that, as a result, it takes longer to run. This is because internally it first has to get the `delegate` for the Property you requested (in this case 'Data'), before fetching it's value. However this overhead is pretty small, FastMember is still way faster than Reflection and it's very easy to use, so I recommend you take a look at it first.
 
 This option and all subsequent ones convert the reflection code into a [`delegate`](https://msdn.microsoft.com/en-us/library/ms173171.aspx) that can be directly invoked without the overhead of reflection every time, hence the speed boost! 
 
-Although it's worth pointing out that the creation of a `delegate` has a cost (see ['Further Reading'](#further-reading) for more info). So in short, the speed boost is because we are doing the expensive work once (security checks, etc) and storing a strongly typed `delegate` that we can use again and again with little overhead. You wouldn't use these techniques if you were doing reflection once, but if you're only doing it once it wouldn't be a perforamnce bottleneck, so you wouldn't care if it was slow!
+Although it's worth pointing out that the creation of a `delegate` has a cost (see ['Further Reading'](#further-reading) for more info). So in short, the speed boost is because we are doing the expensive work once (security checks, etc) and storing a strongly typed `delegate` that we can use again and again with little overhead. You wouldn't use these techniques if you were doing reflection once, but if you're only doing it once it wouldn't be a performance bottleneck, so you wouldn't care if it was slow!
 
 The reason that reading a property via a `delegate` isn't as fast as reading it directly is because the .NET JIT won't inline a `delegate` method call like it will do with a Property access. So with a `delegate` we have to pay the cost of a method call, which direct access doesn't.
 
@@ -304,7 +304,7 @@ Full code for the `Expression` based approach is available in the blog post [Fas
 
 ### Option 5 - Dynamic code-gen with IL Emit
 
-Finally we come to the lowest-level approach, emiting raw IL, although '*with great power, comes great responsabiliy*':
+Finally we come to the lowest-level approach, emiting raw IL, although '*with great power, comes great responsibility*':
 
 ``` csharp
 // Setup code, done only once
