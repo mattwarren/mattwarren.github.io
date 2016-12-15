@@ -328,7 +328,7 @@ Using `Expression` tress (as shown in Option 4), doesn't give you as much flexib
 
 ----
 
-## Summary
+## Conclusion 
 
 The take-away is that if (and only if) you find yourself with a performance issue when using reflection, there are several different ways you can make it faster. These speed gains are achieved by getting a `delegate` that allows you to access the Property/Field/Method directly, without all the overhead of going via reflection every-time.
 
