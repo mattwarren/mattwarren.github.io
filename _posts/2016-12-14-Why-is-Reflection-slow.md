@@ -332,12 +332,13 @@ Using `Expression` tress (as shown in Option 4), doesn't give you as much flexib
 
 The take-away is that if (and only if) you find yourself with a performance issue when using reflection, there are several different ways you can make it faster. These speed gains are achieved by getting a `delegate` that allows you to access the Property/Field/Method directly, without all the overhead of going via reflection every-time.
 
-Discuss this post in [/r/programming](https://www.reddit.com/r/programming/comments/5ie775/why_is_reflection_slow/)
+Discuss this post in [/r/programming](https://www.reddit.com/r/programming/comments/5ie775/why_is_reflection_slow/) and [/r/csharp](https://www.reddit.com/r/csharp/comments/5igo67/why_is_reflection_slow/)
 
 ----
 
 ### Further Reading
 
+- [FastExpressionKit - A small library to make reflection-y things faster](https://github.com/vivainio/FastExpressionKit)
 - [Is Reflection really slow?](http://stackoverflow.com/questions/8846948/is-reflection-really-slow/8849503#8849503)
 - [Why is reflection slow?](http://stackoverflow.com/questions/3502674/why-is-reflection-slow/3502710#3502710)
 - [How costly is .NET reflection?](http://stackoverflow.com/questions/25458/how-costly-is-net-reflection)
