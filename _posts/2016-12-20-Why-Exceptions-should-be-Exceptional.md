@@ -7,7 +7,7 @@ tags: [.NET, CLR, Benchmarking, Internals]
 
 ![Meteor Hit on the Earth]({{ base }}/images/2016/12/Meteor-Hit-588072.jpg)
 
-According to the [NASA 'Near Earth Object Program'](http://neo.jpl.nasa.gov/) asteroid ['*101955 Bennu (1999 RQ36)*'](http://neo.jpl.nasa.gov/risk/a101955.html) has a Cumulative Impact Probability of 3.7e-04, i.e. there is a **1 in 2,7000** (0.0370%) chance of Earth impact, but more reassuringly there is a 99.9630% chance the asteroid will miss the Earth completely!
+According to the [NASA 'Near Earth Object Program'](http://neo.jpl.nasa.gov/) asteroid ['*101955 Bennu (1999 RQ36)*'](http://neo.jpl.nasa.gov/risk/a101955.html) has a Cumulative Impact Probability of 3.7e-04, i.e. there is a **1 in 2,700** (0.0370%) chance of Earth impact, but more reassuringly there is a 99.9630% chance the asteroid will miss the Earth completely!
 
 But how does this relate to exceptions in the .NET runtime, well let's take a look at the official .NET [Framework Design Guidelines for Throwing Exceptions](https://msdn.microsoft.com/en-us/library/ms229030(v=vs.110).aspx) (which are based on the excellent book [Framework Design Guidelines: Conventions, Idioms, and Patterns for Reusable .NET Libraries](http://amzn.to/2hOOHsR))
 
