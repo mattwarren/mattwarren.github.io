@@ -223,6 +223,8 @@ So thanks goodness we're in the .NET world, where huge stack traces are rare. Ov
 3. **The deeper the stack trace, the more work that has to be done**, so the more overhead there is when catching/handling exceptions
 4. This is even more true if you are also fetching the entire stack trace, via the `StackTrace` property. **So if you don't need it, don't fetch it.**
 
+Discuss this post in [/r/programming](https://www.reddit.com/r/programming/comments/5jdosy/why_exceptions_should_be_exceptional/) and [/r/csharp](https://www.reddit.com/r/csharp/comments/5je0o3/why_exceptions_should_be_exceptional/)
+
 ----
 
 ### Further Reading
