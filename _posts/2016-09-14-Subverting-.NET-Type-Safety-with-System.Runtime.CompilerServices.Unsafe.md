@@ -230,7 +230,7 @@ Which prints out:
 
 Yep, we've managed to convince a `int` (Int32) type that it's actually a `float` (Single) and behave like one instead!!
 
-This works by overwriting the *Method Table* pointer for the `int`, with the same value as the `float` one. So when it looks up it's type or prints out it's value, it uses the `float` methods instead! Thanks to [@Porges](github.com/Porges) for the [example that motivated this](https://gist.github.com/Porges/4b5fb3f0d66093105422e9892177754f), his code does the same thing using `fixed` instead. 
+This works by overwriting the *Method Table* pointer for the `int`, with the same value as the `float` one. So when it looks up it's type or prints out it's value, it uses the `float` methods instead! Thanks to [@Porges](https://github.com/Porges) for the [example that motivated this](https://gist.github.com/Porges/4b5fb3f0d66093105422e9892177754f), his code does the same thing using `fixed` instead. 
 
 ----
 

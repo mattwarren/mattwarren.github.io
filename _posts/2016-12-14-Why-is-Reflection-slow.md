@@ -275,7 +275,7 @@ For a very interesting/mind-bending way to get round this, see the `MagicMethodH
 
 ### Option 4 - Compiled Expression Trees
 
-Here we generate a `delegate`, but the difference is that we can pass in an `object`, so we get round the limitation of 'Option 4'. We make use of the .NET [`Expression` tree API](https://msdn.microsoft.com/en-us/library/mt654263.aspx) that allows dynamic code generation:
+Here we generate a `delegate`, but the difference is that we can pass in an `object`, so we get round the limitation of 'Option 3'. We make use of the .NET [`Expression` tree API](https://msdn.microsoft.com/en-us/library/mt654263.aspx) that allows dynamic code generation:
 
 ``` csharp
 // Setup code, done only once
@@ -348,6 +348,7 @@ Discuss this post in [/r/programming](https://www.reddit.com/r/programming/comme
 - [C#.Net Calling Grandparent's Virtual Method (base.base in C#)](http://kennethxu.blogspot.co.uk/2009/05/cnet-calling-grandparent-virtual-method.html) - [Part I](http://kennethxu.blogspot.co.uk/2009/05/strong-typed-high-performance.html), [Part II](http://kennethxu.blogspot.co.uk/2009/05/strong-typed-high-performance_15.html), [Part III](http://kennethxu.blogspot.co.uk/2009/05/strong-typed-high-performance_18.html)
 - ['Making Reflection fly and exploring delegates'](https://codeblog.jonskeet.uk/2008/08/09/making-reflection-fly-and-exploring-delegates/)
 - [Fasterflect vs HyperDescriptor vs FastMember vs Reflection](http://theburningmonk.com/2015/08/fasterflect-vs-hyperdescriptor-vs-fastmember-vs-reflection/)
+- [Dynamics.NET - Extensions for efficient runtime reflection and structural induction](https://github.com/naasking/Dynamics.NET)
 
 For reference, below is the call-stack or code-flow that the runtime goes through when **Creating a Delegate**
 

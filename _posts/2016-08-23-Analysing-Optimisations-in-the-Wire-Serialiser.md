@@ -6,7 +6,7 @@ tags: [Benchmarking, Performance, Optimisations]
 date: 2016-08-23
 ---
 
-Recently [Roger Johansson](twitter.com/RogerAlsing) wrote a post titled [Wire – Writing one of the fastest .NET serializers](https://rogeralsing.com/2016/08/16/wire-writing-one-of-the-fastest-net-serializers/), describing the optimisation that were implemented to make [Wire](https://github.com/akkadotnet/Wire) as fast as possible. He also followed up that post with a set of [benchmarks](https://twitter.com/RogerAlsing/status/767320145807147008), showing how Wire compared to other .NET serialisers:
+Recently [Roger Johansson](http://www.twitter.com/RogerAlsing) wrote a post titled [Wire – Writing one of the fastest .NET serializers](https://rogeralsing.com/2016/08/16/wire-writing-one-of-the-fastest-net-serializers/), describing the optimisation that were implemented to make [Wire](https://github.com/akkadotnet/Wire) as fast as possible. He also followed up that post with a set of [benchmarks](https://twitter.com/RogerAlsing/status/767320145807147008), showing how Wire compared to other .NET serialisers:
 
 [![Wire compared to other .NET serialisers]({{ base }}/images/2016/08/Performance Graphs - Wire v. other Serialisers.jpg)]({{ base }}/images/2016/08/Performance Graphs - Wire v. other Serialisers.jpg)
 
