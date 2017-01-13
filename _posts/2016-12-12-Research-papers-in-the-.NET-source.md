@@ -105,3 +105,5 @@ STOPLESS is adequate for modern languages such as C# or Java. It was implemented
 ----
 
 Finally, a full list of MS Research publications related to ['programming languages and software engineering'](https://www.microsoft.com/en-us/research/research-area/programming-languages-software-engineering/?q&content-type=publications&sort_by=most-relevant) is available if you want to explore more of this research yourself.
+
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=13335658)

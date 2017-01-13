@@ -2,7 +2,7 @@
 layout: post
 title: How does the 'fixed' keyword work?
 comments: true
-tags: [CLR, JIT Compiler, GC, Internals]
+tags: [CLR, JIT Compiler, Garbage Collectors, Internals]
 ---
 
 Well it turns out that it's a really nice example of collaboration between the main parts of the .NET runtime, here's a list of all the components involved:
