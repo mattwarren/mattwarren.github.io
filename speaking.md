@@ -17,7 +17,7 @@ title: Speaking
 
 <hr />
 
-<h3 id="#PostSharpWebinar"><strong><a href="http://www.postsharp.net/blog/post/webinar-recording-performance-is-a-feature" target="_blank">PostSharp Webinar - Performance is a Feature! (including Q&A)</a></strong></h3>
+<h3 id="PostSharpWebinar"><strong><a href="http://www.postsharp.net/blog/post/webinar-recording-performance-is-a-feature" target="_blank">PostSharp Webinar - Performance is a Feature! (including Q&A)</a></strong></h3>
 <a href="http://www.postsharp.net/blog/post/webinar-recording-performance-is-a-feature" target="_blank"><img src="{{ base }}/images/speaking/PostSharp Webinar.png" alt="PostSharp Webinar"/></a>
 
 <hr />
