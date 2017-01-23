@@ -5,6 +5,7 @@ title: Speaking
 
 <h4><strong>List of talks:</strong></h4>
 
+- [PostSharp Webinar (including Q&A) - 2016](#PostSharpWebinar)
 - [DeveloperDeveloperDeveloper 11 in Reading - 2016](#DDD11Reading)
 - [ProgSCon London - 2016](#ProgSConLondon2016)
 - [Skills Matter - London .NET UG - 2016](#SkillsMatter2016)
@@ -13,6 +14,11 @@ title: Speaking
 - [DDD East Anglia - 2014](#dddEastAnglia2014)
 
 <h4><strong>I've also been on the Hanselminutes podcast  <a href="http://hanselminutes.com/458/performance-as-a-feature-with-matt-warren" target="_blank">talking about "Performance as a Feature!"</a></strong></h4>
+
+<hr />
+
+<h3 id="#PostSharpWebinar"><strong><a href="http://www.postsharp.net/blog/post/webinar-recording-performance-is-a-feature" target="_blank">PostSharp Webinar - Performance is a Feature! (including Q&A)</a></strong></h3>
+<a href="http://www.postsharp.net/blog/post/webinar-recording-performance-is-a-feature" target="_blank"><img src="{{ base }}/images/speaking/PostSharp Webinar.png" alt="PostSharp Webinar"/></a>
 
 <hr />
 
