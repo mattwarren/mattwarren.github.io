@@ -138,3 +138,7 @@ To finish let's get a final work from Maoni Stephens, the main GC dev on the .NE
 Note: **Ephemeral** generations and segments - Because objects in generations 0 and 1 are short-lived, these generations are known as the **ephemeral** generations.
 
 So if GC pause times are a genuine issue in your application, make sure you analyse them correctly!
+
+----
+
+Discuss this post in [/r/csharp](https://www.reddit.com/r/csharp/comments/5ns3dx/analysing_pause_times_in_the_net_gc/)
