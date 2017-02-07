@@ -222,7 +222,7 @@ DWORD   GetStringLength()   { LIMITED_METHOD_DAC_CONTRACT; return( m_StringLengt
 
 ## Why have a special relationship?
 
-In one word **performance**, strings are widely used in .NET programs and therefore need to be as optimised, space efficient and cache-friendly as possible. That's why they gone to great length, including implementing methods in assembly and ensuring that the JIT can optimised code as much as possible.
+In one word **performance**, strings are widely used in .NET programs and therefore need to be as optimised, space efficient and cache-friendly as possible. That's why the CLR developers have gone to great lengths to make this happen, including implementing methods in assembly and ensuring that the JIT can optimise code as much as possible.
 
 Interestingly enough one of the .NET developers recently made a comment about this on a [GitHub issue](https://github.com/dotnet/coreclr/issues/4703#issuecomment-216071622), in response to a query asking why more string functions weren't implemented in managed code they said:
 

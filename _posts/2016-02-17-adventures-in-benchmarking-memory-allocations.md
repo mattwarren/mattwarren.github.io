@@ -128,6 +128,8 @@ and then [further down the same issue](https://github.com/dotnet/coreclr/issues/
 
 ## Implementation Details
 
+**Update Feb 2017** - This section is now out-of-date as the implementation details have now changed, please see Adam Sitnik's [blog post](http://adamsitnik.com/the-new-Memory-Diagnoser/) for all the details
+
 This is all made possible be the excellent [Gargage Collection ETW Events](https://msdn.microsoft.com/en-us/library/ff356162(v=vs.110).aspx) that the .NET runtime produces. In particular the [GCAllocationTick_V2 Event](https://msdn.microsoft.com/en-us/library/ff356162(v=vs.110).aspx#gcallocationtick_v2_event) that is fired each time approximately 100 KB is allocated. An xml representation of a typical event is shown below, you can see that `0x1A060` or 106,592 bytes have just been allocated.
 
 ``` xml
