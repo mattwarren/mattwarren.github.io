@@ -1,0 +1,23 @@
+PHASEDLOAD: LoadTypeHandleForTypeKey for type ConsoleApplication.Program to level LOADED
+PHASEDLOAD: table contains:
+LoadTypeHandle: Loading Class from Module 000007FE6BE53EF8 token 2000002
+PHASEDLOAD: Creating loading entry for type ConsoleApplication.Program
+PHASEDLOAD: About to do incremental load of type ConsoleApplication.Program (0000000000000000) from level BEGIN
+Looking up System.Object by name.
+Loading class "ConsoleApplication.Program" from module "C:\Users\matt\Downloads\__GitHub__\coreclr\bin\Product\Windows_NT.x64.Debug\Program.exe" in domain 0x00000000003B7960 
+STATICS: Placing statics for ConsoleApplication.Program
+STATICS: Static field bytes needed (0 is normal for non dynamic case)0
+STATICS: Placing ThreadStatics for ConsoleApplication.Program
+STATICS: ThreadStatic field bytes needed (0 is normal for non dynamic case)0
+CLASSLOADER: AppDomainAgileAttribute for ConsoleApplication.Program is 0
+MethodTableBuilder: finished method table for module 000007FE6BE53EF8 token 2000002 = 000007FE6BE548C0T 
+PHASEDLOAD: About to do incremental load of type ConsoleApplication.Program (000007FE6BE548C0) from level APPROXPARENTS
+Notify: 000007FE6BE548C0 ConsoleApplication.Program
+Successfully loaded class ConsoleApplication.Program
+PHASEDLOAD: Completed full dependency load of type (000007FE6BE548C0)+ConsoleApplication.Program
+PHASEDLOAD: Completed full dependency load of type (000007FE6BE548C0)+ConsoleApplication.Program
+Completed Load Level ACTIVE for DomainFile 000000000038D7D0 in AD 1 - success = 1
+In PreStubWorker for ConsoleApplication.Program::Main
+Prestubworker: method 000007FE6BE54838M
+    In PreStubWorker, calling MakeJitWorker
+Looking up System.Console by name.

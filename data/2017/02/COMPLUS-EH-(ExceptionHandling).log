@@ -1,0 +1,206 @@
+TID 4204: ************************ New Output *****************
+TID 4204: InitializeWatson: enabled
+TID 1fd4: Debugger Thread spinning up
+TID 4204: InitializeExceptionHandling(): ExceptionTracker size: 0x1a8 bytes
+TID 4204: CLRAddVectoredHandlers: AddVectoredExceptionHandler() succeeded
+TID 4204: TrackerAllocator::Init() succeeded..
+TID 4204: InstallUnhandledExceptionFilter registered UEF with OS for CoreCLR!
+TID 4204: EHWatsonBucketTracker::Init - initializing watson bucket tracker (00000000003B7838)
+TID 4204: StackTraceInfo::Init (00000000003B7890)
+TID 4204: EHWatsonBucketTracker::Init - initializing watson bucket tracker (00000000003B7838)
+TID 4204: EHWatsonBucketTracker::Init - initializing watson bucket tracker (00000000003B79F0)
+TID 4204: EHWatsonBucketTracker::Init - initializing watson bucket tracker (00000000003B79F0)
+TID 4204: SetupThread  managed Thread 00000000003B7590 Thread Id = 1
+TID 4204: EHWatsonBucketTracker::Init - initializing watson bucket tracker (00000000003E7C48)
+TID 4204: StackTraceInfo::Init (00000000003E7CA0)
+TID 4204: EHWatsonBucketTracker::Init - initializing watson bucket tracker (00000000003E7C48)
+TID 4204: EHWatsonBucketTracker::Init - initializing watson bucket tracker (00000000003E7E00)
+TID 4204: EHWatsonBucketTracker::Init - initializing watson bucket tracker (00000000003E7E00)
+TID 4314: SetupThread  managed Thread 00000000003E79A0 Thread Id = 2
+TID 4204: Setting EH clause #0 for System.AppDomain::SetupDomain
+TID 4204:     Flags         : 0x00000002  ->  0x00000002
+TID 4204:     TryOffset     : 0x0000004e  ->  0x0000004e (startpc)
+TID 4204:     TryLength     : 0x000000c5  ->  0x000000c5 (endpc)
+TID 4204:     HandlerOffset : 0x000000d7  ->  0x000000d7
+TID 4204:     HandlerLength : 0x00000106  ->  0x00000106
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #1 for System.AppDomain::SetupDomain
+TID 4204:     Flags         : 0x0000000a  ->  0x0000000a
+TID 4204:     TryOffset     : 0x000000c5  ->  0x000000c5 (startpc)
+TID 4204:     TryLength     : 0x000000c5  ->  0x000000c5 (endpc)
+TID 4204:     HandlerOffset : 0x000000c5  ->  0x000000c5
+TID 4204:     HandlerLength : 0x000000ce  ->  0x000000ce
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #0 for System.IO.PathHelper::Normalize
+TID 4204:     Flags         : 0x00000002  ->  0x00000002
+TID 4204:     TryOffset     : 0x000000e7  ->  0x000000e7 (startpc)
+TID 4204:     TryLength     : 0x0000086e  ->  0x0000086e (endpc)
+TID 4204:     HandlerOffset : 0x0000089a  ->  0x0000089a
+TID 4204:     HandlerLength : 0x000008d5  ->  0x000008d5
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #1 for System.IO.PathHelper::Normalize
+TID 4204:     Flags         : 0x0000000a  ->  0x0000000a
+TID 4204:     TryOffset     : 0x0000086e  ->  0x0000086e (startpc)
+TID 4204:     TryLength     : 0x0000086e  ->  0x0000086e (endpc)
+TID 4204:     HandlerOffset : 0x0000086e  ->  0x0000086e
+TID 4204:     HandlerLength : 0x00000878  ->  0x00000878
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #2 for System.IO.PathHelper::Normalize
+TID 4204:     Flags         : 0x0000000a  ->  0x0000000a
+TID 4204:     TryOffset     : 0x00000878  ->  0x00000878 (startpc)
+TID 4204:     TryLength     : 0x00000878  ->  0x00000878 (endpc)
+TID 4204:     HandlerOffset : 0x00000878  ->  0x00000878
+TID 4204:     HandlerLength : 0x00000882  ->  0x00000882
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #3 for System.IO.PathHelper::Normalize
+TID 4204:     Flags         : 0x0000000a  ->  0x0000000a
+TID 4204:     TryOffset     : 0x00000882  ->  0x00000882 (startpc)
+TID 4204:     TryLength     : 0x00000882  ->  0x00000882 (endpc)
+TID 4204:     HandlerOffset : 0x00000882  ->  0x00000882
+TID 4204:     HandlerLength : 0x0000088b  ->  0x0000088b
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #0 for System.BCLDebug::CheckRegistry
+TID 4204:     Flags         : 0x00000000  ->  0x00000000
+TID 4204:     TryOffset     : 0x000001b1  ->  0x000001b1 (startpc)
+TID 4204:     TryLength     : 0x00000471  ->  0x00000471 (endpc)
+TID 4204:     HandlerOffset : 0x0000047a  ->  0x0000047a
+TID 4204:     HandlerLength : 0x000004a8  ->  0x000004a8
+TID 4204:     ClassToken    : 0x020003b7  ->  0x020003b7
+TID 4204:     FilterOffset  : 0x020003b7  ->  0x020003b7
+TID 4204: Setting EH clause #0 for DomainNeutralILStubClass::IL_STUB_PInvoke
+TID 4204:     Flags         : 0x00000002  ->  0x00000002
+TID 4204:     TryOffset     : 0x0000007c  ->  0x0000007c (startpc)
+TID 4204:     TryLength     : 0x0000015d  ->  0x0000015d (endpc)
+TID 4204:     HandlerOffset : 0x000001a5  ->  0x000001a5
+TID 4204:     HandlerLength : 0x000001e8  ->  0x000001e8
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #1 for DomainNeutralILStubClass::IL_STUB_PInvoke
+TID 4204:     Flags         : 0x0000000a  ->  0x0000000a
+TID 4204:     TryOffset     : 0x0000015d  ->  0x0000015d (startpc)
+TID 4204:     TryLength     : 0x0000015d  ->  0x0000015d (endpc)
+TID 4204:     HandlerOffset : 0x0000015d  ->  0x0000015d
+TID 4204:     HandlerLength : 0x00000166  ->  0x00000166
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #0 for System.StubHelpers.StubHelpers::SafeHandleRelease
+TID 4204:     Flags         : 0x00000000  ->  0x00000000
+TID 4204:     TryOffset     : 0x000000b4  ->  0x000000b4 (startpc)
+TID 4204:     TryLength     : 0x000000c5  ->  0x000000c5 (endpc)
+TID 4204:     HandlerOffset : 0x000000ce  ->  0x000000ce
+TID 4204:     HandlerLength : 0x000000f8  ->  0x000000f8
+TID 4204:     ClassToken    : 0x0200025a  ->  0x0200025a
+TID 4204:     FilterOffset  : 0x0200025a  ->  0x0200025a
+TID 4204: Setting EH clause #0 for System.AppDomain::SetDataHelper
+TID 4204:     Flags         : 0x00000002  ->  0x00000002
+TID 4204:     TryOffset     : 0x000000e6  ->  0x000000e6 (startpc)
+TID 4204:     TryLength     : 0x0000011d  ->  0x0000011d (endpc)
+TID 4204:     HandlerOffset : 0x0000028a  ->  0x0000028a
+TID 4204:     HandlerLength : 0x000002bc  ->  0x000002bc
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #1 for System.AppDomain::SetDataHelper
+TID 4204:     Flags         : 0x00000002  ->  0x00000002
+TID 4204:     TryOffset     : 0x000001f1  ->  0x000001f1 (startpc)
+TID 4204:     TryLength     : 0x00000278  ->  0x00000278 (endpc)
+TID 4204:     HandlerOffset : 0x000002bc  ->  0x000002bc
+TID 4204:     HandlerLength : 0x000002ee  ->  0x000002ee
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #2 for System.AppDomain::SetDataHelper
+TID 4204:     Flags         : 0x0000000a  ->  0x0000000a
+TID 4204:     TryOffset     : 0x0000011d  ->  0x0000011d (startpc)
+TID 4204:     TryLength     : 0x0000011d  ->  0x0000011d (endpc)
+TID 4204:     HandlerOffset : 0x0000011d  ->  0x0000011d
+TID 4204:     HandlerLength : 0x00000126  ->  0x00000126
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #3 for System.AppDomain::SetDataHelper
+TID 4204:     Flags         : 0x0000000a  ->  0x0000000a
+TID 4204:     TryOffset     : 0x00000278  ->  0x00000278 (startpc)
+TID 4204:     TryLength     : 0x00000278  ->  0x00000278 (endpc)
+TID 4204:     HandlerOffset : 0x00000278  ->  0x00000278
+TID 4204:     HandlerLength : 0x00000281  ->  0x00000281
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #0 for System.AppDomain::CreateAppDomainManager
+TID 4204:     Flags         : 0x00000000  ->  0x00000000
+TID 4204:     TryOffset     : 0x0000044d  ->  0x0000044d (startpc)
+TID 4204:     TryLength     : 0x000004d8  ->  0x000004d8 (endpc)
+TID 4204:     HandlerOffset : 0x000006ec  ->  0x000006ec
+TID 4204:     HandlerLength : 0x00000779  ->  0x00000779
+TID 4204:     ClassToken    : 0x02000217  ->  0x02000217
+TID 4204:     FilterOffset  : 0x02000217  ->  0x02000217
+TID 4204: Setting EH clause #1 for System.AppDomain::CreateAppDomainManager
+TID 4204:     Flags         : 0x00000000  ->  0x00000000
+TID 4204:     TryOffset     : 0x0000044d  ->  0x0000044d (startpc)
+TID 4204:     TryLength     : 0x000004d8  ->  0x000004d8 (endpc)
+TID 4204:     HandlerOffset : 0x00000779  ->  0x00000779
+TID 4204:     HandlerLength : 0x00000806  ->  0x00000806
+TID 4204:     ClassToken    : 0x0200037f  ->  0x0200037f
+TID 4204:     FilterOffset  : 0x0200037f  ->  0x0200037f
+TID 4204: Setting EH clause #2 for System.AppDomain::CreateAppDomainManager
+TID 4204:     Flags         : 0x00000000  ->  0x00000000
+TID 4204:     TryOffset     : 0x0000044d  ->  0x0000044d (startpc)
+TID 4204:     TryLength     : 0x000004d8  ->  0x000004d8 (endpc)
+TID 4204:     HandlerOffset : 0x00000806  ->  0x00000806
+TID 4204:     HandlerLength : 0x00000893  ->  0x00000893
+TID 4204:     ClassToken    : 0x02000321  ->  0x02000321
+TID 4204:     FilterOffset  : 0x02000321  ->  0x02000321
+TID 4204: Setting EH clause #0 for System.AppDomain::GetData
+TID 4204:     Flags         : 0x00000002  ->  0x00000002
+TID 4204:     TryOffset     : 0x000001bf  ->  0x000001bf (startpc)
+TID 4204:     TryLength     : 0x000001fc  ->  0x000001fc (endpc)
+TID 4204:     HandlerOffset : 0x0000034c  ->  0x0000034c
+TID 4204:     HandlerLength : 0x0000037e  ->  0x0000037e
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #1 for System.AppDomain::GetData
+TID 4204:     Flags         : 0x0000000a  ->  0x0000000a
+TID 4204:     TryOffset     : 0x000001fc  ->  0x000001fc (startpc)
+TID 4204:     TryLength     : 0x000001fc  ->  0x000001fc (endpc)
+TID 4204:     HandlerOffset : 0x000001fc  ->  0x000001fc
+TID 4204:     HandlerLength : 0x00000205  ->  0x00000205
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #0 for System.Security.Policy.PolicyStatement::get_PermissionSet
+TID 4204:     Flags         : 0x00000002  ->  0x00000002
+TID 4204:     TryOffset     : 0x00000043  ->  0x00000043 (startpc)
+TID 4204:     TryLength     : 0x0000007f  ->  0x0000007f (endpc)
+TID 4204:     HandlerOffset : 0x00000094  ->  0x00000094
+TID 4204:     HandlerLength : 0x000000c3  ->  0x000000c3
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #1 for System.Security.Policy.PolicyStatement::get_PermissionSet
+TID 4204:     Flags         : 0x0000000a  ->  0x0000000a
+TID 4204:     TryOffset     : 0x0000007f  ->  0x0000007f (startpc)
+TID 4204:     TryLength     : 0x0000007f  ->  0x0000007f (endpc)
+TID 4204:     HandlerOffset : 0x0000007f  ->  0x0000007f
+TID 4204:     HandlerLength : 0x00000088  ->  0x00000088
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #0 for DomainNeutralILStubClass::IL_STUB_PInvoke
+TID 4204:     Flags         : 0x00000002  ->  0x00000002
+TID 4204:     TryOffset     : 0x00000083  ->  0x00000083 (startpc)
+TID 4204:     TryLength     : 0x00000182  ->  0x00000182 (endpc)
+TID 4204:     HandlerOffset : 0x000001ca  ->  0x000001ca
+TID 4204:     HandlerLength : 0x0000020d  ->  0x0000020d
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: Setting EH clause #1 for DomainNeutralILStubClass::IL_STUB_PInvoke
+TID 4204:     Flags         : 0x0000000a  ->  0x0000000a
+TID 4204:     TryOffset     : 0x00000182  ->  0x00000182 (startpc)
+TID 4204:     TryLength     : 0x00000182  ->  0x00000182 (endpc)
+TID 4204:     HandlerOffset : 0x00000182  ->  0x00000182
+TID 4204:     HandlerLength : 0x0000018b  ->  0x0000018b
+TID 4204:     ClassToken    : 0x00000000  ->  0x00000000
+TID 4204:     FilterOffset  : 0x00000000  ->  0x00000000
+TID 4204: UninstallUnhandledExceptionFilter unregistered UEF from OS for CoreCLR!
+TID 4204: CLRRemoveVectoredHandlers: RemoveVectoredExceptionHandler() succeeded.
+TID 4204: Logging shutting down

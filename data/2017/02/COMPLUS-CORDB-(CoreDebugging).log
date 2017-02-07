@@ -1,0 +1,181 @@
+TID 6eb0: ************************ New Output *****************
+TID 6eb0: StubManager::AddStubManager - 0x00000000003404B0 (vptr d2beee400000000000000000)
+TID 6eb0: StubManager::AddStubManager - 0x0000000000358C20 (vptr d2bef020000007FED2BB9260)
+TID 6eb0: StubManager::AddStubManager - 0x00000000003404E0 (vptr d2beef000000000000000000)
+TID 6eb0: StubManager::AddStubManager - 0x0000000000340510 (vptr d2beef400000000000000000)
+TID 6eb0: StubManager::AddStubManager - 0x0000000000340540 (vptr d2beef800000000000000000)
+TID 6eb0: StubManager::AddStubManager - 0x0000000000340570 (vptr d2beefd80000000000000000)
+TID 6eb0: StubManager::AddStubManager - 0x0000000000358D70 (vptr d2beee80000007FED2BB9260)
+TID 6eb0: StubManager::AddStubManager - 0x0000000000358EC0 (vptr d2beeec0000007FED2BB9260)
+TID 6eb0: StubManager::AddStubManager - 0x00000000003405A0 (vptr d2bef0680000000000000000)
+TID 6eb0: VirtualCallStubManagerManager::AddStubManager - 0x000000000035D280 (vptr 0x000007FED2C37C00)
+TID 6eb0: Created default domain at 000000000035A340
+TID 6eb0: VirtualCallStubManagerManager::AddStubManager - 0x0000000000360F00 (vptr 0x000007FED2C37C00)
+TID 6eb0: Initializing left-side debugging services.
+TID 6eb0: CorDBGetInterface: initializing debugger.
+TID 6eb0: Debugging service is enabled because debug pack is installed or Watson support is enabled)
+TID 6eb0: D::Lock aquire attempt by 0x6eb0
+TID 6eb0: D::Lock aquired by 0x6eb0
+TID 6eb0: DebuggerRCThreadInit called
+TID 6eb0: DRCT::I: version info: 22220.0.1 current protocol=2, min protocol=2
+TID 6eb0: DebuggerRCThread::Start called...
+TID 6eb0: D::Lock aquire attempt by 0x6eb0
+TID 6eb0: DebuggerRCThread start was successful, id=19040
+TID 6eb0: Start was successful
+TID 6eb0: D::Unlock released by 0x6eb0
+TID 6eb0: Left-side debugging services setup.
+TID 4a60: ThreadProcStatic called
+TID 4a60: Debugger Thread spinning up
+TID 4a60: DRCT::TP: helper thread spinning up...
+TID 4a60: D::Lock aquire attempt by 0x4a60
+TID 4a60: D::Lock aquired by 0x4a60
+TID 4a60: DRCT::TP: helper thread id is 0x4a60 helperThreadId
+TID 4a60: DRCT::TP: no temp help in the way...
+TID 4a60: D::Unlock released by 0x4a60
+TID 4a60: DRCT::ML:: running main loop
+TID 4a60: DRCT::ML: waiting for event.
+TID 6eb0: SetupThread  managed Thread 0000000000368E10 Thread Id = 1
+TID 6eb0: ThreadCreated() not called due to CORDebuggerAttached() being FALSE for thread 0x1
+TID 6eb0: D::Lock aquire attempt by 0x6eb0
+TID 6eb0: D::Lock aquired by 0x6eb0
+TID 6eb0: D::Unlock released by 0x6eb0
+TID 6eb0: StubManager::AddStubManager - 0x000000000035DCF0 (vptr d2c18cc80000000000000000)
+TID 6eb0: EEStartup: adding default domain 0x35a340
+TID 6eb0: SD::PADAID: Adding 0x35a340
+TID 4730: SetupThread  managed Thread 000000000039B220 Thread Id = 2
+TID 6eb0: DRCT::IsReady - wait(0x100)=258, GetLastError() = 42424
+TID 4730: ThreadCreated() not called due to CORDebuggerAttached() being FALSE for thread 0x2
+TID 6eb0: D::AADTIPC: Executing AADTIPC for AppDomain 0x0035a340 (0x1).
+TID 6eb0: D::AADTIPC: AddAppDomainToIPC:0x35a340, 0x000001
+TID 6eb0: D::UADEIIPC: Executing UpdateAppDomainEntryInIPC ad:0x35a340.
+TID 6eb0: Assembly C:\Users\matt\Downloads\__GitHub__\coreclr\bin\Product\Windows_NT.x64.Debug\System.Private.CoreLib.ni.dll: bits=0x0
+TID 6eb0: Module System.Private.CoreLib: bits=0x0
+TID 6eb0: EEC::IMD: pNewMD:0x72df60b8 for tok:0x6002146 (System.Collections.Generic.IEnumerator`1[T]::get_Current)
+TID 6eb0: EEC::IMD: pNewMD:0x72df6268 for tok:0x6000817 (System.Runtime.InteropServices.WindowsRuntime.IIterator`1[T]::get_Current)
+TID 6eb0: EEC::IMD: pNewMD:0x72df62a0 for tok:0x6000818 (System.Runtime.InteropServices.WindowsRuntime.IIterator`1[T]::get_HasCurrent)
+TID 6eb0: EEC::IMD: pNewMD:0x72df62d8 for tok:0x6000819 (System.Runtime.InteropServices.WindowsRuntime.IIterator`1[T]::MoveNext)
+TID 6eb0: EEC::IMD: pNewMD:0x72df6310 for tok:0x600081a (System.Runtime.InteropServices.WindowsRuntime.IIterator`1[T]::GetMany)
+TID 6eb0: EEC::IMD: pNewMD:0x72df64e8 for tok:0x60020b2 (System.Collections.Generic.IReadOnlyList`1[T]::get_Item)
+TID 6eb0: EEC::IMD: pNewMD:0x72df66d0 for tok:0x600214e (System.Collections.Generic.IReadOnlyCollection`1[T]::get_Count)
+TID 6eb0: EEC::IMD: pNewMD:0x72df68a8 for tok:0x600219b (System.Collections.Generic.IEnumerable`1[T]::GetEnumerator)
+TID 6eb0: EEC::IMD: pNewMD:0x72df6a50 for tok:0x60020d0 (System.Collections.Generic.ICollection`1[K]::get_Count)
+TID 6eb0: EEC::IMD: pNewMD:0x72df6a88 for tok:0x60020d1 (System.Collections.Generic.ICollection`1[K]::get_IsReadOnly)
+TID 6eb0: EEC::IMD: pNewMD:0x72df6ac0 for tok:0x60020d2 (System.Collections.Generic.ICollection`1[K]::Add)
+TID 6eb0: EEC::IMD: pNewMD:0x72df6af8 for tok:0x60020d3 (System.Collections.Generic.ICollection`1[K]::Clear)
+TID 6eb0: EEC::IMD: pNewMD:0x72df6b30 for tok:0x60020d4 (System.Collections.Generic.ICollection`1[K]::Contains)
+TID 6eb0: EEC::IMD: pNewMD:0x72df6b68 for tok:0x60020d5 (System.Collections.Generic.ICollection`1[K]::CopyTo)
+TID 6eb0: EEC::IMD: pNewMD:0x72df6ba0 for tok:0x60020d6 (System.Collections.Generic.ICollection`1[K]::Remove)
+TID 6eb0: EEC::IMD: pNewMD:0x72df6da8 for tok:0x600219b (System.Collections.Generic.IEnumerable`1[K]::GetEnumerator)
+TID 6eb0: EEC::IMD: pNewMD:0x72df6f50 for tok:0x60020d0 (System.Collections.Generic.ICollection`1[V]::get_Count)
+TID 6eb0: EEC::IMD: pNewMD:0x72df6f88 for tok:0x60020d1 (System.Collections.Generic.ICollection`1[V]::get_IsReadOnly)
+TID 6eb0: EEC::IMD: pNewMD:0x72df6fc0 for tok:0x60020d2 (System.Collections.Generic.ICollection`1[V]::Add)
+TID 6eb0: EEC::IMD: pNewMD:0x72df6ff8 for tok:0x60020d3 (System.Collections.Generic.ICollection`1[V]::Clear)
+TID 6eb0: EEC::IMD: pNewMD:0x72df7030 for tok:0x60020d4 (System.Collections.Generic.ICollection`1[V]::Contains)
+TID 6eb0: EEC::IMD: pNewMD:0x72df7068 for tok:0x60020d5 (System.Collections.Generic.ICollection`1[V]::CopyTo)
+TID 6eb0: EEC::IMD: pNewMD:0x72df70a0 for tok:0x60020d6 (System.Collections.Generic.ICollection`1[V]::Remove)
+TID 6eb0: EEC::IMD: pNewMD:0x72df72a8 for tok:0x600219b (System.Collections.Generic.IEnumerable`1[V]::GetEnumerator)
+TID 6eb0: EEC::IMD: pNewMD:0x72df74b0 for tok:0x6002183 (System.Collections.Generic.KeyValuePair`2[K,V]::.ctor)
+TID 6eb0: EEC::IMD: pNewMD:0x72df74e0 for tok:0x6002184 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Key)
+TID 6eb0: EEC::IMD: pNewMD:0x72df7510 for tok:0x6002185 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Value)
+TID 6eb0: EEC::IMD: pNewMD:0x72df7540 for tok:0x6002186 (System.Collections.Generic.KeyValuePair`2[K,V]::ToString)
+TID 6eb0: EEC::IMD: pNewMD:0x72df77b0 for tok:0x6002183 (System.Collections.Generic.KeyValuePair`2[K,V]::.ctor)
+TID 6eb0: EEC::IMD: pNewMD:0x72df77e0 for tok:0x6002184 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Key)
+TID 6eb0: EEC::IMD: pNewMD:0x72df7810 for tok:0x6002185 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Value)
+TID 6eb0: EEC::IMD: pNewMD:0x72df7840 for tok:0x6002186 (System.Collections.Generic.KeyValuePair`2[K,V]::ToString)
+TID 6eb0: EEC::IMD: pNewMD:0x72df7ab0 for tok:0x6002183 (System.Collections.Generic.KeyValuePair`2[K,V]::.ctor)
+TID 6eb0: EEC::IMD: pNewMD:0x72df7ae0 for tok:0x6002184 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Key)
+TID 6eb0: EEC::IMD: pNewMD:0x72df7b10 for tok:0x6002185 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Value)
+TID 6eb0: EEC::IMD: pNewMD:0x72df7b40 for tok:0x6002186 (System.Collections.Generic.KeyValuePair`2[K,V]::ToString)
+TID 6eb0: EEC::IMD: pNewMD:0x72df7db0 for tok:0x6002183 (System.Collections.Generic.KeyValuePair`2[K,V]::.ctor)
+TID 6eb0: EEC::IMD: pNewMD:0x72df7de0 for tok:0x6002184 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Key)
+TID 6eb0: EEC::IMD: pNewMD:0x72df7e10 for tok:0x6002185 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Value)
+TID 6eb0: EEC::IMD: pNewMD:0x72df7e40 for tok:0x6002186 (System.Collections.Generic.KeyValuePair`2[K,V]::ToString)
+TID 6eb0: EEC::IMD: pNewMD:0x72df80b0 for tok:0x6002183 (System.Collections.Generic.KeyValuePair`2[K,V]::.ctor)
+TID 6eb0: EEC::IMD: pNewMD:0x72df80e0 for tok:0x6002184 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Key)
+TID 6eb0: EEC::IMD: pNewMD:0x72df8110 for tok:0x6002185 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Value)
+TID 6eb0: EEC::IMD: pNewMD:0x72df8140 for tok:0x6002186 (System.Collections.Generic.KeyValuePair`2[K,V]::ToString)
+TID 6eb0: EEC::IMD: pNewMD:0x72df83b0 for tok:0x6002183 (System.Collections.Generic.KeyValuePair`2[K,V]::.ctor)
+TID 6eb0: EEC::IMD: pNewMD:0x72df83e0 for tok:0x6002184 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Key)
+TID 6eb0: EEC::IMD: pNewMD:0x72df8410 for tok:0x6002185 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Value)
+TID 6eb0: EEC::IMD: pNewMD:0x72df8440 for tok:0x6002186 (System.Collections.Generic.KeyValuePair`2[K,V]::ToString)
+TID 6eb0: EEC::IMD: pNewMD:0x72df8b98 for tok:0x6002183 (System.Collections.Generic.KeyValuePair`2[K,V]::.ctor)
+TID 6eb0: EEC::IMD: pNewMD:0x72df8bc8 for tok:0x6002184 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Key)
+TID 6eb0: EEC::IMD: pNewMD:0x72df8bf8 for tok:0x6002185 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Value)
+TID 6eb0: EEC::IMD: pNewMD:0x72df8c28 for tok:0x6002186 (System.Collections.Generic.KeyValuePair`2[K,V]::ToString)
+TID 6eb0: EEC::IMD: pNewMD:0x72df8e40 for tok:0x6002194 (System.Collections.Generic.IReadOnlyDictionary`2[K,V]::ContainsKey)
+TID 6eb0: EEC::IMD: pNewMD:0x72df8e78 for tok:0x6002195 (System.Collections.Generic.IReadOnlyDictionary`2[K,V]::TryGetValue)
+TID 6eb0: EEC::IMD: pNewMD:0x72df8eb0 for tok:0x6002196 (System.Collections.Generic.IReadOnlyDictionary`2[K,V]::get_Item)
+TID 6eb0: EEC::IMD: pNewMD:0x72df8ee8 for tok:0x6002197 (System.Collections.Generic.IReadOnlyDictionary`2[K,V]::get_Keys)
+TID 6eb0: EEC::IMD: pNewMD:0x72df8f20 for tok:0x6002198 (System.Collections.Generic.IReadOnlyDictionary`2[K,V]::get_Values)
+TID 6eb0: EEC::IMD: pNewMD:0x72df9160 for tok:0x6002183 (System.Collections.Generic.KeyValuePair`2[K,V]::.ctor)
+TID 6eb0: EEC::IMD: pNewMD:0x72df9190 for tok:0x6002184 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Key)
+TID 6eb0: EEC::IMD: pNewMD:0x72df91c0 for tok:0x6002185 (System.Collections.Generic.KeyValuePair`2[K,V]::get_Value)
+TID 6eb0: EEC::IMD: pNewMD:0x72df91f0 for tok:0x6002186 (System.Collections.Generic.KeyValuePair`2[K,V]::ToString)
+TID 6eb0: EEC::IMD: pNewMD:0x72df9430 for tok:0x600214e (System.Collections.Generic.IReadOnlyCollection`1[KeyValuePair`2]::get_Count)
+TID 6eb0: EEC::IMD: pNewMD:0x72df9608 for tok:0x600219b (System.Collections.Generic.IEnumerable`1[KeyValuePair`2]::GetEnumerator)
+TID 6eb0: EEC::IMD: pNewMD:0x72df97d8 for tok:0x600219b (System.Collections.Generic.IEnumerable`1[K]::GetEnumerator)
+TID 6eb0: EEC::IMD: pNewMD:0x72df99a8 for tok:0x600219b (System.Collections.Generic.IEnumerable`1[V]::GetEnumerator)
+TID 6eb0: EEC::IMD: pNewMD:0x72df9b60 for tok:0x6000875 (System.Runtime.InteropServices.WindowsRuntime.IMapView`2[K,V]::Lookup)
+TID 6eb0: EEC::IMD: pNewMD:0x72df9b98 for tok:0x6000876 (System.Runtime.InteropServices.WindowsRuntime.IMapView`2[K,V]::get_Size)
+TID 6eb0: EEC::IMD: pNewMD:0x72df9bd0 for tok:0x6000877 (System.Runtime.InteropServices.WindowsRuntime.IMapView`2[K,V]::HasKey)
+TID 6eb0: EEC::IMD: pNewMD:0x72df9c08 for tok:0x6000878 (System.Runtime.InteropServices.WindowsRuntime.IMapView`2[K,V]::Split)
+TID 6eb0: EEC::IMD: pNewMD:0x72df9df0 for tok:0x60008b0 (System.Runtime.InteropServices.WindowsRuntime.IKeyValuePair`2[K,V]::get_Key)
+TID 6eb0: EEC::IMD: pNewMD:0x72df9e28 for tok:0x60008b1 (System.Runtime.InteropServices.WindowsRuntime.IKeyValuePair`2[K,V]::get_Value)
+TID 6eb0: DRCT::IsReady - wait(0x100)=258, GetLastError() = 42424
+TID 6eb0: DRCT::IsReady - wait(0x100)=258, GetLastError() = 42424
+TID 6eb0: D::LA: Load Assembly Asy:0x000000000032CF60 AD:0x000000000035A340 which:C:\Users\matt\Downloads\__GitHub__\coreclr\bin\Product\Windows_NT.x64.Debug\System.Private.CoreLib.ni.dll
+TID 6eb0: D::UADEIIPC: Executing UpdateAppDomainEntryInIPC ad:0x35a340.
+TID 6eb0: D::UADEIIPC: New name:CoreRun.exe (AD:0x35a340)
+TID 6eb0: SD::AD:Would have added domain here! 0x35a340
+TID 6eb0: Assembly C:\Users\matt\Documents\Visual Studio 2013\Projects\InvokingDelegates\InvokingDelegates\bin\Release\netcoreapp1.1\InvokingDelegates.dll: has DebuggableAttribute=2,0 bits = 0x22
+TID 6eb0: Assembly C:\Users\matt\Documents\Visual Studio 2013\Projects\InvokingDelegates\InvokingDelegates\bin\Release\netcoreapp1.1\InvokingDelegates.dll: bits=0x22
+TID 6eb0: Module InvokingDelegates: bits=0x22
+TID 6eb0: DRCT::IsReady - wait(0x100)=258, GetLastError() = 42424
+TID 6eb0: DRCT::IsReady - wait(0x100)=258, GetLastError() = 42424
+TID 6eb0: D::LA: Load Assembly Asy:0x000000000032DAA0 AD:0x000000000035A340 which:C:\Users\matt\Documents\Visual Studio 2013\Projects\InvokingDelegates\InvokingDelegates\bin\Release\netcoreapp1.1\InvokingDelegates.dll
+TID 6eb0: Assembly C:\Users\matt\Downloads\__GitHub__\coreclr\Tools\system.runtime.dll: has DebuggableAttribute=2,0 bits = 0x22
+TID 6eb0: Assembly C:\Users\matt\Downloads\__GitHub__\coreclr\Tools\system.runtime.dll: bits=0x22
+TID 6eb0: Module System.Runtime: bits=0x22
+TID 6eb0: DRCT::IsReady - wait(0x100)=258, GetLastError() = 42424
+TID 6eb0: DRCT::IsReady - wait(0x100)=258, GetLastError() = 42424
+TID 6eb0: D::LA: Load Assembly Asy:0x000000000032E040 AD:0x000000000035A340 which:C:\Users\matt\Downloads\__GitHub__\coreclr\Tools\system.runtime.dll
+TID 6eb0: Assembly C:\Users\matt\Downloads\__GitHub__\coreclr\bin\Product\Windows_NT.x64.Debug\mscorlib.ni.dll: has DebuggableAttribute=7,1 bits = 0x24
+TID 6eb0: Assembly C:\Users\matt\Downloads\__GitHub__\coreclr\bin\Product\Windows_NT.x64.Debug\mscorlib.ni.dll: bits=0x24
+TID 6eb0: Module mscorlib: bits=0x24
+TID 6eb0: DRCT::IsReady - wait(0x100)=258, GetLastError() = 42424
+TID 6eb0: DRCT::IsReady - wait(0x100)=258, GetLastError() = 42424
+TID 6eb0: D::LA: Load Assembly Asy:0x00000000003A7270 AD:0x000000000035A340 which:C:\Users\matt\Downloads\__GitHub__\coreclr\bin\Product\Windows_NT.x64.Debug\mscorlib.ni.dll
+TID 6eb0: EEC::IMD: pNewMD:0x72e06640 for tok:0x6000005 (InvokingDelegates.DelegateTest::Main)
+TID 6eb0: EEC::IMD: pNewMD:0x72e06678 for tok:0x6000006 (InvokingDelegates.DelegateTest::StaticMethod)
+TID 6eb0: EEC::IMD: pNewMD:0x72e066b0 for tok:0x6000007 (InvokingDelegates.DelegateTest::InstanceMethod)
+TID 6eb0: EEC::IMD: pNewMD:0x72e066e8 for tok:0x6000008 (InvokingDelegates.DelegateTest::.ctor)
+TID 6eb0: CallCompileMethodWithSEHWrapper called...
+TID 6eb0: D::gV: cVars=0, extendOthers=1
+TID 6eb0: EEC::IMD: pNewMD:0x72e06878 for tok:0x6000001 (InvokingDelegates.FirstDelegate::.ctor)
+TID 6eb0: EEC::IMD: pNewMD:0x72e068b8 for tok:0x6000002 (InvokingDelegates.FirstDelegate::Invoke)
+TID 6eb0: EEC::IMD: pNewMD:0x72e068f8 for tok:0x6000003 (InvokingDelegates.FirstDelegate::BeginInvoke)
+TID 6eb0: EEC::IMD: pNewMD:0x72e06938 for tok:0x6000004 (InvokingDelegates.FirstDelegate::EndInvoke)
+TID 6eb0: JitComplete completed successfully
+TID 6eb0: Got through CallCompile MethodWithSEHWrapper
+TID 6eb0: MethodDesc::MakeJitWorker finished. Stub is 000007fe`72f70480 
+TID 6eb0: CallCompileMethodWithSEHWrapper called...
+TID 6eb0: D::gV: cVars=0, extendOthers=1
+TID 6eb0: JitComplete completed successfully
+TID 6eb0: Got through CallCompile MethodWithSEHWrapper
+TID 6eb0: MethodDesc::MakeJitWorker finished. Stub is 000007fe`72f70550 
+TID 6eb0: CallCompileMethodWithSEHWrapper called...
+TID 6eb0: D::gV: cVars=0, extendOthers=1
+TID 6eb0: JitComplete completed successfully
+TID 6eb0: Got through CallCompile MethodWithSEHWrapper
+TID 6eb0: MethodDesc::MakeJitWorker finished. Stub is 000007fe`72f705a0 
+TID 6eb0: D::Lock aquire attempt by 0x6eb0
+TID 6eb0: D::Lock aquired by 0x6eb0
+TID 6eb0: D::Unlock released by 0x6eb0
+TID 6eb0: DRCT::EHTD
+TID 6eb0: D::Lock aquire attempt by 0x6eb0
+TID 6eb0: DRCT::EHTD helperThreadId
+TID 6eb0: DRCT::IsReady - Helper not ready since DCB says id = 0.
+TID 6eb0: DRCT::IsReady - Helper not ready since DCB says id = 0.
+TID 6eb0: D::RADFIPC: Executing RADFIPC for AppDomain 0x0035a340 (0x1).
+TID 6eb0: Shutting down left-side debugger services.
+TID 6eb0: Logging shutting down

@@ -1,0 +1,1173 @@
+TID 1b70: ************************ New Output *****************
+TID 3a34: Debugger Thread spinning up
+TID 1b70: SetupThread  managed Thread 0000000000387590 Thread Id = 1
+TID 41ac: SetupThread  managed Thread 00000000003B79A0 Thread Id = 2
+TID 1b70: PEImage: Opened HMODULE C:\Users\matt\Downloads\__GitHub__\coreclr\bin\Product\Windows_NT.x64.Debug\System.Private.CoreLib.ni.dll
+TID 1b70: LOADER: 377960:***System.Private.CoreLib*	>>>Load initiated, POST_LOADLIBRARY/POST_LOADLIBRARY
+TID 1b70: LOADER: 0000000000377960:***System.Private.CoreLib*	   loading at level BEGIN
+TID 1b70: LOADER: 0000000000377960:***System.Private.CoreLib*	   loading at level FIND_NATIVE_IMAGE
+TID 1b70: LOADER: 0000000000377960:***System.Private.CoreLib*	   loading at level VERIFY_NATIVE_IMAGE_DEPENDENCIES
+TID 1b70: LOADER: 0000000000377960:***System.Private.CoreLib*	   loading at level ALLOCATE
+TID 1b70: LOADER: 0000000000377960:***System.Private.CoreLib*	   loading at level ADD_DEPENDENCIES
+TID 1b70: LOADER: 0000000000377960:***System.Private.CoreLib*	   loading at level PRE_LOADLIBRARY
+TID 1b70: LOADER: 0000000000377960:***System.Private.CoreLib*	   loading at level LOADLIBRARY
+TID 1b70: LOADER: 0000000000377960:***System.Private.CoreLib*	   loading at level POST_LOADLIBRARY
+TID 1b70: LOADER: 377960:***System.Private.CoreLib*	<<<Load completed, POST_LOADLIBRARY
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: Dispatch map for System.Enum: 14 bytes for map, 15 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: Dispatch map for System.Reflection.MemberInfo: 5 bytes for map, 6 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._Type.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.IReflect.
+TID 1b70: SD: Dispatch map for System.Type: 15 bytes for map, 16 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Type.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._Type.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.IReflect.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.IReflectableType.
+TID 1b70: SD: Dispatch map for System.Reflection.TypeInfo: 4 bytes for map, 5 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.TypeInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._Type.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.IReflect.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.IReflectableType.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: Dispatch map for System.RuntimeType: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IList.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.ICollection.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEnumerable.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IStructuralComparable.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IStructuralEquatable.
+TID 1b70: SD: Dispatch map for System.Array: 24 bytes for map, 25 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.Boolean: 16 bytes for map, 17 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.Char: 16 bytes for map, 17 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.SByte: 17 bytes for map, 18 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.Byte: 17 bytes for map, 18 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.Int16: 17 bytes for map, 18 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.UInt16: 17 bytes for map, 18 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.Int32: 17 bytes for map, 18 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.UInt32: 17 bytes for map, 18 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.Int64: 17 bytes for map, 18 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.UInt64: 17 bytes for map, 18 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.Single: 17 bytes for map, 18 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.Double: 17 bytes for map, 18 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.IntPtr: 4 bytes for map, 5 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.UIntPtr: 4 bytes for map, 5 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.Delegate: 4 bytes for map, 5 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Delegate.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEnumerable.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEnumerable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.String: 23 bytes for map, 24 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.String.
+TID 1b70: SD: MT::MethodIterator created for System.String.
+TID 1b70: SD: MT::MethodIterator created for System.String.
+TID 1b70: SD: MT::MethodIterator created for System.String.
+TID 1b70: SD: MT::MethodIterator created for System.String.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._Exception.
+TID 1b70: SD: Dispatch map for System.Exception: 5 bytes for map, 6 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Exception.
+TID 1b70: SD: MT::MethodIterator created for System.SystemException.
+TID 1b70: SD: MT::MethodIterator created for System.SystemException.
+TID 1b70: SD: MT::MethodIterator created for System.SystemException.
+TID 1b70: SD: MT::MethodIterator created for System.SystemException.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: Dispatch map for System.Runtime.ConstrainedExecution.CriticalFinalizerObject: 1 bytes for map, 2 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.ConstrainedExecution.CriticalFinalizerObject.
+TID 1b70: SD: MT::MethodIterator created for Internal.Runtime.Augments.RuntimeThread.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._Thread.
+TID 1b70: SD: Dispatch map for System.Threading.Thread: 1 bytes for map, 2 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.MarshalByRefObject.
+TID 1b70: SD: MT::MethodIterator created for System.__ComObject.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._Attribute.
+TID 1b70: SD: MT::MethodIterator created for System.MulticastDelegate.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IClosableToIDisposableAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IDisposableToIClosableAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IterableToEnumerableAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.EnumerableToIterableAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.VectorToListAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.VectorToListAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.VectorToListAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.VectorToListAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.VectorToListAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.VectorToCollectionAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.VectorToCollectionAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.VectorToCollectionAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.VectorToCollectionAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.VectorToCollectionAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.VectorToCollectionAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.VectorToCollectionAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.ListToVectorAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.ListToVectorAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.ListToVectorAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.ListToVectorAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.ListToVectorAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.ListToVectorAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.ListToVectorAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.ListToVectorAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.ListToVectorAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.ListToVectorAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.ListToVectorAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.ListToVectorAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IVectorViewToIReadOnlyListAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IReadOnlyListToIVectorViewAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IReadOnlyListToIVectorViewAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IReadOnlyListToIVectorViewAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IReadOnlyListToIVectorViewAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToDictionaryAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToDictionaryAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToDictionaryAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToDictionaryAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToDictionaryAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToDictionaryAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToDictionaryAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToDictionaryAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToCollectionAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToCollectionAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToCollectionAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToCollectionAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToCollectionAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToCollectionAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.MapToCollectionAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.DictionaryToMapAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.DictionaryToMapAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.DictionaryToMapAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.DictionaryToMapAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.DictionaryToMapAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.DictionaryToMapAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.DictionaryToMapAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IMapViewToIReadOnlyDictionaryAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IMapViewToIReadOnlyDictionaryAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IMapViewToIReadOnlyDictionaryAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IMapViewToIReadOnlyDictionaryAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IMapViewToIReadOnlyDictionaryAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IReadOnlyDictionaryToIMapViewAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IReadOnlyDictionaryToIMapViewAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IReadOnlyDictionaryToIMapViewAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.WindowsRuntime.IReadOnlyDictionaryToIMapViewAdapter.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.CompilerServices.RuntimeHelpers.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Threading.Monitor.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System._AppDomain.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Security.Policy.EvidenceBase.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._AssemblyName.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.IDeserializationCallback.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: Dispatch map for System.Reflection.AssemblyName: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.Version: 7 bytes for map, 8 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._Assembly.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.Reflection.Assembly: 7 bytes for map, 8 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.Assembly.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._Assembly.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.ConstrainedExecution.CriticalFinalizerObject.
+TID 1b70: SD: MT::MethodIterator created for System.IDisposable.
+TID 1b70: SD: Dispatch map for System.Runtime.InteropServices.CriticalHandle: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MethodBase.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.MethodBase.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MethodBase.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._ConstructorInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ConstructorInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MethodBase.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._ConstructorInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.IRuntimeMethodInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: Dispatch map for System.Reflection.RuntimeConstructorInfo: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.IRuntimeMethodInfo.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: Dispatch map for System.RuntimeMethodInfoStub: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormatProvider.
+TID 1b70: SD: Dispatch map for System.Globalization.CultureInfo: 5 bytes for map, 6 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._FieldInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.FieldInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._FieldInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.Reflection.RuntimeFieldInfo: 4 bytes for map, 5 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.RuntimeFieldInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._FieldInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.IRuntimeFieldInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: Dispatch map for System.Reflection.RtFieldInfo: 4 bytes for map, 5 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.IRuntimeFieldInfo.
+TID 1b70: SD: Dispatch map for System.RuntimeFieldInfoStub: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.MethodBase.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MethodBase.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MethodInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.MethodInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MethodBase.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MethodInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.IRuntimeMethodInfo.
+TID 1b70: SD: Dispatch map for System.Reflection.RuntimeMethodInfo: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._Module.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: Dispatch map for System.Reflection.Module: 7 bytes for map, 8 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.Module.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._Module.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormatProvider.
+TID 1b70: SD: Dispatch map for System.Globalization.NumberFormatInfo: 4 bytes for map, 5 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.ICollection.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEnumerable.
+TID 1b70: SD: Dispatch map for System.Security.PermissionSet: 7 bytes for map, 8 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.Reflection.Pointer: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.ConstrainedExecution.CriticalFinalizerObject.
+TID 1b70: SD: MT::MethodIterator created for System.IDisposable.
+TID 1b70: SD: Dispatch map for System.Runtime.InteropServices.SafeHandle: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.IDisposable.
+TID 1b70: SD: Dispatch map for System.Diagnostics.StackFrameHelper: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.Text.StringBuilder: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.WeakReference: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.MarshalByRefObject.
+TID 1b70: SD: MT::MethodIterator created for System.IDisposable.
+TID 1b70: SD: Dispatch map for System.Threading.WaitHandle: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: Dispatch map for System.Reflection.LoaderAllocatorScout: 1 bytes for map, 2 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Exception.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: LOADER: 377960:***System.Private.CoreLib*	>>>Load initiated, ACTIVE/ACTIVE
+TID 1b70: LOADER: 0000000000377960:***System.Private.CoreLib*	   loading at level EAGER_FIXUPS
+TID 1b70: LOADER: 0000000000377960:***System.Private.CoreLib*	   loading at level VTABLE FIXUPS
+TID 1b70: LOADER: 0000000000377960:***System.Private.CoreLib*	   loading at level DELIVER_EVENTS
+TID 1b70: LOADER: 0000000000377960:***System.Private.CoreLib*	   loading at level LOADED
+TID 1b70: LOADER: 0000000000377960:***System.Private.CoreLib*	   loading at level VERIFY_EXECUTION
+TID 1b70: LOADER: 0000000000377960:***System.Private.CoreLib*	   loading at level ACTIVE
+TID 1b70: LOADER: 377960:***System.Private.CoreLib*	<<<Load completed, ACTIVE
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.SafeHandle.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.SafeHandle.
+TID 1b70: SD: MT::MethodIterator created for System.AppDomain.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.SystemException.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.ArgumentException: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ArgumentException.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.ArgumentOutOfRangeException: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.SystemException.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.AppDomain.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IList`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.ICollection`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEnumerable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEnumerable.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IList.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.ICollection.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyList`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyCollection`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.List`1[T]: 36 bytes for map, 37 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IList`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.ICollection`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEnumerable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEnumerable.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IList.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.ICollection.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyList`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyCollection`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.List`1[__Canon]: 36 bytes for map, 37 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].
+TID 1b70: SD: MT::MethodIterator created for System.MulticastDelegate.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IDictionary`2[TKey,TValue].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.ICollection`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEnumerable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEnumerable.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IDictionary.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.ICollection.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyDictionary`2[TKey,TValue].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyCollection`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.IDeserializationCallback.
+TID 1b70: SD: Dispatch map for System.Collections.Generic.Dictionary`2[TKey,TValue]: 56 bytes for map, 57 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IDictionary`2[TKey,TValue].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.ICollection`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEnumerable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEnumerable.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IDictionary.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.ICollection.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyDictionary`2[TKey,TValue].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyCollection`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.IDeserializationCallback.
+TID 1b70: SD: Dispatch map for System.Collections.Generic.Dictionary`2[__Canon,__Canon]: 56 bytes for map, 57 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.ICollection`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEnumerable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEnumerable.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.ICollection.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyCollection`1[T].
+TID 1b70: SD: Dispatch map for KeyCollection[TKey,TValue]: 19 bytes for map, 20 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.ICollection`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEnumerable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEnumerable.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.ICollection.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyCollection`1[T].
+TID 1b70: SD: Dispatch map for KeyCollection[__Canon,__Canon]: 19 bytes for map, 20 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.SystemException.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.IDeserializationCallback.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: Dispatch map for System.Globalization.TextInfo: 5 bytes for map, 6 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.IDeserializationCallback.
+TID 1b70: SD: Dispatch map for System.Globalization.CompareInfo: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.AppDomain.
+TID 1b70: SD: MT::MethodIterator created for System.ArgumentException.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.StubHelpers.StubHelpers.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.RuntimeFieldHandle: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.IDisposable.
+TID 1b70: SD: Dispatch map for System.Runtime.InteropServices.NativeBuffer: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.NativeBuffer.
+TID 1b70: SD: MT::MethodIterator created for System.SystemException.
+TID 1b70: SD: MT::MethodIterator created for System.IO.IOException.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.SafeHandle.
+TID 1b70: SD: MT::MethodIterator created for System.IDisposable.
+TID 1b70: SD: MT::MethodIterator created for Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid.
+TID 1b70: SD: MT::MethodIterator created for System.IDisposable.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.SafeBuffer.
+TID 1b70: SD: MT::MethodIterator created for System.IDisposable.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.IDisposable.
+TID 1b70: SD: Dispatch map for System.Runtime.InteropServices.SafeHeapHandleCache: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices.SafeHandle.
+TID 1b70: SD: MT::MethodIterator created for System.IDisposable.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Threading.Interlocked.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[T].
+TID 1b70: SD: Dispatch map for System.Guid: 7 bytes for map, 8 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.SystemException.
+TID 1b70: SD: MT::MethodIterator created for System.InvalidOperationException.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.StubHelpers.StubHelpers.
+TID 1b70: SD: MT::MethodIterator created for System.StubHelpers.StubHelpers.
+TID 1b70: SD: MT::MethodIterator created for System.StubHelpers.StubHelpers.
+TID 1b70: SD: MT::MethodIterator created for System.StubHelpers.StubHelpers.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[T]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[Char]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[Char].
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[T]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[Char].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[Char].
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.RuntimeTypeHandle: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[T]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[Char].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.ObjectEqualityComparer`1[Char].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[T]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.Collections.Generic.LongEnumEqualityComparer`1[T]: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[Int64]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[Int64].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.Collections.Generic.LongEnumEqualityComparer`1[Int64]: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[T]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EnumEqualityComparer`1[T]: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[T]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EnumEqualityComparer`1[T]: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EnumEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[Int16]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[Int16].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EnumEqualityComparer`1[Int16]: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EnumEqualityComparer`1[Int16].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[Int32]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[Int32].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EnumEqualityComparer`1[Int32]: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[T]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EnumEqualityComparer`1[T]: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EnumEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[SByte]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[SByte].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EnumEqualityComparer`1[SByte]: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EnumEqualityComparer`1[SByte].
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[Nullable`1]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[Nullable`1].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[Nullable`1]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[Nullable`1].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[T]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[Int32].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[Byte]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[Byte].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.TypeInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._Type.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.IReflect.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.IReflectableType.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._TypeBuilder.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[Char].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[Char].
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[Char].
+TID 1b70: SD: MT::FindDispatchImpl: searching System.IEquatable`1[Char].
+TID 1b70: SD: VCSM::Resolver: (start) looking up interface method in System.Char
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Char.
+TID 1b70: SD: VCSM::Resolver: (end) looked up overridden interface method System.Char::Equals
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Char.
+TID 1b70: SD: MT::FindDispatchImpl: searching System.IEquatable`1[Char].
+TID 1b70: SD: VCSM::Resolver: (start) looking up interface method in System.Char
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Char.
+TID 1b70: SD: VCSM::Resolver: (end) looked up overridden interface method System.Char::Equals
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Char.
+TID 1b70: SD: MT::MethodIterator created for System.Char.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.MulticastDelegate.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.RuntimeMethodHandle: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._Activator.
+TID 1b70: SD: Dispatch map for System.Activator: 4 bytes for map, 5 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.Assembly.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._Assembly.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._AssemblyBuilder.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.RuntimeAssembly.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.MethodInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MethodBase.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MethodInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.TypeInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._Type.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.IReflect.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.IReflectableType.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._PropertyInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.PropertyInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._PropertyInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: Dispatch map for System.Reflection.RuntimePropertyInfo: 4 bytes for map, 5 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._EventInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.EventInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Reflection.ICustomAttributeProvider.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._MemberInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.InteropServices._EventInfo.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: Dispatch map for System.Reflection.RuntimeEventInfo: 4 bytes for map, 5 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.MulticastDelegate.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.Dictionary`2[__Canon,__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[__Canon]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.GenericEqualityComparer`1[__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.Generic.EqualityComparer`1[TKey]: 6 bytes for map, 7 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.Dictionary`2[__Canon,__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.ObjectEqualityComparer`1[__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[__Canon].
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Collections.ICollection.
+TID 1b70: SD: VCSM::Resolver: (start) looking up interface method in System.Collections.Generic.Dictionary`2[__Canon,__Canon]
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Collections.Generic.Dictionary`2[__Canon,__Canon].
+TID 1b70: SD: VCSM::Resolver: (end) looked up overridden interface method System.Collections.Generic.Dictionary`2[__Canon,__Canon]::System.Collections.ICollection.get_SyncRoot
+TID 1b70: SD: MT::MethodIterator created for System.Threading.Interlocked.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.Dictionary`2[__Canon,__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[__Canon].
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Collections.ICollection.
+TID 1b70: SD: VCSM::Resolver: (start) looking up interface method in System.Collections.Generic.Dictionary`2[__Canon,__Canon]
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Collections.Generic.Dictionary`2[__Canon,__Canon].
+TID 1b70: SD: VCSM::Resolver: (end) looked up overridden interface method System.Collections.Generic.Dictionary`2[__Canon,__Canon]::System.Collections.ICollection.get_SyncRoot
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.Dictionary`2[__Canon,__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.EqualityComparer`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.Dictionary`2[__Canon,__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.Dictionary`2[__Canon,__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.Dictionary`2[__Canon,__Canon].
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Collections.Generic.IEqualityComparer`1[__Canon].
+TID 1b70: SD: VCSM::Resolver: (start) looking up interface method in System.Collections.Generic.GenericEqualityComparer`1[__Canon]
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Collections.Generic.GenericEqualityComparer`1[__Canon].
+TID 1b70: SD: VCSM::Resolver: (end) looked up newslot interface method System.Collections.Generic.GenericEqualityComparer`1[__Canon]::GetHashCode
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Collections.Generic.IEqualityComparer`1[__Canon].
+TID 1b70: SD: VCSM::Resolver: (start) looking up interface method in System.Collections.Generic.GenericEqualityComparer`1[__Canon]
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Collections.Generic.GenericEqualityComparer`1[__Canon].
+TID 1b70: SD: VCSM::Resolver: (end) looked up newslot interface method System.Collections.Generic.GenericEqualityComparer`1[__Canon]::GetHashCode
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.Dictionary`2[__Canon,__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.MarshalByRefObject.
+TID 1b70: SD: MT::MethodIterator created for System.IO.IOException.
+TID 1b70: SD: MT::MethodIterator created for System.SystemException.
+TID 1b70: SD: MT::MethodIterator created for System.SystemException.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.TypeLoadException: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Security.IPermission.
+TID 1b70: SD: Dispatch map for System.Security.CodeAccessPermission: 7 bytes for map, 8 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].
+TID 1b70: SD: MT::MethodIterator created for System.SystemException.
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Collections.Generic.IEqualityComparer`1[__Canon].
+TID 1b70: SD: VCSM::Resolver: (start) looking up interface method in System.Collections.Generic.GenericEqualityComparer`1[__Canon]
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Collections.Generic.GenericEqualityComparer`1[__Canon].
+TID 1b70: SD: VCSM::Resolver: (end) looked up newslot interface method System.Collections.Generic.GenericEqualityComparer`1[__Canon]::Equals
+TID 1b70: SD: MT::MethodIterator created for System.IEquatable`1[__Canon].
+TID 1b70: SD: MT::FindDispatchImpl: searching System.IEquatable`1[__Canon].
+TID 1b70: SD: VCSM::Resolver: (start) looking up interface method in System.String
+TID 1b70: SD: MT::FindDispatchImpl: searching System.String.
+TID 1b70: SD: VCSM::Resolver: (end) looked up overridden interface method System.String::Equals
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Collections.Generic.IEqualityComparer`1[__Canon].
+TID 1b70: SD: VCSM::Resolver: (start) looking up interface method in System.Collections.Generic.GenericEqualityComparer`1[__Canon]
+TID 1b70: SD: MT::FindDispatchImpl: searching System.Collections.Generic.GenericEqualityComparer`1[__Canon].
+TID 1b70: SD: VCSM::Resolver: (end) looked up newslot interface method System.Collections.Generic.GenericEqualityComparer`1[__Canon]::Equals
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.CompilerServices.JitHelpers.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.CompilerServices.JitHelpers.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.CompilerServices.JitHelpers.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.CompilerServices.JitHelpers.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.CompilerServices.JitHelpers.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.CompilerServices.JitHelpers.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.CompilerServices.JitHelpers.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEqualityComparer.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IComparer`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEqualityComparer`1[T].
+TID 1b70: SD: Dispatch map for System.StringComparer: 8 bytes for map, 9 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].
+TID 1b70: SD: MT::MethodIterator created for System.Security.PermissionSet.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Security.Policy.EvidenceBase.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.List`1[[System.Security.Policy.StrongName, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.List`1[[System.Security.Policy.StrongName, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IList`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.ICollection`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEnumerable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEnumerable.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IList.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.ICollection.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyList`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyCollection`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.ObjectModel.ReadOnlyCollection`1[T]: 37 bytes for map, 38 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IList`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.ICollection`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEnumerable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEnumerable.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IList.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.ICollection.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyList`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyCollection`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.ObjectModel.ReadOnlyCollection`1[__Canon]: 37 bytes for map, 38 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Enum.
+TID 1b70: SD: MT::MethodIterator created for System.IComparable.
+TID 1b70: SD: MT::MethodIterator created for System.IFormattable.
+TID 1b70: SD: MT::MethodIterator created for System.IConvertible.
+TID 1b70: SD: MT::MethodIterator created for System.Security.CodeAccessPermission.
+TID 1b70: SD: MT::MethodIterator created for System.Security.IPermission.
+TID 1b70: SD: MT::MethodIterator created for System.Security.Permissions.IUnrestrictedPermission.
+TID 1b70: SD: MT::MethodIterator created for System.Security.Permissions.IBuiltInPermission.
+TID 1b70: SD: Dispatch map for System.Security.Permissions.SecurityPermission: 5 bytes for map, 6 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Security.CodeAccessPermission.
+TID 1b70: SD: MT::MethodIterator created for System.Security.IPermission.
+TID 1b70: SD: MT::MethodIterator created for System.Security.Permissions.IUnrestrictedPermission.
+TID 1b70: SD: MT::MethodIterator created for System.Security.Permissions.IBuiltInPermission.
+TID 1b70: SD: Dispatch map for System.Security.Permissions.ReflectionPermission: 5 bytes for map, 6 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IList`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.ICollection`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IEnumerable`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IEnumerable.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.IList.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.ICollection.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyList`1[T].
+TID 1b70: SD: MT::MethodIterator created for System.Collections.Generic.IReadOnlyCollection`1[T].
+TID 1b70: SD: Dispatch map for System.Collections.ObjectModel.ReadOnlyCollection`1[T]: 37 bytes for map, 38 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Collections.ObjectModel.ReadOnlyCollection`1[__Canon].
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: PEImage: Opened HMODULE C:\Users\matt\Downloads\__GitHub__\coreclr\bin\Product\Windows_NT.x64.Debug\Program.exe
+TID 1b70: LOADER: 377960:***Program*	>>>Load initiated, LOADED/LOADED
+TID 1b70: LOADER: 0000000000377960:***Program*	   loading at level BEGIN
+TID 1b70: LOADER: 0000000000377960:***Program*	   loading at level FIND_NATIVE_IMAGE
+TID 1b70: LOADER: 0000000000377960:***Program*	   loading at level VERIFY_NATIVE_IMAGE_DEPENDENCIES
+TID 1b70: LOADER: 0000000000377960:***Program*	   loading at level ALLOCATE
+TID 1b70: LOADER: 0000000000377960:***Program*	   loading at level ADD_DEPENDENCIES
+TID 1b70: LOADER: 0000000000377960:***Program*	   loading at level PRE_LOADLIBRARY
+TID 1b70: LOADER: 0000000000377960:***Program*	   loading at level LOADLIBRARY
+TID 1b70: LOADER: 0000000000377960:***Program*	   loading at level POST_LOADLIBRARY
+TID 1b70: LOADER: 0000000000377960:***Program*	   loading at level EAGER_FIXUPS
+TID 1b70: LOADER: 0000000000377960:***Program*	   loading at level VTABLE FIXUPS
+TID 1b70: LOADER: 0000000000377960:***Program*	   loading at level DELIVER_EVENTS
+TID 1b70: LOADER: 0000000000377960:***Program*	   loading at level LOADED
+TID 1b70: LOADER: 377960:***Program*	<<<Load completed, LOADED
+TID 1b70: SD: MT::MethodIterator created for System.Environment.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: LOADER: 377960:***Program*	>>>Load initiated, ACTIVE/ACTIVE
+TID 1b70: LOADER: 0000000000377960:***Program*	   loading at level VERIFY_EXECUTION
+TID 1b70: LOADER: 0000000000377960:***Program*	   loading at level ACTIVE
+TID 1b70: LOADER: 377960:***Program*	<<<Load completed, ACTIVE
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Console.
+TID 1b70: SD: MT::MethodIterator created for Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid.
+TID 1b70: SD: MT::MethodIterator created for System.IDisposable.
+TID 1b70: SD: MT::MethodIterator created for System.ValueType.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: Dispatch map for System.Text.Encoding: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Text.Encoding.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Text.EncoderFallback.
+TID 1b70: SD: MT::MethodIterator created for System.Text.DecoderFallback.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Text.Encoder.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for System.Text.EncoderNLS: 3 bytes for map, 4 bytes total for object.
+TID 1b70: SD: MT::MethodIterator created for System.Text.Encoding.
+TID 1b70: SD: MT::MethodIterator created for System.ICloneable.
+TID 1b70: SD: MT::MethodIterator created for System.Object.
+TID 1b70: SD: MT::MethodIterator created for System.Text.EncoderNLS.
+TID 1b70: SD: MT::MethodIterator created for System.Runtime.Serialization.ISerializable.
+TID 1b70: SD: Dispatch map for UTF8Encoder: 3 bytes for map, 4 bytes total for object.
+TID 1b70: Logging shutting down

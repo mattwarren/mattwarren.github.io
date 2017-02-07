@@ -1,0 +1,209 @@
+TID 0880: ************************ New Output *****************
+TID 0880: Updating AD stage, ADID=0, stage=0
+TID 0880: Updating AD stage, ADID=1, stage=1
+TID 0880: Updating AD stage, ADID=1, stage=3
+TID 4030: Debugger Thread spinning up
+TID 0880: Thread::PushDomain (1), count now 1
+TID 0880:     stack[0]: AppDomain id[1] Overrides[0] Asserts[0] 
+TID 0880: SetupThread  managed Thread 00000000003D7590 Thread Id = 1
+TID 0880: Thread::PushDomain (1), count now 1
+TID 0880: AppDomainFromIDHolder::Assign is forbidding GC - 0023d9b8AppDomainFromIDHolder::Assign is allowing GC - 0023d9b8    stack[0]: AppDomain id[1] Overrides[0] Asserts[0] 
+TID 22c8: SetupThread  managed Thread 00000000004089A0 Thread Id = 2
+TID 0880: String literal "" added to Global map, size 0 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 0 bytes
+
+TID 0880: ENTER_DOMAIN(SystemDomain::SetupDefaultDomain, c:\users\matt\downloads\__github__\coreclr\src\vm\appdomain.cpp, 3370): NOP
+TID 0880: String literal "Internet" added to Global map, size 8 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 8 bytes
+TID 0880: String literal "Assert failed." added to Global map, size 14 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 14 bytes
+TID 0880: String literal "BCL Assert" added to Global map, size 10 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 10 bytes
+TID 0880: String literal "StartIndex is out of range!" added to Global map, size 27 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 27 bytes
+TID 0880: String literal "length is out of range!" added to Global map, size 23 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 23 bytes
+TID 0880: String literal "Negative length in memcopy!" added to Global map, size 27 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 27 bytes
+TID 0880: String literal ".config" added to Global map, size 7 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 7 bytes
+
+TID 0880: LEAVE_DOMAIN(SystemDomain::SetupDefaultDomain, c:\users\matt\downloads\__github__\coreclr\src\vm\appdomain.cpp, 3384)
+TID 0880: String literal "AppDomainCompatSwitch" added to Global map, size 21 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 21 bytes
+TID 0880: String literal "strings have to be ASCII" added to Global map, size 24 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 24 bytes
+
+TID 0880: ENTER_DOMAIN(AppDomain::DoSetup, c:\users\matt\downloads\__github__\coreclr\src\vm\appdomain.cpp, 5722): NOP
+TID 0880: String literal "NATIVE_DLL_SEARCH_DIRECTORIES" added to Global map, size 29 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 29 bytes
+TID 0880: String literal "APPBASE" added to Global map, size 7 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 7 bytes
+TID 0880: String literal "LOADER_OPTIMIZATION" added to Global map, size 19 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 19 bytes
+TID 0880: String literal "SingleDomain" added to Global map, size 12 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 12 bytes
+TID 0880: String literal "MultiDomain" added to Global map, size 11 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 11 bytes
+TID 0880: String literal "MultiDomainHost" added to Global map, size 15 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 15 bytes
+TID 0880: String literal "NotSpecified" added to Global map, size 12 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 12 bytes
+TID 0880: String literal "TRUSTED_PLATFORM_ASSEMBLIES" added to Global map, size 27 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 27 bytes
+TID 0880: String literal "PLATFORM_RESOURCE_ROOTS" added to Global map, size 23 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 23 bytes
+TID 0880: String literal "APP_PATHS" added to Global map, size 9 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 9 bytes
+TID 0880: String literal "APP_NI_PATHS" added to Global map, size 12 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 12 bytes
+TID 0880: String literal "For a stack trace showing who allocated this SafeHandle, set SafeHandleStackTraces to 1 and rerun yo" added to Global map, size 107 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 107 bytes
+TID 0880: String literal "NLS" added to Global map, size 3 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 3 bytes
+TID 0880: String literal "SER" added to Global map, size 3 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 3 bytes
+TID 0880: String literal "DYNIL" added to Global map, size 5 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 5 bytes
+TID 0880: String literal "REMOTE" added to Global map, size 6 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 6 bytes
+TID 0880: String literal "BINARY" added to Global map, size 6 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 6 bytes
+TID 0880: String literal "SOAP" added to Global map, size 4 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 4 bytes
+TID 0880: String literal "REMOTINGCHANNELS" added to Global map, size 16 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 16 bytes
+TID 0880: String literal "CACHE" added to Global map, size 5 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 5 bytes
+TID 0880: String literal "RESMGRFILEFORMAT" added to Global map, size 16 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 16 bytes
+TID 0880: String literal "PERF" added to Global map, size 4 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 4 bytes
+TID 0880: String literal "CORRECTNESS" added to Global map, size 11 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 11 bytes
+TID 0880: String literal "MEMORYFAILPOINT" added to Global map, size 15 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 15 bytes
+TID 0880: String literal "DATETIME" added to Global map, size 8 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 8 bytes
+TID 0880: String literal "INTEROP" added to Global map, size 7 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 7 bytes
+TID 0880: String literal "logLevel>=0 && logLevel<=10" added to Global map, size 27 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 27 bytes
+TID 0880: String literal "\\?\" added to Global map, size 4 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 4 bytes
+TID 0880: String literal "startIndex not in string" added to Global map, size 24 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 24 bytes
+TID 0880: String literal "fell off beginning of string!" added to Global map, size 29 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 29 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 29 bytes
+TID 0880: String literal "Integer Overflow" added to Global map, size 16 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 16 bytes
+TID 0880: String literal "Bad maxCapacity" added to Global map, size 15 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 15 bytes
+TID 0880: String literal "Empty Buffer" added to Global map, size 12 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 12 bytes
+TID 0880: String literal "Out of range length" added to Global map, size 19 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 19 bytes
+TID 0880: String literal "Negative length" added to Global map, size 15 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 15 bytes
+TID 0880: String literal "Negative offset" added to Global map, size 15 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 15 bytes
+TID 0880: String literal "First chunk's offset is not 0" added to Global map, size 29 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 29 bytes
+TID 0880: String literal "There is a gap between chunks!" added to Global map, size 30 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 30 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 11 bytes
+TID 0880: String literal "BCL Correctness Warning: " added to Global map, size 25 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 25 bytes
+TID 0880: String literal "BCL Correctness Warning: Your program may not work because..." added to Global map, size 61 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 61 bytes
+TID 0880: String literal "Invalid MaxPrimeArrayLength" added to Global map, size 27 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 27 bytes
+TID 0880: String literal "Fusion store has not been correctly setup in this domain" added to Global map, size 56 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 56 bytes
+TID 0880: String literal "_domainManager == null" added to Global map, size 22 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 22 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 27 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 23 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 9 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 12 bytes
+TID 0880: String literal "APP_LOCAL_WINMETADATA" added to Global map, size 21 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 21 bytes
+TID 0880: String literal "Need to handle new LoaderInformation value in AppDomain.GetData()" added to Global map, size 65 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 65 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 7 bytes
+TID 0880: String literal "Assumption violated" added to Global map, size 19 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 19 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 7 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 19 bytes
+TID 0880: String literal "Pointer not in the stack!" added to Global map, size 25 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 25 bytes
+TID 0880: String literal "FullTrust" added to Global map, size 9 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 9 bytes
+TID 0880: String literal "Nothing" added to Global map, size 7 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 7 bytes
+TID 0880: String literal "Execution" added to Global map, size 9 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 9 bytes
+TID 0880: String literal "SkipVerification" added to Global map, size 16 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 16 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 8 bytes
+TID 0880: String literal "Expected to find runtime supplied ApplicationTrust" added to Global map, size 50 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 50 bytes
+TID 0880: AppDomainNative::CreateDomain domain [1] 00000000003C7960 CoreRun.exe
+
+TID 0880: LEAVE_DOMAIN(AppDomain::DoSetup, c:\users\matt\downloads\__github__\coreclr\src\vm\appdomain.cpp, 5754)
+TID 0880: String literal "Hello World!" added to Global map, size 12 bytes
+TID 0880: String literal "
+" added to Global map, size 2 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 2 bytes
+TID 0880: String literal "TID 0880: Avoided adding String literal to appdomain map: size: 1 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 1 bytes
+TID 0880: String literal "s" added to Global map, size 1 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 1 bytes
+TID 0880: String literal "chars" added to Global map, size 5 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 5 bytes
+TID 0880: String literal "[UTF8Encoding.GetBytes]expected high surrogate, not 0x" added to Global map, size 54 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 54 bytes
+TID 0880: String literal "X4" added to Global map, size 2 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 2 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 54 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 2 bytes
+TID 0880: String literal "[UTF8Encoding.GetByteCount]Expected Empty fallback buffer" added to Global map, size 57 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 57 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 1 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 5 bytes
+TID 0880: String literal "bytes" added to Global map, size 5 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 5 bytes
+TID 0880: String literal "charCount" added to Global map, size 9 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 9 bytes
+TID 0880: String literal "charIndex" added to Global map, size 9 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 9 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 1 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 5 bytes
+TID 0880: String literal "[UTF8Encoding.GetBytes]chars!=null" added to Global map, size 34 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 34 bytes
+TID 0880: String literal "[UTF8Encoding.GetBytes]byteCount >=0" added to Global map, size 36 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 36 bytes
+TID 0880: String literal "[UTF8Encoding.GetBytes]charCount >=0" added to Global map, size 36 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 36 bytes
+TID 0880: String literal "[UTF8Encoding.GetBytes]bytes!=null" added to Global map, size 34 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 34 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 54 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 2 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 54 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 2 bytes
+TID 0880: String literal "[UTF8Encoding.GetBytes]Expected pSrc to be within buffer or to throw with insufficient room." added to Global map, size 92 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 92 bytes
+TID 0880: String literal "[UTF8Encoding.GetBytes]pTarget <= pAllocatedBufferEnd" added to Global map, size 53 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 53 bytes
+TID 0880: String literal "[UTF8Encoding.GetBytes] Expected no mustflush or 0 leftover ch " added to Global map, size 63 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 63 bytes
+TID 0880: String literal "X2" added to Global map, size 2 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 2 bytes
+TID 0880: String literal "[UTF8Encoding.GetBytes]Expected empty fallback buffer if not converting" added to Global map, size 71 bytes
+TID 0880: Avoided adding String literal to appdomain map: size: 71 bytes
+
+TID 22c8: ENTER_DOMAIN(AppDomain::RaiseOneExitProcessEvent_Wrapper, c:\users\matt\downloads\__github__\coreclr\src\vm\appdomain.cpp, 9630): NOP
+TID 22c8: LEAVE_DOMAIN(AppDomain::RaiseOneExitProcessEvent_Wrapper, c:\users\matt\downloads\__github__\coreclr\src\vm\appdomain.cpp, 9632)
+
+TID 0880: Logging shutting down
