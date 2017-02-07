@@ -170,6 +170,10 @@ Your code will be executed (after first being 'JITted') via the following code f
 
 ----
 
+Discuss this post in [/r/programming](https://www.reddit.com/r/programming/comments/5slr5m/the_68_things_the_clr_does_before_executing_a/)
+
+----
+
 ## Further information
 
 The CLR provides a huge amount of log information if you create a [debug build](https://github.com/dotnet/coreclr#building-the-repository) and then enable the [right environment variables](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/clr-configuration-knobs.md). The links below take you to the various logs produced when running a simple 'hello world' program (shown at the top of this post), they give you an pretty good idea of the different things that the CLR is doing behind-the-scenes.
