@@ -21,3 +21,6 @@ http://channel9.msdn.com/Series/NET-Framework/NET-Core-API-Review-2015-01-14#tim
 
 Maybe do a mockup of where my new ctor method will go ;-)
 https://msdn.microsoft.com/en-us/library/bb354549(v=vs.110).aspx
+
+Port [#2862](https://github.com/dotnet/corefx/pull/2862) from Future to Master.
+https://github.com/dotnet/corefx/pull/12600
