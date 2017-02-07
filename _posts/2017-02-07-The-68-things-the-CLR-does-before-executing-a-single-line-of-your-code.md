@@ -51,6 +51,7 @@ And so we end up in `EEStartupHelper()`, which at a high-level does the followin
 
 > EEStartup is responsible for all the one time initialization of the runtime.  
 > Some of the highlights of what it does include
+> 
 >    * Creates the default and shared, appdomains. 
 >    * Loads mscorlib.dll and loads up the fundamental types (System.Object ...)
 
