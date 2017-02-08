@@ -170,7 +170,7 @@ Your code will be executed (after first being 'JITted') via the following code f
 
 ----
 
-Discuss this post in [/r/programming](https://www.reddit.com/r/programming/comments/5slr5m/the_68_things_the_clr_does_before_executing_a/)
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=13593210) and [/r/programming](https://www.reddit.com/r/programming/comments/5slr5m/the_68_things_the_clr_does_before_executing_a/)
 
 ----
 
