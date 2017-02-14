@@ -1,3 +1,23 @@
+STATICS: Allocating statics for module Program
+Loaded pModule: "C:\Users\matt\Downloads\__GitHub__\coreclr\bin\Product\Windows_NT.x64.Debug\Program.exe".
+STATICS: Allocating 50 bytes for precomputed statics in module C:\Users\matt\Downloads\__GitHub__\coreclr\bin\Product\Windows_NT.x64.Debug\Program.exe in LoaderAllocator 00000000003B8548
+StoreFile (StoreAssembly): Add cached entry (000007FE6BE54688) with PEFile 000000000038D5F0Completed Load Level ALLOCATE for DomainFile 000000000038D7D0 in AD 1 - success = 1
+Completed Load Level ADD_DEPENDENCIES for DomainFile 000000000038D7D0 in AD 1 - success = 1
+Completed Load Level DELIVER_EVENTS for DomainFile 000000000038D7D0 in AD 1 - success = 1
+Completed Load Level LOADED for DomainFile 000000000038D7D0 in AD 1 - success = 1
+Looking up System.Environment by name.
+In PreStubWorker for System.Environment::SetCommandLineArgs
+Prestubworker: method 000007FE6C0FDA88M
+    In PreStubWorker, calling MakeJitWorker
+DoRunClassInit: Request to init 000007FE6C0FE480T in appdomain 00000000003B7960
+RunClassInit: Calling class contructor for type 000007FE6C0FE480T
+In PreStubWorker for System.Environment::.cctor
+Prestubworker: method 000007FE6C0FE430M
+    In PreStubWorker, calling MakeJitWorker
+DoRunClassInit: Request to init 000007FE6C0FE480T in appdomain 00000000003B7960
+DoRunClassInit: returning SUCCESS for init 000007FE6C0FE480T in appdomain 00000000003B7960
+RunClassInit: Returned Successfully from class contructor for type 000007FE6C0FE480T
+DoRunClassInit: returning SUCCESS for init 000007FE6C0FE480T in appdomain 00000000003B7960
 PHASEDLOAD: LoadTypeHandleForTypeKey for type ConsoleApplication.Program to level LOADED
 PHASEDLOAD: table contains:
 LoadTypeHandle: Loading Class from Module 000007FE6BE53EF8 token 2000002
