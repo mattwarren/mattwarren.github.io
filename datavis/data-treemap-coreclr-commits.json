@@ -1,0 +1,472 @@
+{
+  "name": "CoreCLR.src",
+  "children": [
+    {
+      "name": "binder",
+      "children": [
+        {
+          "name": "binder",
+          "loc": 9327,
+          "numFiles": 21,
+          "commits": 42,
+          "churn": 0,
+          "topLevel": true
+        },
+        {
+          "name": "inc",
+          "loc": 4618,
+          "numFiles": 40,
+          "commits": 23,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "Other",
+          "loc": 2,
+          "numFiles": 2,
+          "commits": 9,
+          "churn": 0,
+          "topLevel": false
+        }
+      ]
+    },
+    {
+      "name": "debug",
+      "children": [
+        {
+          "name": "daccess",
+          "loc": 53163,
+          "numFiles": 35,
+          "commits": 124,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "debug",
+          "loc": 216,
+          "numFiles": 8,
+          "commits": 6,
+          "churn": 0,
+          "topLevel": true
+        },
+        {
+          "name": "di",
+          "loc": 78920,
+          "numFiles": 66,
+          "commits": 79,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "ee",
+          "loc": 47936,
+          "numFiles": 45,
+          "commits": 99,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "inc",
+          "loc": 10802,
+          "numFiles": 29,
+          "commits": 27,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "Other",
+          "loc": 11886,
+          "numFiles": 34,
+          "commits": 60,
+          "churn": 0,
+          "topLevel": false
+        }
+      ]
+    },
+    {
+      "name": "gc",
+      "children": [
+        {
+          "name": "gc",
+          "loc": 56917,
+          "numFiles": 31,
+          "commits": 136,
+          "churn": 0,
+          "topLevel": true
+        },
+        {
+          "name": "Other",
+          "loc": 4356,
+          "numFiles": 20,
+          "commits": 112,
+          "churn": 0,
+          "topLevel": false
+        }
+      ]
+    },
+    {
+      "name": "ilasm",
+      "children": [
+        {
+          "name": "ilasm",
+          "loc": 15939,
+          "numFiles": 26,
+          "commits": 30,
+          "churn": 0,
+          "topLevel": true
+        },
+        {
+          "name": "Other",
+          "loc": 4907,
+          "numFiles": 1,
+          "commits": 4,
+          "churn": 0,
+          "topLevel": false
+        }
+      ]
+    },
+    {
+      "name": "ildasm",
+      "children": [
+        {
+          "name": "ildasm",
+          "loc": 14292,
+          "numFiles": 20,
+          "commits": 18,
+          "churn": 0,
+          "topLevel": true
+        },
+        {
+          "name": "Other",
+          "loc": 115,
+          "numFiles": 2,
+          "commits": 31,
+          "churn": 0,
+          "topLevel": false
+        }
+      ]
+    },
+    {
+      "name": "inc",
+      "children": [
+        {
+          "name": "inc",
+          "loc": 160747,
+          "numFiles": 278,
+          "commits": 428,
+          "churn": 0,
+          "topLevel": true
+        },
+        {
+          "name": "Other",
+          "loc": 8145,
+          "numFiles": 30,
+          "commits": 25,
+          "churn": 0,
+          "topLevel": false
+        }
+      ]
+    },
+    {
+      "name": "jit",
+      "children": [
+        {
+          "name": "jit",
+          "loc": 370866,
+          "numFiles": 203,
+          "commits": 1215,
+          "churn": 0,
+          "topLevel": true
+        },
+        {
+          "name": "jitstd",
+          "loc": 4806,
+          "numFiles": 21,
+          "commits": 10,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "Other",
+          "loc": 340,
+          "numFiles": 18,
+          "commits": 60,
+          "churn": 0,
+          "topLevel": false
+        }
+      ]
+    },
+    {
+      "name": "md",
+      "children": [
+        {
+          "name": "compiler",
+          "loc": 42098,
+          "numFiles": 40,
+          "commits": 25,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "enc",
+          "loc": 19107,
+          "numFiles": 16,
+          "commits": 19,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "inc",
+          "loc": 7700,
+          "numFiles": 21,
+          "commits": 9,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "md",
+          "loc": 1652,
+          "numFiles": 14,
+          "commits": 8,
+          "churn": 0,
+          "topLevel": true
+        },
+        {
+          "name": "Other",
+          "loc": 13934,
+          "numFiles": 62,
+          "commits": 46,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "runtime",
+          "loc": 8036,
+          "numFiles": 18,
+          "commits": 14,
+          "churn": 0,
+          "topLevel": false
+        }
+      ]
+    },
+    {
+      "name": "mscorlib",
+      "children": [
+        {
+          "name": "mscorlib",
+          "loc": 1166,
+          "numFiles": 6,
+          "commits": 343,
+          "churn": 0,
+          "topLevel": true
+        },
+        {
+          "name": "Other",
+          "loc": 15531,
+          "numFiles": 10,
+          "commits": 292,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "shared",
+          "loc": 14567,
+          "numFiles": 189,
+          "commits": 13,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "src",
+          "loc": 269893,
+          "numFiles": 757,
+          "commits": 872,
+          "churn": 0,
+          "topLevel": false
+        }
+      ]
+    },
+    {
+      "name": "Other",
+      "children": [
+        {
+          "name": "Other",
+          "loc": 84998,
+          "numFiles": 332,
+          "commits": 952,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    },
+    {
+      "name": "pal",
+      "children": [
+        {
+          "name": "inc",
+          "loc": 30271,
+          "numFiles": 114,
+          "commits": 214,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "Other",
+          "loc": 682,
+          "numFiles": 11,
+          "commits": 191,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "pal",
+          "loc": 1,
+          "numFiles": 1,
+          "commits": 7,
+          "churn": 0,
+          "topLevel": true
+        },
+        {
+          "name": "prebuilt",
+          "loc": 65839,
+          "numFiles": 50,
+          "commits": 44,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "src",
+          "loc": 103049,
+          "numFiles": 223,
+          "commits": 536,
+          "churn": 0,
+          "topLevel": false
+        }
+      ]
+    },
+    {
+      "name": "ToolBox",
+      "children": [
+        {
+          "name": "SOS",
+          "loc": 80031,
+          "numFiles": 111,
+          "commits": 229,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "superpmi",
+          "loc": 34205,
+          "numFiles": 149,
+          "commits": 12,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "ToolBox",
+          "loc": 1,
+          "numFiles": 1,
+          "commits": 14,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    },
+    {
+      "name": "utilcode",
+      "children": [
+        {
+          "name": "Other",
+          "loc": 4,
+          "numFiles": 4,
+          "commits": 31,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "utilcode",
+          "loc": 49157,
+          "numFiles": 82,
+          "commits": 118,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    },
+    {
+      "name": "vm",
+      "children": [
+        {
+          "name": "amd64",
+          "loc": 16086,
+          "numFiles": 48,
+          "commits": 99,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "arm",
+          "loc": 14375,
+          "numFiles": 26,
+          "commits": 50,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "arm64",
+          "loc": 7757,
+          "numFiles": 18,
+          "commits": 57,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "i386",
+          "loc": 26446,
+          "numFiles": 24,
+          "commits": 129,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "Other",
+          "loc": 196,
+          "numFiles": 7,
+          "commits": 62,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "vm",
+          "loc": 643815,
+          "numFiles": 576,
+          "commits": 1005,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    },
+    {
+      "name": "zap",
+      "children": [
+        {
+          "name": "Other",
+          "loc": 2,
+          "numFiles": 2,
+          "commits": 9,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "zap",
+          "loc": 23094,
+          "numFiles": 33,
+          "commits": 108,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "name": "CoreCLR.src.mscorlib.src.System",
+  "children": [
+    {
+      "name": "AppContext",
+      "children": [
+        {
+          "name": "AppContext",
+          "loc": 590,
+          "numFiles": 6,
+          "commits": 26,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    },
+    {
+      "name": "Collections",
+      "children": [
+        {
+          "name": "Collections",
+          "loc": 3523,
+          "numFiles": 9,
+          "commits": 32,
+          "churn": 0,
+          "topLevel": true
+        },
+        {
+          "name": "Generic",
+          "loc": 5114,
+          "numFiles": 7,
+          "commits": 66,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "Other",
+          "loc": 4970,
+          "numFiles": 8,
+          "commits": 30,
+          "churn": 0,
+          "topLevel": false
+        }
+      ]
+    },
+    {
+      "name": "Diagnostics",
+      "children": [
+        {
+          "name": "Diagnostics",
+          "loc": 1925,
+          "numFiles": 13,
+          "commits": 28,
+          "churn": 0,
+          "topLevel": true
+        },
+        {
+          "name": "Eventing",
+          "loc": 16884,
+          "numFiles": 42,
+          "commits": 76,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "Other",
+          "loc": 1669,
+          "numFiles": 7,
+          "commits": 25,
+          "churn": 0,
+          "topLevel": false
+        }
+      ]
+    },
+    {
+      "name": "Globalization",
+      "children": [
+        {
+          "name": "Globalization",
+          "loc": 44378,
+          "numFiles": 76,
+          "commits": 89,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    },
+    {
+      "name": "IO",
+      "children": [
+        {
+          "name": "IO",
+          "loc": 9102,
+          "numFiles": 30,
+          "commits": 95,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    },
+    {
+      "name": "Other",
+      "children": [
+        {
+          "name": "Other",
+          "loc": 233,
+          "numFiles": 5,
+          "commits": 389,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    },
+    {
+      "name": "Reflection",
+      "children": [
+        {
+          "name": "Emit",
+          "loc": 19173,
+          "numFiles": 43,
+          "commits": 58,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "Other",
+          "loc": 45,
+          "numFiles": 1,
+          "commits": 6,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "Reflection",
+          "loc": 14887,
+          "numFiles": 61,
+          "commits": 70,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    },
+    {
+      "name": "Resources",
+      "children": [
+        {
+          "name": "Resources",
+          "loc": 4917,
+          "numFiles": 18,
+          "commits": 30,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    },
+    {
+      "name": "Runtime",
+      "children": [
+        {
+          "name": "CompilerServices",
+          "loc": 4771,
+          "numFiles": 42,
+          "commits": 54,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "InteropServices",
+          "loc": 14976,
+          "numFiles": 107,
+          "commits": 54,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "Other",
+          "loc": 980,
+          "numFiles": 11,
+          "commits": 66,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "Runtime",
+          "loc": 615,
+          "numFiles": 3,
+          "commits": 16,
+          "churn": 0,
+          "topLevel": true
+        },
+        {
+          "name": "Serialization",
+          "loc": 1730,
+          "numFiles": 12,
+          "commits": 22,
+          "churn": 0,
+          "topLevel": false
+        }
+      ]
+    },
+    {
+      "name": "Security",
+      "children": [
+        {
+          "name": "Other",
+          "loc": 138,
+          "numFiles": 1,
+          "commits": 79,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "Security",
+          "loc": 1070,
+          "numFiles": 8,
+          "commits": 38,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    },
+    {
+      "name": "System",
+      "children": [
+        {
+          "name": "System",
+          "loc": 64592,
+          "numFiles": 121,
+          "commits": 371,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    },
+    {
+      "name": "Text",
+      "children": [
+        {
+          "name": "Text",
+          "loc": 16245,
+          "numFiles": 27,
+          "commits": 77,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    },
+    {
+      "name": "Threading",
+      "children": [
+        {
+          "name": "Tasks",
+          "loc": 18492,
+          "numFiles": 18,
+          "commits": 45,
+          "churn": 0,
+          "topLevel": false
+        },
+        {
+          "name": "Threading",
+          "loc": 14055,
+          "numFiles": 45,
+          "commits": 119,
+          "churn": 0,
+          "topLevel": true
+        }
+      ]
+    }
+  ]
+}
