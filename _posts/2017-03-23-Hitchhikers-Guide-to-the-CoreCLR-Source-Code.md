@@ -26,12 +26,12 @@ To make it easier for you to get to the information you're interested in, this p
 - ['Top 10' lists](#top-10-lists)
 - [High-level Overview](#high-level-overview)
 - [Deep Dive into Individual Areas](#deep-dive-into-individual-areas)
-  - [mscorlib (C# code)](#mscorlibhttpsgithubcomdotnetcoreclrblobmastersrcmscorlib)
-  - [Virtual Machine (VM)](#vm-virtual-machinehttpsgithubcomdotnetcoreclrblobmastersrcvm)
-  - [Just-in-Time compiler (JIT)](#jit-just-in-time-compilerhttpsgithubcomdotnetcoreclrblobmastersrcjit)  
-  - [Platform Adaptation Layer (PAL)](#pal-platform-adaptation-layerhttpsgithubcomdotnetcoreclrblobmastersrcpal)
-  - [Garbage Collector (GC)](#gc-garbage-collectorhttpsgithubcomdotnetcoreclrblobmastersrcgc)    
-  - [Debugger](#debughttpsgithubcomdotnetcoreclrblobmastersrcdebug)
+  - [mscorlib (C# code)](#mscorlib)
+  - [Virtual Machine (VM)](#vm-virtual-machine)
+  - [Just-in-Time compiler (JIT)](#jit-just-in-time-compiler)  
+  - [Platform Adaptation Layer (PAL)](#pal-platform-adaptation-layer)
+  - [Garbage Collector (GC)](#gc-garbage-collector)    
+  - [Debugger](#debug)
 - [All the rest](#all-the-rest)
 
 It's worth pointing out that .NET Developers had provided 2 excellent glossaries, the [CoreCLR one](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/glossary.md) and the [CoreFX one](https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/glossary.md), so if you come across any unfamiliar terms or abbreviations, check these first.
@@ -274,7 +274,7 @@ All the other sections of mscorlib line up with `namespaces` available in the .N
 - [System.IO](https://github.com/dotnet/coreclr/tree/master/src/mscorlib/src/System/IO)
   - `Stream`, `MemoryStream`, `File`, `TestReader`, `TestWriter`
 
-### ✘ [vm (Virtual Machine)](https://github.com/dotnet/coreclr/blob/master/src/vm)
+### [vm (Virtual Machine)](https://github.com/dotnet/coreclr/blob/master/src/vm)
 
 The VM, not surprisingly, is the largest component of the CoreCLR, with over 640K L.O.C spread across 576 files, and it effectively contains the guts of the runtime. The bulk of the code is OS and CPU independent and written in C++, however there is also a significant amount of architecture-specific assembly code, see the section ['CPU Architecture-specific code'](#cpu-architecture-specific-code) for more info. 
 
