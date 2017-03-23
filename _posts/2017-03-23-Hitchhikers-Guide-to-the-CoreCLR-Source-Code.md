@@ -34,7 +34,7 @@ To make it easier for you to get to the information you're interested in, this p
   - [Debugger](#debug)
 - [All the rest](#all-the-rest)
 
-It's worth pointing out that .NET Developers had provided 2 excellent glossaries, the [CoreCLR one](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/glossary.md) and the [CoreFX one](https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/glossary.md), so if you come across any unfamiliar terms or abbreviations, check these first.
+It's worth pointing out that .NET Developers have provided 2 excellent glossaries, the [CoreCLR one](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/glossary.md) and the [CoreFX one](https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/glossary.md), so if you come across any unfamiliar terms or abbreviations, check these first. Also there is extensive [documentation available](https://github.com/dotnet/coreclr/blob/master/Documentation/) and if you are interested in the low-level details I *really* recommend checking out the ['Book of the Runtime' (BotR)](https://github.com/dotnet/coreclr/tree/master/Documentation/botr).
 
 ----
 
@@ -276,7 +276,7 @@ All the other sections of mscorlib line up with `namespaces` available in the .N
 
 ### [vm (Virtual Machine)](https://github.com/dotnet/coreclr/blob/master/src/vm)
 
-The VM, not surprisingly, is the largest component of the CoreCLR, with over 640K L.O.C spread across 576 files, and it effectively contains the guts of the runtime. The bulk of the code is OS and CPU independent and written in C++, however there is also a significant amount of architecture-specific assembly code, see the section ['CPU Architecture-specific code'](#cpu-architecture-specific-code) for more info. 
+The VM, not surprisingly, is the largest component of the CoreCLR, with over 640K L.O.C spread across 576 files, and it contains the *guts* of the runtime. The bulk of the code is OS and CPU independent and written in C++, however there is also a significant amount of architecture-specific assembly code, see the section ['CPU Architecture-specific code'](#cpu-architecture-specific-code) for more info. 
 
 The VM contains the main start-up routine of the entire runtime `EEStartupHelper()` in [ceemain.cpp](https://github.com/dotnet/coreclr/blob/1d03b8fd8d650bd215623a7b035e68db96697e59/src/vm/ceemain.cpp#L806-L1378), see ['The 68 things the CLR does before executing a single line of your code']({{ base }}/2017/02/07/The-68-things-the-CLR-does-before-executing-a-single-line-of-your-code/) for all the details. In addition it provides the following functionality:
 
@@ -296,7 +296,7 @@ The VM contains the main start-up routine of the entire runtime `EEStartupHelper
   - [interpreter.cpp](https://github.com/dotnet/coreclr/tree/master/src/vm/interpreter.cpp) and [interpreter.hpp](https://github.com/dotnet/coreclr/tree/master/src/vm/interpreter.hpp)
 - **Function calling mechanisms** (see [BotR](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/mscorlib.md#calling-from-managed-to-native-code) for more info) 
   - [ecall.cpp](https://github.com/dotnet/coreclr/tree/master/src/vm/ecall.cpp), [fcall.cpp](https://github.com/dotnet/coreclr/tree/master/src/vm/fcall.cpp) and [qcall.cpp](https://github.com/dotnet/coreclr/tree/master/src/vm/qcall.cpp)
-- **Stubs** - used for [virtual dispatch](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/virtual-stub-dispatch.md) and [delegates]({{ base }}/2017/01/25/How-do-.NET-delegates-work/) amongst other things)
+- **Stubs** (used for [virtual dispatch](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/virtual-stub-dispatch.md) and [delegates]({{ base }}/2017/01/25/How-do-.NET-delegates-work/) amongst other things)
   - [stubs.cpp](https://github.com/dotnet/coreclr/tree/master/src/vm/arm/stubs.cpp), [prestub.cpp](https://github.com/dotnet/coreclr/tree/master/src/vm/prestub.cpp), [stubgen.cpp](https://github.com/dotnet/coreclr/tree/master/src/vm/stubgen.cpp), [stubhelpers.cpp](https://github.com/dotnet/coreclr/tree/master/src/vm/stubhelpers.cpp), [stubmgr.cpp](https://github.com/dotnet/coreclr/tree/master/src/vm/stubmgr.cpp), [virtualcallstub.cpp](https://github.com/dotnet/coreclr/tree/master/src/vm/virtualcallstub.cpp)
 - **Event Tracing**
   - [eventtrace.cpp](https://github.com/dotnet/coreclr/tree/master/src/vm/eventtrace.cpp), [eventreporter.cpp](https://github.com/dotnet/coreclr/tree/master/src/vm/eventreporter.cpp), [eventstore.cpp](https://github.com/dotnet/coreclr/tree/master/src/vm/eventstore.cpp) and [nativeeventsource.cpp](https://github.com/dotnet/coreclr/tree/master/src/vm/nativeeventsource.cpp)
