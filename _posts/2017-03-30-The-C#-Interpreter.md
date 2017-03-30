@@ -1,0 +1,357 @@
+---
+layout: post
+title: The C# Interpreter
+comments: true
+tags: [.NET, CLR, Open Source]
+codeproject: true
+---
+
+Whilst writing a [previous blog post]({{ base }}/2017/03/23/Hitchhikers-Guide-to-the-CoreCLR-Source-Code/) I stumbled across the .NET Interpreter, tucked away in the source code. Although, it I'd made even the smallest amount of effort to look for it, I'd have easily found it via the [*GitHub 'magic' file search*](https://github.com/dotnet/coreclr/find/master):
+
+![GitHub file search for 'Interpreter']({{ base }}/images/2017/03/GitHub file search for &#39;Interpreter&#39;.png)
+
+### Usage Scenarios
+
+Before we look at how to use it and what it does, it's worth pointing out that the Interpreter is not really meant for production code. As far as I can tell, its main purpose is to allow you to get the CLR up and running on a new CPU architecture. Without the interpreter you wouldn't be able to test *any* C# code until you had a fully functioning JIT that could emit machine code for you. For instance see ['[ARM32/Linux] Initial bring up of FEATURE_INTERPRETER'](https://github.com/dotnet/coreclr/pull/8594) and ['[aarch64] Enable the interpreter on linux as well](https://github.com/dotnet/coreclr/commit/8c4e60054ddb42298f3eebaf20c970d665474ae3).
+
+Also it doesn't have a few key features, most notable debugging support, that is you can't debug through C# code that has been interpreted, although you can of course debug the interpreter itself. From ['Tiered Compilation step 1'](https://github.com/dotnet/coreclr/pull/10478):
+
+> .... - the interpreter is not in good enough shape to run production code as-is. There are also some significant issues if you want debugging and profiling tools to work (which we do).
+
+Finally, there are a fair amount of `TODO` [comments in the code](https://gist.github.com/mattwarren/a7e567c3aacd1c85da86206ea729c66f), although I haven't verified what (if any) specific C# code breaks due to the missing functionality.
+
+However, I think another really useful scenario for the Interpreter is to help you learn about the inner workings of the CLR. It's *only* 8,000 lines long, but it's all in one file and most significantly it's written in C++. The code that the CLR/JIT uses when compiling *for real* is in multiple several files (the JIT on it's own is over 200,000 L.O.C, spread across 100's of files) and there are large amounts hand-written written in [raw assembly](https://github.com/dotnet/coreclr/tree/master/src/vm/amd64). 
+
+In theory the Interpreter should work in the same way as the *full* runtime, albeit not as optimised. This means that it much simpler and those of us who aren't CLR and/or assembly experts can have a chance of working out what's going on! 
+
+## Enabling the Interpreter
+
+The Interpreter is disabled by default, so you have to [build the CoreCLR from source](https://github.com/dotnet/coreclr/tree/master/Documentation#build-coreclr-from-source) to make it work (it used to be the [fallback for ARM64](https://github.com/dotnet/coreclr/commit/8a47eafa69614589eb86bbdf0c2c36aa690c1b15) but that's no longer the case), here's the diff of the changes you need to make:
+
+``` diff
+--- a/src/inc/switches.h
++++ b/src/inc/switches.h
+@@ -233,5 +233,8 @@
+ #define FEATURE_STACK_SAMPLING
+ #endif // defined (ALLOW_SXS_JIT)
+
++// Let's test the .NET Interpreter!!
++#define FEATURE_INTERPRETER
++
+ #endif // !defined(CROSSGEN_COMPILE)
+```
+
+You also need to enable some environment variables, the ones that I used are in the table below. For the full list, take a look at [Host Configuration Knobs](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/clr-configuration-knobs.md) and search for 'Interpreter'.
+
+{::nomarkdown}  
+<span class="compactTable">
+{:/}
+
+Name | Description | 
+-----|-------------|
+**Interpret** | Selectively uses the interpreter to execute the specified methods |
+**InterpreterDoLoopMethods** | If set, don't check for loops, start by interpreting *all* methods | 
+**InterpreterPrintPostMortem** | Prints summary information about the execution to the console | 
+**DumpInterpreterStubs** | Prints all interpreter stubs that are created to the console |
+**TraceInterpreterEntries** | Logs entries to interpreted methods to the console |
+**TraceInterpreterIL** | Logs individual instructions of interpreted methods to the console | 
+**TraceInterpreterVerbose** | Logs interpreter progress with detailed messages to the console |
+**TraceInterpreterJITTransition** | Logs when the interpreter determines a method should be JITted | 
+
+{::nomarkdown}  
+</span>
+{:/}
+
+To test out the Interpreter, I will be using the code below:
+
+``` csharp
+public static void Main(string[] args)
+{
+    var max = 1000 * 1000;
+    if (args.Length > 0)
+        int.TryParse(args[0], out max);
+    var timer = Stopwatch.StartNew();
+    for (int i = 1; i <= max; i++)
+    {
+        if (i % (1000 * 100) == 0)
+            Console.WriteLine(string.Format("Completed {0,10:N0} iterations", i));
+    }
+    timer.Stop();
+    Console.WriteLine(string.Format("Performed {0:N0} iterations, max);
+    Console.WriteLine(string.Format("Took {0:N0} msecs", timer.ElapsedMilliseconds));
+    Console.WriteLine();
+}
+```
+
+which on my machine, gives the following results for `100,000` iterations:
+
+{::nomarkdown}  
+<span class="compactTable">
+{:/} 
+
+| Run | Compiled (msecs) | Interpreted (msecs) |
+|:----|-----------------:|--------------------:|
+| 1 | 11 | 4,393 |
+| 2 | 11 | 4,089 |
+| 3 |  9 | 4,416 |
+
+{::nomarkdown}  
+</span>
+{:/}
+
+So yeah, you don't want to be using the interpreter for any performance sensitive code!!
+
+### Diagnostic Output
+
+In addition, a diagnostic output is produced. Note, this is from a single iteration of the loop, otherwise it becomes to verbose to read.
+
+``` make
+Generating interpretation stub (# 1 = 0x1, hash = 0x91b7d02e) for ConsoleApplication.Program:Main.
+Skipping ConsoleApplication.Program:.cctor
+Entering method #1 (= 0x1): ConsoleApplication.Program:Main(class).
+ arguments:
+         0:      class: 0x0000000002C50568 (System.String[]) [...]
+
+START 1, ConsoleApplication.Program:Main(class)
+     0: nop
+   0x1: call
+Skipping ConsoleApplication.Stopwatch:.cctor
+Skipping DomainBoundILStubClass:IL_STUB_PInvoke
+Skipping ConsoleApplication.Stopwatch:StartNew
+Skipping ConsoleApplication.Stopwatch:.ctor
+Skipping ConsoleApplication.Stopwatch:Reset
+Skipping ConsoleApplication.Stopwatch:Start
+Skipping ConsoleApplication.Stopwatch:GetTimestamp
+  Returning to method ConsoleApplication.Program:Main(class), stub num 1.
+   0x6: stloc.0
+      loc0   :      class: 0x0000000002C50580 (ConsoleApplication.Stopwatch) [...]
+      loc1   :        int: 0
+      loc2   :       bool: false
+   0x7: ldc.i4.1
+   0x8: stloc.1
+      loc0   :      class: 0x0000000002C50580 (ConsoleApplication.Stopwatch) [...]
+      loc1   :        int: 1
+      loc2   :       bool: false
+   0x9: br.s
+  0x27: ldloc.1
+  0x28: ldc.i4.2
+  0x29: clt
+  0x2b: stloc.2
+      loc0   :      class: 0x0000000002C50580 (ConsoleApplication.Stopwatch) [...]
+      loc1   :        int: 1
+      loc2   :       bool: true
+  0x2c: ldloc.2
+  0x2d: brtrue.s
+   0xb: nop
+   0xc: ldstr
+  0x11: ldloc.1
+  0x12: box
+  0x17: call
+  Returning to method ConsoleApplication.Program:Main(class), stub num 1.
+  0x1c: call
+Completed          1 iterations
+  Returning to method ConsoleApplication.Program:Main(class), stub num 1.
+  0x21: nop
+  0x22: nop
+  0x23: ldloc.1
+  0x24: ldc.i4.1
+  0x25: add
+  0x26: stloc.1
+      loc0   :      class: 0x0000000002C50580 (ConsoleApplication.Stopwatch) [...]
+      loc1   :        int: 2
+      loc2   :       bool: true
+  0x27: ldloc.1
+  0x28: ldc.i4.2
+  0x29: clt
+  0x2b: stloc.2
+      loc0   :      class: 0x0000000002C50580 (ConsoleApplication.Stopwatch) [...]
+      loc1   :        int: 2
+      loc2   :       bool: false
+  0x2c: ldloc.2
+  0x2d: brtrue.s
+  0x2f: ldloc.0
+  0x30: callvirt
+Skipping ConsoleApplication.Stopwatch:Stop
+  Returning to method ConsoleApplication.Program:Main(class), stub num 1.
+  0x35: nop
+  0x36: ldstr
+  0x3b: ldloc.0
+  0x3c: callvirt
+Skipping ConsoleApplication.Stopwatch:get_ElapsedMilliseconds
+Skipping ConsoleApplication.Stopwatch:GetElapsedDateTimeTicks
+Skipping ConsoleApplication.Stopwatch:GetRawElapsedTicks
+  Returning to method ConsoleApplication.Program:Main(class), stub num 1.
+  0x41: box
+  0x46: call
+  Returning to method ConsoleApplication.Program:Main(class), stub num 1.
+  0x4b: call
+Took 33 msecs
+  Returning to method ConsoleApplication.Program:Main(class), stub num 1.
+  0x50: nop
+  0x51: ret
+```
+
+So you can clearly see the interpreter in action, executing the individual IL instructions and showing the current values of any local variables as it goes along. Then, once the entire program has run, you also get some nice summary statistics (this time from a full-run, with `100,000` iterations):
+
+```
+IL instruction profiling:
+
+Instructions (24000085 total, 20000083 1-byte):
+Instruction  |   execs   |       % |   cum %
+-------------------------------------------
+     ldloc.1 |   3000011 |  12.50% |  12.50%
+         ceq |   3000001 |  12.50% |  25.00%
+    ldc.i4.0 |   3000001 |  12.50% |  37.50%
+         nop |   2000013 |   8.33% |  45.83%
+     stloc.2 |   2000001 |   8.33% |  54.17%
+      ldc.i4 |   2000001 |   8.33% |  62.50%
+    brtrue.s |   2000001 |   8.33% |  70.83%
+     ldloc.2 |   2000001 |   8.33% |  79.17%
+    ldc.i4.1 |   1000001 |   4.17% |  83.33%
+         cgt |   1000001 |   4.17% |  87.50%
+     stloc.1 |   1000001 |   4.17% |  91.67%
+         rem |   1000000 |   4.17% |  95.83%
+         add |   1000000 |   4.17% | 100.00%
+        call |        23 |   0.00% | 100.00%
+       ldstr |        11 |   0.00% | 100.00%
+         box |        11 |   0.00% | 100.00%
+     ldloc.0 |         2 |   0.00% | 100.00%
+    callvirt |         2 |   0.00% | 100.00%
+        br.s |         1 |   0.00% | 100.00%
+     stloc.0 |         1 |   0.00% | 100.00%
+         ret |         1 |   0.00% | 100.00%                                        
+```
+
+----
+
+## Main sections of the Interpreter code
+
+Now we've seen it in action, let's take a look at the code within the Interpreter and see **how** it works
+
+### Top-level dispatcher
+
+At the heart of the Interpreter is a [giant switch statement](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L2073-L3261) (in `Interpreter::ExecuteMethod(..)`), that is almost 1,200 lines long! In it you'll find *lots* of code like this:
+
+``` cpp
+switch (*m_ILCodePtr)
+{
+case CEE_NOP:
+    m_ILCodePtr++;
+    continue;
+case CEE_BREAK:     // TODO: interact with the debugger?
+    m_ILCodePtr++;
+    continue;
+case CEE_LDARG_0:
+    LdArg(0);
+    break;
+case CEE_LDARG_1:
+    LdArg(1);
+    break;
+    ...
+}
+```
+
+In total, there are 199 `case` statements, corresponding to all the available CLR [Intermediate Language (IL) op-codes](https://en.wikipedia.org/wiki/List_of_CIL_instructions), in all their different combinations, for instance `CEE_LDC_??`, i.e. `CEE_LDC_I4`, `CEE_LDC_I8`, `CEE_LDC_R4` and `CEE_LDC_R8`. The large majority of the `case` statements just call out to another function that does the actual work, although there are some exceptions, [such as `CEE_RET`](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L2268-L2391). 
+
+### Method calls
+
+The other task that takes up lots of code in the interpreter is handling method calls, over 2,500 L.O.C in total! This is spread across several methods, each doing a particular part of the work:
+
+- [void Interpreter::DoCallWork(..)](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L8965-L10027) 
+  - `CALL` [Calls the method indicated by the passed method descriptor](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.call%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396)
+  - `CALLVIRT` [Calls a late-bound method on an object, pushing the return value onto the evaluation stack.](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.callvirt%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396)
+  -  Also via `Interpreter::NewObj()`, i.e the `NEWOBJ` IL op-code
+- [void Interpreter::CallI()](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L10032-L10427)
+  - `CALLI` [Calls the method indicated on the evaluation stack (as a pointer to an entry point) with arguments described by a calling convention](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.calli%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396)
+- [CorJitResult Interpreter::GenerateInterpreterStub(..)](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L660-L1600) 
+  - The external entry point, i.e. the [JIT inserts a stub to this method](https://github.com/dotnet/coreclr/blob/1c4fda612e8a4f0d48346c477d058fa3fddf514e/src/vm/jitinterface.cpp#L11969-L12012) 
+  - Also called via `Interpreter::InterpretMethodBody(..)`
+  - Actually emits **assembly code**!!
+- [void InterpreterMethodInfo::InitArgInfo(..)](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L195-L424)
+  - Called via `Interpreter::GenerateInterpreterStub(..)` 
+
+In summary, this work involves [dynamically generating stubs](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/virtual-stub-dispatch.md) and ensuring that method arguments are in the right registers (hence the assembly code). It handles virtual methods, static and instance calls, delegates, intrinsics and probably a few other scenarios as well! In addition, if the method being called needs to be interpreted, it also has to make sure that happens.
+
+### Creating objects and arrays
+
+The interpreter needs to handle some of the key functionality of a runtime, that is creating and initialising objects. To do this it has to call into the GC, before finally calling the constructor:
+
+- [void Interpreter::NewObj()](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L5833-L6012)
+  - `NEWOBJ` [Creates a new object or a new instance of a value type, pushing an object reference (type O) onto the evaluation stack](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.newobj%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396)
+- [void Interpreter::NewArr()](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L6015-L6085)
+  - `NEWARR` [Pushes an object reference to a new zero-based, one-dimensional array whose elements are of a specific type onto the evaluation stack](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.newarr%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396)
+- [void Interpreter::InitObj()](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L5761-L5811)
+  - `INITOBJ` [Initializes each field of the value type at a specified address to a null reference or a 0 of the appropriate primitive type](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.initobj%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396)
+
+### Boxing and Unboxing
+
+Another large chuck of code is dedicated to boxing/unboxing, that is converting 'value types' (`structs`) into `object` references when needed. The .NET IL provides specific op-codes to handle this:
+
+- [void Interpreter::Box()](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L8497-L8562)
+  - `BOX` [Converts a value type to an object reference (type O)](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.box%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396)
+- [void Interpreter::Unbox()](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L8602-L8693)
+  - `UNBOX` [Converts the boxed representation of a value type to its unboxed form](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.unbox%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396)
+- [void Interpreter::UnboxAny()](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L8747-L8871)
+  - `UNBOX_ANY` [Converts the boxed representation of a type specified in the instruction to its unboxed form](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.unbox_any%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396)
+
+### Loading and Storing data
+
+That is, reading/writing fields in an object or elements in an array:
+
+- [void Interpreter::StFld()](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L7533-L7690)
+  - `STFLD` [Replaces the value stored in the field of an object reference or pointer with a new value](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.stfld(v=vs.110).aspx)
+- [void Interpreter::StElem()](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L8246-L8385)
+  - `STELEM` [Replaces the array element at a given index with the value on the evaluation stack, whose type is specified in the instruction](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.stelem(v=vs.110).aspx) 
+- [void Interpreter::LdFld(FieldDesc* fldIn)](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L7248-L7477)
+  - `LDFLD` [Finds the value of a field in the object whose reference is currently on the evaluation stack](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.ldfld(v=vs.110).aspx)
+- [void Interpreter::LdElem()](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L8120-L8243)
+  - `LDELEM` [Loads the element at a specified array index onto the top of the evaluation stack as the type specified in the instruction](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.ldelem(v=vs.110).aspx)
+
+### Other Specific IL Op Codes
+
+There is also a significant amount of code (over 1,000 lines) that just deals with low-level operations, that is 'comparisions', 'branching' and 'basic arithmetic':
+
+- [INT32 Interpreter::CompareOpRes(..)](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L6714-L7127) 
+  - `CEQ`, `CGT`, `CGT_UN`, `CLT` & `CLT_UN` called via [Interpreter::CompareOp()](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L6694-L6710)
+  - `BEQ`, `BGE`, `BGT`, `BLE`, `BLT`, `BNE_UN`, `BGE_UN`, `BGT_UN`, `BLE_UN`, `BLT_UN` called via [Interpreter::BrOnComparison()](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L7199-L7245)
+- [void Interpreter::BinaryArithOp()](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L4353-L4608)
+  - `ADD`, `SUB`, `MUL`, `DIV` and `REM` 
+  - in turn calls [Interpreter::BinaryArithOpWork(..)](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.hpp#L266-L313)
+- [void Interpreter::BinaryArithOvfOp()](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L4612-L4823)
+  - `ADD_OVF`, `ADD_OVF_UN`, `MUL_OVF`, `MUL_OVF_UN`, `SUB_OVF`, `SUB_OVF_UN` 
+  - in turn calls [Interpreter::BinaryArithOvfOpWork(..)](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L4825-L4866)
+
+### Working with the Garbage Collector (GC)
+
+In addition, the interpreter has to provide the GC with the information it needs. This happens when the GC calls [Interpreter::GCScanRoots(..)](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L3667-L3762), with additional work talking place in [Interpreter::GCScanRootAtLoc(..)](https://github.com/dotnet/coreclr/blob/48e244855c98c6f280c986d0981238f403a49ff3/src/vm/interpreter.cpp#L3765-L3795). Very simply the interpreter has to let the GC know about any 'root' objects that are currently 'live'. This includes static variables and any local variables in the function that is currently executing.
+
+When the interpreter locates a 'root' object, it notifies the GC via a callback (`pf(..)`):
+
+``` cpp
+void Interpreter::GCScanRootAtLoc(Object** loc, InterpreterType it, promote_func* pf, ScanContext* sc, bool pinningRef)
+{
+    switch (it.ToCorInfoType())
+    {
+    case CORINFO_TYPE_CLASS:
+    case CORINFO_TYPE_STRING:
+        {
+            DWORD flags = 0;
+            if (pinningRef) flags |= GC_CALL_PINNED;
+            (*pf)(loc, sc, flags);
+        }
+        break;
+    ....
+    }
+}
+```
+
+## Integration with the Virtual Machine (VM)
+
+Finally, whilst the Interpreter is fairly self-contained, there are times where it needs to work with the rest of the runtime
+
+- The Run-time is responsible for [starting](https://github.com/dotnet/coreclr/blob/1c4fda612e8a4f0d48346c477d058fa3fddf514e/src/vm/ceemain.cpp#L816-L818) and [stopping](https://github.com/dotnet/coreclr/blob/1c4fda612e8a4f0d48346c477d058fa3fddf514e/src/vm/ceemain.cpp#L1824-L1826) the interpreter
+- The JIT [wires up interpreter stubs](https://github.com/dotnet/coreclr/blob/1c4fda612e8a4f0d48346c477d058fa3fddf514e/src/vm/jitinterface.cpp#L11969-L12012) or uses them as a fall-back if JIT compilation fails. In addition the JIT 'pre-stubs' allow for interpreted methods [when calling the JIT itself](https://github.com/dotnet/coreclr/blob/1c4fda612e8a4f0d48346c477d058fa3fddf514e/src/vm/prestub.cpp#L255-L655) and when [the 'pre-stub' is executed](https://github.com/dotnet/coreclr/blob/1c4fda612e8a4f0d48346c477d058fa3fddf514e/src/vm/prestub.cpp#L1146-L1633)
+- Stack-walking [takes account of interpreter frames](https://github.com/dotnet/coreclr/blob/master/src/vm/stackwalk.cpp#L80-L158), by utilising [InterpreterFrame data structures](https://github.com/dotnet/coreclr/blob/1c4fda612e8a4f0d48346c477d058fa3fddf514e/src/vm/frames.cpp#L1030-L1049)
+- When looking up the `MethodDesc` for a given code address, the [interpreter stubs are accounted for](https://github.com/dotnet/coreclr/blob/1c4fda612e8a4f0d48346c477d058fa3fddf514e/src/vm/methodtable.cpp#L7524-L7535)
+
+----
