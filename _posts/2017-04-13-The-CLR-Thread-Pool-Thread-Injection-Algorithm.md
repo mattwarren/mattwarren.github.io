@@ -3,9 +3,14 @@ layout: post
 title: The CLR Thread Pool 'Thread Injection' Algorithm
 comments: true
 tags: [.NET, CLR, Open Source, Research]
+excerpt: <p>As part of a never-ending quest to explore the <a href="/2017/03/23/Hitchhikers-Guide-to-the-CoreCLR-Source-Code/">CoreCLR source code</a> I stumbled across the intriguing titled <a href="https://github.com/dotnet/coreclr/blob/master/src/vm/hillclimbing.cpp">‘HillClimbing.cpp’</a> source file. This post explains what it does and why.</p>
 ---
 
-As part of a never-ending quest to explore the [CoreCLR source code]({{ base }}/2017/03/23/Hitchhikers-Guide-to-the-CoreCLR-Source-Code/) I stumbled across the intruiging titled ['HillClimbing.cpp'](https://github.com/dotnet/coreclr/blob/master/src/vm/hillclimbing.cpp) source file. This post explains what it does and why.
+**If you're near London at the end of April, I'll be speaking at [ProgSCon 2017](http://2017.progscon.co.uk/) on [Microsoft and Open-Source – A ‘Brave New World’](http://2017.progscon.co.uk/cr3ativconference/microsoft-and-open-source-a-brave-new-world/). ProgSCon is 1-day conference, with talks [covering an eclectic range of topics](http://2017.progscon.co.uk/home/talks/), you'll learn lots!!**
+
+----
+
+As part of a never-ending quest to explore the [CoreCLR source code]({{ base }}/2017/03/23/Hitchhikers-Guide-to-the-CoreCLR-Source-Code/) I stumbled across the intriguing titled ['HillClimbing.cpp'](https://github.com/dotnet/coreclr/blob/master/src/vm/hillclimbing.cpp) source file. This post explains what it does and why.
 
 ### What is 'Hill Climbing'
 
