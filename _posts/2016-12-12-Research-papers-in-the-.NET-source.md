@@ -2,7 +2,7 @@
 layout: post
 title: Research papers in the .NET source
 comments: true
-tags: [.NET, Open Source]
+tags: [.NET, Open Source, Research]
 codeproject: false
 ---
 

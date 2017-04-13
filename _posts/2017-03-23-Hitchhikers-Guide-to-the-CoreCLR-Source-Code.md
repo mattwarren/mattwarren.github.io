@@ -507,3 +507,7 @@ As well as the main components, there are various other top-level folders in the
 ----
 
 If you've read this far **['So long and thanks for all the fish'](https://www.youtube.com/watch?v=N_dUmDBfp6k)** (YouTube)
+
+----
+
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=13949986) and [/r/programming](https://www.reddit.com/r/programming/comments/6131kr/a_hitchhikers_guide_to_the_coreclr_source_code/)

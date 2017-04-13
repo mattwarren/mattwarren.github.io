@@ -141,4 +141,4 @@ So if GC pause times are a genuine issue in your application, make sure you anal
 
 ----
 
-Discuss this post in [/r/csharp](https://www.reddit.com/r/csharp/comments/5ns3dx/analysing_pause_times_in_the_net_gc/)
+Discuss this post in [/r/csharp](https://www.reddit.com/r/csharp/comments/5ns3dx/analysing_pause_times_in_the_net_gc/), [/r/programming](https://www.reddit.com/r/programming/comments/5nrror/analysing_pause_times_in_the_net_gc/) and [Hacker News](https://news.ycombinator.com/item?id=13397898)

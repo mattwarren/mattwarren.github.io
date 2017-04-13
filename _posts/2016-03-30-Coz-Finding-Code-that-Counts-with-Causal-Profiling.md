@@ -3,7 +3,7 @@
 layout: post
 title: "Coz: Finding Code that Counts with Causal Profiling - An Introduction"
 comments: true
-tags: [Profiling]
+tags: [Profiling, Research]
 date: 2016-03-30
 
 ---
