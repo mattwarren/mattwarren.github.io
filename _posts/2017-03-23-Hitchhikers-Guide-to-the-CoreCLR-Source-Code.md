@@ -65,7 +65,7 @@ So by far the majority of the code is written in C++, but there is still also a 
 
 ### Compared to 'Rotor'
 
-As a comparison here's what the stats for ['Rotor' the Shared Source CLI](https://en.wikipedia.org/wiki/Shared_Source_Common_Language_Infrastructure) (the OSS version of .NET before CoreCLR was released) looked like back in October 2002
+As a comparison here's what the stats for ['Rotor' the Shared Source CLI](https://en.wikipedia.org/wiki/Shared_Source_Common_Language_Infrastructure) looked like back in October 2002. Rotor was 'Shared Source', not truly 'Open Source', so it didn't have the same community involvements as the CoreCLR.
 
 [![Shared Source CLI Stats - Oct 2002]({{ base }}/images/2017/03/Shared Source CLI Stats - Oct 2002.jpg)]({{ base }}/images/2017/03/Shared Source CLI Stats - Oct 2002.jpg)
 
