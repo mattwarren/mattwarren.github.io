@@ -74,7 +74,7 @@ As the source in now available, we can actually play with the algorithm and try 
 - [/src/inc/complex.h](https://github.com/dotnet/coreclr/blob/master/src/inc/complex.h)
 - [/src/inc/random.h](https://github.com/dotnet/coreclr/blob/master/src/inc/random.h)
 
-I have a project [up on my GitHub page](https://github.com/mattwarren/HillClimbingClrThreadPool) that allows you to test the hill-climbing algorithm in a self-contained console app. If you're interested you can see the [changes/hacks](https://github.com/mattwarren/HillClimbingClrThreadPool/commit/0941998aeda345aeaaa44f88e8d3b99f18e23abb) I had to do to get it building, although in the end it was pretty simple!
+I have a project [up on my GitHub page](https://github.com/mattwarren/HillClimbingClrThreadPool) that allows you to test the hill-climbing algorithm in a self-contained console app. If you're interested you can see the [changes/hacks](https://github.com/mattwarren/HillClimbingClrThreadPool/commit/0941998aeda345aeaaa44f88e8d3b99f18e23abb) I had to do to get it building, although in the end it was pretty simple! (**Update** Kudos to [Christian Klutz](https://github.com/cklutz) who [ported my self-contained app to C#](https://github.com/cklutz/HillClimbing), nice job!!)
 
 The algorithm is controlled via the [following `HillClimbing_XXX` settings](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/clr-configuration-knobs.md):
 
@@ -163,3 +163,7 @@ So with a combination of a very detailed [MSDN article][MSDN page on 'Parallel T
 1. [.NET's ThreadPool Class - Behind The Scenes](https://www.codeproject.com/articles/3813/net-s-threadpool-class-behind-the-scenes) (Based on SSCLI source, not CoreCLR)
 1. [CLR Execution Context](http://chabster.blogspot.co.uk/2013/04/clr-execution-context.html) (in Russian, but Google Translate does a reasonable job)
 1. [Thread Pool + Task Testing (by Ben Adams)](https://github.com/benaadams/ThreadPoolTaskTesting)
+
+----
+
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=14111369) and [/r/programming](https://www.reddit.com/r/programming/comments/655xg2/the_clr_thread_pool_thread_injection_algorithm/)
