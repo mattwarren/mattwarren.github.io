@@ -3,22 +3,31 @@ layout: page
 title: Speaking
 ---
 
-<h4><strong>List of talks:</strong></h4>
+<h4><strong>Where the wild things are - Benchmarking and Micro-Optimisations:</strong></h4>
+- [Skills Matter - London .NET UG - 2017](#LondonDNUG2017)
+
+<h4><strong>Performance is a Feature:</strong></h4>
 
 - [PostSharp Webinar (including Q&A) - 2016](#PostSharpWebinar)
 - [DeveloperDeveloperDeveloper 11 in Reading - 2016](#DDD11Reading)
 - [ProgSCon London - 2016](#ProgSConLondon2016)
-- [Skills Matter - London .NET UG - 2016](#SkillsMatter2016)
+- [Skills Matter - London .NET UG - 2016](#LondonDNUG2016)
 - [DeveloperSouthCoast - 2015](#DeveloperSouthCoast)
 - [NDC London - 2014](#NDCLondon2014)
 - [DDD East Anglia - 2014](#dddEastAnglia2014)
 
-<h4><strong>I've also been on the Hanselminutes podcast  <a href="http://hanselminutes.com/458/performance-as-a-feature-with-matt-warren" target="_blank">talking about "Performance as a Feature!"</a></strong></h4>
+<h4><strong>I've also been on the Hanselminutes podcast <a href="http://hanselminutes.com/458/performance-as-a-feature-with-matt-warren" target="_blank">talking about "Performance as a Feature!"</a></strong></h4>
+
+<h3 id="LondonDNUG2017"><strong><a href="https://skillsmatter.com/skillscasts/9831-where-the-wild-things-are-finding-performance-problems-before-they-bite-you" target="_blank">Skills Matter - London .NET User Group - Where the wild things are - Benchmarking and Micro-Optimisations</a></strong></h3>
+<a href="https://skillsmatter.com/skillscasts/9831-where-the-wild-things-are-finding-performance-problems-before-they-bite-you" target="_blank"><img src="{{ base }}/images/speaking/Skills Matter - LDNUG - 2017.png" alt="Skills Matter - LDNUG - 2017"/></a>
+Click above for the video and the slides are [also available](https://www.slideshare.net/mattwarren/where-the-wild-things-are-benchmarking-and-microoptimisations/)
 
 <hr />
 
 <h3 id="PostSharpWebinar"><strong><a href="http://www.postsharp.net/blog/post/webinar-recording-performance-is-a-feature" target="_blank">PostSharp Webinar - Performance is a Feature! (including Q&A)</a></strong></h3>
 <a href="http://www.postsharp.net/blog/post/webinar-recording-performance-is-a-feature" target="_blank"><img src="{{ base }}/images/speaking/PostSharp Webinar.png" alt="PostSharp Webinar"/></a>
+
+Click the image above to go to the recording
 
 <hr />
 
@@ -42,7 +51,7 @@ A [recording on the talk](https://www.infoq.com/presentations/dot-net-performanc
 
 <hr />
 
-<h3 id="SkillsMatter2016"><strong><a href="https://skillsmatter.com/skillscasts/7809-performance-is-a-feature" target="_blank">Skills Matter - London .NET UG - Performance is a Feature!</a></strong></h3>
+<h3 id="LondonDNUG2016"><strong><a href="https://skillsmatter.com/skillscasts/7809-performance-is-a-feature" target="_blank">Skills Matter - London .NET UG - Performance is a Feature!</a></strong></h3>
 <a href="https://skillsmatter.com/skillscasts/7809-performance-is-a-feature" target="_blank"><img src="{{ base }}/images/speaking/Skills Matter - 2016.png" alt="Skills Matter - 2016"/></a>
 Click above for the video and the slides are [also available](http://www.slideshare.net/mattwarren/performance-is-a-feature-london-net-user-group)
 
