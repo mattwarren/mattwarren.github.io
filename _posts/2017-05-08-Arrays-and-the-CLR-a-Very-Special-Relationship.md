@@ -132,7 +132,7 @@ Yikes, it has to remap `this` to be able to call `Length` on the correct object!
 
 And just in case those comments aren't enough, there is a very strongly worded comment [at the top of the class](https://github.com/dotnet/coreclr/blob/68f72dd2587c3365a9fe74d1991f93612c3bc62a/src/mscorlib/src/System/Array.cs#L2572-L2594) that further spells out the risks!!
 
-Generally all this magic is hidden from you, but occasionally it leaks out. For instance if you run the code below, `SZArrayHelper` will show up in the `StackTrace` and `TargetSize` of properties of the `NotSupportedException`:
+Generally all this magic is hidden from you, but occasionally it leaks out. For instance if you run the code below, `SZArrayHelper` will show up in the `StackTrace` and `TargetSite` of properties of the `NotSupportedException`:
 
 ``` csharp
 try {
@@ -150,7 +150,7 @@ try {
 
 The runtime also provides support for arrays in more conventional ways, the first of which is related to performance. Array bounds checks are all well and good when providing *memory-safety*, but they have a cost, so where possible the JIT removes any checks that it knows are redundant. 
 
-It does this by calculating the *range* of values that a `for` loop access and compares those to the actual length of the array. If it determines that there is *never* an attempt to access an item outside the permissable bounds of the array, the run-time checks are then removed.
+It does this by calculating the *range* of values that a `for` loop access and compares those to the actual length of the array. If it determines that there is *never* an attempt to access an item outside the permissible bounds of the array, the run-time checks are then removed.
 
 For more information, the links below take you to the areas of the JIT source code that deal with this:
 
@@ -191,10 +191,10 @@ As always, here are some more links for your enjoyment!!
 - [CSharp Specification for Arrays](https://github.com/ljw1004/csharpspec/blob/gh-pages/arrays.md)
 - [.NET Type Internals - From a Microsoft CLR Perspective - ARRAYS](https://www.codeproject.com/Articles/20481/NET-Type-Internals-From-a-Microsoft-CLR-Perspecti?fid=459323&fr=26#20)
 - [CLR INSIDE OUT - Investigating Memory Issues](http://web.archive.org/web/20081203124917/http://msdn.microsoft.com/msdnmag/issues/06/11/CLRInsideOut/)
+- [Internals of Array](http://www.abhisheksur.com/2011/06/internals-of-array.html)
 - [Internals of .NET Objects and Use of SOS](http://www.abhisheksur.com/2011/09/internals-of-net-objects-and-use-of-sos.html)
 - [Memory layout of .NET Arrays](https://windowsdebugging.wordpress.com/2012/04/07/memorylayoutofarrays/)
 - [Memory Layout of .NET Arrays (x64)](https://windowsdebugging.wordpress.com/2012/04/24/memorylayoutofarraysx64/)
-- [NGen misconception](https://windowsdebugging.wordpress.com/2012/04/27/ngenmisconception/)
 - [Why are multi-dimensional arrays in .NET slower than normal arrays?](http://stackoverflow.com/questions/468832/why-are-multi-dimensional-arrays-in-net-slower-than-normal-arrays)
 - [How do arrays in C# partially implement IList&lt;T&gt;?](http://stackoverflow.com/questions/11163297/how-do-arrays-in-c-sharp-partially-implement-ilistt/11164210#11164210)
 - [Purpose of TypeDependencyAttribute(“System.SZArrayHelper”) for IList&lt;T&gt;, IEnumerable&lt;T&gt; and ICollection&lt;T&gt;?](http://stackoverflow.com/questions/33632073/purpose-of-typedependencyattributesystem-szarrayhelper-for-ilistt-ienumer/33632407#33632407)
