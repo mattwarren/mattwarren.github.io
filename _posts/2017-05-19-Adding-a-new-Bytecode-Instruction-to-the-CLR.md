@@ -425,7 +425,7 @@ G_M32709_IG05:
 
 ### Disclaimer/Credit
 
-I got the idea for doing this from the Appendix of the excellent book [Shared Source CLI Essentials - Amazon](https://www.amazon.co.uk/Shared-Source-Essentials-David-Stutz/dp/059600351X/ref=as_li_ss_tl?ie=UTF8&qid=1495146939&sr=8-1-fkmr0&keywords=shared+source+essentials+sscli&linkCode=ll1&tag=mattonsoft-21&linkId=033fb897262ad494f8f5322fd9f99f66), you can also [download a copy of the 2nd edition](www.newardassociates.com/files/SSCLI2.pdf) if you don't want to purchase the print one.
+I got the idea for doing this from the Appendix of the excellent book [Shared Source CLI Essentials - Amazon](https://www.amazon.co.uk/Shared-Source-Essentials-David-Stutz/dp/059600351X/ref=as_li_ss_tl?ie=UTF8&qid=1495146939&sr=8-1-fkmr0&keywords=shared+source+essentials+sscli&linkCode=ll1&tag=mattonsoft-21&linkId=033fb897262ad494f8f5322fd9f99f66), you can also [download a copy of the 2nd edition](http://www.newardassociates.com/files/SSCLI2.pdf) if you don't want to purchase the print one.
 
 In Appendix B the authors of the book reproduced the work that [Peter Drayton](http://www.ugidotnet.org/eventi/28/Rotor) did to add an *Exponentiation* op-code to the SSCLI, which inspired this entire post, so thanks for that!!
 
