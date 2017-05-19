@@ -12,7 +12,7 @@ Now that the [CoreCLR is open-source](https://blogs.msdn.microsoft.com/dotnet/20
 - Step 0 - [Introduction and Background](#step-0)
 - Step 1 - [Add the new IL instruction to the runtime](#step-1)
 - Step 2 - [Make the Interpreter work](#step-2)
-- Step 3 - [Allow the JIT recognise the new OpCode](#step-3)
+- Step 3 - [Ensure the JIT can recognise the new op-code](#step-3)
 - Step 4 - [Runtime code generation via Reflection.Emit](#step-4)
 - Step 5 - [Future Improvements](#step-5)
 
