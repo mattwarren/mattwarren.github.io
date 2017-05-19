@@ -72,7 +72,7 @@ As the .NET runtime source code is nicely structured (+1 to the runtime devs), t
  OPDEF(CEE_THROW,                      "throw",            PopRef,             Push0,       InlineNone,         IObjModel,   1,  0xFF,    0x7A,    THROW)
 ```
 
-I just picked the first available `unused` slot and added `matt` in there. It's defined as `Pop1+Pop1` because it takes 2 values from the stack as input and `Push0` because after is has executed, a single result is pushed back onto the stack. 
+I just picked the first available `unused` slot and added `matt` in there. It's defined as `Pop1+Pop1` because it takes 2 values from the stack as input and `Push1` because after is has executed, a single result is pushed back onto the stack. 
 
 **Note**: all the changes I made are [available in one-place on GitHub](https://github.com/dotnet/coreclr/compare/master...mattwarren:newOpCode) if you'd rather look at them like that.
 
