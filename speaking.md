@@ -3,6 +3,10 @@ layout: page
 title: Speaking
 ---
 
+<h4><strong>Microsoft and Open-Source – A ‘Brave New World’:</strong></h4>
+- [Progscon London - 2017](#ProgSConLondon2017)
+- [Progscon Evening @ London Dev Community](#ProgsconLondonDevCommunity)
+
 <h4><strong>Where the wild things are - Benchmarking and Micro-Optimisations:</strong></h4>
 - [Skills Matter - London .NET UG - 2017](#LondonDNUG2017)
 
@@ -18,7 +22,21 @@ title: Speaking
 
 <h4><strong>I've also been on the Hanselminutes podcast <a href="http://hanselminutes.com/458/performance-as-a-feature-with-matt-warren" target="_blank">talking about "Performance as a Feature!"</a></strong></h4>
 
-<h3 id="LondonDNUG2017"><strong><a href="https://skillsmatter.com/skillscasts/9831-where-the-wild-things-are-finding-performance-problems-before-they-bite-you" target="_blank">Skills Matter - London .NET User Group - Where the wild things are - Benchmarking and Micro-Optimisations</a></strong></h3>
+<hr />
+
+<h3 id="ProgSConLondon2017"><strong><a href="http://2017.progscon.co.uk/cr3ativconference/microsoft-and-open-source-a-brave-new-world/" target="_blank">Microsoft and Open-Source – A ‘Brave New World’</a></strong></h3>
+<img src="{{ base }}/images/speaking/ProgSCon 2017.jpg" alt="ProgSCon 2017"/>
+Slides are [available](https://www.slideshare.net/mattwarren/microsoft-open-source-a-brave-new-world)
+
+<hr />
+
+<h3 id="ProgsconLondonDevCommunity"><strong><a href="https://www.meetup.com/London-Dev-Community/events/238220558/" target="_blank">Skills Matter - Progscon Evening @ London Dev Community - Open Source and Devs </a></strong></h3>
+<a href="https://skillsmatter.com/skillscasts/9890-london-dev-community-april-meetup" target="_blank"><img src="{{ base }}/images/speaking/ProgSCon pre-conference User Group.jpg"/></a>
+Click the image above for the video 
+
+<hr />
+
+<h3 id="LondonDNUG2017"><strong><a href="https://www.meetup.com/London-NET-User-Group/events/237160739/" target="_blank">Skills Matter - London .NET User Group - Where the wild things are - Benchmarking and Micro-Optimisations</a></strong></h3>
 <a href="https://skillsmatter.com/skillscasts/9831-where-the-wild-things-are-finding-performance-problems-before-they-bite-you" target="_blank"><img src="{{ base }}/images/speaking/Skills Matter - LDNUG - 2017.png" alt="Skills Matter - LDNUG - 2017"/></a>
 Click above for the video and the slides are [also available](https://www.slideshare.net/mattwarren/where-the-wild-things-are-benchmarking-and-microoptimisations/)
 
