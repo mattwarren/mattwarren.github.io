@@ -80,7 +80,7 @@ I just picked the first available `unused` slot and added `matt` in there. It's 
 
 **Note**: all the changes I made are [available in one-place on GitHub](https://github.com/dotnet/coreclr/compare/master...mattwarren:newOpCode) if you'd rather look at them like that.
 
-Once this chance was done `ilasm` will successfully assembly the test code file `HelloWorld.il` that contains `TestMattOpCodeMethod(..)` as shown above:
+Once this change was done `ilasm` will successfully assembly the test code file `HelloWorld.il` that contains `TestMattOpCodeMethod(..)` as shown above:
 
 ```
 λ ilasm /EXE /OUTPUT=HelloWorld.exe -NOLOGO HelloWorld.il
@@ -434,5 +434,9 @@ I got the idea for doing this from the Appendix of the excellent book [Shared So
 In Appendix B the authors of the book reproduced the work that [Peter Drayton](http://www.ugidotnet.org/eventi/28/Rotor) did to add an *Exponentiation* op-code to the SSCLI, which inspired this entire post, so thanks for that!!
 
 ![Appendix B - Add a new CIL opcode.png]({{ base }}/images/2017/05/Appendix B - Add a new CIL opcode.png)
+
+----
+
+Discuss this post on [HackerNews](https://news.ycombinator.com/item?id=14379557) and [/r/programming](https://www.reddit.com/r/programming/comments/6c3qsh/adding_a_new_bytecode_instruction_to_the_clr/)
 
 
