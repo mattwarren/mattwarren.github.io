@@ -43,7 +43,6 @@ public class C {
         }
     }
 }
-
 ```
 
 is turned into this
@@ -183,7 +182,9 @@ However if we look at bit deeper, under the ['LocalRewriter' folder](https://git
 - ['using' statement](https://github.com/dotnet/roslyn/blob/master/src/Compilers/CSharp/Portable/Lowering/LocalRewriter/LocalRewriter_UsingStatement.cs)
 - even a ['while' loop](https://github.com/dotnet/roslyn/blob/master/src/Compilers/CSharp/Portable/Lowering/LocalRewriter/LocalRewriter_WhileStatement.cs)
 
-So a big thank you is due to all the past and present C# language developers and designers. They did all this work for us, imagine that C# didn't have all these high-level features, we'd be stuck writing them by hand, it would be like writing Java :-)
+So a big thank-you is due to all the past and present C# language developers and designers, they did all this work for us. Imagine that C# didn't have all these high-level features, we'd be stuck writing them by hand. 
+
+It would be like writing **Java** :-)
 
 ----
 
@@ -302,3 +303,6 @@ However there were some other entries that whilst they didn't make it into the T
 - [Using VB.NET](https://twitter.com/AdamSpeight2008/status/867800480478515200) (hint: it didn't end well!!), but still a valiant attempt by [@AdamSpeight2008](https://twitter.com/AdamSpeight2008)
 - The most [astheticially pleasing](https://twitter.com/leppie/status/867861870241226753) entry by [@leppie](https://twitter.com/leppie)
 
+----
+
+Discuss this post on [HackerNews](https://news.ycombinator.com/item?id=14422944), [/r/programming](https://www.reddit.com/r/programming/comments/6dfsdl/lowering_in_the_c_compiler_and_what_happens_when/) or [/r/csharp](https://www.reddit.com/r/csharp/comments/6dgkpk/lowering_in_the_c_compiler_and_what_happens_when/) (whichever takes your fancy!!)
