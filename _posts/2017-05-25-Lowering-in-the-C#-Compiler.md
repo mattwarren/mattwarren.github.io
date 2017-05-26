@@ -284,7 +284,7 @@ Here's the Top 6 top results:
 |:----------|-------|------:|
 | [Schabse Laks](https://twitter.com/Schabse) | [link](https://twitter.com/Schabse/status/867808817655840768) | **885** (7964 / 9) |
 | [Andrey Dyatlov](https://twitter.com/a_tessenr) | [link](https://twitter.com/a_tessenr/status/867776073735454721) | **778** (778 / 1) |
-| [arlz](https://twitter.com/alrz_h) | [link](https://twitter.com/alrz_h/status/867780509627273216) | **755** (755 / 1) |
+| [alrz](https://twitter.com/alrz_h) | [link](https://twitter.com/alrz_h/status/867780509627273216) | **755** (755 / 1) |
 | [Andy Gocke](https://twitter.com/andygocke) * | [link](https://twitter.com/andygocke/status/867773813907312640) | **633** (633 / 1)|
 | [Jared Parsons](https://twitter.com/jaredpar) * | [link](https://twitter.com/jaredpar/status/867772979698049024) | **461** (461 / 1) |
 | [Jonathan Chambers](https://twitter.com/jon_cham) | [link](https://twitter.com/jon_cham/status/867759359803228162) | **384** (384 / 1) |
