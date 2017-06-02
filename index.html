@@ -3,15 +3,6 @@ layout: default
 title: Home
 ---
 
-<!-- For this to look nice, it needs the styling from http://mmistakes.github.io/so-simple-theme/
-<!-- 
-<ul class="post-list">
-{% for post in site.posts limit:10 %} 
-  <li><article><a href="{{ base }}{{ post.url }}">{{ post.title }} <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span>{% if post.excerpt %} <span class="excerpt">{{ post.excerpt }}</span>{% endif %}</a></article></li>
-{% endfor %}
-</ul>
--->
-
 <div class="posts">
   {% for post in paginator.posts %}
   <div class="post">
@@ -45,3 +36,7 @@ title: Home
   {% endif %}
 </div>
 
+<div id="subscribe">
+{% include subscribe.html %}
+</div>
+<hr>
