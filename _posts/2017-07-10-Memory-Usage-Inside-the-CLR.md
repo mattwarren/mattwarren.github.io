@@ -5,7 +5,7 @@ comments: true
 tags: [.NET, CLR, Internals]
 ---
 
-Have you ever wondered where and why the .NET Runtime (CLR) allocates memory? I don't mean the '*managed*' memory that *your* code allocates, e.g. via `new MyClass(..)` and the Garbage Collecter (GC) then cleans up. I mean the memory that the CLR *itself* allocates, all the internal data structures that it needs to make is possible for your code to run.
+Have you ever wondered where and why the .NET Runtime (CLR) allocates memory? I don't mean the '*managed*' memory that *your* code allocates, e.g. via `new MyClass(..)` and the Garbage Collector (GC) then cleans up. I mean the memory that the CLR *itself* allocates, all the internal data structures that it needs to make is possible for your code to run.
 
 **Note** just to clarify, this post will **not** be telling you how you can analyse the memory usage of *your code*, for that I recommend using one of the excellent .NET Profilers available such as [dotMemory by JetBrains](https://www.jetbrains.com/dotmemory/features/) or the [ANTS Memory Profiler from Redgate](http://www.red-gate.com/products/dotnet-development/ants-memory-profiler/) (I've personally used both and they're great)
 
@@ -222,6 +222,10 @@ Finally, to prove that this investigation matches with more real-world scenarios
 > 1. Code heap - about 1 megabyte (11%)
 > 1. Type information - about 0.5 megabyte (6%)
 > 1. Objects heap - about 0.2 megabyte (2%)
+
+----
+
+Discuss this post on [HackerNews](https://news.ycombinator.com/item?id=14740169)
 
 ----
 
