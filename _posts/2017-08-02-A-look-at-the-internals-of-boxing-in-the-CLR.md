@@ -66,7 +66,7 @@ var myStruct = new MyStruct();
 var boxed = (object)myStruct;
 
 // unboxing
-var unboxed = (MyStruct)obj;
+var unboxed = (MyStruct)boxed;
 ```
 
 This gets turned into the following IL code, in which you can see the `box` and `unbox.any` IL instructions:
