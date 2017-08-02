@@ -1,0 +1,61 @@
+TID 471c: PHASEDLOAD: LoadTypeHandleForTypeKey for type TestNamespace.MyStruct to level LOADED
+TID 471c: PHASEDLOAD: table contains:
+TID 471c: LoadTypeHandle: Loading Class from Module 000007FE63214EF0 token 2000002
+TID 471c: ConstructCrst with this:0x4aafa0
+TID 471c: PHASEDLOAD: Creating loading entry for type TestNamespace.MyStruct
+TID 471c: PHASEDLOAD: About to do incremental load of type TestNamespace.MyStruct (0000000000000000) from level BEGIN
+TID 471c: Looking up System.ValueType by name.
+TID 471c: 
+
+TID 471c: TestNamespace.MyStruct
+TID 471c: Packsize      = 8
+TID 471c: Max align req = 4
+TID 471c: ----------------------------
+TID 471c: +0      Value
+TID 471c: +4       EOS
+TID 471c: Allocated 1 usable field marshallers for TestNamespace.MyStruct
+TID 471c: Loading class "TestNamespace.MyStruct" from module "C:\CoreCLR\bin\Product\Windows_NT.x64.Debug\TestProgram.exe" in domain 0x0000000000467A50 
+TID 471c: SD: MT::MethodIterator created for System.ValueType (System.ValueType).
+TID 471c: EEC::IMD: pNewMD:0x63215a80 for tok:0x6000001 (TestNamespace.MyStruct::ToString)
+TID 471c: EEC::IMD: pNewMD:0x63215ae8 for tok:0x6000002 (TestNamespace.MyStruct::TestMethod)
+TID 471c: STATICS: Placing statics for TestNamespace.MyStruct
+TID 471c: STATICS: Static field bytes needed (0 is normal for non dynamic case)0
+TID 471c: STATICS: Placing ThreadStatics for TestNamespace.MyStruct
+TID 471c: STATICS: ThreadStatic field bytes needed (0 is normal for non dynamic case)0
+TID 471c: Placing 0 statics (0 handles) for class MyStruct.
+TID 471c: CLASSLOADER: AppDomainAgileAttribute for TestNamespace.MyStruct is 0
+
+TID 471c: Method table summary for 'MyStruct':
+TID 471c: Number of static fields: 0
+TID 471c: Number of instance fields: 1
+TID 471c: Number of static obj ref fields: 0
+TID 471c: Number of static boxed fields: 0
+TID 471c: Number of declared fields: 1
+TID 471c: Number of declared methods: 2
+TID 471c: Number of declared non-abstract methods: 2
+TID 471c: Vtable (with interface dupes) for 'MyStruct':
+TID 471c:   Total duplicate slots = 0
+
+TID 471c: SD: MT::MethodIterator created for TestNamespace.MyStruct (TestNamespace.MyStruct).
+TID 471c:   slot  0: TestNamespace.MyStruct::ToString  0x000007FE41170C10 (slot =  0) (Unboxing Stub)
+TID 471c:   slot  1: System.ValueType::Equals  0x000007FEC1194078 (slot =  1) 
+TID 471c:   slot  2: System.ValueType::GetHashCode  0x000007FEC1194080 (slot =  2) 
+TID 471c:   slot  3: System.Object::Finalize  0x000007FEC14A30E0 (slot =  3) 
+TID 471c:   slot  4: TestNamespace.MyStruct::TestMethod  0x000007FE41170C20 (slot =  4) 
+TID 471c:   slot  5: TestNamespace.MyStruct::ToString  0x000007FE41170C18 (slot =  5) 
+TID 471c:   <-- vtable ends here
+TID 471c: 
+TID 471c: Field layout for 'MyStruct':
+
+TID 471c: Instance fields
+TID 471c: ---------------
+TID 471c: MyStruct:
+TID 471c: offset   0 Value
+TID 471c: 
+TID 471c: GC description for 'MyStruct':
+
+TID 471c: MethodTableBuilder: finished method table for module 000007FE63214EF0 token 2000002 = 000007FE63215B40T 
+TID 471c: PHASEDLOAD: About to do incremental load of type TestNamespace.MyStruct (000007FE63215B40) from level APPROXPARENTS
+TID 471c: Notify: 000007FE63215B40 TestNamespace.MyStruct
+TID 471c: Successfully loaded class TestNamespace.MyStruct
+TID 471c: PHASEDLOAD: Completed full dependency load of type (000007FE63215B40)+TestNamespace.MyStruct
