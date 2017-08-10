@@ -433,7 +433,7 @@ I got the idea for doing this from the Appendix of the excellent book [Shared So
 
 In Appendix B the authors of the book reproduced the work that [Peter Drayton](http://www.ugidotnet.org/eventi/28/Rotor) did to add an *Exponentiation* op-code to the SSCLI, which inspired this entire post, so thanks for that!!
 
-![Appendix B - Add a new CIL opcode.png]({{ base }}/images/2017/05/Appendix B - Add a new CIL opcode.png)
+![Appendix B - Add a new CIL opcode]({{ base }}/images/2017/05/Appendix B - Add a new CIL opcode.png)
 
 ----
 

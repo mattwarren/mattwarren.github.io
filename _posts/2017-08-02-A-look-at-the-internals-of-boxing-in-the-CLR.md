@@ -5,7 +5,7 @@ comments: true
 tags: [.NET, CLR, Internals]
 ---
 
-It's a [fundamental part of .NET](https://stackoverflow.com/search?q=boxing+c%23) and can often happen [without you knowing](https://github.com/controlflow/resharper-heapview#resharper-heap-allocations-viewer-pluginw), but **how does it actually work**? What is the .NET Runtime doing to make *boxing* possible?
+It's a [fundamental part of .NET](https://stackoverflow.com/search?q=boxing+c%23) and can often happen [without you knowing](https://github.com/controlflow/resharper-heapview#resharper-heap-allocations-viewer-plugin), but **how does it actually work**? What is the .NET Runtime doing to make *boxing* possible?
 
 **Note**: this post won't be discussing how to detect boxing, how it can affect performance or how to remove it (speak to [Ben Adams](https://www.ageofascent.com/2016/02/18/asp-net-core-exeeds-1-15-million-requests-12-6-gbps/) about that!). It will **only** be talking about *how it works*.  
 
@@ -194,8 +194,8 @@ As before, if you've got this far you might find these other links interesting:
 
 - [MethodTableBuilder::AllocAndInitMethodDescChunk(..)](https://github.com/dotnet/coreclr/blob/a14608efbad1bcb4e9d36a418e1e5ac267c083fb/src/vm/methodtablebuilder.cpp#L6748-L6760)
 - [MethodDesc::FindOrCreateAssociatedMethodDesc(..) (in genmeth.cpp)](https://github.com/dotnet/coreclr/blob/fd3668c7c9b9f5d64b5e6d1edf8c55a307cd3c2d/src/vm/genmeth.cpp#L733-L750)
-- [Compiler::impImportBlockCode(..)](https://github.com/dotnet/coreclr/blob/master/src/jit/importer.cpp#L14229-L14247)
-
+- [Compiler::impImportBlockCode(..)](https://github.com/dotnet/coreclr/blob/eeb1efd9394a5decd00078b06099d785a471c06d/src/jit/importer.cpp#L14229-L14247)
+- [Note on different 'Boxing' modes](https://github.com/AndyAyersMS/coreclr/blob/aa70c0c4b98c167b4b347df79e1765d6727dac5a/src/jit/importer.cpp#L5204-L5219), added as part of the work on [JIT: modify box/unbox/isinst/castclass expansions for fast jitting](https://github.com/dotnet/coreclr/pull/13188)
 
 ### GitHub Issues
 
@@ -204,7 +204,6 @@ As before, if you've got this far you might find these other links interesting:
 - [Improve the default hash code for structs](https://github.com/dotnet/coreclr/issues/1341) (read the whole discussion)
 - [JIT: Fix value type box optimization](https://github.com/dotnet/coreclr/pull/13016)
 - [(Discussion) Lightweight Boxing?](https://github.com/dotnet/coreclr/issues/111)
-
 
 ### Other similar/related articles
 
