@@ -3,6 +3,12 @@ layout: page
 title: Speaking
 ---
 
+<h4><strong>I've just taken part in a <a href="https://www.infoq.com/articles/high-performance-dotnet">Virtual Panel: High Performance Application in .NET</a> and I was quoted in an InfoWorld article <a href="http://www.infoworld.com/article/3149765/application-development/win-win-open-source-net-pays-off-for-devs.html">'Win-win: Open source .Net pays off for devs'</a> (alongside Scott Hunter!!) </strong></h4>
+
+<h4><strong>I've also been on the Hanselminutes podcast <a href="http://hanselminutes.com/458/performance-as-a-feature-with-matt-warren" target="_blank">talking about "Performance as a Feature!"</a></strong></h4>
+
+<hr />
+
 <h4><strong>Microsoft and Open-Source – A ‘Brave New World’:</strong></h4>
 - [Progscon London - 2017](#ProgSConLondon2017)
 - [Progscon Evening @ London Dev Community](#ProgsconLondonDevCommunity)
@@ -19,8 +25,6 @@ title: Speaking
 - [DeveloperSouthCoast - 2015](#DeveloperSouthCoast)
 - [NDC London - 2014](#NDCLondon2014)
 - [DDD East Anglia - 2014](#dddEastAnglia2014)
-
-<h4><strong>I've also been on the Hanselminutes podcast <a href="http://hanselminutes.com/458/performance-as-a-feature-with-matt-warren" target="_blank">talking about "Performance as a Feature!"</a></strong></h4>
 
 <hr />
 
