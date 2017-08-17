@@ -497,28 +497,46 @@ a.pagination-item:hover {
 }
 
 #carbonads {
-    display: block;
-    overflow: hidden;
-    /*padding: 1em;*/
-    padding: 0.5em;
-    padding-bottom: 0.3em;
-    font-family: Verdana,"Helvetica Neue",Helvetica,sans-serif;
-    line-height: 1.5;
-    border: 4px solid #f5f5f5;
-    margin-bottom: 10px;
+  display: block;
+  overflow: hidden;
+  padding: 0.5em;
+  font-family: Verdana, "Helvetica Neue", Helvetica, sans-serif;
+  line-height: 1.5;
+  border: 2px solid #f5f5f5;
+  margin-bottom: 10px;
+}
+
+#carbonads span {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+#carbonads .carbon-img {
+  float: left;
+  margin-right: 1em;
+}
+
+#carbonads .carbon-img img {
+  display: block;
 }
 
 #carbonads a.carbon-text {
-    display: block;
-    /*text-align: left;*/
-    text-align: center;
-    /*margin-bottom: 1em;*/
-    color: #666;
+  display: block;
+  float: left;
+  max-width: calc(100% - 130px - 1em);
+  text-align: left;
+  color: #666;
 }
 
 #carbonads a.carbon-poweredby {
-    display: block;
-    text-align: right;
-    font-size: .7em;
-    color: #ccc;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: block;
+  font-size: .8em;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: #ccc;
 }
