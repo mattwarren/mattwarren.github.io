@@ -5,15 +5,15 @@ comments: true
 tags: [C#]
 ---
 
-About a year ago Google made all the [open source code on GitHub available within BigQuery](https://medium.com/google-cloud/github-on-bigquery-analyze-all-the-code-b3576fd2b150) and as if that wasn't enough [you can run a terabyte of queries each month for free](https://cloud.google.com/blog/big-data/2017/01/how-to-run-a-terabyte-of-google-bigquery-queries-each-month-without-a-credit-card)!
+Just over a year ago Google made all the [open source code on GitHub available for querying](https://medium.com/google-cloud/github-on-bigquery-analyze-all-the-code-b3576fd2b150) within BigQuery and as if that wasn't enough [you can run a terabyte of queries each month for free](https://cloud.google.com/blog/big-data/2017/01/how-to-run-a-terabyte-of-google-bigquery-queries-each-month-without-a-credit-card)!
 
-So in this post I am going to be looking at all the **C#** source code on GitHub and what we can find out from it. Handily a smaller, C# only, dataset has been made available (in BigQuery you are charged per byte read), it's called [fh-bigquery:github_extracts.contents_net_cs](https://bigquery.cloud.google.com/table/fh-bigquery:github_extracts.contents_net_cs) and has
+So in this post I am going to be looking at all the **C#** source code on GitHub and what we can find out from it. Handily a smaller, C# only, dataset has been made available (in BigQuery you are charged per byte read), called [fh-bigquery:github_extracts.contents_net_cs](https://bigquery.cloud.google.com/table/fh-bigquery:github_extracts.contents_net_cs) and has
 
 - **5,885,933** unique '.cs' files
 - **792,166,632** lines of code (LOC)
 - **37.17 GB** (37,174,783,891 bytes) of data
 
-So a pretty comprehensive set of C# source files!
+Which is a pretty comprehensive set of C# source code!
 
 ----
 
