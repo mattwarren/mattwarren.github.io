@@ -40,7 +40,9 @@ Before we end up looking at repositories, not just individual C# files:
 1. [What are the most popular C# `class` names?](#what-are-the-most-popular-c-class-names)
 1. ['Foo.cs', 'Program.cs' or something else, what's the most common file name?](#foocs-programcs-or-something-else-whats-the-most-common-file-name)
 
-If you want to try the queries for yourself (or find my mistakes), all of them are available in [this gist](https://gist.github.com/mattwarren/42100ffe488bce5d48be22b59124b752). There's a good chance that my regular expressions miss out some edge-cases, after all [Regular Expressions: Now You Have Two Problems](https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/)!!
+If you want to try the queries for yourself (or find my mistakes), all of them are available in [this gist](https://gist.github.com/mattwarren/42100ffe488bce5d48be22b59124b752). There's a good chance that my regular expressions miss out some edge-cases, after all [Regular Expressions: Now You Have Two Problems](https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/):
+
+> Some people, when confronted with a problem, think "I know, I'll use regular expressions." Now they have two problems.
 
 ----
 
@@ -77,7 +79,7 @@ This is slightly unscientific, but I wanted to see how widely the [Lambda Operat
 Here's the raw percentiles:
 
 | Percentile | % of lines using lambdas |
-|------------|-----------------|
+|:----------:|:---------------:|
 | 10 |  0.51 |
 | 25 |  1.14 |
 | 50 |  2.50 |
@@ -186,18 +188,18 @@ Oh dear, Uncle Bob isn't going to be happy, whilst 96% of the files have 509 LOC
 
 And in case you're wondering, here's the Top 10 longest C# files!!
 
-| File                                                                               | Lines |  
-|------------------------------------------------------------------------------------|--------------:| 
-| MarMot/Input/test.marmot.cs                                                        | 92663         | 
-| src/CodenameGenerator/WordRepos/LastNamesRepository.cs                             | 88810         | 
-| cs_inputtest/cs_02_7000.cs                                                         | 63004         | 
-| cs_inputtest/cs_02_6000.cs                                                         | 54004         | 
-| src/ML NET20/Utility/UserName.cs                                                   | 52014         | 
-| MWBS/Dictionary/DefaultWordDictionary.cs                                           | 48912         | 
-| Sources/Accord.Math/Matrix/Matrix.Comparisons1.Generated.cs                        | 48407         | 
-| UrduProofReader/UrduLibs/Utils.cs                                                  | 48255         | 
-| cs_inputtest/cs_02_5000.cs                                                         | 45004         | 
-| css/style.cs                                                                       | 44366         | 
+| File                                                                               | Lines  |  
+|------------------------------------------------------------------------------------|-------:| 
+| MarMot/Input/test.marmot.cs                                                        | 92663  | 
+| src/CodenameGenerator/WordRepos/LastNamesRepository.cs                             | 88810  | 
+| cs_inputtest/cs_02_7000.cs                                                         | 63004  | 
+| cs_inputtest/cs_02_6000.cs                                                         | 54004  | 
+| src/ML NET20/Utility/UserName.cs                                                   | 52014  | 
+| MWBS/Dictionary/DefaultWordDictionary.cs                                           | 48912  | 
+| Sources/Accord.Math/Matrix/Matrix.Comparisons1.Generated.cs                        | 48407  | 
+| UrduProofReader/UrduLibs/Utils.cs                                                  | 48255  | 
+| cs_inputtest/cs_02_5000.cs                                                         | 45004  | 
+| css/style.cs                                                                       | 44366  | 
 
 ### What is the most widely thrown `Exception`?
 
@@ -286,7 +288,7 @@ The top 10 largest repositories, by number of C# files are shown below:
 This time we are going to look at the most popular repositories (based on GitHub 'stars') that contain at least 50 C# files ([query used](https://gist.github.com/mattwarren/42100ffe488bce5d48be22b59124b752#most_popular_c_repos)):
 
 | repo                                                   | stars | files | 
-|--------------------------------------------------------|-------|-------| 
+|--------------------------------------------------------|------:|------:| 
 | https://github.com/grpc/grpc                           | 11075 | 237   | 
 | https://github.com/dotnet/coreclr                      | 8576  | 6503  | 
 | https://github.com/dotnet/roslyn                       | 8422  | 6351  | 
