@@ -345,6 +345,10 @@ Finally lets look at the different `class` names used, as with the `using` state
 
 ----
 
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=15464097) and [/r/csharp](https://www.reddit.com/r/csharp/comments/75ykfb/analysing_c_code_on_github_with_bigquery/)
+
+----
+
 ## More Information
 
 As always, if you've read this far your present is yet more blog posts to read, enjoy!!
