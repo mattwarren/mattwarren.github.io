@@ -176,7 +176,7 @@ It turns out that there is also a separate dataset containing all the 'packages.
 
 Are C# developers prone to creating huge files that go one for 1000's of lines? Well some are but fortunately it's the minority of us!!
 
-[![Percentiles of lines of code per file]({{ base }}/images/2017/10/Percentiles of lines of code per file.png)]({{ base }}/images/2017/10/Percentiles of lines of code per C# file.png)
+[![Percentiles of lines of code per file]({{ base }}/images/2017/10/Percentiles%20of%20lines%20of%20code%20per%20file.png)]({{ base }}/images/2017/10/Percentiles%20of%20lines%20of%20code%20per%20file.png)
 
 Note the Y-axis is 'lines of code' and is logarithmic, the [raw data is available](https://gist.github.com/mattwarren/c810abe0c1ea152b60632c5987161aa4).
 
@@ -345,7 +345,7 @@ Finally lets look at the different `class` names used, as with the `using` state
 
 ## More Information
 
-As always, if you've read this far your present if yet more blog posts to read, enjoy!!
+As always, if you've read this far your present is yet more blog posts to read, enjoy!!
 
 ### How BigQuery Works (only put in at the end of the blog post)
 
