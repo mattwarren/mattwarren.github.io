@@ -43,7 +43,12 @@ Finally, there are a few features that are currently **unsupported**:
 
 There are [various bugs or missing functionality](https://github.com/chrisdunelm/DotNetAnywhere/issues?q=is%3Aissue+is%3Aclosed) that might prevent your code running under DotNetAnywhere, however several of these have been [fixed since Blazor came along](https://github.com/SteveSanderson/Blazor/pulls?utf8=%E2%9C%93&q=is%3Apr), so it's worth checking against the Blazor version of DotNetAnywhere.
 
-**At this point in time the original DotNetAnywhere repo is [no longer active](https://github.com/chrisdunelm/DotNetAnywhere#this-project-is-inactive-no-issues-or-prs-will-be-dealt-with), so it seems that any future development or bugs fixes will likely happen in the Blazor repo. If you have ever fixed something in DotNetAnywhere, consider sending a P.R there, to help the effort.**
+**At this point in time the original DotNetAnywhere repo is [no longer active](https://github.com/chrisdunelm/DotNetAnywhere#this-project-is-inactive-no-issues-or-prs-will-be-dealt-with) (the last sustained activity was in Jan 2012), so it seems that any future development or bugs fixes will likely happen in the Blazor repo. If you have ever fixed something in DotNetAnywhere, consider sending a P.R there, to help the effort.**
+
+**Update:** In addition there are other forks with various bug fixes and enhancements:
+
+- [https://github.com/ncave/dotnet-js](https://github.com/ncave/dotnet-js)
+- [https://github.com/memsom/dna](https://github.com/memsom/dna)
 
 ## Source Code Layout
 
