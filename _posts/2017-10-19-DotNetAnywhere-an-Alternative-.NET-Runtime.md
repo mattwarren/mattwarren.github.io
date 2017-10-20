@@ -397,3 +397,7 @@ So clearly DotNetAnywhere doesn't work as fast in this benchmark (0.36 seconds v
 ----
 
 **Finally, I really want to thank [Chris Bacon](https://github.com/chrisdunelm), DotNetAnywhere is a great code base and gives a fantastic insight into what needs to happen for a .NET runtime to work.**
+
+----
+
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=15514519) and [/r/programming](https://www.reddit.com/r/programming/comments/77frgh/dotnetanywhere_an_alternative_net_runtime/)
