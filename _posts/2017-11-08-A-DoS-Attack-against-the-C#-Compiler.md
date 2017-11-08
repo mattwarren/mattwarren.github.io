@@ -190,6 +190,10 @@ In some ways I think that it **shouldn't** be fixed, it seems better that the co
 
 <strong style="color:red">So if it takes 3 mins to compile your code, allocates 2GB of memory and then crashes, take that as a warning!!</strong>
 
+----
+
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=15654970), [/r/programming](https://www.reddit.com/r/programming/comments/7bn21r/a_dos_attack_against_the_c_compiler_performance/) and [/r/csharp](https://www.reddit.com/r/csharp/comments/7bn206/a_dos_attack_against_the_c_compiler_performance/)
+
  
 
 
