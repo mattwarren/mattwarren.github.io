@@ -166,6 +166,25 @@ However your mileage may vary, when I ran the code in Visual Studio 2015 it thre
 
 ----
 
+### Mono Compiler
+
+As a comparison, here's the results from the [Mono compiler](https://github.com/mono/), thanks to [Egor Bogatov](https://twitter.com/EgorBo) for putting them together.
+
+| Level | Compile Time (secs) | Memory Usage (Bytes) |
+|-------|--------------------:|---------------------:|
+|  5 |  0.480 |       134,144 |
+|  6 |  0.502 |       786,944 |
+|  7 |  0.745 |     4,706,304 |
+|  8 |  2.053 |    28,220,928 |
+|  9 | 10.134 |   169,308,672 |
+| 10 | 57.307 | 1,015,835,136 |
+
+At 'Level 10' it [produced a 968.78 Mb binary](https://twitter.com/EgorBo/status/928388080519741445)!!
+
+[![Mono Compiler - Level 10]({{ base }}/images/2017/11/Mono Compiler - Level 10.jpg)]({{ base }}/images/2017/11/Mono Compiler - Level 10.jpg)
+
+----
+
 ### Profiling the Compiler
 
 Finally, I want to look at just where the compiler is spending all it's time. From the results above we saw that it was taking **over 3 minutes** to compile a simple program, with a peak memory usage of **2.14 GB**, so what was it actually doing??
