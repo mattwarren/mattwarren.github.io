@@ -168,7 +168,7 @@ However your mileage may vary, when I ran the code in Visual Studio 2015 it thre
 
 ### Mono Compiler
 
-As a comparison, here's the results from the [Mono compiler](https://github.com/mono/), thanks to [Egor Bogatov](https://twitter.com/EgorBo) for putting them together.
+As a comparison, here are the results from the [Mono compiler](https://github.com/mono/), thanks to [Egor Bogatov](https://twitter.com/EgorBo) for putting them together.
 
 | Level | Compile Time (secs) | Memory Usage (Bytes) |
 |-------|--------------------:|---------------------:|

@@ -3,6 +3,12 @@ layout: page
 title: Speaking
 ---
 
+<img src="{{ base }}/images/speaking/MVP Award Logo - Small.png" alt="MVP Award Logo"/>
+
+<h4><strong>In 2017 I was given the <a href="https://mvp.microsoft.com">Microsoft MVP Award</a> in the 'Visual Studio and Development Technologies' Category - Yay!!</strong></h4>
+
+<hr />
+
 <h4><strong>I've just taken part in a <a href="https://www.infoq.com/articles/high-performance-dotnet">Virtual Panel: High Performance Application in .NET</a> and I was quoted in an InfoWorld article <a href="http://www.infoworld.com/article/3149765/application-development/win-win-open-source-net-pays-off-for-devs.html">'Win-win: Open source .Net pays off for devs'</a> (alongside Scott Hunter!!) </strong></h4>
 
 <h4><strong>I've also been on the Hanselminutes podcast <a href="http://hanselminutes.com/458/performance-as-a-feature-with-matt-warren" target="_blank">talking about "Performance as a Feature!"</a></strong></h4>
@@ -10,6 +16,7 @@ title: Speaking
 <hr />
 
 <h4><strong>Microsoft and Open-Source – A ‘Brave New World’:</strong></h4>
+- [CORESTART 2.0 Prague - 2017](#CORESTART2017)
 - [Progscon London - 2017](#ProgSConLondon2017)
 - [Progscon Evening @ London Dev Community](#ProgsconLondonDevCommunity)
 
@@ -28,7 +35,11 @@ title: Speaking
 
 <hr />
 
-<h3 id="ProgSConLondon2017"><strong><a href="http://2017.progscon.co.uk/cr3ativconference/microsoft-and-open-source-a-brave-new-world/" target="_blank">Microsoft and Open-Source – A ‘Brave New World’</a></strong></h3>
+<h3 id="CORESTART2017"><strong><a href="https://www.corestart.cz/#page-speeches" target="_blank">CORESTART 2.0 in Prague -  Microsoft and Open-Source – A ‘Brave New World’</a></strong></h3>
+<img src="{{ base }}/images/speaking/Speaking at CORESTART 2.0.jpg" alt="CORESTART 2.0 Prague 2017"/>
+Slides are [available](https://www.slideshare.net/secret/bSYyRobLw3jMLq)
+
+<h3 id="ProgSConLondon2017"><strong><a href="http://2017.progscon.co.uk/cr3ativconference/microsoft-and-open-source-a-brave-new-world/" target="_blank">ProgSCon London 2017 - Microsoft and Open-Source – A ‘Brave New World’</a></strong></h3>
 <img src="{{ base }}/images/speaking/ProgSCon 2017.jpg" alt="ProgSCon 2017"/>
 Slides are [available](https://www.slideshare.net/mattwarren/microsoft-open-source-a-brave-new-world)
 
