@@ -20,9 +20,9 @@ I've not been 'invited' to speak at a conference before, so I wasn't sure what t
 
 The slides for my talk are embedded below and you can also 'watch' the [entire recording](https://www.youtube.com/watch?v=garlskQb8BU) (audio and slides only, no video).
 
-<iframe align="middle" src="//www.slideshare.net/slideshow/embed_code/key/bSYyRobLw3jMLq" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/bSYyRobLw3jMLq" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
 
-<div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/secret/bSYyRobLw3jMLq" title="Microsoft &amp; open source a &#x27;brave new world&#x27; - CORESTART 2.0" target="_blank">Microsoft &amp; open source a &#x27;brave new world&#x27; - CORESTART 2.0</a> </strong> from <strong><a href="https://www.slideshare.net/mattwarren" target="_blank">Matt Warren</a></strong> </div>
+<div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/mattwarren/microsoft-open-source-a-brave-new-world-corestart-20" title="Microsoft &amp; open source a &#x27;brave new world&#x27; - CORESTART 2.0" target="_blank">Microsoft &amp; open source a &#x27;brave new world&#x27; - CORESTART 2.0</a> </strong> from <strong><a href="https://www.slideshare.net/mattwarren" target="_blank">Matt Warren</a></strong> </div>
 
 ----
 
