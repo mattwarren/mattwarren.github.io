@@ -41,6 +41,8 @@ The original Micro was launched as an education tool, as part of the [BBC’s Co
 
 **Aside**: I love the difference in branding across 30 years, '*BBC Micro*' became '*BBC micro:bit*' (you must include the colon) and '*Computer Literacy Project*' changed to the '*Make it Digital Initiative*'.
 
+[![BBC microbit hardware specification]({{ base }}/images/2017/11/BBC microbit hardware specification.jpg)](http://www.bbc.co.uk/mediacentre/mediapacks/microbit/specs)
+
 A few ago I walked into my local library, [picked up a nice starter kit](http://microbit.org/en/2017-10-23-libraries/) and then spent a fun few hours watching my son play around with it (I'm worried about how quickly he picked up the basics of programming, I think I might be out of a job in a few years time!!) 
 
 However once he'd gone to bed it was all mine! The result of my 'playing around' is this post, in it I will be exploring the **software stack** that makes up the micro:bit, what's in it, what it does and how it all fits together. 
@@ -276,7 +278,7 @@ In addition, this comment from [MicroBitStorage.h](https://github.com/lancaster-
 
 ## Summary
 
-All-in-al; the micro:bit is a very nice piece of kit and hopefully it will achieve its goal 'to help develop a new generation of digital pioneers'. However, it also has a really nice software stack and more importantly one that is each to understand and find your way around.
+All-in-all the micro:bit is a very nice piece of kit and hopefully will achieve its goal 'to help develop a new generation of digital pioneers'. However, it also has a really nice software stack, one that is easy to understand and find your way around.
 
 ----
 
