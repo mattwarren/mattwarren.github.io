@@ -79,6 +79,17 @@ There are several high-level *runtimes* available, these are useful because they
 
 They both work in a similar way, the users code (Python or TypeScript) is bundled up along with the C/C++ code of the runtime itself and then the entire binary (hex) file is deployed to the micro:bit. When the device starts up, the runtime then looks for the users code at a known location in memory and starts interpreting it.
 
+**Update** It turns out that I was wrong about the Microsoft PXT, it actually [compiles your TypeScript program to native code](https://makecode.com/language#static-compilation-vs-a-dynamic-vm), very cool! Interestingly, they did it that way because:
+
+> Compared to a typical dynamic JavaScript engine, PXT compiles code statically, giving rise to significant time and space performance improvements:
+> 
+> * user programs are compiled directly to machine code, and are never in any byte-code form that needs to be interpreted; this results in much faster execution than a typical JS interpreter
+> * there is no RAM overhead for user-code - all code sits in flash; in a dynamic VM there are usually some data-structures representing code
+> * due to lack of boxing for small integers and static class layout the memory consumption for objects is around half the one you get in a dynamic VM (not counting the user-code structures mentioned above)
+> * while there is some runtime support code in PXT, it’s typically around 100KB smaller than a dynamic VM, bringing down flash consumption and leaving more space for user code
+> 
+> **The execution time, RAM and flash consumption of PXT code is as a rule of thumb 2x of compiled C code, making it competitive to write drivers and other user-space libraries.**
+
 ----
 
 ## Memory Layout
