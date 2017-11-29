@@ -43,7 +43,7 @@ The original Micro was launched as an education tool, as part of the [BBC’s Co
 
 [![BBC microbit hardware specification]({{ base }}/images/2017/11/BBC microbit hardware specification.jpg)](http://www.bbc.co.uk/mediacentre/mediapacks/microbit/specs)
 
-A few ago I walked into my local library, [picked up a nice starter kit](http://microbit.org/en/2017-10-23-libraries/) and then spent a fun few hours watching my son play around with it (I'm worried about how quickly he picked up the basics of programming, I think I might be out of a job in a few years time!!) 
+A few weeks ago I walked into my local library, [picked up a nice starter kit](http://microbit.org/en/2017-10-23-libraries/) and then spent a fun few hours watching my son play around with it (I'm worried about how quickly he picked up the basics of programming, I think I might be out of a job in a few years time!!) 
 
 However once he'd gone to bed it was all mine! The result of my 'playing around' is this post, in it I will be exploring the **software stack** that makes up the micro:bit, what's in it, what it does and how it all fits together. 
 
@@ -89,7 +89,7 @@ Just before we go onto the other parts of the software stack I want to take a de
 
 If we re-calculate for the newer, longer tweets **280 x 4 = 1,120 bytes**. So we could only fit **10 tweets** into the available RAM on the micro:bit (it turns out that only ~11K out of the total 16K is available for general use). Which is why it's worth using a [custom version of atoi() to save 350 bytes of RAM](https://github.com/lancaster-university/microbit-dal/issues/323)!
 
-The memory layout is specified by the linker at compile-time using [NRF51822.ld](https://github.com/lancaster-university/microbit-targets/blob/master/bbc-microbit-classic-gcc-nosd/ld/NRF51822.ld#L6), there is a sample output [microbit-samples.map]({{ base }}/data/2017/11/microbit-samples.map) available if you want to take a look. Because it's done at compile-time you run into build errors such as ["region RAM overflowed with stack"](https://github.com/bbcmicrobit/micropython/issues/363) if you configure it incorrectly.
+The memory layout is specified by the linker at compile-time using [NRF51822.ld](https://github.com/lancaster-university/microbit-targets/blob/master/bbc-microbit-classic-gcc-nosd/ld/NRF51822.ld#L6), there is a [sample output available]({{ base }}/data/2017/11/microbit-samples.map) if you want to take a look. Because it's done at compile-time you run into build errors such as ["region RAM overflowed with stack"](https://github.com/bbcmicrobit/micropython/issues/363) if you configure it incorrectly.
 
 The table below shows the memory layout from the 'no SD' version of a 'Hello World' app, i.e. with the maximum amount of RAM available as the Bluetooth (BLE) Soft-Device (SD) support has been removed. By comparison with BLE enabled, you instantly have [8K less RAM available](https://github.com/lancaster-university/microbit-targets/blob/master/bbc-microbit-classic-gcc/ld/NRF51822.ld#L6), so things start to get tight!
 
@@ -285,3 +285,7 @@ All-in-all the micro:bit is a very nice piece of kit and hopefully will achieve 
 ## Further Reading
 
 I've got nothing to add that isn't already included in this [excellent, comprehensive list of resources](https://github.com/carlosperate/awesome-microbit), thanks [Carlos](https://twitter.com/carlosperate) for putting it together!!
+
+----
+
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=15806004) or [/r/microbit](https://www.reddit.com/r/microbit/comments/7g5sgm/exploring_the_bbc_microbit_software_stack/)
