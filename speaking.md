@@ -39,9 +39,11 @@ title: Speaking
 <img src="{{ base }}/images/speaking/Speaking at CORESTART 2.0.jpg" alt="CORESTART 2.0 Prague 2017"/>
 Slides are [available](https://www.slideshare.net/secret/bSYyRobLw3jMLq)
 
+<hr />
+
 <h3 id="ProgSConLondon2017"><strong><a href="http://2017.progscon.co.uk/cr3ativconference/microsoft-and-open-source-a-brave-new-world/" target="_blank">ProgSCon London 2017 - Microsoft and Open-Source – A ‘Brave New World’</a></strong></h3>
-<img src="{{ base }}/images/speaking/ProgSCon 2017.jpg" alt="ProgSCon 2017"/>
-Slides are [available](https://www.slideshare.net/mattwarren/microsoft-open-source-a-brave-new-world)
+<a href="https://www.infoq.com/presentations/microsoft-open-source-features" target="_blank"><img src="{{ base }}/images/speaking/ProgSCon 2017.jpg" alt="ProgSCon 2017"/></a>
+Click the image above for the video , the slides are [also available](https://www.slideshare.net/mattwarren/microsoft-open-source-a-brave-new-world)
 
 <hr />
 
