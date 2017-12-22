@@ -6,7 +6,11 @@ dataIssues = {}, dataPullRequests = {};
 // The current sparkline data (can be 'Issues' or 'Pull Requests')
 sparklineData = {};
 
-d3.json("/datavis/data-issues.json", function(error, json) {
+dataIssuesUrl = window.location.href.includes("/2017/") ? "/datavis/data-issues-2017.json" : "/datavis/data-issues.json";
+//dataIssuesUrl = "/datavis/data-issues.json";
+
+//d3.json("/datavis/data-issues.json", function(error, json) {
+d3.json(dataIssuesUrl, function(error, json) {
   if (error) 
     return console.warn(error);
   dataIssues = json;
@@ -24,7 +28,11 @@ d3.json("/datavis/data-issues.json", function(error, json) {
 });
 
 function getPullRequestDataViaAjax() {
-  d3.json("/datavis/data-pull-requests.json", function(error, json) {
+  dataPullRequestsUrl = window.location.href.includes("/2017/") ? "/datavis/data-pull-requests-2017.json": "/datavis/data-pull-requests.json";
+  //var dataPullRequestsUrl = "/datavis/data-pull-requests.json";
+
+  //d3.json("/datavis/data-pull-requests.json", function(error, json) {
+  d3.json(dataPullRequestsUrl, function(error, json) {
     if (error) 
       return console.warn(error);
     dataPullRequests = json;
@@ -262,13 +270,13 @@ function createNormalizedStackedBarChartData(json) {
     if (element !== "fake") {
       //console.log(element + " - Sum: Community=" + communitySum + ", Microsoft=" + microsoftSum + ", Total=" + totalSum);
       tempData.push({
-	    "category": element, 
-		"num": Math.round((microsoftSum / totalSum) * 100), 
-		"num2": 100,
-		"community": communitySum,
-		"microsoft": microsoftSum,
-		"total": communitySum + microsoftSum,
-	  });
+        "category": element, 
+        "num": Math.round((microsoftSum / totalSum) * 100), 
+        "num2": 100,
+        "community": communitySum,
+        "microsoft": microsoftSum,
+        "total": communitySum + microsoftSum,
+      });
     }
   });
   return tempData;
@@ -387,7 +395,7 @@ function setupNormalizedStackedBarChart(data, className, classSuffix, info) {
     .style("fill", function(d){ return "white";})
     .attr("y", y0.rangeBand()/1.6 )
     .attr("class", "g-labels") // + classSuffix);
-	
+    
   // Define the div for the tooltip
   var div = d3.select(className).append("div")
     .attr("class", "tooltipOverall")
@@ -409,7 +417,7 @@ function tooltipMouseMoveNormalizedStackedBarChart(div, currentData) {
   var htmlText = 
     "<b>" + "Total: " + currentData.total + "</b><br/>" +    
     "M/S: " + currentData.microsoft + "<br/>" +
-	"Com'ty: " + currentData.community + "<br/>";
+    "Com'ty: " + currentData.community + "<br/>";
   div.html(htmlText)
     .style("left", (d3.event.pageX - 100) + "px")
     .style("top", (d3.event.pageY - 60) + "px");
@@ -437,32 +445,32 @@ function setupStackedGroupedPullDownMenus(json, dataToUse, divId, selectId, colo
   var select = d3.select(divId)
     .append('select')
       .attr('class', 'select')
-	  .attr('id', selectId)
+      .attr('id', selectId)
       .attr('style', 'font-size:large;margin-left:10px;')
-	.on('change', function(d) { 
-	  var selectValue = d3.select(divId).select('select').property('value');
-	  var issuesMax = d3.max(dataIssues[selectValue].data, function(d) { return d.total; });
-	  var pullRequestsMax = d3.max(dataPullRequests[selectValue].data, function(d) { return d.total; });
-	  var overallMax = issuesMax;
-	  if (pullRequestsMax > overallMax)
-	    overallMax = pullRequestsMax;
-	  changeStackedGroupedBarData(json, dataToUse, divId, colourRange, selectValue, overallMax); 
-	  if (dataToUse === dataIssues) {
-		d3.select("#pullRequestsSelect").property('value', selectValue);
-	    changeStackedGroupedBarData(json, dataPullRequests, "#pullRequestsGraph", ["#a1d99b", "#31a354"], selectValue, overallMax); 		
-	  }
-	  else {
-		d3.select("#issuesSelect").property('value', selectValue);
-	    changeStackedGroupedBarData(json, dataIssues, "#issuesGraph", ["#9ecae1", "#3182bd"], selectValue, overallMax); 
-	  }
-	});
+    .on('change', function(d) { 
+      var selectValue = d3.select(divId).select('select').property('value');
+      var issuesMax = d3.max(dataIssues[selectValue].data, function(d) { return d.total; });
+      var pullRequestsMax = d3.max(dataPullRequests[selectValue].data, function(d) { return d.total; });
+      var overallMax = issuesMax;
+      if (pullRequestsMax > overallMax)
+        overallMax = pullRequestsMax;
+      changeStackedGroupedBarData(json, dataToUse, divId, colourRange, selectValue, overallMax); 
+      if (dataToUse === dataIssues) {
+        d3.select("#pullRequestsSelect").property('value', selectValue);
+        changeStackedGroupedBarData(json, dataPullRequests, "#pullRequestsGraph", ["#a1d99b", "#31a354"], selectValue, overallMax);         
+      }
+      else {
+        d3.select("#issuesSelect").property('value', selectValue);
+        changeStackedGroupedBarData(json, dataIssues, "#issuesGraph", ["#9ecae1", "#3182bd"], selectValue, overallMax); 
+      }
+    });
 
   var options = select.selectAll('option')
       .data(Object.keys(json).filter(function(i) { return i != 'fake' })).enter()
     .append('option')
       .attr("value", function(d) { return d; })
       .text(function (d) { return d; })
-	  
+      
   //d3.selectAll("input").on("change", change);
 }
 
