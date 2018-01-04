@@ -143,3 +143,8 @@ Finally we can see the 'per-month' data from the last 3 years, i.e. **November 2
 
 It's clear that the community continues to be invested in the .NET-related, Open Source repositories, contributing significantly and for a sustained period of time. I think this is good for *all .NET developers*, whether you contribute to OSS or not, having .NET be a **thriving, Open Source product** has many benefits!
 
+----
+
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=15998856) and [/r/programming](https://www.reddit.com/r/programming/comments/7lh19z/open_source_net_3_years_later/)
+
+
