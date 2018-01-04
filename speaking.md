@@ -11,7 +11,7 @@ title: Speaking
 
 <h4><strong>I've just taken part in a <a href="https://www.infoq.com/articles/high-performance-dotnet">Virtual Panel: High Performance Application in .NET</a> and I was quoted in an InfoWorld article <a href="http://www.infoworld.com/article/3149765/application-development/win-win-open-source-net-pays-off-for-devs.html">'Win-win: Open source .Net pays off for devs'</a> (alongside Scott Hunter!!) </strong></h4>
 
-<h4><strong>I've also been on the Hanselminutes podcast <a href="http://hanselminutes.com/458/performance-as-a-feature-with-matt-warren" target="_blank">talking about "Performance as a Feature!"</a></strong></h4>
+<h4><strong>I've also been on the Hanselminutes podcast <a href="http://hanselminutes.com/458/performance-as-a-feature-with-matt-warren" target="_blank">talking about "Performance as a Feature!"</a> and the Stackify 'Developer Things' podcast <a href="https://stackify.com/developer-things-5-benchmarkdotnet/" target="_blank">chatting about BenchmarkDotNet & Nerding out on Performance</a> </strong></h4>
 
 <hr />
 
