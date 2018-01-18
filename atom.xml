@@ -22,14 +22,19 @@ layout: null
    <updated>{{ post.date | date_to_xmlschema }}</updated>
    <id>{{ site.url }}{{ site.baseurl }}{{ post.id }}</id>
    <content type="html">
-        {{ post.content | xml_escape }}
-        {% comment %} Huh, this only works if the equality check is reversed!! {% endcomment %}
-        {% if (post.codeproject == false) %}
-            &lt;p&gt;The post &lt;a href=&quot;{{ site.url | xml_escape}}{{ post.url | xml_escape}}&quot;&gt;{{ post.title | xml_escape }}&lt;/a&gt; first appeared on my blog &lt;a href=&quot;http://mattwarren.org&quot;&gt;Performance is a Feature!&lt;/a&gt;&lt;/p&gt;
-            {% comment %} Enable CodeProject integration {% endcomment %}
-            &lt;a href=&quot;http://www.codeproject.com/script/Articles/BlogFeedList.aspx?amid=641373&quot; rel=&quot;tag&quot; style=&quot;display:none&quot;&gt;CodeProject&lt;/a&gt;
-        {% endif %}
-    </content>
+     {{ post.content | xml_escape }}
+     {% comment %} 'post.codeproject == false' checks if it's DEFINED (or not), doesn't check the boolean!! {% endcomment %}
+     {% comment %} see https://help.shopify.com/themes/liquid/basics/true-and-false for a bit more info {% endcomment %}
+     {% comment %} 'unless' is the inverse of the 'if' tag (i.e. the 'else' bit on an 'if' statement) {% endcomment %}
+     {% unless post.codeproject == false %}
+       &lt;p&gt;The post &lt;a href=&quot;{{ site.url | xml_escape }}{{ post.url | xml_escape}}&quot;&gt;{{ post.title | xml_escape }}&lt;/a&gt; first appeared on my blog &lt;a href=&quot;http://mattwarren.org&quot;&gt;Performance is a Feature!&lt;/a&gt;&lt;/p&gt;
+       {% comment %} Enable CodeProject integration {% endcomment %}
+       &lt;a href=&quot;http://www.codeproject.com/script/Articles/BlogFeedList.aspx?amid=641373&quot; rel=&quot;tag&quot; style=&quot;display:none&quot;&gt;CodeProject&lt;/a&gt;
+     {% endunless %}
+   </content>
+   {% for tag in post.tags %}
+     <category term='{{ tag }}' scheme='{{ site.url }}{{ site.baseurl }}/tags#{{ tag }}'/>
+   {% endfor %}
  </entry>
  {% endfor %}
 

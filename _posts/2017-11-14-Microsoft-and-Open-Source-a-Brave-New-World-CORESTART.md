@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Microsoft & Open Source a 'Brave New World' - CORESTART 2.0
-comments: true,
-codeproject: false,
+comments: true
+codeproject: false
 tags: [Open Source, Speaking]
 ---
 

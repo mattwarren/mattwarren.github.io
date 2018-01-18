@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Exploring the BBC micro:bit Software Stack
-comments: true,
-codeproject: false,
+comments: true
+codeproject: false
 tags: [Open Source, Internals, Hardware]
 ---
 

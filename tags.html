@@ -24,7 +24,7 @@ redirect_from:
 
 <ul class="tag-cloud">
 {% for tag in site.tags %}
-  <li style="font-size: {{ tag | last | size | times: 300 | divided_by: site.tags.size | plus: 70  }}%">
+  <li style="font-size: {{ tag | last | size | times: 300 | divided_by: site.tags.size | plus: 70 }}%">
     <a href="#{{ tag | first | slugize | replace:' ','-' }}">
       {{ tag | first }}
     </a>
@@ -48,7 +48,7 @@ redirect_from:
   {% assign originaltag = tag | replace:'-',' ' %}
   <h3 id="{{ tag }}">{{ originaltag }}</h3>
   <ul>
-  {% for post in site.tags[originaltag]) %}
+  {% for post in site.tags[originaltag] %}
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a> : {{ post.date | date_to_string }}
     </li>

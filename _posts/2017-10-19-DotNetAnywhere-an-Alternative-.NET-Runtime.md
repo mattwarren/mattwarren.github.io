@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'DotNetAnywhere: An Alternative .NET Runtime'
-comments: true,
+comments: true
 tags: [.NET, CLR, Internals]
 ---
 

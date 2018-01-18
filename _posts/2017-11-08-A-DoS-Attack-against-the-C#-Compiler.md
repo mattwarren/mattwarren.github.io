@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A DoS Attack against the C# Compiler
-comments: true,
+comments: true
 tags: [C#, Open Source, Roslyn]
 ---
 
