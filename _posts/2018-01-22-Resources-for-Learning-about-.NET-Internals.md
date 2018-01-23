@@ -26,7 +26,7 @@ These blogs are all written by non-Microsoft employees (AFAICT), or if they do w
 
 **Special mention** goes to **Sasha Goldshtein**, he's been blogging about this [longer than anyone](http://blogs.microsoft.co.il/sasha/tag/netinternals/)!!
 
-- [**All Your Base Are Belong To Us**]() by [**Sasha Goldshtein** (@goldshtn)](https://twitter.com/goldshtn)
+- [**All Your Base Are Belong To Us**](http://blogs.microsoft.co.il/sasha) by [**Sasha Goldshtein** (@goldshtn)](https://twitter.com/goldshtn)
   - [Generic Method Dispatch](http://blogs.microsoft.co.il/sasha/2010/07/09/generic-method-dispatch/)
   - [Inspecting Local Root Lifetime](http://blogs.microsoft.co.il/sasha/2010/08/25/inspecting-local-root-lifetime/)
   - [Virtual Method Dispatch and Object Layout Changes in CLR 4.0](http://blogs.microsoft.co.il/sasha/2012/03/15/virtual-method-dispatch-and-object-layout-changes-in-clr-40/)
@@ -46,7 +46,7 @@ These blogs are all written by non-Microsoft employees (AFAICT), or if they do w
   - [Pooling large arrays with ArrayPool](http://adamsitnik.com/Array-Pool/)
   - [Collecting Hardware Performance Counters with BenchmarkDotNet](http://adamsitnik.com/Hardware-Counters-Diagnoser/)
   - [Disassembling .NET Code with BenchmarkDotNet](http://adamsitnik.com/Disassembly-Diagnoser/)
-- [**Andrey Akinshin's blog**]() by [**Andrey Akinshin** (@andrey_akinshin)](https://twitter.com/andrey_akinshin)
+- [**Andrey Akinshin's blog**](http://aakinshin.net/blog) by [**Andrey Akinshin** (@andrey_akinshin)](https://twitter.com/andrey_akinshin)
   - [Measuring Performance Improvements in .NET Core with BenchmarkDotNet (Part 1)](http://aakinshin.net/blog/post/stephen-toub-benchmarks-part1/)
   - [Blittable types](http://aakinshin.net/blog/post/blittable/)
   - [DateTime under the hood](http://aakinshin.net/blog/post/datetime/)
