@@ -32,8 +32,8 @@ These blogs are all written by non-Microsoft employees (AFAICT), or if they do w
   - [Virtual Method Dispatch and Object Layout Changes in CLR 4.0](http://blogs.microsoft.co.il/sasha/2012/03/15/virtual-method-dispatch-and-object-layout-changes-in-clr-40/)
   - [Runtime Representation of Generics—Part 2](http://blogs.microsoft.co.il/sasha/2012/09/18/runtime-representation-of-genericspart-2/)
   - [Revisiting Value Types vs. Reference Types](http://blogs.microsoft.co.il/sasha/2013/04/10/revisiting-value-types-vs-reference-types/)
-  
----
+
+----
 
 - [**Dissecting the code**](https://blogs.msdn.microsoft.com/seteplia) by [**Sergey Teplyakov** (@STeplyakov)](https://twitter.com/STeplyakov) (**M/S**)
   - [Garbage collection and variable lifetime tracking](https://blogs.msdn.microsoft.com/seteplia/2017/05/09/garbage-collection-and-variable-lifetime-tracking/)
@@ -81,7 +81,23 @@ These blogs are all written by non-Microsoft employees (AFAICT), or if they do w
 
 ----
 
-### Microsoft Engineers
+## Book of the Runtime (BotR)
+
+The BotR deserves it's own section (thanks to **svick** to [reminding me about it](http://disq.us/p/1pkmyni)).
+
+If you haven't heard of the BotR before, there's a nice FAQ that [explains what it is](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/botr-faq.md#what-is-the-botr):
+
+> The Book of the Runtime is a set of documents that describe components in the CLR and BCL. They are intended to focus more on architecture and invariants and not an annotated description of the codebase.
+>
+> It was originally created within Microsoft in ~2007, including this document. Developers were responsible to document their feature areas. This helped new devs joining the team and also helped share the product architecture across the team.
+
+To find your way around it, I recommend starting with the [table of contents](https://github.com/dotnet/coreclr/tree/master/Documentation/botr#the-book-of-the-runtime) and then diving in.
+
+**Note:** It's written for *developers working on the CLR*, so it's not an introductory document. I'd recommend reading some of the other blog posts first, then referring to the BotR once you have the basic knowledge. For instance many of my blog posts started with me reading a chapter from the BotR, not fully understanding it, going away and learning some more, writing up what I found and then pointing people to the relevant BotR page for more information.
+
+----
+
+## Microsoft Engineers
 
 The blogs below are written by the *actual* engineers who worked on, designed or managed various parts of the CLR, so they give a deep insight (again, if I've missed any blogs out, please let me know):
 
@@ -105,19 +121,25 @@ The blogs below are written by the *actual* engineers who worked on, designed or
   - [Creating an IL-rewriting profiler](https://blogs.msdn.microsoft.com/davbr/2007/03/06/creating-an-il-rewriting-profiler/)
   - [Type Forwarding](https://blogs.msdn.microsoft.com/davbr/2009/09/30/type-forwarding/)
   - [Metadata Tokens, Run-Time IDs, and Type Loading](https://blogs.msdn.microsoft.com/davbr/2011/10/17/metadata-tokens-run-time-ids-and-type-loading/)
+- [**Yun Jin's WebLog CLR internals, Rotor code explanation, CLR debugging tips, trivial debugging notes, .NET programming pitfalls**](https://blogs.msdn.microsoft.com/yunjin) by [**Yun Jin**](https://social.msdn.microsoft.com/profile/Yun+Jin)
+  - [FCall and GC hole – first post about Rotor](https://blogs.msdn.microsoft.com/yunjin/2004/02/09/fcall-and-gc-hole-first-post-about-rotor/)
+  - [Special threads in CLR](https://blogs.msdn.microsoft.com/yunjin/2005/07/05/special-threads-in-clr/)
+  - [Dangerous PInvokes – string modification](https://blogs.msdn.microsoft.com/yunjin/2004/02/21/dangerous-pinvokes-string-modification/)
 
-### Books
+----
+
+## Books
 
 Finally, if you prefer reading off-line there are some decent books that discuss .NET Internals (Note: all links are Amazon Affiliate links):
 
- - [CLR via C#, 4ed by **Jeffrey Richter**](http://amzn.to/2Ba0ytN)
- - [Shared Source CLI Essentials Paperback by **David Stutz, Ted Neward, Geoff Shilling**](http://amzn.to/2DcscYY)
- - [Writing High-Performance .NET Code Paperback by **Ben Watson**](http://amzn.to/2EOFX0e)
- - [Pro .NET Performance: Optimize Your C# Applications by **Sasha Goldshtein**](http://amzn.to/2Djtplh)
-  
- All the books listed above I've bought copies of and read cover-to-cover, they're fantastic resources. 
- 
- I've also been recently recommend the 2 books below, they look good and certainly the authors know their stuff, but I haven't read them yet:
+- [CLR via C#, 4ed by **Jeffrey Richter**](http://amzn.to/2Ba0ytN)
+- [Shared Source CLI Essentials Paperback by **David Stutz, Ted Neward, Geoff Shilling**](http://amzn.to/2DcscYY)
+- [Writing High-Performance .NET Code Paperback by **Ben Watson**](http://amzn.to/2EOFX0e)
+- [Pro .NET Performance: Optimize Your C# Applications by **Sasha Goldshtein**](http://amzn.to/2Djtplh)
 
- - [The Common Language Infrastructure Annotated Standard by **James S. Miller, Susann Ragsdale**](http://amzn.to/2ERV6Ol)
- - [Essential .NET, Volume I: The Common Language Runtime by **Don Box, Chris Sells**](http://amzn.to/2Dm1yAV)
+All the books listed above I've bought copies of and read cover-to-cover, they're fantastic resources.
+
+I've also been recently recommend the 2 books below, they look good and certainly the authors know their stuff, but I haven't read them yet:
+
+- [The Common Language Infrastructure Annotated Standard by **James S. Miller, Susann Ragsdale**](http://amzn.to/2ERV6Ol)
+- [Essential .NET, Volume I: The Common Language Runtime by **Don Box, Chris Sells**](http://amzn.to/2Dm1yAV)
