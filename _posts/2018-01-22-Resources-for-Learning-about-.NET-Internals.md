@@ -143,3 +143,7 @@ I've also been recently recommend the 2 books below, they look good and certainl
 
 - [The Common Language Infrastructure Annotated Standard by **James S. Miller, Susann Ragsdale**](http://amzn.to/2ERV6Ol)
 - [Essential .NET, Volume I: The Common Language Runtime by **Don Box, Chris Sells**](http://amzn.to/2Dm1yAV)
+
+----
+
+Discuss this post on [HackerNews](https://news.ycombinator.com/item?id=16212220) and [/r/programming](https://www.reddit.com/r/programming/comments/7s7rkq/resources_for_learning_about_net_internals/)
