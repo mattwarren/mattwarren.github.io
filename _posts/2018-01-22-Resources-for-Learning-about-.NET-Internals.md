@@ -36,6 +36,7 @@ These blogs are all written by non-Microsoft employees (AFAICT), or if they do w
 ----
 
 - [**Dissecting the code**](https://blogs.msdn.microsoft.com/seteplia) by [**Sergey Teplyakov** (@STeplyakov)](https://twitter.com/STeplyakov) (**M/S**)
+  - [Understanding different GC modes with Concurrency Visualizer](https://blogs.msdn.microsoft.com/seteplia/2017/01/05/understanding-different-gc-modes-with-concurrency-visualizer/)
   - [Garbage collection and variable lifetime tracking](https://blogs.msdn.microsoft.com/seteplia/2017/05/09/garbage-collection-and-variable-lifetime-tracking/)
   - [Managed object internals, Part 1. The layout](https://blogs.msdn.microsoft.com/seteplia/2017/05/26/managed-object-internals-part-1-layout/) (Also [part 2](https://blogs.msdn.microsoft.com/seteplia/2017/09/06/managed-object-internals-part-2-object-header-layout-and-the-cost-of-locking/), [part 3](https://blogs.msdn.microsoft.com/seteplia/2017/09/12/managed-object-internals-part-3-the-layout-of-a-managed-array-3/) and [part 4](https://blogs.msdn.microsoft.com/seteplia/2017/09/21/managed-object-internals-part-4-fields-layout/))
   - [To box or not to Box? That is the question!](https://blogs.msdn.microsoft.com/seteplia/2017/05/17/box-or-not-to-box-that-is-the-question/)
@@ -78,6 +79,23 @@ These blogs are all written by non-Microsoft employees (AFAICT), or if they do w
 - [**Alexandre Mutel's blog**](http://xoofx.com/blog/) by [**Alexandre Mutel** (@xoofx)](https://twitter.com/xoofx)
   - [A new stackalloc operator for reference types with CoreCLR and Roslyn](http://xoofx.com/blog/2015/10/08/stackalloc-for-class-with-roslyn-and-coreclr/)
   - [Struct inheritance in C# with CoreCLR and Roslyn](http://xoofx.com/blog/2015/09/27/struct-inheritance-in-csharp-with-roslyn-and-coreclr/)
+
+**Update:** I missed out a few blogs and learnt about some new ones:
+
+- [**Performance is everything. But correctness comes first.**](https://aloiskraus.wordpress.com) by [**Alois Kraus**](http://geekswithblogs.net/akraus1/Default.aspx) (also includes some great posts on Windows Internals and Debugging, such as [Windows 10 Memory Compression And More](https://aloiskraus.wordpress.com/2016/10/03/windows-10-memory-compression-and-more/) and [How Buffered IO Can Ruin Performance](https://aloiskraus.wordpress.com/2016/10/09/how-buffered-io-can-ruin-performance/))
+  - [The Non Contracting Code Contracts](https://aloiskraus.wordpress.com/2016/07/18/the-non-contracting-code-contracts/)
+  - [When Known .NET Bugs Bite You](https://aloiskraus.wordpress.com/2016/07/31/when-known-net-bugs-bite-you/)
+  - [The Definitive Serialization Performance Guide](https://aloiskraus.wordpress.com/2017/04/23/the-definitive-serialization-performance-guide/)
+  - [MemAnalyzer v2.5 Released](https://aloiskraus.wordpress.com/2017/08/17/memanalyzer-v2-5-released/)
+- [**Entropy Overload**](http://blog.barrkel.com) by [**Barry Kelly**](https://stackoverflow.com/users/3712/barry-kelly)
+  - [Call vs CallVirt for C# non-virtual instance methods](http://blog.barrkel.com/2006/05/call-vs-callvirt-for-c-non-virtual.html)
+  - [Covariance and Contravariance in .NET, Java and C++](http://blog.barrkel.com/2006/07/covariance-and-contravariance-in-net.html)
+  - [The not so lazy garbage collector](http://blog.barrkel.com/2006/07/not-so-lazy-garbage-collector.html)
+  - [Commonly Confused Tidbits re .NET Garbage Collector](http://blog.barrkel.com/2009/12/commonly-confused-tidbits-re-net.html)
+- [**Matthew Skelton's blog**](https://blog.matthewskelton.net) by [**Matthew Skelton**](https://twitter.com/matthewpskelton)
+  - [Advanced Call Processing in the CLR](https://blog.matthewskelton.net/2012/01/29/advanced-call-processing-in-the-clr/)
+  - [CLR-COM Interop](https://blog.matthewskelton.net/2012/01/29/clr-com-interop/)
+  - [CLR Contexts](https://blog.matthewskelton.net/2012/01/29/clr-contexts/)
 
 ----
 
