@@ -5,9 +5,9 @@ comments: false
 codeproject: false
 ---
 
-## Background and History
-
 Before we dive into the technical details, let's start with a quick history lesson, courtesy of [Don Syme](https://www.microsoft.com/en-us/research/people/dsyme/) who worked on adding generics to .NET and before going on to [designing and implementing F#](http://fsharp.org), which is a pretty impressive set of achievements!!
+
+## Background and History
 
 - **1999** Initial research, design and planning
   - [.NET/C# Generics History: Some Photos From Feb 1999](https://blogs.msdn.microsoft.com/dsyme/2011/03/15/netc-generics-history-some-photos-from-feb-1999/) 
