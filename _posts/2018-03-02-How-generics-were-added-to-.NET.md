@@ -30,7 +30,7 @@ To give you an idea of how these events fit into the bigger picture, here are th
 | 1.1 |	1.1 |	2003-04-24 |
 | **2.0** | **2.0** | **2005-11-07** |
 
-Aside from the historical perspective, the part I find most facisnating is just how much the addition of generics in .NET was due to the work done by Microsoft Research, from [.NET/C# Generics History](https://blogs.msdn.microsoft.com/dsyme/2011/03/15/netc-generics-history-some-photos-from-feb-1999/):
+Aside from the historical perspective, the part I find most fascinating is just how much the addition of generics in .NET was due to the work done by Microsoft Research, from [.NET/C# Generics History](https://blogs.msdn.microsoft.com/dsyme/2011/03/15/netc-generics-history-some-photos-from-feb-1999/):
 
 > It was only through the total dedication of Microsoft Research, Cambridge during 1998-2004, to doing **a complete, high quality implementation in both the CLR (including NGEN, debugging, JIT, AppDomains, concurrent loading and many other aspects), and the C# compiler**, that the project proceeded. 
 
@@ -42,7 +42,7 @@ Wow, C# and .NET would look **very** different without all these features!!
 
 ### The 'Gyro' Project - Generics for Rotor
 
-Unfortunately there doesn't exist a publically accessible version of the .NET 1.0 and 2.0 source code, so we can't go back and look at the changes that were made (if I'm wrong, please let me know as I'd love to read it).
+Unfortunately there doesn't exist a publicly accessible version of the .NET 1.0 and 2.0 source code, so we can't go back and look at the changes that were made (if I'm wrong, please let me know as I'd love to read it).
 
 However, we do have the next best thing, the ['Gyro' project](https://www.microsoft.com/en-us/download/details.aspx?id=52517) in which the equivalent changes were made to the ['Shared Source Common Language Implementation'](https://en.wikipedia.org/wiki/Shared_Source_Common_Language_Infrastructure) (SSCLI) code base (a.k.a 'Rotor'). As an aside, if you want to learn more about the Rotor code base I really recommend the excellent book by Ted Neward, which you can [download from his blog](http://blogs.tedneward.com/post/revisiting-rotor/).
 
@@ -146,7 +146,7 @@ Next, we'll take a look at the specific classes/files that had the most changes 
 
 ## Components of the Runtime
 
-Now we'll look at individual components in more detail so we can get an idea of how different parts of the runtime had to change to accomondate generics.
+Now we'll look at individual components in more detail so we can get an idea of how different parts of the runtime had to change to accommodate generics.
 
 ### Type System changes
 
@@ -168,7 +168,7 @@ Not surprisingly the bulk of the changes are in the Virtual Machine (VM) compone
 
 ### Bytecode or 'Intermediate Language' (IL) changes
 
-The main place that the implementation of generics in the CLR differs from the JVM is that they are ['fully reified' instead of using 'type erasure'](http://www.jprl.com/Blog/archive/development/2007/Aug-31.html), this was possible because the CLR designers were willing to break backwards compatability, whereas the JVM had been around longer so I assume that this was a much less appealing option. For more discussion on this issue see [Erasure vs reification](http://beust.com/weblog/2011/07/29/erasure-vs-reification/) and [Reified Generics for Java](http://gafter.blogspot.co.uk/2006/11/reified-generics-for-java.html).
+The main place that the implementation of generics in the CLR differs from the JVM is that they are ['fully reified' instead of using 'type erasure'](http://www.jprl.com/Blog/archive/development/2007/Aug-31.html), this was possible because the CLR designers were willing to break backwards compatibility, whereas the JVM had been around longer so I assume that this was a much less appealing option. For more discussion on this issue see [Erasure vs reification](http://beust.com/weblog/2011/07/29/erasure-vs-reification/) and [Reified Generics for Java](http://gafter.blogspot.co.uk/2006/11/reified-generics-for-java.html).
 
 The specific changes made to the .NET Intermediate Language (IL) op-codes can be seen in the `inc/opcode.def` ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007?w=1#diff-91e0675d515fc426f84d4e6465ad7f2d)), in essence the following 3 instructions were added
 
@@ -178,7 +178,7 @@ The specific changes made to the .NET Intermediate Language (IL) op-codes can be
 
 In addition the `IL Assembler` tool (ILASM) needed [significant changes](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-f7f421904f275fdc51213ac75de92119) as well as it's counter part `IL Disassembler (ILDASM) so it could [handle the additional instructions](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-87680592860bf2d2e2a595434efa0016).
 
-There is also a whole section titled 'Support for Polymorphism in IL' that explains these changes in greated detail in [Design and Implementation of Generics for the .NET Common Language Runtime](https://www.microsoft.com/en-us/research/wp-content/uploads/2001/01/designandimplementationofgenerics.pdf)
+There is also a whole section titled 'Support for Polymorphism in IL' that explains these changes in greater detail in [Design and Implementation of Generics for the .NET Common Language Runtime](https://www.microsoft.com/en-us/research/wp-content/uploads/2001/01/designandimplementationofgenerics.pdf)
 
 ### Shared Instantiations
 
@@ -219,7 +219,7 @@ In addition, [this comment](https://github.com/mattwarren/GenericsInDotNet/blob/
 
 ### Compiler and JIT Changes
 
-If seems like almost every part of the compiler had to change to accomodate generics, which is not surprising given that they touch so many parts of the code we write, `Types`, `Classes` and `Methods`. Some of the bigest changes were:
+If seems like almost every part of the compiler had to change to accommodate generics, which is not surprising given that they touch so many parts of the code we write, `Types`, `Classes` and `Methods`. Some of the biggest changes were:
 
 - `csharp/csharp/sccomp/clsdrec.cpp` - **+999 -363** - ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-0952232ff4ff9b6e7dd3d0810c526384))
 - `csharp/csharp/sccomp/emitter.cpp` - **+347 -127** - ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-58397e0e022ba5c8e98f1ea59eadefee))
