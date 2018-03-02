@@ -1,0 +1,933 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>IL extensions for generics</title>
+<link rel="stylesheet" type="text/css" href="./rotor.css">
+</head>
+
+<body>
+
+<h1>IL extensions for generics</h1>
+
+
+<p>This document describes the changes to the
+Common Language Runtime to support generics. These changes are:
+
+<dl>
+<dt>Compatible.</dt>
+<dd>IL code from the V1 CLR will run unmodified in the
+generics extension.</dd>
+
+<dt>Minimal.</dt>
+<dd>The changes introduce as
+few new instructions as possible. They also change as few existing instructions
+as possible.</dd>
+
+<dt>Verifiable.</dt>
+<dd>The extensions are verifiable.</dd>
+
+<dt>JIT-friendly.</dt>
+<dd>It should be possible to compile IL to native code
+using a variety of strategies. It is assumed that sophisticated type tracking
+is not performed (as the Econo-JIT does only precise tracking of value types). 
+It is also possible to compile most generic code at installation time.</dd>
+
+<dt>Compiler-friendly.</dt>
+<dd>Generation of IL from source languages with
+generics is straightforward. It should be possible to generate code
+more-or-less directly from the parse tree.</dt>
+</dl>
+
+<div style='border:none;border-top:solid windowtext 1.0pt;padding:1.0pt 0cm 0cm 0cm'>
+
+<h2>Overview of Changes</h2>
+
+</div>
+
+<p>To explain the proposed changes it is helpful to
+categorize instructions according to their "generic behaviour". </p>
+
+<p>Many of the existing instructions are <i>generic</i>
+in the sense that they work uniformly over any V1 type; hence they can also
+work over values of type T (where T is a formal type parameter). Others are <i>reference-generic</i>
+as they work over any reference type; hence they can also work over values of
+type T when T is constrained by a class or interface. Further instructions are <i>value-generic
+</i>as they work over any value type; these can be generalized to work over
+reference types too, and hence over values of type T. </p>
+
+<p>Some instructions are parameterized by type
+signatures that might contain formal generic parameters, and others are
+parameterized by member signatures that might contain formal generic parameters
+and are used for binding purposes in addition to conveying type information.
+The remainder of the instructions are either (a) unverifiable, (b) not generic,
+or (c) control flow.</p>
+
+<table border="1">
+ <tr>
+  <td width=169 valign=top>
+  <p><b>Instructions</b></p>
+  </td>
+  <td width=156 valign=top>
+  <p><b>Category</b></p>
+  </td>
+  <td width=265 valign=top>
+  <p><b>Changes required</b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=169 valign=top>
+  <p>ldloc, ldloca, stloc, <br>
+  ldarg, ldarga, starg, <br>
+  dup, pop, ret</p>
+  </td>
+  <td width=156 valign=top>
+  <p>Generic.</p>
+  </td>
+  <td width=265 valign=top>
+  <p>No change.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=169 valign=top>
+  <p>beq, bne.un, <br>
+  brfalse, brtrue,<br>
+  ldind.ref, stind.ref,<br>
+  ldelem.ref, stelem.ref,<br>
+  ldnull</p>
+  </td>
+  <td width=156 valign=top>
+  <p>Reference-generic.</p>
+  </td>
+  <td width=265 valign=top>
+  <p>New: generic instructions ldelem and stelem.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=169 valign=top>
+  <p>cpobj, initobj, ldobj, stobj, box, unbox</p>
+  </td>
+  <td width=156 valign=top>
+  <p>Value-generic.<br>
+  <br>
+  </p>
+  </td>
+  <td width=265 valign=top>
+  <p>Change: generalize to all types (except unbox), and bind
+  generic parameters in token. New: generic instruction unbox.any.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=169 valign=top>
+  <p>ldtoken, <br>
+  newarr, ldelema,<br>
+  castclass, isinst,<br>
+  mkrefany, refanyval</p>
+  </td>
+  <td width=156 valign=top>
+  <p>Parameterized by type signature.</p>
+  </td>
+  <td width=265 valign=top>
+  <p>Bind generic parameters in the signature.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=169 valign=top>
+  <p>ldfld, ldflda, stfld,<br>
+  ldsfld, ldsflda, stsfld,<br>
+  call, callvirt, newobj,<br>
+  jmp, ldftn, ldvirtftn</p>
+  </td>
+  <td width=156 valign=top>
+  <p>Parameterized by member signature.</p>
+  </td>
+  <td width=265 valign=top>
+  <p>When used on generic class instantiations or to access per-instantiation
+  static fields, the member-reference must include an instantiation TypeSpec.
+  When used on generic methods, it must take a method-instantiation token
+  instead.</p>
+  </td>
+ </tr>
+</table>
+
+
+<p>We now discuss each of the categories above in more detail.</p>
+
+<h3>Generic instructions</h3>
+
+<p>The generic instructions listed in the table
+operate on values of any type. They are extended to operate on values of type <i>T</i>
+(for some generic parameter <i>T</i>), and on instantiations of generic type
+definitions (including generic value types).</p>
+
+<h3>Reference-generic instructions</h3>
+
+<p>The reference-generic instructions listed in the
+table operate on or produce values of any <i>reference</i> type. They are
+extended to operate on values of type <i>T</i> (for some generic parameter <i>T</i>),
+and on generic class and interface instantiations (but <i>not</i> generic value
+types).</p>
+
+<h3>Value-generic instructions</h3>
+
+<p>The instructions listed in the third row of the
+table (<b>cpobj</b>, <b>initobj</b>, <b>ldobj</b>, <b>stobj</b>, <b>box</b>, <b>unbox</b>)
+currently operate on value types only.  All but the last can be generalized to
+operate on reference types also. We introduce a new instruction <b>unbox.any </b>which
+generalizes <b>unbox </b>to work on reference types and value types.</p>
+
+<h3>Type tokens</h3>
+
+<p>Some instructions are parameterized by type
+tokens (typedefs, typerefs or typespecs). In some cases the types are redundant
+(because the type of the object on the stack can be determined statically
+anyway) but aid non-type-tracking JITs. Instructions in this subcategory
+include <b>box</b> and <b>unbox</b>. Other instructions require the type token
+for instance testing (<b>castclass</b>, <b>isinst</b>, <b>refanyval</b>, <b>ldelema</b>)<b>
+</b>or instance creation (<b>newarr</b>,<b> mkrefany</b>). Finally <b>ldtoken</b>
+determines the run-time type handle that corresponds to a metadata type token.</p>
+
+<p>These instructions are extended to deal with the
+two new forms of types: generic parameters and generic type instantiations.</p>
+
+<h3>Member signatures</h3>
+
+<p>The instructions <b>ldfld</b>, <b>ldflda</b>, <b>stfld</b>, <b>ldsfld</b>,
+<b>ldsflda</b>, <b>stsfld</b>, <b>call</b>, <b>callvirt</b>, <b>newobj</b>, <b>ldftn</b>,
+<b>ldvirtftn</b> and <b>jmp</b> are parameterized by member signature tokens.
+In order to use these instructions with generic type instantiations, the
+signature must be a member <i>reference</i> (not <i>definition</i>) in which
+the generic type instantiation is expressed as a TypeSpec. (Compare the use of
+pseudo methods for arrays where a TypeSpec is used to describe the particular
+array type). </p>
+
+<p>In contrast to array signatures, though, the signature itself
+(argument and result types) are the <i>formal</i> signature of the field or method
+and hence may include generic parameters.</p>
+
+<div style='border:none;border-top:solid windowtext 1.0pt;padding:1.0pt 0cm 0cm 0cm'>
+
+<h2>New instructions</h2>
+
+</div>
+
+<h3>ldelem -  load an element of an array</h3>
+
+<div align=center>
+
+<table border=1 width=595>
+ <tr>
+  <td width=105 valign=top>
+  <p>Format</p>
+  </td>
+  <td width=124 valign=top>
+  <p>Assembly Format</p>
+  </td>
+  <td width=365 valign=top'>
+  <p>Description</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=105 valign=top>
+  <p>A3 &lt;T&gt;</p>
+  </td>
+  <td width=124 valign=top>
+  <p>ldelem <i>type</i></p>
+  </td>
+  <td width=365 valign=top>
+  <p>Load the element at <i>index</i> onto the top
+  of the stack</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<h4>Stack Transition:</h4>
+
+<div style='margin-left:36.0pt'>
+<p>...,  <i>array, index</i></p>
+
+<p><img width=31 height=27 src="image002.gif"></p>
+
+<p>..., <i>value</i></p>
+</div>
+
+<h4>Description:</h4>
+
+<p>The <b>ldelem</b> instruction loads the value of
+the element with index <i>index</i> (of type U) in the zero-based
+one-dimensional array <i>array</i> and places it on the top of the stack. The
+type of the return value is indicated by the type token <i>type </i>in the
+instruction.</p>
+
+<p>If <i>type </i>refers to a <b>typespec<i> </i></b>that
+includes generic parameters then these are first bound to the actual generic
+arguments of the enclosing generic type definition and/or generic method.</p>
+
+<p>In other respects it has the same behaviour as
+the <b>ldelem.* </b>instruction corresponding to the generic type instantiation.</p>
+
+<p>The ldelem instruction has the same behavior as
+the <b>ldelema</b> instruction followed by the (generalized) <b>ldobj </b>instruction,
+but can be implemented more efficiently.</p>
+
+<h4>Exceptions:</h4>
+
+<p><b>NullReferenceException</b> is thrown if <i>array</i> is null.</p>
+
+<p><b>IndexOutOfRangeException</b> is thrown if <i>index </i>is larger than the bound of <i>array</i>.</p>
+
+<p><b>ArrayTypeMismatchException</b> is thrown if <i>array </i>doesn't hold elements of the required
+type.</p>
+
+<h4>Verifiability:</h4>
+
+<p>Correct IL code requires that <i>array</i> is
+either null or an array.</p>
+
+<h3>stelem - store an element of an array</h3>
+
+<div align=center>
+
+<table border=1 width=595>
+ <tr>
+  <td width=105 valign=top>
+  <p>Format</p>
+  </td>
+  <td width=124 valign=top>
+  <p>Assembly Format</p>
+  </td>
+  <td width=365 valign=top>
+  <p>Description</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=105 valign=top>
+  <p>A4 &lt;T&gt;</p>
+  </td>
+  <td width=124 valign=top>
+  <p>stelem <i>type</i></p>
+  </td>
+  <td width=365 valign=top>
+  <p>Replace array element at <i>index</i> with the
+  value on the stack</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<h4>Stack Transition:</h4>
+
+<div style='margin-left:36.0pt'>
+<p>..., <i>array, index, value</i></p>
+
+<p class=Figure>
+
+<p><img width=31 height=27 src="image002.gif">
+
+<p>..., </p>
+</div>
+
+<h4>Description:</h4>
+
+<p>The <b>stelem</b> instruction replaces the value
+of the element with zero-based index <i>index</i> (of type U) in the
+one-dimensional array <i>array</i> with <i>value</i>.  Arrays are objects and
+hence represented by a value of type <b>O</b>. The value has the type specified
+by the token <i>type</i> in the instruction.</p>
+
+<p>If <i>type </i>refers to a <b>typespec<i> </i></b>that
+includes generic parameters then these are first bound to the actual generic
+arguments of the enclosing generic type definition and/or generic method.</p>
+
+<p>In other respects it has the same behaviour as
+the <b>stelem.* </b>instruction corresponding to the generic type instantiation.</p>
+
+<p>The stelem instruction has the same behaviour as
+the <b>ldelema</b> instruction followed by the (generalized) <b>stobj </b>instruction,
+but can be implemented more efficiently.</p>
+
+<h4>Exceptions:</h4>
+
+<p><b>NullReferenceException</b> is thrown if <i>array</i> is null.</p>
+
+<p><b>IndexOutOfRangeException</b> is thrown if <i>index </i>is larger than the bound of <i>array</i>.</p>
+
+<p><b>ArrayTypeMismatchException</b> is thrown if <i>array </i>doesn't hold elements of the required
+type.</p>
+
+<h4>Verifiability:</h4>
+
+<p>Correct IL requires that <i>array</i> be a
+zero-based, one-dimensional array. </p>
+
+
+<h3>unbox.any - convert boxed type to raw form</h3>
+
+<div align=center>
+
+<table border=1>
+ <tr'>
+  <td width=111 valign=top>
+  <p>Format</p>
+  </td>
+  <td width=118 valign=top>
+  <p>Assembly Format</p>
+  </td>
+  <td width=365 valign=top>
+  <p>Description</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=111 valign=top>
+  <p>A5 &lt;T&gt;</p>
+  </td>
+  <td width=118 valign=top>
+  <p>unbox.any <i>type</i></p>
+  </td>
+  <td width=365 valign=top>
+  <p>Extract the value type data from <i>obj</i>,
+  its boxed representation </p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<h4>Stack Transition:</h4>
+
+<div style='margin-left:36.0pt'>
+<p>..., <i>obj</i></p>
+
+<p><img width=31 height=27 src="image002.gif"></p>
+
+<p>..., <i>value</i></p>
+</div>
+
+
+<h4>Description:</h4>
+
+<p><i>Type</i> is a metadata token (a <b>typeref</b>,<b> typedef</b>, or <b>typespec</b>)
+indicating the type of <i>value.</i>  If <i>type </i>refers to a <b>typespec<i>
+</i></b>that includes generic parameters then these are first bound to the actual
+generic arguments of the enclosing generic type definition and/or generic
+method.</p>
+
+<p>When applied to the boxed form of a value type,
+the <b>un</b><b>box.any</b> instruction extracts the value contained within obj
+and is therefore equivalent to <b>unbox </b>followed by <b>ldobj</b>.</p>
+
+<p>When applied to a reference type, the <b>unbox.any
+</b>instruction has the same effect as <b>castclass </b><i>type.</i></p>
+
+<h4>Exceptions:</h4>
+
+<p><b>InvalidCastException</b> is thrown if <i>obj </i>is not a (boxed) <i>t</i><i>ype</i>.</p>
+
+<p><b>NullReferenceException</b> is thrown if <i>obj</i> is null.</p>
+
+<p><b>TypeLoadException </b> is thrown if <i>type</i> cannot be found.  This is typically
+detected when IL is converted to native code rather than at runtime.</p>
+
+<div style='border:none;border-top:solid windowtext 1.0pt;padding:1.0pt 0cm 0cm 0cm'>
+
+<h2>Changes to Existing Instructions</h2>
+
+</div>
+
+<h3>box, unbox</h3>
+
+<h4>Format: </h4>
+
+<p>box <i>type</i><br>
+unbox <i>type</i></p>
+
+<h4>Description of change:</h4>
+
+<p>If the type signature <i>type </i>contains
+generic parameters then these are bound to the corresponding actual generic
+arguments to the enclosing generic method and/or generic type definition. </p>
+
+<p>The box instruction is generalized to work over
+reference types, in which case it behaves as a no-op.  Verifiable IL requires
+that the argument of the box instruction has type O.</p>
+
+<h3>call, callvirt</h3>
+
+<h4>Format: </h4>
+
+<p>call <i>method</i><br>
+callvirt <i>method</i></p>
+
+<h4>Description of change:</h4>
+
+<p>In order to invoke a method on an object of a
+generic type instantiation, <i>method</i> must be a member reference whose
+parent is a TypeSpec that specifies the generic type instantiation of the
+object. <br>
+[<i>Rationale:</i> whilst this instantiation information is not strictly
+necessary, as it is always possible to determine the instantiated type of the
+object on the stack, not all JITs do sufficiently precise type-tracking.]</p>
+
+<p>When <i>method</i> refers to a generic method
+with <i>n </i>generic parameters, <i>method </i>must be a method-instantiation
+token that specifies the method and its generic parameters.</p>
+
+<h4>Verifiability changes: </h4>
+
+<p>The binding of generic parameters must satisfy
+the constraints (if any) specified in the generic type definition or generic
+method.</p>
+
+<h4>Examples: </h4>
+
+<pre>
+call instance int32
+class MyStack&lt;int32&gt;::Length()
+callvirt !0 class MyStack&lt;class System.String&gt;::Pop()
+call void ArrayUtils::Reverse&lt;int64&gt;(!0[])
+call void class FastArray&lt;int32&gt;::PairWith&lt;int64&gt;(!0)
+</pre>
+
+<h3>newobj</h3>
+
+<h4>Format: </h4>
+
+<p>newobj <i>method</i></p>
+
+<h4>Description of change:</h4>
+
+<p>In order to create an object of a generic type
+instantiation, <i>method</i> must be the member reference of a constructor
+whose parent is a TypeSpec that specifies the generic type instantiation.</p>
+
+<h4>Verifiability changes:</h4>
+
+<p>The instantiation must satisfy the constraints
+(if any) specified in the generic type definition.</p>
+
+<h4>Examples: </h4>
+
+<pre>
+newobj instance void class MyStack&lt;int32&gt;::.ctor()
+</pre>
+
+<h3>newarr</h3>
+
+<h4>Format: </h4>
+
+<p>newarr <i>type</i></p>
+
+<h4>Description of change:</h4>
+
+<p>If <i>type </i>refers to a <b>typespec<i> </i></b>that
+includes generic parameters then these are first bound to the corresponding actual
+generic arguments of the enclosing generic type definition and/or generic
+method. This may involve run-time lookup.</p>
+
+<h3>ldelema</h3>
+
+<h4>Format: </h4>
+
+<p>ldelema <i>type</i></p>
+
+<h4>Description of change:</h4>
+
+<p>If <i>type </i>refers to a <b>typespec<i> </i></b>that
+includes generic parameters then these are first bound to the corresponding actual
+generic arguments of the enclosing generic type definition and/or generic
+method. This may involve run-time lookup.</p>
+
+<h3>castclass, isinst</h3>
+
+<h4>Format: </h4>
+
+<p>castclass <i>class</i><br>
+isinst <i>class</i></p>
+
+<h4>Description of change:</h4>
+
+<p>If the type signature <i>class </i>contains generic
+parameters then these are bound to the corresponding actual generic arguments
+of the enclosing generic method and/or generic type definition. This may
+involve run-time lookup. </p>
+
+<h3>cpobj, initobj, ldobj, stobj</h3>
+
+<h4>Format: </h4>
+
+<p>cpobj <i>classTok</i></p>
+
+<p>initobj <i>classTok</i></p>
+
+<p>ldobj <i>classTok</i></p>
+
+<p>ldobj <i>classTok</i></p>
+
+<h4>Description of change:</h4>
+
+<p><i>classTok </i>is
+permitted to refer to a class or interface type, in which case:
+
+<ul>
+<li><b>cpobj</b> has the
+same effect as <b>ldind.ref </b>followed by <b>stind.ref</b>
+
+<li><b>initobj </b>has the
+same effect as <b>ldnull</b> followed by <b>stind.ref</b>
+
+<li><b>ldobj</b> has the
+same effect as <b>ldind.ref</b>
+
+<li><b>stobj </b>has the
+same effect as <b>stind.ref</b>
+</ul>
+
+<p>If <i>classTok</i> refers to a <b>typespec<i> </i></b>that
+includes generic parameters then these are first bound to the corresponding actual
+generic arguments of the enclosing generic type definition and/or generic
+method.</p>
+
+<h3>ldfld, ldflda, stfld</h3>
+
+<h4>Format: </h4>
+
+<p>ldfld <i>field</i><br>
+</i>ldflda <i>field</i><br>
+</i>stfld <i>field</i></p>
+
+<h4>Description of change:</h4>
+
+<p>When <i>field</i> refers to an instance field in
+a generic type definition, it must be a member reference whose parent is a
+TypeSpec that specifies the generic type instantiation.</p>
+
+<h4>Example:</h4>
+
+<pre>
+ldfld !0 value class MyPair&lt;int32,class System.String&gt;::fst
+</pre>
+
+<h3>ldsfld, ldsflda, stsfld</h3>
+
+<h4>Format: </h4>
+
+<p>ldsfld <i>field<br>
+</i>ldsflda <i>field<br>
+</i>stsfld <i>field</i></p>
+
+<h4>Description of change:</h4>
+
+<p>When <i>field </i>refers to a per-instantiation
+static field in a generic type definition, it must be a member reference whose
+parent is a TypeSpec that specifies the generic type instantiation. </p>
+
+<div style='border:none;border-top:solid windowtext 1.0pt;padding:1.0pt 0cm 0cm 0cm'>
+
+<h2>Assembler grammar</h2>
+
+</div>
+
+<p>Changes are marked in red.</p>
+
+<p><span>&lt;decl&gt;  ::=</span><br>
+
+<span>  ...</span><br>
+
+<span>  | <b>.class</b> &lt;classAttr&gt;* &lt;id&gt;<br>
+<span style='color:red'>         </span>
+<span style='color:red;font-weight:normal'>[</span>
+<span style='color:red'>&lt; </span>
+<span style='color:red;font-weight:normal'>&lt;formalgenpars&gt;</span>
+<span style='color:red'> &gt;</span>
+<span style='color:red;font-weight:normal'>]</span>
+<span style='color:red'>      </span>
+<i><span style='color:red;font-weight:normal'>//
+formal generic parameters</span></i></span><br>
+
+<span>         [<b>extends</b> 
+<span style='color:red;font-weight:normal'>&lt;typeSpec&gt;</span>]      
+<i><span style='color:red;font-weight:normal'>//
+can be a type instantiation<br>
+</span></i>         [<b>implements</b> <span
+style='color:red;font-weight:normal'>&lt;typeSpec&gt;</span> [<b>,</b> 
+<span style='color:red'>&lt;</span>
+<span style='color:red;font-weight:normal'>typeSpec</span>
+<span style='color:red'>&gt;</span>]*]  </span><br>
+
+<span>         <b>{</b> &lt;classDecl&gt;* <b>}</span><br>
+<br>
+</b>&lt;type&gt;  ::=<br>
+
+<span>  ...</span><br>
+
+<span
+style='color:red'>  </span><span
+style='color:red;font-weight:normal'>| </span>
+<span style='color:red'>!</span>
+<span style='color:red;font-weight:normal'>
+&lt;int32&gt;           <i>// class generic parameter accessed by number
+</i></span><br>
+<span
+style='color:red'>  </span><span
+style='color:red;font-weight:normal'>| </span>
+<span style='color:red'>!!</span>
+<span style='color:red;font-weight:normal'>
+&lt;int32&gt;          <i>// method generic parameter accessed by number  </i><br>
+  | &lt;type&gt; </span><span
+style='color:red'>&lt;</span><span
+style='color:red;font-weight:normal'> &lt;genpars&gt; </span>
+<span style='color:red'>&gt;</span>
+<span style='color:red;font-weight:normal'>
+<i>// generic type instantiation<br>
+</i></span><br>
+
+&lt;methodHead&gt; ::= <br>
+  &lt;methAttr&gt;* &lt;callConv&gt; &lt;type&gt; &lt;methodName&gt; <span style='color:red;font-weight:normal'>[</span>
+<span style='color:red'>&lt;</span>
+<span style='color:red;font-weight:normal'>
+&lt;formalgenpars&gt; </span><span
+style='color:red'>&gt;</span><span
+style='color:red;font-weight:normal'>]</span><br>
+  <b>(</b> &lt;signature&gt; <b>)</b> &lt;implAttr&gt;*<br>
+
+<br>
+<span style='color:red;font-weight:normal'>&lt;genpars&gt; 
+::= &lt;type&gt; [</span><span
+style='color:red'>,</span><span
+style='color:red;font-weight:normal'> &lt;genpars&gt;]*<br>
+&lt;formalgenpars&gt; ::= &lt;formalgenpar&gt; [</span>
+<span style='color:red'>,</span>
+<span style='color:red;font-weight:normal'>
+&lt;formalgenpars&gt;]*<br>
+&lt;formalgenpar&gt; ::= &lt;constraints&gt; &lt;id&gt;<br>
+</i>&lt;constraints&gt; ::= </span><br>
+
+<span
+style='color:red;font-weight:normal'>  &lt;type&gt;    </span><br>
+
+<span
+style='color:red;font-weight:normal'>| </span>
+<span style='color:red'>(</span>
+<span style='color:red;font-weight:normal'>
+&lt;genpars&gt; </span><span
+style='color:red'>)</span><br>
+<br>
+&lt;instr_type&gt; ::=<br>
+  ...<span>  </span>
+<span style='color:red;font-weight:normal'>| </span>
+<span style='color:red'>ldelem</span>
+<span style='color:red;font-weight:normal'> | </span>
+<span style='color:red'>stelem </span>
+<span style='color:red;font-weight:normal'>| </span>
+<span style='color:red'>unbox.any</span><br>
+<br>
+</p>
+
+
+<div style='border:none;border-top:solid windowtext 1.0pt;padding:1.0pt 0cm 0cm 0cm'>
+
+<h2>Examples</h2>
+
+</div>
+
+<h3>Stack class</h3>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<pre>
+<i>// Class takes a single parameter of ref or value type</i>
+.class public Stack&lt;any T&gt;
+{
+<i>  // !0 refers to the first (and only) generic parameter</i>
+  .field private !0[] items
+  .field private int32 nitems
+
+  .method public instance void .ctor()
+  {
+    .maxstack 10
+    ldarg.0
+    call instance void System.Object::.ctor()
+    ldarg.0
+    ldc.i4 0
+    stfld int32 class Stack&lt;!0&gt;::nitems
+    ldarg.0
+    ldc.i4 20
+    call instance void !0[]::.ctor(int32)
+    stfld !0[] class Stack&lt;!0&gt;::items
+    ret
+  }
+
+  <i>// Signature for method has generic parameter as result type</i>
+  .method public !0 Pop()
+  {
+    .maxstack 10
+    .locals(int32)
+    ldarg.0
+    ldfld int32 Stack::nitems
+    dup
+    brfalse EmptyStack
+    ldc.i4 1
+    sub
+    stloc.0
+    ldarg.0
+    ldloc.0
+    stfld int32 class Stack&lt;!0&gt;::nitems
+    ldarg.0
+    ldfld !0[] class Stack&lt;!0&gt;::items
+    ldloc.0
+    ldelem !0
+    ret
+  EmptyStack:
+    pop
+    newobj instance void Empty::.ctor()
+    throw
+  }
+
+  .method public void Push(!0)
+  {
+    .maxstack 10
+    .locals(!0[])    <i>// Locals can be generic</i>
+    ldarg.0
+    ldfld !0[] class Stack&lt;!0&gt;::items
+    callvirt int32 System.Array::GetLength()
+    ldarg.0
+    ldfld class Stack&lt;!0&gt;::nitems
+    bne.un NoExpand
+<i>    // code for array expansion</i>
+    ldarg.0
+    ldfld !0[] class Stack&lt;!0&gt;::items
+    stloc.0
+    ldarg.0
+    ldfld int32 class Stack&lt;!0&gt;::nitems
+    ldc.i4 2
+    mul
+    call instance void !0[]::.ctor(int32)
+    ldarg.0
+    stfld !0[] class Stack&lt;!0&gt;::items
+    ldloc.0
+    ldarg.0
+    ldfld !0[] class Stack&lt;!0&gt;::items
+    ldarg.0
+    ldfld class Stack&lt;!0&gt;::nitems
+    call void System.Array::Copy(class System.Array, 
+      class System.Array, int32)        
+  NoExpand:
+    ldarg.0
+    ldfld !0[] class Stack&lt;!0&gt;::items
+    ldarg.0
+    ldfld int32 class Stack&lt;!0&gt;::nitems
+    ldarg.1
+    stelem !0
+    ldarg.0
+    ldarg.0
+    ldfld int32 class Stack&lt;!0&gt;::nitems
+    ldc.i4 1
+    add
+    stfld int32 class Stack&lt;!0&gt;::nitems
+    ret
+  }
+
+  .method public static void main() il managed implemented
+  {
+    .entrypoint
+    .maxstack  10
+
+    <i>// Locals can be generic type instantiations</i>
+    .locals(class Stack&lt;class System.String&gt;, 
+    class Stack&lt;int64&gt;)
+
+<i>    // Create a Stack&lt;String&gt; with two elements</i>
+    newobj instance void class Stack&lt;class System.String&gt;::.ctor()
+    stloc.0
+    ldloc.0    
+    ldstr &quot;Rock!&quot;
+    <i>// meth sig includes generic parameters</i>
+    callvirt void class Stack&lt;class System.String&gt;::Push(!0)
+    ldloc.0    
+    ldstr &quot;Generics&quot;
+    callvirt void class Stack&lt;class System.String&gt;::Push(!0)
+
+<i>    // Pop the elements and print them</i>
+    ldloc.0
+    <i>// notice generic parameters again</i>
+    callvirt !0 class Stack&lt;class System.String&gt;::Pop()
+    call void System.Console::WriteLine(class System.String)
+    ldloc.0
+    callvirt !0 class Stack&lt;class System.String&gt;::Pop()
+    call void System.Console::WriteLine(class System.String)
+
+<i>    // Create a Stack&lt;int64&gt; with one element</i>
+    newobj instance void class Stack&lt;int64&gt;::.ctor()
+    stloc.1
+    ldloc.1    
+    ldc.i8 123456789
+    callvirt void class Stack&lt;int64&gt;::Push(!0)
+    ...
+    ret
+  }
+}
+</pre>
+
+</div>
+
+
+<h3>Generic method</h3>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<pre>
+<i>  // static void Reverse&lt;T&gt;(T[] arr, int index, int length)</i>
+.method public static
+void Reverse&lt;any&gt;(!!0[] arr,int32 index,int32 length)
+  {
+    .maxstack 10
+    .locals(
+      int32 i,          <i>// int i;</i>
+      int32 j,          <i>// int j;</i>
+      !!0 temp)         <i>// T temp;</i>
+    ldarg index         <i>// i = index;</i>
+    stloc i
+    ldarg index
+    ldarg length        <i>// j = index + length - 1;</i>
+    add
+    ldc.i4 1
+    sub
+    stloc j
+  Loop:
+    ldloc i             <i>// while (i &lt; j) {</i>
+    ldloc j
+    bge Finish
+    ldarg arr           <i>// temp = arr[i];</i>
+    ldloc i
+    ldelem !!0
+    stloc temp
+    ldarg arr           <i>// arr[i] = arr[j];</i> 
+    ldloc i
+    ldarg arr
+    ldloc j
+    ldelem !!0
+    stelem !!0
+    ldarg arr           <i>// arr[j] = temp;</i>
+    ldloc j
+    ldloc temp
+    stelem !!0
+    ldloc i             <i>// i++;</i>
+    ldc.i4 1
+    add
+    stloc i
+    ldloc j             <i>// j--;</i>
+    ldc.i4 1
+    sub
+    stloc j
+    br Loop             <i>// }</i>
+  Finish:
+    ret
+  }
+</pre>
+
+</div>
+
+</body>
+
+</html>

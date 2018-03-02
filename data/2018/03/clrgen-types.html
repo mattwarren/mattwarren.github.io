@@ -1,0 +1,571 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CLR Generic Types</title>
+<link rel="stylesheet" type="text/css" href="./rotor.css">
+</head>
+
+<body>
+
+<h1>Generics in the Common Type
+System </h1>
+
+
+<p>This document describes the changes to the type
+system of the CLR to support <i>generics</i> (generic type definitions and
+generic methods). This design has the following aims:</p>
+
+<dl>
+<dt>Orthogonality with respect to the existing CLR.</dt>
+<dd>Where possible, generic type instantiations may occur in any context where
+existing CLR types may occur.</dd>
+
+<dt>Language independence.</dt>
+<dd>No assumptions about the source language have been made. We wish to support the
+existing generics-like features of as many languages as possible. We would also
+like to ensure that the design permits clean extensions of languages currently
+lacking generics; in particular, the Microsoft family consisting of VB, VC++
+and C#. </dd>
+
+<dt>Implementation independence.</dt>
+<dd>The specification is independent of any particular implementation: a runtime
+compiler should be free to expand a generic type instantiation a la C++
+templates, or to specialize representations and code on a case-by-case basis,
+or to share all representations and code (perhaps boxing and unboxing values to
+achieve this).</dd>
+
+<dt>Implementation efficiency.</dt>
+<dd>The design permits efficient implementation. Performance of generics should be
+no worse than the current use of Object to simulate generics; a good
+implementation should do much better, avoiding casts on reference type
+instantiations and producing specialized code for value type instantiations. </dd>
+
+<dt>Statically checked at point of definition,
+not use.</dt>
+<dd>A generic type definition can be validated and verified independently of its uses
+(contrast with C++ templates).</dd>
+
+<dt>Uniform behaviour with respect to type
+parameters.</dt>
+<dd>Our interpretation of generics or <i>parametric polymorphism</i> is that
+behaviour of generic types and generic methods should be "the same" at all type
+instantiations (again contrast C++ templates). This principle can be broken by
+code that switches on run-time instantiation information through casting and
+instance-of tests.</dd>
+</dl>
+
+<p>For concreteness, code fragments are written in
+a "C# with generics" pseudo-code.  </p>
+
+
+<div style='border:none;border-top:solid windowtext 1.0pt;padding:1.0pt 0cm 0cm 0cm'>
+
+<h2>Specification</h2>
+
+</div>
+
+<h3>Generic Type Definitions</h3>
+
+<p>A <i>generic type definition</i> is a
+class, interface, or value type definition with formal <i>generic parameters</i>.
+These generic parameters represent types.  Each generic parameter has a name,
+and optionally <i>constraints</i> that must be interface or class types. The
+generic parameter is in scope in the declarations of:
+
+<ul>
+<li>the generic parameter constraints, the base
+class that the class extends, and the interfaces that it implements;</p>
+
+<li>all instance members (fields, methods,
+constructors, properties and events)</p>
+</ul>
+
+<p>Some examples are shown in Section 3.</p>
+
+<p>The following restrictions are enforced:
+
+<ul>
+<li>"Naked" generic parameters (that is, the generic
+parameter itself, not nested inside some other constructed type) cannot be used
+to specify the superclass, interfaces, or constraints. <br>
+<br>
+<i>Rationale</i>: the inheritance hierarchy must be determinable at the point
+of definition, not use.
+
+<li>
+When instantiations of generic type definitions
+are ignored, there can be no cycles in the inheritance/interface hierarchy. To
+be precise, define a graph whose nodes are possibly-parameterized (but uninstantiated)
+classes and interfaces and whose edges are the following:
+
+<ol>
+<li>If a (possibly-parameterized) class or interface
+C extends or implements a class or interface D, then add an edge from C to D.</p>
+
+<li>If a (possibly-parameterized) class or interface
+C extends or implements an instantiated class or interface D&lt;type-1, ...,
+type-n&gt; then add an edge from C to D.
+</ol>
+
+The graph is legal if
+it contains no cycles.<br>
+<br>
+<i>Rationale</i>: when also considering the instantiations of generic type
+definitions, we wish to avoid cycles and infinite ascending chains in the
+inheritance hierarchy, whilst permitting definitions such as CloneableArrayList
+(see Section 2.13) in which there is a benign recursive reference to the class being defined. Here are some example definitions that we wish to outlaw:<br>
+<br>
+
+<div style='margin-left:72.0pt'>
+Infinite chain: <br>
+<pre>
+class C&lt;T&gt; : C&lt;C&lt;T&gt;&gt;
+</pre></div>
+
+<div style='margin-left:72.0pt'>
+Cycle of period 1: <br>
+<pre>
+class C&lt;T&gt; : C&lt;String&gt;
+</pre></div>
+
+<div style='margin-left:72.0pt'>
+Cycle of period 2:<br>
+<pre>
+class C&lt;T&gt; : D&lt;String&gt;
+class D&lt;T&gt; : C&lt;String&gt;
+</pre></div>
+
+<div style='margin-left:72.0pt'>
+Infinite chain through mutual recursion: <br>
+<pre>
+class C&lt;T&gt; : D&lt;C&lt;T&gt;&gt;
+class D&lt;T&gt; : C&lt;D&lt;T&gt;&gt;
+</pre></div>
+</ul>
+
+<h3>Type Syntax</h3>
+
+<p>The grammar of types in the CLR is extended in
+the following ways.</p>
+
+<p>
+Given a generic class, interface or value
+type definition, the generic parameters can be <i>bound</i> to <i>actual
+generic arguments </i>(i.e. types)<i> </i>to produce a<i> generic type instantiation.</i>
+The number of arguments must match the number of generic parameters specified
+in the generic type definition, and the constraints on the generic parameters
+must be observed. Examples:<br>
+<br>
+<pre>
+Queue&lt;String&gt;
+Pair&lt;int,Object&gt;
+Pair&lt;int,Pair&lt;int,String&gt;&gt;
+IEnumerable&lt;float&gt;
+ICloneable&lt;Queue&lt;String&gt;&gt;
+Vec3&lt;double&gt;
+</pre>
+
+<p>Generic parameters can be used as types
+whenever they are in scope, subject to the restrictions described above.</p>
+
+<h3>Type Equivalence</h3>
+
+<p>Equivalence on generic class and value type
+instantiations is by structure. That is, two generic type instantiations are
+equivalent if and only if they are instantiations of the same generic type definition
+and their generic arguments are equivalent. This applies to static type
+signatures <i>and</i> to run-time type representations (type handles).</p>
+
+<p><i>Rationale</i>:
+orthogonality, also compare arrays.</p>
+
+<h3>Run-time types and casting</h3>
+
+<h4>Generic type definitions</h4>
+
+<p>A consequence of orthogonality with the existing
+CLR is that objects of generic type instantiations carry sufficient information
+to recover the actual arguments at run-time (the <i>exact</i> type). This
+manifests itself through casting and instance-of testing, as well as in
+reflection capabilities of course (Object.GetType).</p>
+
+<p>The CLR rules for subtyping are extended as
+follows. Suppose that generic class or interface C has the header (constraints
+are optional)</p>
+
+<p style='margin-left:36.0pt'>C&lt;<i>tyvar-1</i>,
+..., <i>tyvar-n</i>&gt; : <br>
+<i>class-type</i>, <i>interface-type-1</i>, ..., <i>interface-type-m<br>
+where constraints</i></p>
+
+<p>Then C&lt;<i>type-1</i>,...,<i>type-n</i>&gt; is a
+subtype of</p>
+
+<p style='margin-left:36.0pt;text-indent:-18.0pt'>
+<i>class-type</i>[substitute
+<i>type-1</i> for <i>tyvar-1</i>,...,<i>type-n</i> for <i>tyvar-n</i>];</p>
+
+<p style='margin-left:36.0pt;text-indent:-18.0pt'>
+<i>interface-type-j</i>[substitute
+<i>type-1</i> for <i>tyvar-1</i>,...,<i>type-n</i> for <i>tyvar-n</i>] for each <i>j</i>.</p>
+
+<p>A consequence is that user-defined generic type
+definitions are <i>not</i> covariant in their type parameters, in contrast to
+the built-in array types and the generic types of the Eiffel programming
+language. For example, Queue&lt;String&gt; is not a subtype of
+Queue&lt;Object&gt;.</p>
+
+<p><i>Rationale</i>: this
+would lead to a type loophole without complex restrictions.</p>
+
+<h3>Accessibility of Members</a></h3>
+
+<p>A member of an instantiation of a generic type
+definition C is accessible if and only if the member is accessible in C itself.</p>
+
+<h3>Signatures and Binding</a></h3>
+
+<p>Instance members (fields and methods) of a generic
+type instantiation are referred to by <i>member-ref</i>, which consists of two
+parts:
+
+<ol>
+<li>The <i>parent</i> of the member, in this case an <i>instantiation </i>of
+the generic type definition. For example: IComparer&lt;String&gt;.</p>
+
+<li>The name and <i>formal </i>signature of the member. For example: int
+Compare(T,T).
+</ol>
+
+<p>It is possible for distinct members to have
+identical types <i>when instantiated</i>, but which can be distinguished by
+member-ref. For example:</p>
+
+<pre>
+class C&lt;S,T&gt;
+{
+  String f;
+  S f;
+  void m(S x) {...}
+  void m(T x) {...}
+  void m(String x) {...}
+}
+</pre>
+
+<p>The generic class instantiation C&lt;String,String&gt;
+now has three methods called m, all with the same type, and two fields called f
+with the same type. They are easily distinguished through the member-ref
+encoding described above:</p>
+
+<pre>
+String C&lt;String,String&gt;::f
+S C&lt;String,String&gt;::f
+void C&lt;String,String&gt;::m(S)
+void C&lt;String,String&gt;::m(T)
+void C&lt;String,String&gt;::m(String)
+</pre>
+
+<p>How a source language might resolve this kind of
+overloading is another matter, of course. </p>
+
+<p><i>Rationale: </i></p>
+
+<p>For interop purposes it might be useful to define one method with
+Object argument type and another at type parameter T.</p>
+
+<p>
+To outlaw such ambiguous classes could
+involve a relatively expensive check in the class loader.</p>
+
+<h3>Inheritance and Overriding</h3>
+
+<p>There are two questions to answer here.</p>
+
+<ol>
+<li>Given a method definition, which (if any) method in a superclass or
+interface does it override or implement? More concretely: which vtable slot
+(possibly new to this type) does it occupy?
+
+<li>In the absence of such a definition, which method implementations
+are inherited from the superclass?
+</ol>
+
+<p>The rules that determine the answers are a
+straightforward generalization of the existing rules, which are based around
+the method <i>signature</i>: the name and types of arguments and results.
+However, we must now take into account the <i>instantiations </i>of the
+superclass and implemented interfaces. This is illustrated in the following C#
+example:<br>
+<pre>
+class C&lt;S,T&gt;
+{
+  public virtual T m1() { ... } 
+  public virtual S m2(T x) { ... } 
+} 
+
+class D&lt;R&gt; : C&lt;int,R[]&gt;
+{
+  override public R[] m1() { ... }
+  // inherits int m2(R[])
+}
+
+class E&lt;X&gt; : D&lt; List&lt;X&gt; &gt;
+{
+  // inherits List&lt;X&gt;[] m1()
+  override public int m2(List&lt;X&gt;[] x) { ... }
+}
+</pre>
+
+<p>A single method body can serve as the
+implementation of multiple interfaces, just as in the existing runtime:</p>
+
+<pre>
+interface I&lt;T&gt;
+{
+  void m(T x);
+} 
+
+interface J
+{
+  void m(int x);
+}
+
+class C : I&lt;int&gt;, J
+{
+  void m(int x) { ... }
+}
+</pre>
+
+<p>MethodImpls can be used to provide distinct
+implementations. In C#:</p>
+
+<pre>
+class C : I&lt;int&gt;,
+J
+{
+  void I&lt;int&gt;.m(int x) { ... }
+  void J.m(int x) { ... }
+}
+</pre>
+
+<h4>Restrictions</h4>
+
+<p>A class must not (directly or indirectly through
+interface inheritance) implement the same interface at more than one instantiation.
+For example, the class definitions below are illegal:</p>
+
+<pre>
+interface I&lt;T&gt; {
+void m(T x); void n(); }
+class C : I&lt;int&gt;, I&lt;string&gt;
+class D&lt;T&gt; : I&lt;T&gt;, I&lt;double&gt;
+</pre>
+
+<p>
+<i>Rationale: </i>
+<ol>
+<li>The possibility of multiple instantiations introduces new
+ambiguities for which there's no obvious natural resolution. (e.g. in the above
+definition which method implementation does D&lt;double&gt;::n() refer to?).
+
+<li>It's tricky to implement without incurring overhead on every
+interface invoke.
+</ol>
+
+
+<h3>Generic Methods</h3>
+
+<p>A <i>generic method</i> is a method for which
+formal <i>generic parameters </i>are declared. As with generic type definitions,
+each generic parameter has a name, and optionally <i>constraints </i>that must
+be interface or class types. See Section 2.14 for some examples.</p>
+
+<p>The generic parameters are in scope in the types
+of the arguments and result (despite the appearance of the generic parameters
+to the right of the result type) and in the body of the method. </p>
+
+<p>Generic instance (virtual and non-virtual)
+methods can occur inside generic type definitions, in which case the generic
+parameters of both the class and the method are in scope in the method.</p>
+
+<div style='border:none;border-top:solid windowtext 1.0pt;padding:1.0pt 0cm 0cm 0cm'>
+
+<h2>Examples</h2>
+
+</div>
+
+<h3>Generic value type</h3>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<pre>
+public struct Pair&lt;A, B&gt; 
+{ 
+  A fst;
+  B snd;
+
+  Pair(A a, B b)
+  { this.fst = a; this.snd = b; }
+
+  public A GetFst() { return fst; }
+  public B GetSnd() { return snd; }
+}
+</pre>
+
+</div>
+
+<h3>Generic class</h3>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<pre>
+public class Stack&lt;T&gt;
+{
+  T[] items; 
+  int nitems;
+  const int initialsize = 20;
+
+  public Stack() 
+  { 
+    nitems = 0; 
+    items = new T[initialsize]; 
+  }
+
+  void Push(T item) 
+  {
+    if (items.Length == nitems)
+    { T[] temp = items;
+      items = new T[nitems*2];
+      Array.Copy(temp, items, nitems); 
+    }
+    items[nitems++] = item;
+  }
+
+  T Pop() 
+  { 
+    if (nitems == 0) throw new EmptyStack(); 
+    else return items[--nitems]; 
+  }
+
+  bool IsEmpty() { return nitems==0; }
+}
+</pre>
+
+</div>
+
+<h3>Generic interfaces</h3>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<pre>
+public interface IEnumerator&lt;T&gt; 
+{ 
+  bool MoveNext();
+  T GetCurrent();
+  void Reset();
+}
+
+public interface Ienumerable&lt;T&gt;
+{
+  Ienumerator&lt;T&gt; GetEnumerator();
+}
+
+public interface Icloneable&lt;T&gt;
+    where T: Object   // notice constraint
+{
+  T Clone();
+}
+
+public interface Icomparable&lt;T&gt;
+{
+  int Compare(T x, T y);
+}
+</pre>
+
+</div>
+
+<h3>Subclassing and implementing</h3>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<pre>
+public class ArrayEnumerator&lt;T&gt; : Ienumerator&lt;T&gt; {...}
+
+public class Vowels : Ienumerator&lt;String&gt; {...}
+
+public class Primes : Ienumerator&lt;int&gt; {...}
+
+public abstract class PrintableList&lt;T : Iprintable&gt; :
+List&lt;T&gt;, Iprintable {...}
+
+// Generic parameters in constraints (aka "F-bounded" polymorphism)
+// Also notice recursive reference to class in interface
+public abstract class CloneableArrayList&lt;T : Icloneable&lt;T&gt;&gt;
+: ArrayList&lt;T&gt;, Icloneable&lt;CloneableArrayList&lt;T&gt;&gt; {...}
+</pre>
+
+</div>
+
+
+<h3>Generic Methods</h3>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<pre>
+public class ArrayUtils
+{
+  static void Reverse&lt;T&gt;(T[] arr, int index, int length)
+  {
+    int i = index;
+    int j = index + length - 1; 
+    T temp;
+
+    while (i &lt; j) 
+    { temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+      i++; j--; }
+  }
+
+  static T[] Slice&lt;T&gt;(T[] arr, int index, int length)
+  {
+    T[] copy = new T[length];
+    int j;
+    for (j = 0; j &lt; length; j++)
+      copy[j] = arr[index+j];
+    return copy;
+  }
+  static void Sort&lt;T&gt;(T[] arr, Icomparer&lt;T&gt; comparer) {...}
+}
+
+// Generic instance method inside a generic class definition
+class FastArray&lt;T&gt;
+{
+  ...methods from earlier...
+  void PairWith&lt;U&gt;(FastArray&lt;U&gt; that)
+  {
+    int n = this.Length;
+    FastArray&lt;Pair&lt;T,U&gt;&gt; result = new FastArray&lt;Pair&lt;T,U&gt;&gt;(n);
+    for (int j = 0; j &lt; n; j++)
+      result[j] = new Pair&lt;T,U&gt;(this[j], that[j]);
+    return result;
+  }
+
+  void PairWith&lt;U&gt;(U that)
+  {
+    int n = this.Length;
+    FastArray&lt;Pair&lt;T,U&gt;&gt; result = new FastArray&lt;Pair&lt;T,U&gt;&gt;(n);
+    for (int j = 0; j &lt; n; j++)
+      result[j] = new Pair&lt;T,U&gt;(this[j], that);
+    return result;
+  }
+}
+// Example of PairWith in action, assuming arr1 : FastArray&lt;int&gt;
+FastArray&lt;Pair&lt;int,String&gt;&gt; arr2 = arr1.PairWith&lt;String&gt;("foo");
+</pre>
+
+</div>
+
+
+</body>
+
+</html>

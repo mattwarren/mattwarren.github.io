@@ -1,0 +1,2168 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Generics in C#</title>
+<link rel="stylesheet" type="text/css" href="./rotor.css">
+</head><html>
+
+<body>
+
+<div class=Section1>
+
+<div style='border:none;border-top:solid windowtext 1.0pt;padding:1.0pt 0cm 0cm 0cm'>
+
+<h1>Generics in C#</h1>
+
+</div>
+
+<p>C# permits classes, structs, interfaces and
+methods to be parameterized by the types of data they store and manipulate,
+through a set of features known collectively as <i>generics.</i>  C# generics
+will be immediately familiar to users of generics in Eiffel or Ada,
+or to users of C++ templates, though
+they do not suffer many of the complications of the latter.</p>
+
+<p>Generics are useful because many common
+classes and structs can be parameterized by the types of data being stored and manipulated
+- these are called <i>generic classes</i> and <i>generic structs</i>.    Similarly,
+many interfaces define contracts that can be parameterized by the types of data
+transacted - these are called <i>generic interfaces</i>. Classic examples of
+generic classes are collection classes such as Hash Tables, Maps and Lists.  It
+is intended to extend the .NET Framework with generic collection classes.   Methods
+may also be parameterized by type in order to implement "generic algorithms",
+and these are known as <i>generic methods</i>.  Often the static methods in a
+generic class will be parameterized in this way.  Classic examples are sort
+algorithms.</p>
+
+<h3>Notation</h3>
+
+<p>Throughout this chapter we use the
+following notation:</p>
+
+<p style='margin-left:18.0pt'>C, C1, C2, ... refer to classes, either generic or
+non-generic.</p>
+
+<p style='margin-left:18.0pt'>I, I1, I2, ... refer to interfaces, either generic or
+non-generic.</p>
+
+<p style='margin-left:18.0pt'>V,U, W, ... refer to <i>type-parameters
+</i></p>
+
+<p style='margin-left:18.0pt'>T, T1, T2, ... refer to types,
+including basic C# types, as well as constructed types and type parameters used as types.</p>
+
+<p style='margin-left:18.0pt'>B, B1, B2, ... refer to types used as <i>explicit-type-parameter-constraints</i>.</p>
+
+<p  style='margin-left:18.0pt'>&lt;<i>inst</i>&gt;, &lt;<i>inst2</i>&gt;, ... refer to
+<i>type instantiations</i>.</p>
+
+<h2>Generics by examples</h2>
+
+<p>Generic collections represent the simplest
+and most common use of generic classes, interfaces and structs.  The code below
+shows a very simple generic class that wraps an array as a read-only generic
+vector (the indexer does not allow elements to be updated):</p>
+
+<pre>
+class=Code>class Vector&lt;V&gt;
+{
+   private V[] data;
+   public virtual V this[int n]  { get {return data[n]; }  }
+   public Vector(V[] init)  { data = init; }
+   public int Length { get { return data.Length; } }
+}
+</pre>
+
+<p>The code below provides arrays that
+automatically expand as values are assigned at indices:</p>
+
+<pre>
+class ExpandingArray&lt;V&gt;
+{
+   private V[] data;
+   public virtual V this[int n] 
+   { 
+      get { return data[n]; } 
+      set 
+      { 
+         if (data == null)  
+            data = new V[n+1];
+         else if (n &gt;= data.Length) 
+         {
+            int oldlen = data.Length;
+            int newlen =  Math.max(n+1,oldlen * 2); 
+            V[] newdata = new V[newlen];
+            for (int i = 0; i &lt; oldlen; i++) 
+               newdata[i] = data[i];
+            data = newdata; 
+         }
+         data[n] = value;
+      }
+   }
+   public ExpandingArray () { data = null; }
+}
+</pre>
+
+<p>Generic methods can be used to implement generic algorithms over
+generic collections.  For example, the following code checks if the given
+vector is sorted:</p>
+
+<pre>
+interface IComparer&lt;V&gt; 
+{ 
+   int Compare(V v1,V v1); 
+   ... 
+}
+
+class VectorMethods
+{
+   public static bool IsSorted&lt;V&gt;(IComparer&lt;V&gt; comparer, Vector&lt;V&gt; inp) 
+   {
+      for (int i=1; i&lt;inp.Length; i++)
+         if (comparer.Compare(inp[i-1], inp[i])&gt; 0)
+            return false;
+      return true;
+   }
+}
+</pre>
+
+<p>Generic classes and methods often use additional methods
+that help them "interpret" type parameters.  For example, the class may require
+a way of comparing values of type V.  These methods are typically provided
+in one of the following ways:</p>
+
+<p style='margin-left:36.0pt;text-indent:-18.0pt'>(a)&nbsp;&nbsp;&nbsp; Explicitly, by
+requiring that the client of the class pass extra parameters to the class that
+provide the functionality.  For example, an instance constructor for the class may
+require a value of type Icomparer&lt;V&gt; 
+to be passed in.  This value can then be used to  compare values of type V, as shown in
+the example above.</p>
+
+<p style='margin-left:36.0pt;text-indent:-18.0pt'>(b)&nbsp;&nbsp;&nbsp; Explicitly, by
+using <i>explicit constraints</i>.  In this case, the
+signature of the generic class specifies that any type used to
+instantiate the class must support particular types.  Constraints are written
+in a "where" clause that follows the type parameters, e.g. class C&lt;V&gt; where V:
+IComparable. The example below shows how explicit constraints can
+be specified for a type method.<br>
+Implementation note: Currently only one constraint is allowed per generic
+parameter.  This restricition will be relaxed in future releases.</p>
+
+<p style='margin-left:36.0pt;text-indent:-18.0pt'>(c)&nbsp;&nbsp;&nbsp; Implicitly, by
+casting values of type V
+to an appropriate type within the body of the class (e.g. casting value to type
+IComparable)
+and then calling a method.  This technique is known as <i>implicit constraints</i>. 
+A similar way to implicitly access functionality from a type parameter is to
+use reflection.</p>
+
+<p>The following code illustrates the use of
+explicit constraints to define a method that checks if the given vector is sorted. </p>
+
+<pre>
+interface IComparable&lt;V&gt; { int CompareTo(V); }
+
+class VectorMethods
+{
+   public static bool IsSorted&lt;V&gt; where V: IComparable&lt;V&gt;(Vector&lt;V&gt; inp) {
+      for (int i=1; i&lt;inp.Length; i++)
+         if (inp[i-1].CompareTo(inp[i]) &gt; 0)
+            return false;
+      return true;
+   }
+}
+</pre>
+
+<h3>What generics are not</h3>
+
+<p>Generics should not be confused with
+attempts to cover a very wide scope of possible applications of "generative
+programming."  The .NET Framework offers rich dynamic code generation
+facilities through its reflection libraries, and for advanced generative
+programming these libraries can be used in conjunction with generics.</p>
+
+<h2>Constructed types, type arguments, type
+parameters and type instantiations</h2>
+
+<p>Generics extend the set of types available
+to the C# programmer in two ways, by adding <b><i>constructed types</i></b> and
+<b><i>type parameters</i></b>.  Constructed types can be used in both generic
+and non-generic code to declare values whose types involve generic classes, structs
+and interfaces.</p>
+
+<h3>Type
+parameters</h3>
+
+<p>Type parameters can be used only in generic
+code, i.e. type parameters are visible within the bodies of generic-class-declarations, generic-struct-declarations, generic-method-declarations, generic-interface-declarations and generic-delegate-declarations.   Properties, indexers and events may not be generic themselves, although instance properties, indexers and events may utilize the type
+parameters of their surrounding class.</p>
+
+<p>The following rules apply to all type
+parameters:</p>
+
+<p style='margin-left:18.0pt;text-indent:-18.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A type parameter has a scope, and within that
+scope may be used to form a <i>type</i>.  The scope of a type parameter depends
+on the kind of declaration to which it is attached.</p>
+
+<p style='margin-left:18.0pt;text-indent:-18.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+When used to form a type, the accessibility of  a
+type parameter is public.  </p>
+
+<h3>Constructed
+types</h3>
+
+<p>A constructed type C&lt;T1,...,Tn&gt; is formed by applying a type name C to an
+appropriate number of <b><i>type arguments</i></b> T1,...,Tn.  The type arguments
+T1,...,Tn together form a <b><i>type instantiation</i></b>.    C# supports
+four different kinds of constructed types:  <i>constructed-class-types</i>, <i>constructed-struct-types</i>,
+<i>constructed-interface-types</i>, and <i>constructed-delegate-types</i>. </p>
+
+<p>A constructed type 
+C&lt;T1,...,Tn&gt;
+is only <b><i>valid</i></b> if all the types T1, ..., Tn are well
+formed, the class name C refers to a generic
+class accessible from the current context, the generic class expects exactly <i>n</i>
+type parameters, and the instantiation &lt;T1, ..., Tn&gt;
+satisfies the constraints for the generic class.  The validity of constructed interface types, 
+delegate types and struct types is defined
+in a similar fashion.</p>
+
+<h4>2.2.1 Accessibility of constructed
+types</h4>
+
+<p>A constructed type C&lt;T1,...,Tn&gt; is accessible when all its parts C, 
+T1, ..., Tn are accessible.  For
+instance, if the generic type name C is public and all of the <i>type-arguments</i>
+T1,...,Tn are accessible as public, then the constructed type is accessible as
+public, but if either the <i>type-name</i> or one of the <i>type-arguments</i>
+has accessibility private then the
+accessibility of the constructed type is private.  If
+some part of the <i>constructed-type</i> has accessibility protected, and anothe
+part has accessibility internal, then the constructed-type is accessible only in this class and its
+subclasses in this assembly.  </p>
+
+<p>More precisely, the accessibility domain
+for a constructed type is the intersection of the accessibility domains of its
+constituent parts.  Thus if a method has a return type or argument type that is
+a constructed-type where one constituent part is private,
+then the method must have an accessibility domain that is private;</p>
+
+<p>For example:</p>
+
+<pre>
+public class B&lt;T,U&gt; { }
+
+internal class C 
+{
+  // Because C is internal,all the following types
+  // have their given accessibility domains intersected with
+  // "internal"
+
+  protected internal class CProInt { } //i.e.internal
+  public class CPub { } // i.e. internal
+  protected class CPro { } // i.e. intersect(protected,internal)
+  internal class CInt { } // i.e. internal
+  private class CPri { } // i.e. private
+
+  // Because C is internal,all the following methods
+  // really have an accessibility domain of "internal"
+  public B&lt;CPub,CPub&gt; m11() { ... }    //Ok
+  public B&lt;CPub,CProInt&gt; m12() { ... } // Ok
+  public B&lt;CPub,CInt&gt; m13() { ... }    // Ok
+  public B&lt;CPub,CPro&gt; m14() { ... }    // Error, CPro is protected
+  public B&lt;CPub,CPri&gt; m15() { ... }    // Error, CPri is private
+
+  // Because C is internal,all the following methods
+  // really have an accessibility domain of "internal"
+  protected internal B&lt;CProInt,CPub&gt; m21() { ... }  // Ok
+  protected internal B&lt;CProInt,CProInt&gt; m22() { ... }  // Ok
+  protected internal B&lt;CProInt,CInt&gt; m23() { ... }  // Ok
+  protected internal B&lt;CProInt,CPro&gt; m24() { ... } // Error, CPro prot.
+  protected internal B&lt;CPro,CPri&gt; m25() { ... }   // Error, CPri private 
+
+  internal B&lt;CInt,CPub&gt; m31() { ... }    // Ok
+  internal B&lt;CInt,CProInt&gt; m32() { ... } // Ok
+  internal B&lt;CInt,CInt&gt; m33() { ... }    // Ok
+  internal B&lt;CInt,CPro&gt; m34() { ... }    // Error, CPro protected
+  internal B&lt;CInt,CPri&gt; m35() { ... }    // Error, CPri is private </p>
+
+  // Because C is internal,all the following methods
+  // really have an accessibility domain that is the intersection of
+  // "protected" and "internal"
+  protected B&lt;CPro,CPub&gt; m41() { ... }    // Ok
+  protected B&lt;CPro,CProInt&gt; m42() { ... } // Ok
+  protected B&lt;CPro,CInt&gt; m43() { ... }    // Ok
+  protected B&lt;CPro,CPro&gt; m44() { ... }    // Ok
+  protected B&lt;CPro,CPri&gt; m45() { ... }    // Error, CPri is private
+
+  private B&lt;CPri,CPub&gt; m51() { ... }    // Ok
+  private B&lt;CPri,CProInt&gt; m52() { ... } // Ok
+  private B&lt;CPri,CPro&gt; m53() { ... }    // Ok
+  private B&lt;CPri,CInt&gt; m54() { ... }    // Ok
+  private B&lt;CPri,CPri&gt; m55() { ... }    // Ok </p>
+}
+</pre>
+
+<pre>
+public class D
+{
+  protected internal class DProInt { }
+  public class DPub { }
+  protected class DPro { }
+  internal class DInt { }
+  private class DPri { }
+
+  public B&lt;DPub,DPub&gt; m11() { ... }    // Ok
+  public B&lt;DPub,DProInt&gt; m12() { ... } // Error, DProInt not public
+  public B&lt;DPub,DInt&gt; m13() { ... }    // Error, DInt not public
+  public B&lt;DPub,DPro&gt; m14() { ... }    // Error, DPro not public
+  public B&lt;DPub,DPri&gt; m15() { ... }    // Error, DPri not public </p>
+
+  protected internal B&lt;DProInt,DPub&gt; m21() { ... }  // Ok
+  protected internal B&lt;DProInt,DProInt&gt; m22() { ... }  // Ok
+  protected internal B&lt;DProInt,DInt&gt; m23() {...}// Error, DInt not prot.
+  protected internal B&lt;DProInt,DPro&gt; m24() {...}// Error, DPro not int.
+  protected internal B&lt;DPro,DPri&gt; m25() { ... } // Error, DPri is private
+
+  internal B&lt;DInt,DPub&gt; m31() { ... }   // Ok
+  internal B&lt;DInt,DProInt&gt; m32() { ... } // Ok
+  internal B&lt;DInt,DInt&gt; m33() { ... }    // Ok
+  internal B&lt;DInt,DPro&gt; m34() { ... }    // Error, DPro not internal
+  internal B&lt;DInt,DPri&gt; m35() { ... }    // Error, DPri not internal </p>
+
+  protected B&lt;DPro,DPub&gt; m41() { ... }    // Ok
+  protected B&lt;DPro,DProInt&gt; m42() { ... } // Ok
+  protected B&lt;DPro,DInt&gt; m43() { ... }    // Error, DInt not protected
+  protected B&lt;DPro,DPro&gt; m44() { ... }    // Ok
+  protected B&lt;DPro,DPri&gt; m45() { ... }    // Error, DPri not protected </p>
+
+  private B&lt;DPri,DPub&gt; m51() { ... }    // Ok
+  private B&lt;DPri,DProInt&gt; m52() { ... } // Ok
+  private B&lt;DPri,DPro&gt; m53() { ... }   // Ok
+  private B&lt;DPri,DInt&gt; m54() { ... }    // Ok
+  private B&lt;DPri,DPri&gt; m55() { ... }    // Ok
+}
+</pre>
+
+<h3>Type arguments</h3>
+
+<p>Type arguments may in turn be constructed
+types.   In unsafe code, the <i>type-arguments</i> may include pointer types. 
+Every constructed type must satisfy any constraints on the corresponding type
+parameters of the <i>type-name</i>.</p>
+
+<h3>Type instantiations</h3>
+
+<p>A <b><i>type instantiation</i></b> &lt;V1
+<span style='font-size:10.0pt;font-family:Symbol'>-></span>
+Tn, ..., Vn
+<span style='font-size:10.0pt;font-family:Symbol'>-></span>
+Tn&gt; for a class C with type parameters V1, ..., Vn specifies
+a type Ti for each type parameter Vi of C.  Type instantiations
+are a notion that are used only within this specification for the purpose of
+succinctness and clarity - they do not occur syntactically in a C# program.  </p>
+
+<p>A constructed type may simply be written C&lt;<i>inst</i>&gt; where 
+C is a type name and <i>inst</i> is a type instantiation.  Thus when
+we write a constructed type as C&lt;<i>inst</i>&gt;,
+ it should be understood that <i>inst</i> can be used to refer not
+just to the vector of types T1, ..., Tn
+but also to the instantiation &lt;V1 
+<span style='font-size:10.0pt;font-family:Symbol'>-></span>
+T1, ..., Vn
+<span style='font-size:10.0pt;font-family:Symbol'>-></span>
+Tn&gt; when the class C has formal type
+parameters V1, ..., Vn.  Likewise, an instantiation &lt;V1 
+<span style='font-size:10.0pt;font-family:Symbol'>-></span>
+T1, ..., Vn
+<span style='font-size:10.0pt;font-family:Symbol'>-></span>
+Tn &gt; may just be written &lt;T1, ..., Tn&gt; when
+it is clear which class and type parameters are being referred to e.g. the
+formal type parameters V1, ..., Vn for the class C when writing 
+C&lt;T1, ..., Tn&gt;.   </p>
+
+<p>Type instantiations may also be built for
+generic structs, interfaces, methods and delegates.  An <b><i>empty class type
+instantiation</i></b> has no entries at all, and corresponds to an
+instantiation for a non-generic class, struct, interface, method or delegate.  </p>
+
+<p>Except where otherwise indicated, C&lt;<i>inst</i>&gt; covers both the
+cases where the class is a non-generic class (e.g. a non-generic class such as 
+string) and <i>inst</i> is the empty type instantiation, and the case
+where C is a generic class and <i>inst </i>is non-empty. </p>
+
+<p>For example, in the code</p>
+
+<pre>
+class B&lt;U1,U2&gt; { ... }
+
+class C&lt;V1,V2&gt;
+{
+   public B&lt;V1,string&gt; f1() { ... }
+   public B&lt;V1,V2&gt; f2() { ... }
+   public B&lt;string,string&gt; f3() { ... }
+}
+
+class D
+{
+   public B&lt;string,string&gt; f1() { ... }
+   public D f2() { ... }
+}
+</pre>
+
+<p>the following <i>type instantiations</i>
+occur:</p>
+
+&lt;U1 
+<span style='font-family:Symbol'>-></span>
+V1,     U2
+<span style='font-family:Symbol'>-></span>
+ string&gt;    (maps U1 to V1,     U2
+to string)</p>
+
+&lt;U1 
+<span style='font-family:Symbol'>-></span>
+ V1,     U2 
+<span style='font-family:Symbol'>-></span>
+ V2&gt;        (maps U1 to V1,     U2
+to V2)</p>
+
+&lt;U1    
+<span style='font-family:Symbol'>-></span>
+string, U2    
+<span style='font-family:Symbol'>-></span>
+string&gt;    (maps U1 to string, U2
+to string)</p>
+
+&lt;&gt;                             (contains
+no mappings, e.g. for the type D)</p>
+
+<p>Note that the instantiation &lt;U1 
+<span style='font-size:10.0pt;font-family:Symbol'>-></span>
+string, U2 
+<span style='font-size:10.0pt;font-family:Symbol'>-></span>
+string&gt; occurs twice in the code. </p>
+
+<h2>Conversions</h2>
+
+<h3>Reference
+conversions to and from constructed reference types</h3>
+
+<p>Constructed reference
+types support implicit reference conversions.  These rules replace the corresponding
+rules for non-generic classes.</p>
+
+<ul>
+<li>
+From any reference-type
+S to any reference-type T if S is derived from T, i.e. T is one of the
+base types of S.<br>
+
+Note that this single general rule includes
+the following as special cases:
+
+<li>From any class-type
+S to any class-type T from which it is
+derived, i.e. T is one of the base
+class types of S.</p>
+
+<li>From any class-type
+S to any interface-type T, provided S implements T, i.e. T
+ is one of the base interface types of S.</p>
+
+<li>From any interface-type
+S to any interface-type T, provided S is derived from T, i.e. T
+ is one of the base interface  types of S.</p>
+</ul>
+
+<p>Constructed reference types support the
+following explicit reference conversions.  These rules replace the corresponding
+rules for non-generic types.</p>
+
+<li>From any reference-type
+S to any reference-type 
+T if T is derived from    
+S, i.e.
+S is one of the base types of T.</p>
+
+<p>Note that this single general rule includes
+the following as special cases:</p>
+
+<li>From any class-type
+S
+to any class-type
+T
+ if    
+T
+is derived from    
+S, i.e.
+S
+ is one of the base class types
+ of 
+T.</p>
+
+<li>From any class-type
+S to any interface-type 
+T, provided 
+T implements 
+S, i.e. 
+S
+ is one of the base interface types of 
+T.</p>
+
+<li>From any interface-type
+S
+to any interface-type 
+T, provided T is derived from 
+S, i.e. 
+S
+ is one of the base interface types of 
+T.</p>
+
+<p>Constructed reference types also support
+the conversions common to all reference types, e.g. from the "null" type, and
+to the type object, and from any constructed-delegate-type to System.Delegate.</p>
+
+<h3>Conversions
+to and from constructed value types</h3>
+
+<p>Constructed value types also support the
+conversions common to all value types, e.g. to and from the types object and
+System.ValueType.</p>
+
+<h3>User
+defined conversions to and from constructed types</h3>
+
+<p>User-defined conversions are not yet
+implemented.</p>
+
+<h3>Conversions
+to and from type parameters</h3>
+
+<p>An implicit, unchecked conversion exists
+from a type parameter V to type 
+S under the following conditions:</p>
+
+<ul>
+<li>If T is the
+type object.  This is executed as a boxing conversion whenever V
+ is instantiated to a value type.</li>
+
+<li>If    
+T is a
+reference type and T is one of the <i>explicit-type-parameter-constraints
+</i>of V.  This is executed as a boxing conversion whenever V
+ is instantiated to a value type.</li>
+</ul>
+
+<p>The method Wrap in the following
+code takes a value of type V and returns it as a
+value of type object.</p>
+
+<pre>
+public class Main
+{
+   static object Wrap&lt;V&gt;(V x)   {  return x; }
+   static void Main()
+   {
+      object s = "string";
+      object obj1 = Wrap&lt;string&gt;(&quot;string&quot;); // Ok
+      string s1 = (string) obj1; // Ok, cast succeeds
+      object obj2 = Wrap&lt;int&gt;(3);    // Ok
+      int i2 = (int) obj2; // Ok, unbox
+      object obj3 = Wrap&lt;object&gt;((object)3);  // Ok
+      string s3 = (string) obj3; // InvalidCastException
+   }
+}
+</pre>
+
+<p>An explicit, checked conversion exists from type S
+ to a type parameter V under the
+following conditions:</p>
+
+<ul>
+<li>If T is the
+type object.  This is executed as an unboxing conversion whenever V
+ is instantiated to a value type.</li>
+
+<li>If T is a
+reference type and T is one of the type
+constraints of V.  This is executed as
+an unboxing conversion whenever V is
+instantiated to a value type.</li>
+</ul>
+
+<p>These conversions are checked at runtime.  </p>
+
+<p>The following code takes an object and
+attempts to return it as type V.</p>
+
+<pre>
+public class Main
+{
+   static V Cast&lt;V&gt;(object x)   {  return (V) x; }
+
+   static void Main()
+   {
+      object s = "string";
+      string v1 = Cast&lt;string&gt;(s);  // Ok
+      string v2 = Cast&lt;int&gt;((object) 3);  // Ok, 3 is boxed then unboxed
+      string v3 = Cast&lt;string&gt;((object) 3);  // InvalidCastException
+   }
+}
+</pre>
+
+<h3> No
+"co-variance" for constructed types</h3>
+
+<p>No special conversions exist between
+constructed reference types other than those listed above.  In particular,
+constructed reference types do not exhibit "co-variant" conversions, unlike C#
+array types.  This means that a type List&lt;B&gt;
+ has an (identity) reference conversion to List&lt;B&gt;, 
+but no reference conversion  (either implicit or explicit) exists
+to List&lt;A&gt; even if B is a derived from A.  In particular, no conversion exists from
+List&lt;B&gt; to List&lt;object&gt;. </p>
+
+<p>The rationale for this is simple: if a
+conversion to List&lt;A&gt; is
+permitted, then apparently one can store values of type A
+ into the list.  But this would break the invariant that every
+object in a list of type List&lt;B&gt; is always
+a value of type B, or else unexpected
+failures may occur when assigning into collection classes.</p>
+
+<p>One choice is to support a runtime check
+every time a generic data structure is modified.  For example, C# does support
+co-variant array types, and therefore typically performs a runtime check on
+every store into an array of reference type.  However, one of the aims of
+generics is to avoid the performance costs associated with this kind of check,
+and hence co-variance is not supported.  In addition, when co-variance is not
+supported, the programmer can be assured that assignments into collection
+classes will not raise exceptions at runtime.  Also note that if the generic
+class List is itself derived from some class 
+(e.g. a non-generic class Collection) then there will be reference conversions from types such as 
+List&lt;B&gt; to that class.  </p>
+
+<p>The behavior of conversions and runtime
+type checks is illustrated below:</p>
+
+<pre>
+class A { ... }   
+
+class B : A { ... }   
+
+class List&lt;V&gt; { ... }   
+
+public static void MyMethod(List&lt;A&gt; argl) { ... }
+
+public static void Main() {
+   List&lt;A&gt; al = new List&lt;A&gt;();   
+   List&lt;B&gt; bl = new List&lt;B&gt;();   
+   if (al is List&lt;A&gt;)                        // true   
+      Console.WriteLine("al is List&lt;A&gt;");   
+   if (al is List&lt;B&gt;)                        // false
+      Console.WriteLine("al is List&lt;B&gt;");   
+   if (bl is List&lt;A&gt;)                        // false    
+      Console.WriteLine("bl is List&lt;A&gt;");   
+   if (bl is List&lt;B&gt;)                        // true   
+      Console.WriteLine("bl is List&lt;B&gt;");
+   MyMethod(al); // Ok   
+   MyMethod(bl); // Error, bl is not List&lt;A&gt;
+}
+</pre>
+
+<p>The last method call causes a compile time
+error.  If the last method call in the above program were omitted, the program
+would produce:</p>
+
+<pre>
+al is List&lt;A&gt;
+bl is List&lt;B&gt;
+</pre>
+
+<h3>"Default"
+values for type parameters</h3>
+
+<p>No implicit conversion exists from the null
+type to a type parameter V.  This is because 
+V may be instantiated as a value type, and "null" does not have the
+same, intuitive meaning that may be expected for those types.  </p>
+
+<p>However, the expression V.default will be guaranteed to produce a "default" value for the type
+corresponding to V.  This can be
+considered an explicit, unboxing conversion from the "null" type to a type
+parameter.</p>  
+
+<p>Note: this is not yet implemented.</p>
+
+<p>The default value for a type is guaranteed
+to have the following properties:</p>
+
+<ul>
+<li>If V is a
+reference type, then the value is null.</p>
+
+<li>If V is a struct
+type, then the value is an element of the struct type where every field is set
+to its corresponding default value.</p>
+
+<li>If V is a
+built-in value type, then its value is the default value for that type.</p>
+</ul>
+
+<p>Default values are useful in a number of
+circumstances, e.g. for initializing slots in data structures.  Another use is
+to "blank out" slots of data structures once the data previously held in the
+slot is no longer required.  Blanking out data can help eliminate a source of
+bugs in garbage collected programs known as "memory leaks", which occur because
+the garbage collector cannot reuse space if data structures continue to contain
+handles to objects, even if those objects will no longer be used.</p>
+
+<p><a>Default values may also be generated by
+creating an instance variable of the type V  and
+declaring it readonly, so that it is never written
+to, as its initial value will also be the default value for V. </p>
+
+<h2>Generic classes</h2>
+
+<p>Generic class declarations follow the same
+rules as normal class declarations except where noted, and particularly with
+regard to naming, nesting and the permitted access controls.  Generic class
+declarations may be nested inside other class and struct declarations.  </p>
+
+<p>The <i>class-type-parameters</i> of a <i>generic-class-declaration
+</i>can be used to form types in certain parts of the class, according to the
+following rules:</p>
+
+<ul>
+<li> A <i>class-type-parameter</i> may be used to
+form a type in every non-static declaration in the class, as well as the
+instance constructors, the specification of the <i>explicit-type-parameter-constraints</i>
+and the <i>class-base</i> of the <i>generic-class-declaration</i>.  </p>
+
+<li>A <i>class-type-parameter</i> may not be used to
+form a type in the attributes, static methods, static fields, operators, destructors,
+the class initializer or nested types of the <i>generic-class-declaration</i> 
+An attempt to do so is a compile-time error, and thus the <i>class-type-parameter</i>
+effectively hides any other visible type names.  This means that class type
+parameters are in scope in static members, but illegal, rather than not in
+scope at all.</p>
+
+<li>It is a compile time error to have a nested
+class with the same name as a class type parameter of the enclosing class.</p>
+
+<li>
+A <i>class-type-parameter</i> may be used to form
+a type in the field initializers of all non-static fields.</p>
+</ul>
+
+<h3>Class
+base specification</h3>
+
+<p>The specification of the base class of any 
+<i>class-declaration</i> is a class type, and in particular this might be a <i>constructed-class-type</i>. 
+ In a <i>generic-class-declaration </i>it may not be a <i>class-type-parameter</i> on its own, though it may involve the <i>class-type-parameters</i> that are in scope.</p>
+
+<p>The specification of each base interface of
+any <i>class-declaration </i>is an interface type, though note some of these
+may be <i>constructed-interface-types</i>.  In a <i>generic-class-declaration </i>it may not be a <i>class-type-parameter</i> on its own, though it may involve the <i>class-type-parameters</i> that are in scope.</p>
+
+<p>The following code illustrates how a class can implement and extend
+constructed types:</p>
+
+<pre>
+class C&lt;U,V&gt; { }
+
+interface I1&lt;V&gt; { }
+
+class D : C&lt;string,int&gt;, I1&lt;string&gt; { }
+</pre>
+
+<p>Methods in a class that overrides or
+implements methods from a base class or interface must provide appropriate
+methods at specialized types.</p>
+
+<p>The following code illustrates how methods
+are overridden and implemented.</p>
+
+<pre>
+class C&lt;U,V&gt; 
+{    
+   public virtual void m1(U x,List&lt;V&gt; y) { ... }
+}   
+
+interface I1&lt;V&gt; 
+{    
+   V m2(V);
+}   
+
+class D : C&lt;string,int&gt;, I1&lt;string&gt; 
+{    
+   public override void m1(string x, List&lt;int&gt; y) { ... }   
+   public string m2(string x) { ... }
+}
+</pre>
+
+<p>The base class and base interfaces of a class may not be type
+parameters:</p>
+
+<pre>
+class Extend&lt;V&gt; : V { ... } 
+    // Error, thebase class may not be a 
+    // type parameter</p>
+</pre>
+
+<h4>Uniqueness of interface types</h4>
+
+<p>The set of base interface types of a class must
+not contain two <i>constructed-interface-types</i> with the same <i>generic-interface-name</i>
+and different instantiations.  This simplifies the implementation of dynamic
+dispatch mechanisms and prevents ambiguities arising amongst methods and
+ambiguities when generic interfaces are instantiated.  Because of this
+restriction, the following class hierarchy is illegal: </p>
+
+<pre>
+interface I&lt;V&gt; { }   
+
+class C : I&lt;string&gt;, I&lt;object&gt; { }
+</pre>
+
+<h3>Members
+in generic classes</h3>
+
+<p>Generic classes can contain essentially the
+same kinds of members as non-generic classes, although particular rules apply
+in each case.</p>
+
+<p>The <i>set of all function members </i>of a
+class must be well formed. In particular, an "override" method must have the
+correct signature to override a virtual method in a parent class.  If this set
+is not well formed an error is reported at compile-time.</p>
+
+<p>The static constructor of a generic class
+is executed once only, and <b><i>not</i></b> once for each different
+instantiation of that class.  Destructors are executed once for each instance
+object created for each instantiation.</p>
+
+<h3>4.3 Fields
+in generic classes</h3>
+
+<h4>Instance variables in
+generic classes</h4>
+
+<p>The instance variables of a generic class
+may have types and variable initializers that include any type parameters from
+the enclosing class.  For example:</p>
+
+<pre>
+class C&lt;V&gt; {   
+  public V f1;   
+  public C&lt;V&gt; f2 = null;   
+  public C(V x) { this.f1 = x; }   
+}   
+
+class Application {   
+  static void Main() {   
+    C&lt;int&gt; x1 = new C&lt;int&gt;(1);   
+    Console.WriteLine(x1.f1);  // Prints 1   
+    C&lt;double&gt; x2 = new C&lt;double&gt;(3.1415);   
+    Console.WriteLine(x2.f1);  // Prints 3.1415   
+  }   
+}   
+</pre>
+
+<h4>Static variables in generic
+classes</h4>
+
+<p>The types of static variables in a generic
+class may not refer to any type parameters from the enclosing class.  </p>
+
+<p>A static variable in a generic class is shared amongst all the types constructed from
+it.  There is no way to specify fields where a new storage location is created
+for each instantiation of the class.</p>
+
+<p>For example:</p>
+
+<pre>
+class C&lt;V&gt; {   
+  static int count = 0;   
+  public C() { count++; }   
+  static public int Count { get { return count;} }   
+}   
+
+class Application {   
+  static void Main() {   
+    C&lt;int&gt; x1 = new C&lt;int&gt;();   
+    Console.WriteLine(C.Count);  // Prints 1   
+    C&lt;double&gt; x2 = new C&lt;double&gt;();   
+    Console.WriteLine(C.Count);  // Prints 2   
+    C&lt;object&gt; x3 = new C&lt;object&gt;();   
+    Console.WriteLine(C.Count);  // Prints 3   
+  }   
+}   
+</pre>
+
+<h3>Methods in generic classes</h3>
+
+<p>This section discusses <i>method-declarations
+</i>within generic classes.  In passing it is worth noting that the signatures
+of all methods may involve <i>constructed types</i> of some kind, e.g. <i>constructed-class-types</i>,
+whether generic or non-generic, or whether in generic classes or non-generic
+classes. </p>
+
+<p>Methods within a generic class can be
+overloaded. Virtual methods declared within generic classes can be overridden, whether the overriding method occurs in a generic class or in a non-generic class.  Method declarations may themselves be generic.</p>
+
+<h4>Instance,
+abstract and virtual methods in generic classes</h4>
+
+<p>For non-static methods inside generic
+classes the signature may also involve one or more of the <i>class-type-parameters</i>. 
+The body of such a method may also use these type parameters.</p>
+
+<p>The following example shows an instance
+method, an abstract method and two virtual methods within a generic class:</p>
+
+<pre>
+abstract class C&lt;V&gt;
+{   
+   private string name;   
+   private V data;   
+   public bool CheckName(C&lt;V&gt; x)    
+      { return (this.name == x.name); }   
+   ...
+   
+   public virtual V GetData()    
+      { return data; }   
+   public abstract C&lt;V&gt; CopyData();   
+   public virtual void ReplaceData(C&lt;V&gt; x)   
+      {  this.data = x.data; }   
+}   
+</pre>
+
+<h4>4.4.2 Static methods in generic classes</h4>
+
+<p>Static methods do not automatically acquire
+the type parameters of a generic class in which they are used.  For this reason
+neither the argument types nor the return types of a static method can include
+any type parameters from the enclosing class.  Similarly the body of such a
+method cannot use the type parameters from the enclosing class.  In this way
+type parameters are very similar to instance fields of the class being defined
+- they are only accessible in instance methods.</p>
+
+<p>The following sample shows how you can make
+a static method generic in order to manipulate generic data:</p>
+
+<pre>
+class C&lt;V&gt;
+{   
+   private string name;   
+   private V data;   
+   public static bool CheckName(C&lt;V&gt; x, C&lt;V&gt; y) // Error, cannot access V   
+      { return (x.name == y.name); }   
+   public static bool CheckName&lt;V&gt;(C&lt;V&gt; x, C&lt;V&gt; y) // Ok, CheckName generic   
+      { return (x.name == y.name); }   
+   public bool CheckName(C&lt;V&gt; y)         //Ok, instance method can access V   
+      { return (this.name == y.name); }   
+}   
+</pre>
+
+<h4>Param-array methods and type
+parameters</h4>
+
+<p>Type parameters may be used in the type of
+an argument array expected for a params
+method.  For example, given the declaration</p>
+
+<pre>
+class C&lt;V&gt;
+{   
+   void F(int x, int y, params V[] args);   
+}   
+</pre>
+
+<p>the following invocations of the expanded
+form of the method</p>
+
+<pre>
+(new C&lt;int&gt;).F(10, 20);
+(new C&lt;object&gt;).F(10, 20, 30, 40);
+(new C&lt;string&gt;).F(10, 20, &quot;hello&quot;, &quot;goodbye&quot;);
+</pre>
+
+<p>correspond exactly to</p>
+
+<pre>
+(new C&lt;int&gt;).F(10, 20, new int[] {});
+(new C&lt;object&gt;).F(10, 20, new object[] {30, 40});
+(new C&lt;string&gt;).F(10, 20, new string[] {&quot;hello&quot;, &quot;goodbye&quot;}
+);
+</pre>
+
+<h4>Generic
+methods in generic classes</h4>
+
+<p>Methods in both non-generic and generic classes
+may themselves be <i>generic-method-declarations</i>.  This applies to all kinds of methods, including static methods, instance methods, virtual methods, and methods declared with the abstract, 
+new or overrides
+keywords.  </p>
+
+<p>Non-static generic methods within a generic
+class are rare, but are permitted.  These can use <i>both</i> the type
+parameters of the class and the type parameters of the method.</p>
+
+<pre>
+class C&lt;V&gt;
+{
+   public static bool f1(C&lt;V&gt; x, C&lt;V&gt; y)     // Error, cannot access V
+     { ...}   
+   public static bool f2&lt;V&gt;(C&lt;V&gt; x, C&lt;V&gt; y)  // Ok
+     { ... }   
+   public bool f3(C&lt;V&gt; x)                    // Ok
+     { ...  }   
+   public bool f4&lt;U&gt;(C&lt;V&gt; x, C&lt;U&gt; y)         // Ok
+     { ...  }   
+   public virtual bool f5(C&lt;V&gt; x)            // Ok
+     { ...  }   
+   public virtual bool f6&lt;U&gt;(C&lt;V&gt; x, C&lt;U&gt; y) // Ok
+     { ...  }
+}
+</pre>
+
+<h4>4.4.5 Uniqueness of signatures</h4>
+
+<p>The method signatures within a generic
+class must be unique <i>prior to any instantiations</i>.  However, the
+following additional rules apply in determining when two signatures are
+identical:</p>
+
+<ul>
+<li>The names of all type parameters are ignored,
+and instead their numerical position in a left-to-right ordering of the type
+parameters is used.
+
+<li>The number of type parameters accepted by a
+generic method is significant.
+
+<li>Any constraints on type parameters accepted by
+generic method are ignored.
+</ul>
+
+<p>Thus in the following class the indicated
+methods cause conflicts with those of the same name:</p>
+
+<pre>
+class C&lt;V&gt;
+{
+   public V f1() { ... } 
+   public string f1() { ... }  // Error, return types differ   
+
+   public void f2(V x) { ... } 
+   public void f2(object x) { ... }  // Ok, unique prior to instantiation   
+
+}   
+
+class D 
+{
+   public static void g1&lt;V&gt;(V x) { ... } 
+   public static void g1&lt;U&gt;(U x) { ... }  // Error, identical ignoring names   
+
+   public static void g2() { ... } 
+   public static void g2&lt;V&gt;() { ... }  // Ok, number of params significant   
+
+   public static void g3&lt;V&gt;() { ... } 
+   public static void g3&lt;V,U&gt;() { ... }  // Ok, number of params significant   
+
+   public U g4&lt;U&gt;(object x) { ... } 
+   public U g4&lt;U&gt;(U x) { ... } // Ok, differ by formal argument type   
+
+   public static void g5&lt;V&gt; where V : I1() { ... } 
+   public static void g5&lt;V&gt; where V : I2() { ...}  // Error, constraints
+                                                                         // are not significant
+}
+</pre>
+
+<h3>Nested
+types in generic classes</h3>
+
+<p>A <i>generic-class-declaration</i> can
+itself contain type declarations, just as with ordinary classes.  However, the
+type parameters of the <i>generic-class-declaration </i>are <b><i>not</i></b>
+implicitly visible within the nested class declaration, i.e. the nested class
+declaration is not implicitly parameterized by the type parameters of the outer
+class declaration.  Thus the type parameters play a similar role to the "this"
+value and the instance fields of the outer class declaration, which are not
+accessible in the nested type.  The rationale for this is that it is frequently
+the case that the programmer wishes to define nested classes that take more or
+fewer type parameters than the outer class, and given this possibility it is
+better to be explicit about the exact degree of type parameterization desired.</p>
+
+<p>Nested types may themselves be
+parameterized.  The <i>class-type-parameters</i> of the enclosing class are not
+visible in the nested class, but within the enclosing class constructed types
+involving the nested class may involve the type parameters of the enclosing
+class.  Nested types may also be parameterized by type parameters with the same
+names as the type parameters of the enclosing class.</p>
+
+<p>For example:</p>
+
+<pre>
+public class LinkedList&lt;V&gt; 
+{
+   Node&lt;V&gt; first, last; 
+   private class Node&lt;V&gt; 
+   {
+      public Node&lt;V&gt; prev, next;
+      public V item; 
+   }
+}
+ </pre>
+
+<h3>Properties, Events and Indexers in generic classes</h3>
+
+<p>This section discusses <i>property-declarations</i>,
+<i>event-declarations </i>and <i>indexer-declarations </i>within generic
+classes.  In passing it is worth noting that the signatures of all properties,
+indexers and events may contain <i>constructed types</i>, regardless of whether
+these are in a generic or non-generic class. </p>
+
+<h4>Instance properties, events
+and indexers in generic classes</h4>
+
+<p>Within a <i>generic-class-declaration</i>
+the type of an instance property may include the <i>class-type-parameters</i>
+of the enclosing class.   For example, the following shows an instance property
+in a generic class:</p>
+
+<pre>
+class C&lt;V&gt;
+{   
+   private V name;   
+   private V name2;   
+   public V Name 
+   {
+      get { return name; }   
+      set { name = value; }
+   }   
+   public V this[string index]    
+     { get { if (index == "main") return name; else return name2 }   }
+}
+</pre>
+
+<h4>Static properties and events
+in generic classes</h4>
+
+<p>Because class type parameters are not accessible
+at static property declarations, the type of a static property cannot include any type parameters.</p>
+
+<pre>
+delegate D&lt;V&gt;(T x);  // Ok, a generic delegate   
+
+class C&lt;V&gt;
+{   
+   public static V Name // Error, static properties can't use type parameter   
+      { ... }   
+   static event D&lt;V&gt; e; // Error, static events can't use type parameters
+}
+</pre>
+
+<h4>4.6.3 No generic properties,
+events or indexers</h4>
+
+<p>Properties, events and indexers may not
+themselves be generic.  If a property-like construct is required that must
+itself be generic then a static or virtual generic method should be used
+instead. </p>
+
+<p>For example:</p>
+
+<pre>
+class C&lt;V&gt;
+{
+   public C&lt;V&gt; p1         // Ok   
+      { get { return null; } }   
+   public C&lt;U&gt; p2&lt;U&gt;     // Error, properties may not be generic   
+      { ... }   
+   public event D&lt;V&gt; fire1;  // Ok   
+   public event D&lt;V&gt; fire2&lt;V&gt;;  // Error, events may not be generic   
+   public V this[int index] { ... }  // Ok   
+   public V this&lt;U&gt;[int index] { ... } // Error, syntax error   
+}
+</pre>
+
+<h3>Overriding and generic classes</h3>
+
+<p>A member in a derived class with the override
+ attribute must respect the instantiations specified in the
+inheritance chain.  That is, the resulting signature must be identical to the
+signature of a method with the virtual or abstract
+attribute after the instantiations implied by the inheritance chain
+are taken into account.   </p>
+
+<p>The following example shows some examples
+of this:</p>
+
+<pre>
+abstract class C&lt;V&gt;
+{   
+   private string name;   
+   private V data;   
+   public bool CheckName(C&lt;V&gt; x)  { ... }   
+   public virtual V GetData()  { ...   }   
+   public abstract C&lt;V&gt; CopyData();   
+   public virtual void ReplaceData(C&lt;V&gt; x) { ... }   
+}   
+
+class D : C&lt;string&gt;
+{   
+   public override string GetData()  { ... }   
+   public override C&lt;string&gt; CopyData()  { ...  }   
+   public override void ReplaceData(C&lt;int&gt;) // Error, incorrect override,
+                                            // should be C&lt;string&gt;   
+      { ... }
+}   
+
+class E&lt;U,W&gt; : C&lt;U&gt;
+{   
+   public override U GetData()  { ... }   
+   public override C&lt;W&gt; CopyData()  // Error, incorrect override, 
+      { ... }                      // should be C&lt;U&gt; as we derive 
+                                   // from C&lt;U&gt;   
+   public override void ReplaceData(C&lt;U&gt;) { ... }
+}
+</pre>
+
+<p>Note that the signatures required for the
+virtual methods as we override them are the same as the signatures for these
+methods in the class C&lt;V&gt; once we have
+substituted string for V (in the case of class D) and 
+U for V (in the case of
+generic class E).</p>
+
+<h3>Operators in generic classes</h3>
+
+<p><i>Generic-class-declarations </i>   
+>can include operator declarations.  However, because class type
+parameters are not in scope at static member declarations, the type of a static operator cannot use any of the type parameters of the enclosing class. </p>
+
+<h3>Instance
+constructors in generic classes</h3>
+
+<p>Instance constructors in a <i>generic-class-declaration</i>
+are "generic" in the sense that they must work for arbitrary <i>class-type-parameters</i>. 
+Within the constructor this means that for a class C with <i>class-type-parameters</i> 
+V1,...,Vn
+the "this" pointer is considered to have the constructed type 
+C&lt;V1,...Vn&gt;, just as for any instance function member.</p>
+
+<p>The <i>class-type-parameters</i> may be
+used in the argument expressions of a constructor initializer and in the field initializers
+of all non-static fields.  The following example illustrates both of these:</p>
+
+<pre>
+class C&lt;V&gt; 
+{
+   V[] x = new V[10];
+   public C(V[] x) { this.x = x; }
+}
+
+class D&lt;W&gt; : C&lt;W&gt;
+{
+   public D(int x): base(new W[x]) {}   // Ok
+   public D&lt;int&gt;(): base(new int[0]) {} // Error, syntax error
+}
+</pre>
+
+<h2>Generic structs</h2>
+
+<p>The rules for <i>class-declarations</i> and
+<i>generic-class-declarations</i> apply identically to <i>generic-struct-declarations</i>,
+modulo the usual differences between structs and classes.</p>
+
+<h2>Generic methods</h2>
+
+<p>A generic-method is a method member that is abstract with
+respect to certain types.  Generic methods can be used at two places: at a call
+site or to construct a delegate from the generic method.  Generic methods can only be used once an <i>instantiation</i> for the type parameters of the generic method is explicitly
+ specified by the user.  </p>
+
+<p>The <i>method-type-parameters</i> are in
+scope throughout the <i>generic-method-declaration</i>, and may be used to form
+types throughout that scope including the <i>return-type</i>, the <i>method-body</i>,
+and the <i>explicit-type-parameter-constraint</i> but excluding the <i>attributes</i>.</p>
+
+<p>The following example finds the first
+element in an array, if any, that satisfies the given test delegate.</p>
+
+<pre>
+delegate bool Test&lt;V&gt;(V);   
+
+class Finder
+{   
+   public V Find&lt;V&gt;(V[] inp, Test&lt;V&gt; p) 
+   {   
+      foreach (V x in inp)   
+         if (p(x)) return x;   
+      throw new InvalidArgumentException(&quot;Find&quot;);
+   }
+}
+</pre>
+
+<p>A generic method may not be declared extern.</p>
+
+<p>A generic method must differ in formal
+signature from all other methods in its class.  For the purposes of signature
+comparisons any <i>explicit-type-parameter-constraints </i> are ignored, as are
+the names of the <i>method-type-parameters</i> and any <i>class-type-parameters</i>
+that are accessible from the surrounding class definition, but the number of
+generic type parameters is relevant, as are the relative numeric positions of
+type-parameters in left-to-right ordering from the outermost declaration to the
+innermost.</p>
+
+<h2>Generic interfaces</h2>
+
+<p>A <i>generic-interface-declaration</i>
+is identical to an <i>interface-declaration</i> except for the inclusion of the
+<i>interface-type-parameters</i>, which themselves follow an identical syntax
+to <i>class-type-parameters</i>.</p>
+
+<p>An <i>interface-type-parameter</i> can be
+used as a <i>type-name</i> in certain parts of the interface, according to the
+following rules:</p>
+
+<ul>
+<li>An <i>interface-type-parameter</i> may be used to
+form a type in the signature of every member in the interface.  </p>
+
+<li>The specification of each base interface of any 
+<i>interface-declaration</i> is an <i>interface-type</i>, and in particular
+this might be a <i>constructed-interface-type</i>.  It may not be an <i>interface-type-parameter</i>
+on its own, though it may involve the <i>interface-type-parameters</i> that are
+in scope.</p>
+</ul>
+
+<h3>Interface implementations</h3>
+
+<p>Interfaces may extend <i>interface-types</i>,
+and these may include <i>constructed-interface-types</i>.  This may happen even
+for non-generic interfaces if they extend interfaces that themselves derive
+from <i>constructed-interface-types</i>.  </p>
+
+<h4>Uniqueness of interface
+types</h4>
+
+<p>The set of base interface types of an
+interface must not contain two <i>constructed-interface-types</i> with the same
+<i>generic-interface-name</i> and different instantiations.  This simplifies
+the implementation of dynamic dispatch mechanisms and prevents ambiguities
+arising amongst methods and ambiguities when generic interfaces are
+instantiated.  </p>
+
+<p>For example, consider the following
+interfaces: </p>
+
+<pre>
+interface I1&lt;U&gt; { ... }   
+
+interface I2&lt;V&gt;&nbsp;: I1&lt;V[]&gt; { ... }   
+
+interface I3&lt;W&gt; : I1&lt;Object&gt;, I2&lt;W&gt; { ... }   
+</pre>
+
+<p>The <i>interface set</i> of I3 is as follows:   
+
+{  I1&lt;Object&gt;, I1&lt;W[]&gt;, I2&lt;W&gt; }   
+
+<p>This contains the interface I1
+at more than one instantiation, and is hence a compile-time error.</p>
+
+<h3>Explicit
+interface member implementations</h3>
+
+<p>Explicit interface member implementations
+may be provided for those interfaces which are <i>constructed-interface-types</i>. 
+This type may be a <i>constructed-interface-type</i>, as in the following
+example:</p>
+
+<pre>
+interface IList&lt;V&gt;
+{
+   V[] Elements();
+}   
+
+interface IDictionary&lt;K,D&gt;
+{
+   D this[K];   
+   void Add(K x, D y);
+}   
+
+class List&lt;V&gt;: IList&lt;V&gt;,
+IDictionary&lt;int,V&gt;
+{
+   V[] IList&lt;V&gt;.Elements() {...}   
+
+   V IDictionary&lt;int,V&gt;.this[int idx] { ... } // return the element at index   
+   void IDictionary&lt;int,V&gt;.Add(int idx, V y) { ... } // add y at the index
+}   
+</pre>
+
+<p>The <i>constructed-interface-type</i> must
+be a member of the <i>immediate base interface types </i> of the class C.</p>
+
+<p>The algorithm that maps class methods to
+the <i>set of base interfaces </i>of the class works essentially unchanged with
+the additional propagation of instantiations throughout the process.     </p>
+
+<h2>Generic
+delegate declarations</h2>
+
+<p>A <i>generic-delegate-declaration</i>
+is a generic-type-declaration that declares a new generic delegate type.  It is identical to a <i>delegate-declaration</i> except for the inclusion of the <i>delegate-create-type-parameters</i>, which themselves follow an identical syntax to <i>class-type-parameters.</i></p>
+
+<p>Delegate type parameters are specified at
+the point where a delegate object is created.  The method provided for the delegate must have the signature that results after applying the specified instantiation throughout the delegate signature.</p>
+
+<p>The following example specifies the
+arguments &lt;int,string&gt; at the point the
+instance of the delegate is created in the expression
+new Test&lt;int,string&gt;(One).  Note that the One
+method has the signature that corresponds to the signature required
+for delegates after the instantiation &lt;V 
+<span style='font-size:10.0pt;font-family:Symbol'>-></span>
+ int, U 
+<span style='font-size:10.0pt;font-family:Symbol'>-></span>
+string&gt; is applied.</p>
+
+<pre>
+delegate bool Test&lt;V,U&gt;(V,U);   
+
+struct Pair&lt;V,U&gt; { V e1; U e2; }   
+
+class PairSearch
+{   
+   public static U Find&lt;V,U&gt;(Pair&lt;V,U&gt;[] inp, Test&lt;V,U&gt; test) 
+   {   
+      foreach (Pair&lt;V,U&gt; p in inp)   
+         if (test(p.e1, p.e2)) return p.e2;   
+      throw new InvalidArgumentException(&quot;Find&quot;);
+   }   
+
+   public static bool One(int n, string s) 
+      { return n == 1; }   
+
+   public static void Main()
+   {   
+      Pair&lt;int,string&gt;[] a1 = { 
+          new Pair&lt;int,string&gt;(1,&quot;one&quot;),
+          new Pair&lt;int,string&gt;(2,&quot;two&quot;),
+          new Pair&lt;int,string&gt;(3,&quot;three&quot;)
+      };   
+      string three = Find&lt;int,string&gt;(a1, new Test&lt;int,string&gt;(One));
+   }
+}   
+</pre>
+
+<p>Note that the same delegate object cannot
+be used at different types when all the type parameters are specified at the
+moment the delegate is created.  That is, the delegate object cannot itself
+encapsulate a generic operation, only the generic operation specialized to a
+particular set of types.  A new delegate object must be allocated for each
+different set of types.  </p>
+
+<h2>Constraints</h2>
+
+<p>Each <i>type-parameter</i> (including <i>class-type-parameters</i>,
+<i>method-type-parameters</i> etc.) may be qualified by one or more <i>explicit-type-parameter-constrainst</i>. 
+The specification of explicit constraints is optional.  If given, a constraint
+is a <i>reference-type</i> that specifies a minimal "type-bound" that every
+instantiation of the type parameter must support.  This is checked at
+compile-time at every use of the corresponding generic class, interface,
+method, delegate or struct.  (Currently only one constraint is permitted per
+type parameter).</p>
+
+<p>Constraints are speficied using the "where"
+keyword.  Values of the type constrained by the type parameter can be used to
+access the instance members, including instance methods, specified in the
+constraint.</p>
+
+<pre>
+interface IPrintable { void Print()&nbsp;; }   
+
+class Printer&lt;V&gt; where V : IPrintable&gt; 
+{ 
+   void PrintOne(V x) { x.Print(); }
+}   
+</pre>
+
+<p>Constraints may involve the type parameters
+themselves.  This is used when the constraint specifies an operation that
+involves passing or returning values involving the type parameter.  For
+example:</p>
+
+<pre>
+interface Icomparable&lt;V&gt; { int CompareTo(V); }   
+
+class Sorter&lt;V&gt; where V : IComparable&lt;V&gt;  { ... }   
+</pre>
+
+<p>Constraints may even involve the class, interface or method
+for which they are acting as a constraint:</p>
+
+<pre>
+interface I&lt;V&gt; where I&lt;V&gt;  { ... }  // A strange, but legal constraint   
+</pre>
+
+<p>Constraints may also be class types, e.g. abstract base
+classes:</p>
+
+<pre>
+abstract class Printable { abstract void Print(); }   
+
+interface I&lt;V&gt; where V : Printable { ... }   
+</pre>
+
+<p> "Different" constraints may be attached to the type
+parameters declared on generic static methods within a generic class.  This is
+because generic static methods must declare their own type parameters and do
+not automatically acquire the type parameters of the enclosing (generic) class. 
+For example:</p>
+
+<pre>
+interface IPrintable { void Print(); }   
+
+class List&lt;V&gt;  
+{ 
+   ...    
+   static void Print&lt;V&gt; where V : IPrintable(List&lt;V&gt; list) { ... }
+}   
+</pre>
+
+<p>Constraints may not
+themselves be a type parameter:</p>
+
+<pre>
+class Extend&lt;V, U&gt; where U : V { ... }  // Error, a type parameter may not
+                                        // be used as a constraint    
+</pre>
+
+<p>Explicit constraints are most useful in two
+circumstances: </p>
+
+<ul>
+<li>Generic classes: to require class type
+parameters to support simple functionality such as an "equals" method or a "less
+than" method to implement an ordering, especially when the class implements an
+abstract data type that makes no sense without these methods (e.g. balanced
+binary trees require an ordering on the type used as the key).  Note, however,
+that in many circumstances it is unreasonable to expect instantiating types to
+support exactly the right base classes, and it may be more appropriate and
+flexible to use "provider" functions (e.g. System.Collections.IHashCodeProvider
+or System.ICollections.IComparer) to provide the necessary functionality.
+
+<li>Generic methods: constraints can be used to help
+define generic methods that "plug together" functionality provided by different
+types, thus defining "generic algorithms".  This can also be achieved by subclassing
+and runtime polymorphism, but static, constrained polymorphism can in many
+cases result in more efficient code, more flexible specifications of generic
+algorithms, and more errors being caught at compile-time rather than run-time. 
+However, constraints need to be used with care and taste, as code that does not
+implement the constraints will not be easily usable in conjunction with the
+methods.
+</ul>
+
+<p>In either case, constraints are most useful
+in the context of defining a <i>framework</i>, i.e. a collection of related
+classes, where it is an advantage to ensure that a number of types support some
+common signatures and/or base types.   Constraints also allow types to be
+related when they may not been explicitly related via inheritance and/or
+implementation.</p>
+
+<h3>Satisfying
+Constraints</h3>
+
+<p>Every time a type is supplied for a type
+parameter, e.g. at a method call to a <i>generic-method-declaration</i> or when
+building a <i>constructed-class-type</i> out of a <i>generic-class-declaration</i>,
+the actual type parameters must <b><i>satisfy</i></b> the constraints on the <i>type-parameters</i>
+of the declaration being used.    </p>
+
+<p>For example, the following constraint is
+satisfied by all of the types declared below it. </p>
+
+<pre>
+interface IPrintable { void Print(); }   
+
+class C1 : IPrintable
+{ 
+    ...
+    public virtual void Print() { ... }
+}   
+
+class C2 : IPrintable
+{ 
+    ...
+    public abstract void Print() { ... }
+}   
+
+struct C3 : IPrintable
+{ 
+    ...
+    public void Print() { ... }
+}   
+
+class C4 : IPrintable
+{ 
+    ...
+    void IPrintable.Print() { ... }
+}   
+</pre>
+
+<p>This means the following code fragments are
+accepted by the compiler:</p>
+
+<pre>
+public class Printer&lt;V&gt; where V :
+IPrintable
+{ 
+    ...
+    public void Print(V x) { ...x.Print(); ...  }
+}   
+
+... C1 x = new C1(); Printer&lt;C1&gt; p1 = new Printer&lt;C1&gt;(); p1.Print(x); // OK   
+
+... C2 y = new C2(); Printer&lt;C2&gt; p2 = new Printer&lt;C2&gt;(); p2.Print(y); // OK   
+
+... C3 y = new C3(); Printer&lt;C3&gt; p3 = new Printer&lt;C3&gt;(); p3.Print(y); // OK   
+
+... C4 y = new C4(); Printer&lt;C4&gt; p4 = new Printer&lt;C4&gt;(); p4.Print(y); // OK   
+</pre>
+
+<p>However, the following type does not
+satisfy the constraint because the class does not explicitly implement the
+interface:</p>
+
+<pre>
+public class C5
+{ 
+    ...
+    public void Print() { ... }
+}   
+
+public static void Main()
+{   
+   C5 y = new C5();    
+   Printer&lt;C5&gt; p5 = new Printer&lt;C5&gt;(); // Error   
+   p5.Print(y); 
+}   
+</pre>
+
+<h3>When and how
+an instantiation satisfies its constraints</h3>
+
+<p>A <i>constructed-class-type</i> 
+C&lt;<i>inst</i>&gt; for a <i>generic-class-declaration</i>
+C with <i>class-type-parameters</i> &lt;V1,...,Vn&gt;
+ is only <b><i>valid</i></b> under certain conditions.  In
+particular, for each Vi that is
+constrained, e.g. by a <i>constructed-constraint</i> B&lt;T1,...,Tm&gt;, first form a new <i>constructed-constraint </i>B&lt;S1,...,Sm&gt;
+by applying the instantiation <i>inst</i> to
+each type Ti to form Si. Then the individual type that corresponds to
+Vi in the instantiation <i>inst </i>must satisfy this constraint. </p>
+
+<p>A type T (whether
+reference or a value type, constructed or non-constructed) <b><i>satisfies a constraint</i></b><i>
+</i>S if there is an implicit non-user-defined conversion from the type 
+S to the type S.  The conversion may
+be a boxing conversion, which means that value types may satisfy constraints
+given by interface types, if the value types implement those interface types.</p>
+
+<p>Similarly, constraints must be satisfied
+for <i>constructed-interface-types</i>, <i>constructed-delegate-types</i>, <i>constructed-struct-types</i>,
+<i>generic-method-invocations</i> and <i>generic-delegate-invocations</i>.   </p>
+
+<h2>Expressions
+and statements   </h2>
+
+<p>
+The semantics of many expressions and statements
+is affected by the presence of constructed types, variable types and their
+corresponding values.  This section describes these effects.</p>
+
+<h3>Expression
+classifications</h3>
+
+<p>The existing expression classifications are
+extended in the following ways:</p>
+
+<ul>
+<li>Whenever expressions have a type, e.g. values,
+variables, property accesses, event accesses and indexer accesses, the type may involve <i>constructed-types</i>, and,
+if the expression occurs within a <i>generic-declaration</i> the type may also
+involve <i>type-parameters</i>.
+
+<li>When an expression is itself a type, e.g.
+is an operand of the as operator, the type may be a <i>constructed-type</i>,
+and, if the expression occurs within a <i>generic-declaration,</i> the type may
+also involve any <i>type-parameters</i>of that declaration. 
+
+<li>In addition, the class-name associated with a <i>generic-class-declaration</i>
+ may be used to
+form a type in the following situations: on the left
+hand side of a <i>member-access</i>
+and as the operand of the typeof operator. 
+This is in order to
+access the static members contained within a <i>generic-class-declaration</i> and to pass an (uninstantiated) generic type to
+reflection libraries.  The names associated with generic interface, struct and
+delegate types can be used in a similar fashion.
+
+<li>When an expression has an associated instance
+expression, e.g. when the expression is an invocation-expression
+or a <i>property-access-expression</i>, the instance expression may have a type
+that is a <i>constructed type</i>. 
+
+<li>When an expression is classified as a method
+group, e.g. in an invocation-expression or a delegate-creation-expression,
+ then each method in the method group will be paired with a (possibly
+constructed) type that indicates the <i>reference-type</i> or <i>struct-type </i>related
+to the position of this method within an inheritance hierarchy that may contain
+constructed types.  Namely, the method group is a subset of the <i>set of all
+function members </i>of a class, interface or struct which annotates members
+with type information according to the inheritance hierarchy.  </p>
+
+<li>Similarly, when an expression is a property,
+event or indexer access, then the member is paired with a (possibly
+constructed) type that indicates
+the <i>reference-type</i> or <i>struct-type </i>related to the position of this
+method within an inheritance hierarchy that may contain constructed types.  </p>
+</ul>
+
+<h3>Member lookup</h3>
+
+<p>The rules for member lookup are unchanged
+with the following exceptions:</p>
+
+<ul>
+<li>Member lookups for classes return member groups
+that contain pairs of members and governing types, drawn from the <i>set of all
+function members of a class</i>.
+
+<li>Similarly for member lookups for interfaces and structs.
+</ul>
+
+<p>In addition, member lookup for an
+expression that has a type that is a type variable V
+ returns the union of all the member groups from all the constraints
+of V.  These will again be groups containing pairs of members and governing
+types.</p>
+
+<p>For instance, in the following example the
+expression "x" has type V.
+The method group for the expression "x.Print" will contain two members,
+ the first being the type IPrintable twinned with the method
+ "void Print();", the second the type
+ IBatik&lt;string&gt; twinned with the method "U Print(U);". 
+The second method will be the one selected by the process of overload
+resolution.</p>
+
+<pre>
+public void IPrintable { void Print(); }   
+
+public void IBatik&lt;U&gt; { U Print(U); }   
+
+public void Print&lt;V&gt; where V: IPrintable, V: IBatik&lt;string&gt;(V x)
+{ 
+    x.Print("abc");
+}   
+</pre>
+
+<h3>Member
+access</h3>
+
+<p>Constructed types are not allowed to appear
+as types on the left of a <i>member-access</i>.  An uninstantiated generic type
+may appear on the left of a <i>member-access</i>.  In this case the accessed
+member must be static.   </p>
+
+<h3>Invocation expressions</h3>
+
+<p>An invocation-expression
+is used to invoke a method.  At the point of invocation a <i>generic-instantiation</i>
+may be specified.  As before, the primary-expression
+of an invocation-expression must be a method
+group or a value of a delegate-type.     </p>
+
+<h4>10.4.1 Instance method invocation</h4>
+
+<p>An instance method invocation has:   </p>
+
+<ul>
+<li>An instance expression <i>obj</i> associated
+with the <i>primary-expression.</i></p>
+
+<li>A method group arising from the <i>primary-expression</i>. 
+This method group will contain pairs of methods and governing types.</p>
+
+<li>An optional <i>generic-method-instantiation</i>
+specified in the invocation expression.</p>
+</ul>
+
+<p>Resolving an instance method invocation
+involves the following steps:</p>
+
+<ol>
+<li>Incorporate the type of <i>obj </i>with the
+governing types of the method group, which initially do not take the detailed
+type of <i>obj</i> into account.  In particular, if <i>obj</i> has type D&lt;<i>inst1</i>&gt;
+ and the governing
+type in the method group is C&lt;<i>inst2</i>&gt;, 
+then replace the governing type with C&lt;<i>inst</i>&gt; where <i>inst</i>
+is the composition of <i>inst1</i> and <i>inst2</i>.
+
+<p style='margin-left:18.0pt'>Note that:</p>
+
+<ul>
+ <li>C and D may be generic
+     classes taking type parameters U1,...,Um and  V1,...,Vn  respectively.</p>
+
+<li>Under our notational conventions this also
+covers the case where D is non-generic and <i>inst1</i>
+is the empty instantiation, and also where C is
+non-generic and <i>inst2</i> is the empty instantiation.</p>
+
+<li>Note also that C and D may be identical, or the class C
+will appear somewhere in the class hierarchy above D. </p>
+
+<li>The type C&lt;<i>inst2</i>&gt; will appear in the <i>base type set</i> for the class 
+D.  </p>
+
+<li>The type C&lt;<i>inst</i>&gt; will appear in the <i>base type set</i> for the type
+D&lt;<i>inst1</i>&gt;.  </p>
+
+<li>The instantiation <i>inst1</i> will map type
+parameters V1,...,Vn of D to types that may involve the <i>type-parameters</i> that are accessible
+at the point where the overall <i>invocation-expression</i> occurs.  These
+types will contain no other type parameters.  </p>
+
+<li>The instantiation <i>inst2</i> will map type
+parameters  U1,...,Um of  C  to types that may involve the <i>type-parameters</i>  
+ V1,...,Vn, but no other type parameters.</p>
+</ul>
+
+<li>Use the <i>method-type-instantiation</i> specified
+in the invocation expression for every method in the method set.  Those methods
+for which the <i>method-type-instantiation</i> is not valid (because it does
+not satisfy the appropriate constraints or specifies the wrong number of type
+parameters) are excluded.</p>
+
+<li>Apply overload resolution to the method group
+that results from step 2.  In the absence of an error this will yield a single
+method, a single governing type and a single method instantiation. </p>
+</ol>
+
+<p>We now explain how the method, governing
+type and method instantiation are combined to determine the exact
+instantiations of type parameters used for the expression, and how the return
+type of the expression can be determined.   </p>
+
+<p>Let us suppose that the steps above produce
+a method  R<i>m</i>  (A1,...,Aq), a governing type  C&lt;<i>inst</i> &gt;
+ and a method instantiation <i>minst</i>.  Then the <b><i>overall
+class type instantiation</i></b> is <i>inst</i>, and the <b><i>overall method
+type instantiation</i></b> is <i>minst</i>.  </p>
+
+<p>Note that:</p>
+
+<ul>
+<li>C may be a generic class taking type
+parameters  V1,...,Vn.</p>
+
+<li><i>m</i> may be a
+generic method accepting type parameters  W1,...,Wp.</p>
+
+<li>Under our notational conventions this also
+covers the case where  C is non-generic and <i>inst</i>
+is the empty instantiation, and/or <i>m</i> is non-generic and <i>minst</i> is
+the empty instantiation.</p>
+
+<li>The instantiations <i>inst</i> and <i>minst </i>will
+map type parameters  V1,...,Vn  and  W1,...,Wp
+ respectively to types that may involve the <i>type-parameters</i>
+that are accessible at the point where the overall <i>invocation-expression</i>
+occurs.  These types will contain no other type parameters.  </p>
+</ul>
+
+<p>Furthermore:</p>
+
+<ul>
+<li>The constraints that <i>inst</i> must satisfy are
+found by substituting <i>inst</i> through the formal constraints associated
+with  V1,...,Vm.  </p>
+
+<li>The constraints that <i>minst</i> must satisfy
+are found by substituting the combination of <i>inst </i>and <i>minst </i>throughout
+the formal constraints associated with  W1,...,Wp.</p>
+
+<li>The actual argument types and return type can be
+found by substituting the combination of <i>inst </i>and <i>minst </i>throughout
+ A1,..., Aq and R.</p>
+</ul>
+
+<p>In combination with the instantiations and
+eventual method called via virtual dispatch, the overall class and method
+instantiations determine the exact types assigned to type parameters when the
+code for the invoked method is executed. </p>
+
+<h4>Static method invocation</h4>
+
+<p>Static method invocation proceeds along essentially the same lines as instance
+method invocation, except that no governing types need be considered.  Overload
+resolution is applied.</p>
+
+<h4>Delegate
+invocation</h4>
+
+<p>Delegate invocation
+may not accept type parameters.  No overloading resolution is applied since it
+is not required.</p>
+
+<h3>Type parameter inference</h3>
+
+<p>Currently, all type instantiations must be
+written explicitly.  A future goal is to use type parameter inference to allow
+programmers to omit type instantiations in certain commonly occurring, highly
+predictable situations. Type parameter inference will be applied when a generic
+method is called but no explicit instantiation is given at the call site, or
+when an instance constructor on a generic class is called with no explicit
+instantiation.  </p>
+
+<p>For example, given the class and statemements
+below, the type instantiations "string" and "int" are essentially obvious given the arguments to the constructor.</p>
+
+<pre>
+class List&lt;V&gt; : ICollection
+{ 
+   List(V[] x1) { ... }   
+}   
+
+...  ICollection c1 = new List&lt;string&gt;(new string[] {"abc", "def" });             
+...  ICollection c2 = new List&lt;int&gt;(new int [] { 3, 4 });             
+</pre>
+
+<p>Type parameter inference will allow these
+arguments to be omitted:</p>
+
+<h3>Overload Resolution</h3>
+
+<p>The overload resolution rules apply to both
+the members of a constructed type and the functionality available via a constraint.  Instead of beginning with the members of a class (including its inherited members), the process begins with a method group that contains triples of:</p>
+
+<ul>
+<li>a method <i>m</i>;</p>
+
+<li>a governing type 
+C&lt;<i>inst</i>&gt;; and </p>
+
+<li>a method instantiation <i>minst</i>.</p>
+</ul>
+
+<p>For each entry in the method group, the
+combination of <i>inst</i> and <i>minst</i> is applied to the signature of the
+method, forming a group of methods.  The standard method overloading rules are
+then applied.</p>
+
+<p>For example:</p>
+
+<pre>
+public class Foo { }   
+
+public class C&lt;U,V&gt;
+{    
+    ...   
+    public void m(U x, V y, object z) { ... }   // method A   
+    public void m(U x, V y, string z) { ... }   // method B   
+    public void m(object x,Foo y, V z) { ... }  // method C
+}
+
+public void Main 
+{
+   C&lt;string,string&gt; c1 = new C&lt;string,string&gt;()&nbsp;;   
+   c1.m("a", "b", new object());         // calls method A   
+   c1.m("a", "b", new Foo());            // calls method A   
+   c1.m("a", "b", 1);                    // calls method A, boxing the int   
+   c1.m("a", "b", "c");                  // calls method B   
+   c1.m(new object(), new Foo(), "abc")  // calls method C    
+   c1.m(new Foo(), new Foo(), "abc")     // calls method C    
+   c1.m(new Foo, new Foo(), new Foo())   // error in last parameter
+}   
+
+// Note that C&lt;string,string&gt; is considered to have methods:
+//    public string m(string x,string y, object z) { ... }   // method A   
+//    public string m(string x,string y, string z) { ... }   // method B   
+//    public string m(object x,Foo y, string z) { ... }   // method C   
+</pre>
+
+<p>In the above example, the type being
+activated is C&lt;string,string&gt;, and because all
+the candidate methods come from this class, the governing type for each is
+C&lt;string,string&gt;.  The full set of methods available for this type is determined by
+applying the instantiation &lt;string,string&gt;,
+which is the instantiation associated with the governing type C&lt;string,string&gt;. 
+ This makes the individual resolutions performed above apparent
+using the standard rules for overload resolution.</p>
+
+<p>Particular substitutions may result in
+overload resolution errors where others may not. </p>
+
+<pre>
+C&lt;Foo,Foo&gt; c2 = new C&lt;Foo,Foo&gt;();  
+
+// Note that C&lt;Foo,Foo&gt; has methods:
+//    public object m(Foo x,   Foo y, object z) { ... }   // method A   
+//    public object m(Foo x,   Foo y, string z) { ... }   // method B   
+//    public object m(object x,Foo y, Foo z) { ... }   // method C   
+
+public void Main ()   
+{   
+   c2.m(new Foo(), new Foo(), new Foo());   // Error, ambiguous   
+}   
+</pre>
+
+<p>This situation can be avoided easily by
+restrained and sensible use of overloading, just as in normal class design.</p>
+
+<h3> Element
+access  expressions</h3>
+
+<p>An array access expression may access an
+array whose element type is either a <i>type-parameter</i> or a <i>constructed-type</i>. 
+The rules carry over unchanged, for example, if the element type is a <i>type-parameter</i>
+V, and the array type is V[], then
+the overall type of the element access expression will be V.</p>
+
+<p>An indexer access expression may access an object whose type is
+either a <i>type-parameter</i> or a <i>constructed-type</i>.  When accessing an
+object whose type is a <i>type-parameter</i>, the <i>type-parameter</i> must be
+constrained by one or more types that have indexers.  The set of indexers for an arbitrary type is the set of members determined by the rules of inheritance modified to take into account
+inheritance through structured types.</p>
+
+<h3>This access expressions</h3>
+
+<p>As before a <i>this-access</i>
+is permitted only in the block of a constructor,
+an instance method, or an instance accessor, and it has different meanings in
+these situations.  The standard rules carry over directly when the <i>this</i>-access
+occurs within a <i>generic-class-declaration</i> or a <i>generic-struct-declaration</i>. 
+In all cases, a <i>this-</i>access expression within the instance members of a <i>generic-class-declaration</i>
+of a type T with <i>class-type-parameters</i>  V1,...,Vn
+ is considered to have the type  T&lt;V1,...,Vn&gt;, 
+i.e. the most general type possible in the given generic class.</p>
+
+<h3>Base access expressions</h3>
+
+<p>A "base" access expression is used to
+access functionality of the base class within a subclass.  The rules for base
+access expressions are essentially unmodified.  Note that the base class may be
+a <i>constructed-class-type</i>.  Thus, at compile-time,  base-access expressions of the form
+ base.I  and  base[E] are evaluated
+exactly as if they were written  ((B&lt;C,D&gt;)this).I  and  ((B&lt;C,D&gt;)this)[E],
+where  B&lt;C,D&gt; is the <i>constructed-class-type</i> that forms the base class of
+the class or struct in which the construct occurs. </p>
+
+<h3>Object creation
+expressions</h3>
+
+<p>The type T in a "new"
+expression new T(args) may be a <i>constructed-class-type</i>
+or a <i>constructed-struct-type</i>.  </p>
+
+<p>The type <T may not be
+a <i>type-parameter</i>, and thus it is not permitted to simply write new V(). 
+ However, the expression new V[] is permitted,
+as is accessing the constructors of V by using a
+"typeof" expression and reflection.  An alternative design pattern is to
+require that clients pass in a factory object capable of producing values of
+type V.</p>
+
+<h3>Array creation expressions</h3>
+
+<p>An array creation expression includes a <i>type</i>
+for the array which may be a constructed type.  The type of the array may be a <i>type-parameter</i>,
+and thus it is permitted to simply write new V[<i>size</i>].
+  The elements of the array are assigned the "default" value for
+the type V.</p>
+
+<h3>Delegate
+creation expressions</h3>
+
+<p>An delegate creation expression includes a <i>type</i>
+for the delegate which may be a constructed type.  The compile-time processing
+of a delegate-creation-expression of the form new T(E) where T is a constructed-delegate-type or is
+augmented by the following steps:</p>
+
+<p> If  E is a
+method group:</p>
+
+<ul>
+<li>We can assume that
+T
+has the form  D&lt;<i>inst</i>&gt; for some delegate type D and
+instantiation <i>inst</i>.  Note that <i>inst </i>must satisfy the constraints
+on the type parameters for D.</p>
+
+<li>The method group for E must include exactly one entry whose signature is compatible with 
+D&lt;<i>inst</i>&gt;.  </p>
+</ul>
+
+<p>Otherwise, if E is a value of a delegate-type:</p>
+
+<ul>
+<li>
+We can  assume that 
+T
+has the form D&lt;<i>inst</i>&gt;
+for some delegate type D and
+instantiation <i>inst</i>.  Note that the type arguments must satisfy the
+constraints on the type parameters for D.</p>
+
+<li>D&lt;<i>inst</i>&gt; and E
+must be compatible; otherwise, a compile-time error occurs.  The
+notion of compatibility is extended in a similar manner to that immediately
+above to cope with <i>delegate-create-type-parameters</i>.</p>
+
+<li>The result is a value of type  D&lt;<i>inst</i>&gt;, namely a newly
+created delegate that refers to the same invocation list as  E.</p>
+</ul>
+
+<p>Note that no method type arguments may <i>ever</i>
+be specified in a delegate creation expression even if the argument passed is a
+generic method   That is, you can't use delegate creation to "partially apply"
+a generic method or generic delegate
+to a set of type parameters.</p>
+
+<h3>"typeof" expressions</h3>
+
+<p>A "typeof" expression takes a type as its
+argument.  The type may be a <i>constructed-class-type</i> or a <i>constructed-struct-type</i>
+or a <i>constructed-delegate-type</i>.  The actual type object will be
+different for different constructed types.   The type may also be a <i>type-parameter.</i> 
+The type object that results will depend on the instantiation under which the
+generic code is being used.  The type may be an uninstantiated generic type.</p>
+
+<h3>"sizeof"
+expressions</h3>
+
+<p>The type may specify a <i>constructed-struct-type</i>.   
+Different instantiations of a <i>generic-struct-declaration</i> may have
+different sizes.  As usual,  sizeof can only be used
+in unsafe code.</p>
+
+<h3>Local
+variable declarations   </h3>
+
+<p>A type involved in a local variable
+declaration may be a <i>constructed-type</i>. </p>
+
+</body>
+
+</html>
