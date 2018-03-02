@@ -5,7 +5,7 @@ comments: false
 codeproject: false
 ---
 
-Before we dive into the technical details, let's start with a quick history lesson, courtesy of [Don Syme](https://www.microsoft.com/en-us/research/people/dsyme/) who worked on adding generics to .NET and before going on to [designing and implementing F#](http://fsharp.org), which is a pretty impressive set of achievements!!
+Before we dive into the technical details, let's start with a quick history lesson, courtesy of [Don Syme](https://www.microsoft.com/en-us/research/people/dsyme/) who worked on adding generics to .NET and then went on to [design and implement F#](http://fsharp.org), which is a pretty impressive set of achievements!!
 
 ## Background and History
 
