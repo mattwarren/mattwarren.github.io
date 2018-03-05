@@ -22,6 +22,8 @@ Before we dive into the technical details, let's start with a quick history less
 - **2004** Work completed and all bugs fixed
   - [Some more .NET/C# Generics Research Project History](https://blogs.msdn.microsoft.com/dsyme/2012/06/26/some-more-netc-generics-research-project-history/)
 
+**Update:** Don Syme, [pointed out](https://twitter.com/dsyme/status/969928172597858305) another research paper related to .NET generics, [Combining Generics, Precompilation and Sharing Between Software Based Processes](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/space2004generics.pdf) (**pdf**)
+
 To give you an idea of how these events fit into the bigger picture, here are the dates of [.NET Framework Releases](https://en.wikipedia.org/wiki/.NET_Framework), up-to 2.0 which was the first version to have generics:
 
 | Version number | CLR version | Release date |
@@ -30,7 +32,7 @@ To give you an idea of how these events fit into the bigger picture, here are th
 | 1.1 |	1.1 |	2003-04-24 |
 | **2.0** | **2.0** | **2005-11-07** |
 
-Aside from the historical perspective, the part I find most fascinating is just how much the addition of generics in .NET was due to the work done by Microsoft Research, from [.NET/C# Generics History](https://blogs.msdn.microsoft.com/dsyme/2011/03/15/netc-generics-history-some-photos-from-feb-1999/):
+Aside from the historical perspective, what I find most fascinating is just how much the addition of generics in .NET was due to the work done by Microsoft Research, from [.NET/C# Generics History](https://blogs.msdn.microsoft.com/dsyme/2011/03/15/netc-generics-history-some-photos-from-feb-1999/):
 
 > It was only through the total dedication of Microsoft Research, Cambridge during 1998-2004, to doing **a complete, high quality implementation in both the CLR (including NGEN, debugging, JIT, AppDomains, concurrent loading and many other aspects), and the C# compiler**, that the project proceeded. 
 
