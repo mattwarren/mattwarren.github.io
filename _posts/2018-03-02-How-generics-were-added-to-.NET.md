@@ -234,7 +234,7 @@ Finally, a large amount of work was done in `vm/jitinterface.cpp` ([diff](https:
 
 ### Debugger Changes
 
-Last, but by no means least, a significant amount of work done to ensure that the debugger was able to work with and inspect generics types. It goes to show just how much *inside information* a debugger has to have on teh type system in an managed language.
+Last, but by no means least, a significant amount of work done to ensure that the debugger was able to work with and inspect generics types. It goes to show just how much *inside information* a debugger has to have on the type system in an managed language.
 
 - `debug/ee/debugger.cpp` ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-13c4c633f56c04ff5faf6dce22560847))
 - `debug/ee/debugger.h` ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-f89efe7b1a060b67715d76a176830017))
