@@ -5,6 +5,10 @@ comments: false
 codeproject: false
 ---
 
+Discuss this post on [HackerNews](https://news.ycombinator.com/item?id=16525244) and [/r/programming](https://www.reddit.com/r/programming/comments/81ih8t/how_generics_were_added_to_net/)
+
+----
+
 Before we dive into the technical details, let's start with a quick history lesson, courtesy of [Don Syme](https://www.microsoft.com/en-us/research/people/dsyme/) who worked on adding generics to .NET and then went on to [design and implement F#](http://fsharp.org), which is a pretty impressive set of achievements!!
 
 ## Background and History
@@ -170,7 +174,7 @@ Not surprisingly the bulk of the changes are in the Virtual Machine (VM) compone
 
 ### Bytecode or 'Intermediate Language' (IL) changes
 
-The main place that the implementation of generics in the CLR differs from the JVM is that they are ['fully reified' instead of using 'type erasure'](http://www.jprl.com/Blog/archive/development/2007/Aug-31.html), this was possible because the CLR designers were willing to break backwards compatibility, whereas the JVM had been around longer so I assume that this was a much less appealing option. For more discussion on this issue see [Erasure vs reification](http://beust.com/weblog/2011/07/29/erasure-vs-reification/) and [Reified Generics for Java](http://gafter.blogspot.co.uk/2006/11/reified-generics-for-java.html).
+The main place that the implementation of generics in the CLR differs from the JVM is that they are ['fully reified' instead of using 'type erasure'](http://www.jprl.com/Blog/archive/development/2007/Aug-31.html), this was possible because the CLR designers were willing to break backwards compatibility, whereas the JVM had been around longer so I assume that this was a much less appealing option. For more discussion on this issue see [Erasure vs reification](http://beust.com/weblog/2011/07/29/erasure-vs-reification/) and [Reified Generics for Java](http://gafter.blogspot.co.uk/2006/11/reified-generics-for-java.html). **Update**: this [HackerNews discussion](https://news.ycombinator.com/item?id=14584359) is also worth a read.
 
 The specific changes made to the .NET Intermediate Language (IL) op-codes can be seen in the `inc/opcode.def` ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007?w=1#diff-91e0675d515fc426f84d4e6465ad7f2d)), in essence the following 3 instructions were added
 
@@ -219,6 +223,11 @@ From a [comment with more info](https://github.com/mattwarren/GenericsInDotNet/b
 
 In addition, [this comment](https://github.com/mattwarren/GenericsInDotNet/blob/2714ccac6f18f0f6ff885567b90484013b31e007/vm/genmeth.cpp#L34-L83) explains the work that needs to take place to allow shared instantiations when working with *generic methods*.
 
+**Update**: If you want more info on the 'code-sharing' that takes places, I recommend reading these 2 posts:
+
+- [On generics and (some of) the associated overheads](http://joeduffyblog.com/2011/10/23/on-generics-and-some-of-the-associated-overheads/)
+- [CLR Generics and code sharing](https://blogs.msdn.microsoft.com/joelpob/2004/11/17/clr-generics-and-code-sharing/)
+
 ### Compiler and JIT Changes
 
 If seems like almost every part of the compiler had to change to accommodate generics, which is not surprising given that they touch so many parts of the code we write, `Types`, `Classes` and `Methods`. Some of the biggest changes were:
@@ -230,13 +239,13 @@ If seems like almost every part of the compiler had to change to accommodate gen
 - `csharp/csharp/sccomp/parser.cpp` - **+733 -418** - ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-a096d9aee517403abfd5c9171ee7ee9c))
 - `csharp/csharp/sccomp/symmgr.cpp` - **+741 -46** - ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-aa4f38f96ad3a77d5b09b8a991aa6cb8))
 
-In the '*just-in-time*' (JIT) compiler extra work was needed because the it is responsible for implementing the additional ['IL Instructions'](#bytecode-or-intermediate-language-il-changes). The bulk of these changes took place in  `fjit.cpp` ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-9f6e7a75bd6b1a7a0cdd5e8035890206)) and `fjitdef.h` ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-ddf200851d7fc0eb14bf1f64403cfae7)).
+In the '*just-in-time*' (JIT) compiler extra work was needed because it's responsible for implementing the additional ['IL Instructions'](#bytecode-or-intermediate-language-il-changes). The bulk of these changes took place in  `fjit.cpp` ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-9f6e7a75bd6b1a7a0cdd5e8035890206)) and `fjitdef.h` ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-ddf200851d7fc0eb14bf1f64403cfae7)).
 
 Finally, a large amount of work was done in `vm/jitinterface.cpp` ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-fea4cf9500609e43a8069a1dcfa43b71)) to enable the JIT to access the extra information it needed to emit code for generic methods.
 
 ### Debugger Changes
 
-Last, but by no means least, a significant amount of work done to ensure that the debugger was able to work with and inspect generics types. It goes to show just how much *inside information* a debugger has to have on the type system in an managed language.
+Last, but by no means least, a significant amount of work was done to ensure that the debugger could understand and inspect generics types. It goes to show just how much *inside information* a debugger needs to have of the type system in an managed language.
 
 - `debug/ee/debugger.cpp` ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-13c4c633f56c04ff5faf6dce22560847))
 - `debug/ee/debugger.h` ([diff](https://github.com/mattwarren/GenericsInDotNet/commit/2714ccac6f18f0f6ff885567b90484013b31e007#diff-f89efe7b1a060b67715d76a176830017))
