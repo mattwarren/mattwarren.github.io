@@ -52,7 +52,7 @@ Finally, for more help with learning, '*figuring things out*' and explaining the
 <span id="double-check"/>
 ## Step Two - See if someone else has already figured it out (optional)
 
-I put this in as optional, because it depends on your motivation. If you are trying to understand .NET internals for **your own education**, then feel-free to write about whatever you want. If you are trying to do it to **also help others**, I'd recommend that you first see what's already been written about the subject. If, once you've done that you still think there is something **new or different that you can add**, then go ahead, but I try not to just re-hash what is already out there.
+I put this in as 'optional', because it depends on your motivation. If you are trying to understand .NET internals for **your own education**, then feel-free to write about whatever you want. If you are trying to do it to **also help others**, I'd recommend that you first see what's already been written about the subject. If, once you've done that you still think there is something **new or different that you can add**, then go ahead, but I try not to just re-hash what is already out there.
 
 To see what's already been written, you can start with [Resources for Learning about .NET Internals]({{ base }}/2018/01/22/Resources-for-Learning-about-.NET-Internals/) or peruse the ['Internals' tag on this blog]({{ base }}/tags/#Internals). Another really great resource is all the [answers by Hans Passant](https://stackoverflow.com/users/17034/hans-passant?tab=answers) on StackOverflow, he is prolific and amazingly knowledgeable, here's some examples to get you started:
 
@@ -80,7 +80,7 @@ However, just a word of warning, this means that it's an in-depth, non-trivial d
 3. Go away and learn more (read the source code, read other resources, etc)
 4. GOTO 'Step 1', understanding more this time!
 
-Related to this, the source code itself is often as helpful as the BOTR, due to the extensive comments, for example [this one describing the rules for prestubs](https://github.com/dotnet/coreclr/blob/release/2.0.0/src/inc/corinfo.h#L1426-L1514) really helped me out. The downside of the source code comments is that they are bit harder to find, whereas the BOTR is all in one place.
+Related to this, the source code itself is often as helpful as the BOTR due to the extensive comments, for example [this one describing the rules for prestubs](https://github.com/dotnet/coreclr/blob/release/2.0.0/src/inc/corinfo.h#L1426-L1514) really helped me out. The downside of the source code comments is that they are bit harder to find, whereas the BOTR is all in one place.
 
 <span id="build-from-source"/>
 ## Step Four - Build from the source
