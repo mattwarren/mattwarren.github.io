@@ -82,6 +82,8 @@ These blogs are all written by non-Microsoft employees (AFAICT), or if they do w
 
 **Update:** I missed out a few blogs and learnt about some new ones:
 
+Honourable mention goes to [.NET Type Internals - From a Microsoft CLR Perspective](https://www.codeproject.com/Articles/20481/NET-Type-Internals-From-a-Microsoft-CLR-Perspecti) on CodeProject, it's a great article!!
+
 - [**Performance is everything. But correctness comes first.**](https://aloiskraus.wordpress.com) by [**Alois Kraus**](http://geekswithblogs.net/akraus1/Default.aspx) (also includes some great posts on Windows Internals and Debugging, such as [Windows 10 Memory Compression And More](https://aloiskraus.wordpress.com/2016/10/03/windows-10-memory-compression-and-more/) and [How Buffered IO Can Ruin Performance](https://aloiskraus.wordpress.com/2016/10/09/how-buffered-io-can-ruin-performance/))
   - [The Non Contracting Code Contracts](https://aloiskraus.wordpress.com/2016/07/18/the-non-contracting-code-contracts/)
   - [When Known .NET Bugs Bite You](https://aloiskraus.wordpress.com/2016/07/31/when-known-net-bugs-bite-you/)
@@ -96,6 +98,17 @@ These blogs are all written by non-Microsoft employees (AFAICT), or if they do w
   - [Advanced Call Processing in the CLR](https://blog.matthewskelton.net/2012/01/29/advanced-call-processing-in-the-clr/)
   - [CLR-COM Interop](https://blog.matthewskelton.net/2012/01/29/clr-com-interop/)
   - [CLR Contexts](https://blog.matthewskelton.net/2012/01/29/clr-contexts/)
+- [**.Net Internals, Debugging, Multithreading - and More!**](http://www.liranchen.com) by [**Liran Chen**](??)
+  - [Accurately Measuring GC Suspensions](http://www.liranchen.com/2010/08/accurately-measuring-gc-suspensions.html)
+  - [Behind The .locals init Flag](http://www.liranchen.com/2010/07/behind-locals-init-flag.html)
+  - [Brain Teasing With Strings](http://www.liranchen.com/2010/08/brain-teasing-with-strings.html)
+- [**Maarten Balliauw {blog}**](https://blog.maartenballiauw.be/) by [**Maarten Balliauw**](https://twitter.com/maartenballiauw)
+  - [Exploring .NET managed heap with ClrMD](https://blog.maartenballiauw.be/post/2017/01/03/exploring-.net-managed-heap-with-clrmd.html)
+  - [Exploring memory allocation and strings](https://blog.maartenballiauw.be/post/2016/11/15/exploring-memory-allocation-and-strings.html)
+  - [Making .NET code less allocatey - Allocations and the Garbage Collector](https://blog.maartenballiauw.be/post/2016/10/19/making-net-code-less-allocatey-garbage-collector.html)
+- [**tabs ↹ over ␣ ␣ ␣ spaces**](https://www.tabsoverspaces.com) by [**Jiri Cincura**](https://twitter.com/cincura_net)
+  - [Are static methods faster in execution compared to instance methods?](https://www.tabsoverspaces.com/233660-are-static-methods-faster-in-execution-compared-to-instance-methods-dotnet/)
+  - [Where are the differences in execution speed of various method types come from?](https://www.tabsoverspaces.com/233661-where-are-the-differences-in-execution-speed-of-various-method-types-come-from-dotnet/)
 
 ----
 
