@@ -1,11 +1,11 @@
 ---
 layout: post
-title: How to investigate '.NET internals'
+title: How to investigate '.NET Internals'
 comments: false
 codeproject: false
 ---
 
-I recently appeared on [Herding Code](http://herdingcode.com/herding-code-228-matt-warren-on-net-internals-and-open-source-contributions/) and the [Stackify 'Developer Things'](https://stackify.com/developer-things-5-benchmarkdotnet/) podcasts and in both cases, the first question asked was '***how do you figure out the internals of the .NET runtime***'?
+I recently appeared on [Herding Code](http://herdingcode.com/herding-code-228-matt-warren-on-net-internals-and-open-source-contributions/) and [Stackify 'Developer Things'](https://stackify.com/developer-things-5-benchmarkdotnet/) podcasts and in both cases, the first question asked was '***how do you figure out the internals of the .NET runtime***'?
 
 This post is an attempt to articulate that process, in the hope that it might be useful to others.
 
