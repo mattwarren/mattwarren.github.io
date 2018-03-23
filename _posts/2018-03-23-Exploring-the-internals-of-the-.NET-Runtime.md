@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to investigate '.NET Internals'
+title: Exploring the internals of the .NET Runtime
 comments: false
 codeproject: false
 ---
