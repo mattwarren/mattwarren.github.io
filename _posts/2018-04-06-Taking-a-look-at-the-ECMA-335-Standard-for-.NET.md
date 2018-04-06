@@ -41,30 +41,28 @@ There is also a nice [Wikipedia page](https://en.wikipedia.org/wiki/Common_Langu
 
 ## What is in it?
 
-At a high-level overview, the specification is divided into the following 'partitions' (Note: all links are to a cut-down pdf that just contains the relevant section):
+At a high-level overview, the specification is divided into the following 'partitions' :
 
-- [Table of Contents]({{ base }}/data/2018/04/ECMA-335, 6th edition, June 2012 - Partition 0 - Intro and TOC.pdf)
-- **Partitions**
-  - [I: Concepts and Architecture]({{ base }}/data/2018/04/ECMA-335, 6th edition, June 2012 - Partition 1 - Concepts and Architecture.pdf)
-    - A great introduction to the CLR itself, explaining many of the key concepts and components, as well as the rationale behind them
-  - [II: Metadata Definition and Semantics]({{ base }}/data/2018/04/ECMA-335, 6th edition, June 2012 - Partition 2 - Metadata Definition and Semantics.pdf)
-    - An explanation of the format of .NET dll/exe files, the different sections within them and how they're laid out in-memory
-  - [III: CIL Instruction Set]({{ base }}/data/2018/04/ECMA-335, 6th edition, June 2012 - Partition 3 - CIL Instruction Set.pdf)
-    - A complete list of all the *Intermediate Language (IL)* instructions that the CLR understands, along with a detailed description of what they do and how to use them
-  - [IV: Profiles and Libraries]({{ base }}/data/2018/04/ECMA-335, 6th edition, June 2012 - Partition 4 - Profiles and Libraries.pdf)
-    - Describes the various different 'Base Class libraries' that make-up the runtime and how they are grouped into 'Profiles'
-  - [V: Binary Formats (Debug Interchange Format)]({{ base }}/data/2018/04/ECMA-335, 6th edition, June 2012 - Partition 5 - Binary Formats (Debug Interchange Format).pdf)
-    - An overview of 'Portable CILDB files', which give a way for additional *debugging information* to be provided
-  - [VI: Annexes]({{ base }}/data/2018/04/ECMA-335, 6th edition, June 2012 - Partition 6 - Annexes.pdf)
-    - Annex A - Introduction
-    - Annex B - Sample programs
-    - Annex C - CIL assembler implementation
-    - Annex D - Class library design guidelines
-    - Annex E - Portability considerations
-    - Annex F - Imprecise faults
-    - Annex G - Parallel library
+- **I: Concepts and Architecture**
+  - A great introduction to the CLR itself, explaining many of the key concepts and components, as well as the rationale behind them
+- **II: Metadata Definition and Semantics**
+  - An explanation of the format of .NET dll/exe files, the different sections within them and how they're laid out in-memory
+- **III: CIL Instruction Set**
+  - A complete list of all the *Intermediate Language (IL)* instructions that the CLR understands, along with a detailed description of what they do and how to use them
+- **IV: Profiles and Libraries**
+  - Describes the various different 'Base Class libraries' that make-up the runtime and how they are grouped into 'Profiles'
+- **V: Binary Formats (Debug Interchange Format)**
+  - An overview of 'Portable CILDB files', which give a way for additional *debugging information* to be provided
+- **VI: Annexes**
+  - Annex A - Introduction
+  - Annex B - Sample programs
+  - Annex C - CIL assembler implementation
+  - Annex D - Class library design guidelines
+  - Annex E - Portability considerations
+  - Annex F - Imprecise faults
+  - Annex G - Parallel library
 
-But, working your way through the entire specification is a mammoth task, generally I find it useful to just search for a particular word or phrase and locate the parts I need that way. However if you do want to read through one section, I recommend [Partition I: Concepts and Architecture]({{ base }}/data/2018/04/ECMA-335, 6th edition, June 2012 - Partition 1 - Concepts and Architecture.pdf), at just over 100 pages it is much easier to fully digest! This section is a [very comprehensive overview](({{ base }}/images/2018/04/Partition I - Concepts and Architecture - Outline.png)) of the key concepts and components contained within the CLR and well worth a read.
+But, working your way through the entire specification is a mammoth task, generally I find it useful to just search for a particular word or phrase and locate the parts I need that way. However if you do want to read through one section, I recommend 'Partition I: Concepts and Architecture', at just over 100 pages it is much easier to fully digest! This section is a [very comprehensive overview](({{ base }}/images/2018/04/Partition I - Concepts and Architecture - Outline.png)) of the key concepts and components contained within the CLR and well worth a read.
 
 Also, I'm convinced that the authors of the spec wanted to *help out* any future readers, so to break things up they included lots of very helpful diagrams:
 
