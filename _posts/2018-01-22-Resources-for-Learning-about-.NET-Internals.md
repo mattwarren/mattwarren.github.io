@@ -80,6 +80,7 @@ These blogs are all written by non-Microsoft employees (AFAICT), or if they do w
   - [A new stackalloc operator for reference types with CoreCLR and Roslyn](http://xoofx.com/blog/2015/10/08/stackalloc-for-class-with-roslyn-and-coreclr/)
   - [Struct inheritance in C# with CoreCLR and Roslyn](http://xoofx.com/blog/2015/09/27/struct-inheritance-in-csharp-with-roslyn-and-coreclr/)
 
+<span id="Update"/>
 **Update:** I missed out a few blogs and learnt about some new ones:
 
 Honourable mention goes to [.NET Type Internals - From a Microsoft CLR Perspective](https://www.codeproject.com/Articles/20481/NET-Type-Internals-From-a-Microsoft-CLR-Perspecti) on CodeProject, it's a great article!!
@@ -109,6 +110,14 @@ Honourable mention goes to [.NET Type Internals - From a Microsoft CLR Perspecti
 - [**tabs ↹ over ␣ ␣ ␣ spaces**](https://www.tabsoverspaces.com) by [**Jiri Cincura**](https://twitter.com/cincura_net)
   - [Are static methods faster in execution compared to instance methods?](https://www.tabsoverspaces.com/233660-are-static-methods-faster-in-execution-compared-to-instance-methods-dotnet/)
   - [Where are the differences in execution speed of various method types come from?](https://www.tabsoverspaces.com/233661-where-are-the-differences-in-execution-speed-of-various-method-types-come-from-dotnet/)
+- [**NTCore**](http://www.ntcore.com/articles.php) (also writes on the [Cerbero Blog](http://cerbero-blog.com/?author=1)) by [**Daniel Pistelli**](https://twitter.com/dpistelli)
+  - [.NET Internals and Native Compiling](http://www.ntcore.com/Files/netint_native.htm)
+  - [.NET Internals and Code Injection](http://www.ntcore.com/files/netint_injection.htm)
+  - [The .NET File Format](http://www.ntcore.com/files/dotnetformat.htm)  
+- [**DOT NET TRICKS**](http://www.abhisheksur.com) by [**Abhishek Sur (@abhi2434)**](https://twitter.com/abhi2434)
+  - [Internals to .NET](http://www.abhisheksur.com/2011/03/internals-to-net.html)
+  - [Internals of .NET Objects and Use of SOS](http://www.abhisheksur.com/2011/09/internals-of-net-objects-and-use-of-sos.html)
+  - [ValueTypes and ReferenceTypes : Under the Hood](http://www.abhisheksur.com/2011/07/valuetypes-and-referencetypes-under.html) ([part 2](http://www.abhisheksur.com/2011/07/valuetype-and-referencetype-under-hood.html))
 
 ----
 
