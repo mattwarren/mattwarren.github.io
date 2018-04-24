@@ -226,8 +226,10 @@ In addition, [this comment](https://github.com/mattwarren/GenericsInDotNet/blob/
 
 **Update**: If you want more info on the 'code-sharing' that takes places, I recommend reading these 2 posts:
 
-- [On generics and (some of) the associated overheads](http://joeduffyblog.com/2011/10/23/on-generics-and-some-of-the-associated-overheads/)
 - [CLR Generics and code sharing](https://blogs.msdn.microsoft.com/joelpob/2004/11/17/clr-generics-and-code-sharing/)
+- [DG Update: Generics and Performance](https://web.archive.org/web/20100723221307/http://www.bluebytesoftware.com/blog/2005/03/23/DGUpdateGenericsAndPerformance.aspx)
+- [On generics and (some of) the associated overheads](http://joeduffyblog.com/2011/10/23/on-generics-and-some-of-the-associated-overheads/)
+- [Sharing .NET generic code under the hood](http://yizhang82.me/dotnet-generics-sharing)
 
 ### Compiler and JIT Changes
 

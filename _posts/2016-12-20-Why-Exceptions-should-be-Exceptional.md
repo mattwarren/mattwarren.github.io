@@ -229,6 +229,8 @@ Discuss this post in [/r/programming](https://www.reddit.com/r/programming/comme
 
 ### Further Reading
 
+[Exception Cost: When to throw and when not to](https://blogs.msdn.microsoft.com/ricom/2003/12/19/exception-cost-when-to-throw-and-when-not-to/) a classic post on the subject, by '.NET Perf Guru' Rico Mariani.
+
 ### The stack trace of a StackTrace!!
 
 The full call-stack that the CLR goes through when fetching the data for the Exception `StackTrace` property
