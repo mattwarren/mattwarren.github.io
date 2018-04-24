@@ -128,3 +128,7 @@ Finally, for your viewing pleasure, here are a few talks related to '*.NET Inter
 - [.NET Core on Unix - Jan Vorlicek](https://www.youtube.com/watch?v=JNmUz7C1usM)
 - [.NET Internals 2015-03-04: .NET Core & Cross Platform](https://channel9.msdn.com/Blogs/dotnet/NET-Foundations-2015-03-04)
 - [.NET Internals 2015-02-25: Open Source](https://channel9.msdn.com/Blogs/dotnet/NET-Foundations-2015-02-25)
+
+----
+
+Discuss this post on [/r/programming](https://www.reddit.com/r/programming/comments/86opzw/exploring_the_internals_of_the_net_runtime/) or [/r/dotnet](https://www.reddit.com/r/dotnet/comments/86opun/exploring_the_internals_of_the_net_runtime/)
