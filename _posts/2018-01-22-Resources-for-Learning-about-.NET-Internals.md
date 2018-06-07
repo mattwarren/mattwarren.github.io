@@ -118,6 +118,12 @@ Honourable mention goes to [.NET Type Internals - From a Microsoft CLR Perspecti
   - [Internals to .NET](http://www.abhisheksur.com/2011/03/internals-to-net.html)
   - [Internals of .NET Objects and Use of SOS](http://www.abhisheksur.com/2011/09/internals-of-net-objects-and-use-of-sos.html)
   - [ValueTypes and ReferenceTypes : Under the Hood](http://www.abhisheksur.com/2011/07/valuetypes-and-referencetypes-under.html) ([part 2](http://www.abhisheksur.com/2011/07/valuetype-and-referencetype-under-hood.html))
+- [**Random IT Utensils**](https://blog.adamfurmanek.pl/) by [Adam Furmanek](https://twitter.com/furmanekadam)
+  - [Custom memory allocation in C# Part 1 — Allocating object on a stack](https://blog.adamfurmanek.pl/2016/04/23/custom-memory-allocation-in-c-part-1/)
+  - [Custom memory allocation in C# Part 6 — Memory errors](https://blog.adamfurmanek.pl/2016/07/09/custom-memory-allocation-in-c-part-6/)
+  - [.NET Inside Out Part 1 — Virtual and non-virtual calls in C#](https://blog.adamfurmanek.pl/2016/05/21/virtual-and-non-virtual-calls-in-c/)
+  - [.NET Inside Out Part 4 — How to override sealed function in C# Revisited](https://blog.adamfurmanek.pl/2017/05/27/how-to-override-sealed-function-in-c-revisited/)
+  - [.NET Inside Out Part 7 — Generating Func from a bunch of bytes in C#](https://blog.adamfurmanek.pl/2018/03/24/generating-func-from-bunch-of-bytes-in-c/)
 
 ----
 
@@ -165,6 +171,15 @@ The blogs below are written by the *actual* engineers who worked on, designed or
   - [FCall and GC hole – first post about Rotor](https://blogs.msdn.microsoft.com/yunjin/2004/02/09/fcall-and-gc-hole-first-post-about-rotor/)
   - [Special threads in CLR](https://blogs.msdn.microsoft.com/yunjin/2005/07/05/special-threads-in-clr/)
   - [Dangerous PInvokes – string modification](https://blogs.msdn.microsoft.com/yunjin/2004/02/21/dangerous-pinvokes-string-modification/)
+- [**JIT, NGen, and other Managed Code Generation Stuff - Details about RyuJIT stuff of all sort..**](https://blogs.msdn.microsoft.com/clrcodegeneration) by various
+  - [Array Bounds Check Elimination in the CLR](https://blogs.msdn.microsoft.com/clrcodegeneration/2009/08/13/array-bounds-check-elimination-in-the-clr/)
+  - [How are value types implemented in the 32-bit CLR? What has been done to improve their performance?](https://blogs.msdn.microsoft.com/clrcodegeneration/2007/11/02/how-are-value-types-implemented-in-the-32-bit-clr-what-has-been-done-to-improve-their-performance/)
+  - [JIT ETW Inlining Event Fail Reasons](https://blogs.msdn.microsoft.com/clrcodegeneration/2009/10/21/jit-etw-inlining-event-fail-reasons/)
+  - [NGen: Measuring Working Set with VMMap](https://blogs.msdn.microsoft.com/clrcodegeneration/2010/04/27/ngen-measuring-working-set-with-vmmap/)
+- [**Distributed Matters - Troubleshooting issues in technologies available to developers for building distributed applications**](https://blogs.msdn.microsoft.com/carlos) by [**Carlo**](https://blogs.msdn.microsoft.com/carlos/author/carcolo/)
+  - [.NET Generics and Code Bloat (or its lack thereof)](https://blogs.msdn.microsoft.com/carlos/2009/11/09/net-generics-and-code-bloat-or-its-lack-thereof/)
+  - [Heap Corruption: A Case Study](https://blogs.msdn.microsoft.com/carlos/2008/12/10/heap-corruption-a-case-study/)
+  - [Loading multiple CLR Runtimes (InProc SxS) – Sample Code](https://blogs.msdn.microsoft.com/carlos/2013/08/23/loading-multiple-clr-runtimes-inproc-sxs-sample-code/)
 
 ----
 
