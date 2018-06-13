@@ -265,3 +265,5 @@ If you want even more information about generics in .NET, there are also some ve
 - [Generics in C#]({{ base }}/data/2018/03/csharp.html)
 - [Generics in the Common Type System]({{ base }}/data/2018/03/clrgen-types.html)
 - [IL extensions for generics]({{ base }}/data/2018/03/clrgen-il.html)
+
+Also [Pre-compilation for .NET Generics by Andrew Kennedy & Don Syme](http://citeseerx.ist.psu.edu/viewdoc/download?rep=rep1&type=pdf&doi=10.1.1.124.3911) (pdf) is an interesting read
