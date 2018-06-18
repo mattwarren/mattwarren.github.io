@@ -137,6 +137,7 @@ Finally, in the interest of balance, there have been lots of recent [improvement
 
 - [Extending the new WinDbg, Part 1 – Buttons and commands](http://labs.criteo.com/2017/09/extending-new-windbg-part-1-buttons-commands/)
 - [Extending the new WinDbg, Part 2 – Tool windows and command output](http://labs.criteo.com/2018/01/extending-new-windbg-part-2-tool-windows-command-output/)
+- [Extending the new WinDbg, Part 3 – Embedding a C# interpreter](http://labs.criteo.com/2018/05/extending-new-windbg-part-3-embedding-c-interpreter/)
 - [WinDBG extension + UI tool extensions](https://github.com/chrisnas/DebuggingExtensions) and [here](https://github.com/kevingosse/windbg-extensions)
 - [NetExt](https://github.com/rodneyviana/netext) a WinDBG application that [makes .NET debugging much easier](https://blogs.msdn.microsoft.com/rodneyviana/2015/03/10/getting-started-with-netext/) as compared to the current options: sos or psscor, also see [this InfoQ article](https://www.infoq.com/news/2013/11/netext)
 
@@ -153,7 +154,7 @@ Finally, in the interest of balance, there have been lots of recent [improvement
   - .NET debugger and assembly editor
   - You can use it to edit and debug assemblies even if you don't have any source code available!!
 * [MemAnalyzer](https://aloiskraus.wordpress.com/2017/08/17/memanalyzer-v2-5-released/) ([GitHub](https://github.com/Alois-xx/MemAnalyzer))
-  - is a command line memory analysis tool for managed code. 
+  - A command line memory analysis tool for managed code. 
   - Can show which objects use most space on the managed heap just like `!DumpHeap` from Windbg without the need to install and attach a debugger.
 * [DumpMiner](https://mycodingplace.wordpress.com/2016/11/24/dumpminer-ui-tool-for-playing-with-clrmd/) ([GitHub](https://github.com/dudikeleti/DumpMiner))
   - UI tool for playing with ClrMD, with more features [coming soon](https://twitter.com/dudi_ke/status/973930633935409153)
@@ -181,4 +182,7 @@ A few other tools that are also worth mentioning:
 * [VMMap](https://docs.microsoft.com/en-us/sysinternals/downloads/vmmap) from Sysinternals
   - VMMap is a process virtual and physical memory analysis utility.
   - I've previously used it to look at [Memory Usage *Inside* the CLR]({{ base }}//2017/07/10/Memory-Usage-Inside-the-CLR/)
-  
+
+----
+
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=17323911) or [/r/programming](https://www.reddit.com/r/programming/comments/8rel9m/tools_for_exploring_net_internals/)
