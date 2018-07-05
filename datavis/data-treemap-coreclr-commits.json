@@ -253,7 +253,7 @@
       "name": "mscorlib",
       "children": [
         {
-          "name": "mscorlib",
+          "name": "mscorlib (top-level)",
           "loc": 1166,
           "numFiles": 6,
           "commits": 343,
@@ -277,7 +277,7 @@
           "topLevel": false
         },
         {
-          "name": "src",
+          "name": "mscorlib",
           "loc": 269893,
           "numFiles": 757,
           "commits": 872,
@@ -319,7 +319,7 @@
           "topLevel": false
         },
         {
-          "name": "pal",
+          "name": "pal (top-level)",
           "loc": 1,
           "numFiles": 1,
           "commits": 7,
@@ -335,7 +335,7 @@
           "topLevel": false
         },
         {
-          "name": "src",
+          "name": "pal",
           "loc": 103049,
           "numFiles": 223,
           "commits": 536,
