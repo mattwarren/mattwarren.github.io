@@ -3,6 +3,7 @@ layout: post
 title: Resources for Learning about .NET Internals
 comments: true
 codeproject: false
+tags: [CLR, .NET, Internals]
 ---
 
 It all started with a tweet, which seemed to resonate with people:
@@ -180,6 +181,11 @@ The blogs below are written by the *actual* engineers who worked on, designed or
   - [.NET Generics and Code Bloat (or its lack thereof)](https://blogs.msdn.microsoft.com/carlos/2009/11/09/net-generics-and-code-bloat-or-its-lack-thereof/)
   - [Heap Corruption: A Case Study](https://blogs.msdn.microsoft.com/carlos/2008/12/10/heap-corruption-a-case-study/)
   - [Loading multiple CLR Runtimes (InProc SxS) – Sample Code](https://blogs.msdn.microsoft.com/carlos/2013/08/23/loading-multiple-clr-runtimes-inproc-sxs-sample-code/)
+- [**B# .NET BLOG - BART DE SMET'S ON-LINE BLOG (0X2B | ~0X2B, THAT'S THE QUESTION)](http://bartdesmet.net/blogs/bart/archive/2006/09/27/4472.aspx) by [**Bart De Smet**](https://channel9.msdn.com/Events/Speakers/Bart-De-Smet)
+  - [.NET 2.0 string interning inside out](http://bartdesmet.net/blogs/bart/archive/2006/09/27/4472.aspx)
+  - [Inlining - yes, it happens](http://bartdesmet.net/blogs/bart/archive/2007/02/19/inlining-yes-it-happens.aspx)
+  - [Going Unsafe - Aa ADDRESSOF Operator in C#](http://bartdesmet.net/blogs/bart/archive/2006/09/07/4395.aspx)
+  - [A Beginner's Guide to Cordbg](http://bartdesmet.net/blogs/bart/archive/2006/10/03/4491.aspx)
 
 ----
 

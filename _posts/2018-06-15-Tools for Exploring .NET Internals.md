@@ -3,6 +3,7 @@ layout: post
 title: Tools for Exploring .NET Internals
 comments: true
 codeproject: false
+tags: [CLR, .NET, Internals]
 ---
 
 Whether you want to look at what your code is doing '*under-the-hood*' or you're trying to see what the '*internals*' of the CLR look like, there is a whole range of tools that can help you out.
@@ -20,7 +21,7 @@ While you're here, I've also written other posts that look at the 'internals' of
 
 ## Honourable Mentions
 
-Firstly I'll start by mentioning that [Visual Studio has a great debugger](https://msdn.microsoft.com/en-us/library/sc65sadd.aspx?f=255&MSPPError=-2147217396) and [so does VSCode](https://code.visualstudio.com/docs/editor/debugging). Also there are lots of very good (commercial) [.NET Profilers](https://stackoverflow.com/questions/3927/what-are-some-good-net-profilers) and [Application Monitoring Tools](https://www.quora.com/What-is-the-best-NET-Application-Server-Monitoring-Tool) available that you should also take a look at.
+Firstly I'll start by mentioning that [Visual Studio has a great debugger](https://msdn.microsoft.com/en-us/library/sc65sadd.aspx?f=255&MSPPError=-2147217396) and [so does VSCode](https://code.visualstudio.com/docs/editor/debugging). Also there are lots of very good (commercial) [.NET Profilers](https://stackoverflow.com/questions/3927/what-are-some-good-net-profilers) and [Application Monitoring Tools](https://www.quora.com/What-is-the-best-NET-Application-Server-Monitoring-Tool) available that you should also take a look at. For example I've recently been playing around with [Codetrack](http://www.getcodetrack.com/) and I'm very impressed by what it can do!
 
 However, the rest of the post is going to look at some more **single-use tools** that give a **even deeper insight** into what is going on. As a added bonus they're all '**open-source**', so you can take a look at the code and see how they work!!
 
@@ -124,7 +125,7 @@ Finally, we're going to look at a particular category of tools. Since .NET came 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Besides how complex it is, the idea is to build better abstractions. Raw debugging at the low level is just usually too unproductive. That to me is the promise of ClrMD, that it lets us build specific extensions to extract quickly the right info</p>&mdash; Tomas Restrepo (@tomasrestrepo) <a href="https://twitter.com/tomasrestrepo/status/973924168365498370?ref_src=twsrc%5Etfw">March 14, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Fortunately Microsoft made the [ClrMD library available](http://mattwarren.org/2016/09/06/Analysing-.NET-Memory-Dumps-with-CLR-MD/) (a.k.a [Microsoft.Diagnostics.Runtime](https://www.nuget.org/packages/Microsoft.Diagnostics.Runtime)), so now anyone can write a tool that analyses **memory dumps** of .NET programs.
+Fortunately Microsoft made the [ClrMD library available]({{ base }}/2016/09/06/Analysing-.NET-Memory-Dumps-with-CLR-MD/) (a.k.a [Microsoft.Diagnostics.Runtime](https://www.nuget.org/packages/Microsoft.Diagnostics.Runtime)), so now anyone can write a tool that analyses **memory dumps** of .NET programs. You can find out even more info in the [official blog post](https://blogs.msdn.microsoft.com/dotnet/2013/05/01/net-crash-dump-and-live-process-inspection/) and I also recommend taking a look at [ClrMD.Extensions](https://github.com/JeffCyr/ClrMD.Extensions) that "*.. provide integration with LINPad and to make ClrMD even more easy to use*".
 
 I wanted to pull together a list of all the existing tools, so I enlisted [twitter to help](https://twitter.com/matthewwarren/status/973940550473797633). **Note to self**: careful what you tweet, the WinDBG Product Manager might read your tweets and [get a bit upset](https://twitter.com/aluhrs13/status/973948038380109824)!!
 
@@ -181,7 +182,7 @@ A few other tools that are also worth mentioning:
   - ... a debugging extension for managed code that begins to alleviate some of my frustrations with SOS
 * [VMMap](https://docs.microsoft.com/en-us/sysinternals/downloads/vmmap) from Sysinternals
   - VMMap is a process virtual and physical memory analysis utility.
-  - I've previously used it to look at [Memory Usage *Inside* the CLR]({{ base }}//2017/07/10/Memory-Usage-Inside-the-CLR/)
+  - I've previously used it to look at [Memory Usage *Inside* the CLR]({{ base }}/2017/07/10/Memory-Usage-Inside-the-CLR/)
 
 ----
 

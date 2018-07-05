@@ -3,6 +3,7 @@ layout: post
 title: Taking a look at the ECMA-335 Standard for .NET
 comments: false
 codeproject: false
+tags: [CLR, .NET, Internals]
 ---
 
 It turns out that the .NET Runtime has a *technical standard* (or *specification*), known by its full name **ECMA-335 - Common Language Infrastructure (CLI)** (not to be confused with [ECMA-334](https://www.ecma-international.org/publications/standards/Ecma-334.htm) which is the *'C# Language Specification'*). The latest update is the [6th edition from June 2012](https://www.ecma-international.org/publications/standards/Ecma-335.htm).

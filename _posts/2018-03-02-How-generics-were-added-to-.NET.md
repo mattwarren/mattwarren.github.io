@@ -3,6 +3,7 @@ layout: post
 title: How generics were added to .NET
 comments: false
 codeproject: false
+tags: [CLR, .NET, Internals, Generics]
 excerpt: <p>Before we dive into the technical details, let’s start with a quick history lesson, courtesy of <a href="https://www.microsoft.com/en-us/research/people/dsyme/">Don Syme</a> who worked on adding generics to .NET and then went on to <a href="http://fsharp.org">design and implement F#</a>, which is a pretty impressive set of achievements!!</p>
 ---
 

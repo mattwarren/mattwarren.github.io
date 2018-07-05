@@ -3,6 +3,7 @@ layout: post
 title: Exploring the internals of the .NET Runtime
 comments: false
 codeproject: false
+tags: [CLR, .NET, Internals]
 ---
 
 I recently appeared on [Herding Code](http://herdingcode.com/herding-code-228-matt-warren-on-net-internals-and-open-source-contributions/) and [Stackify 'Developer Things'](https://stackify.com/developer-things-5-benchmarkdotnet/) podcasts and in both cases, the first question asked was '***how do you figure out the internals of the .NET runtime***'?
