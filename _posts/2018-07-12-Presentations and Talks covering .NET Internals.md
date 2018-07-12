@@ -204,13 +204,15 @@ I can't recommend these yet, because I haven't watched them myself! (I can't bre
 
 But they all look really interesting and I will watch them as soon as I get a chance, so I thought they were worth including:
 
+- [C# and .NET - Advanced topics](https://kalapos.net/Blog/ShowPost/Udemy-Advanced-DotNet-Course) (££) by [Gergely Kalapos](https://twitter.com/gregkalapos)
+- [High Performance Coding with .NET Core and C#](https://www.udemy.com/high-performance-coding-with-net-core-and-csharp/?couponCode=KALPAOSNET-ADVCEDPST) (££) also by [Gergely Kalapos](https://twitter.com/gregkalapos)
 - [Patterns for high-performance C#](https://www.youtube.com/watch?v=7GTpwgsmHgU) by [Federico Andres Lois](https://twitter.com/federicolois)
 - [Manual memory management in .NET Framework](https://www.youtube.com/playlist?list=PLV281NbnwQaJpaSSOoSI7oPLINjf2Ojak) by [Adam Furmanek](https://twitter.com/furmanekadam) ([blog](https://blog.adamfurmanek.pl/))
 - [Beyond step-by step debugging in Visual Studio](https://vimeo.com/223985297) by [Tess Ferrandez](https://twitter.com/TessFerrandez)
 - [Hacking .NET(C#) Application: Code of the Hacker](https://vimeo.com/68320501) by Jon McCoy
 - [So you want to create your own .NET runtime?](https://ndcoslo.com/talk/so-you-want-to-create-your-own-net-runtime/) by Chris Bacon
 - [Advanced .NET debugging techniques from a real world investigation](https://dotnext-piter.ru/2018/spb/talks/5mpiesdyfikoi86s2u0owq/) by [Christophe Nasarre](https://twitter.com/chnasarre) and [Kevin Gosse](https://twitter.com/KooKiz) ([recording](https://www.youtube.com/watch?v=DD3w66Ff8Ms&t=11713s) and [slides](https://github.com/chrisnas/SELAConference2018))
-- [Staying Friendly with the GC](http://www.seladeveloperpractice.com/sessions?selected=13) by [O]ren Eini (Ayende Rahien)](https://twitter.com/ayende) ([slides](https://www.slideshare.net/OrenEini/staying-friendly-with-the-gc-104205724))
+- [Staying Friendly with the GC](http://www.seladeveloperpractice.com/sessions?selected=13) by [Oren Eini (Ayende Rahien)](https://twitter.com/ayende) ([slides](https://www.slideshare.net/OrenEini/staying-friendly-with-the-gc-104205724))
 - [Scratched Metal](https://www.youtube.com/watch?v=DD3w66Ff8Ms) by [Federico Andres Lois](https://twitter.com/federicolois)
 - [Beachhead implements new opcode on CLR JIT](https://www.slideshare.net/kekyo/beachhead-implements-new-opcode-on-clr-jit) by [Kouji Matsui](https://twitter.com/kekyo2)
 - [Everything what you (don’t) know about structures in .NET](https://pyrzyk.net/public-talks/) by [Łukasz Pyrzyk](https://twitter.com/lukaszpyrzyk) ([slides](https://pyrzyk.net/structures))
