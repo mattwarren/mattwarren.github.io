@@ -125,6 +125,21 @@ Honourable mention goes to [.NET Type Internals - From a Microsoft CLR Perspecti
   - [.NET Inside Out Part 1 — Virtual and non-virtual calls in C#](https://blog.adamfurmanek.pl/2016/05/21/virtual-and-non-virtual-calls-in-c/)
   - [.NET Inside Out Part 4 — How to override sealed function in C# Revisited](https://blog.adamfurmanek.pl/2017/05/27/how-to-override-sealed-function-in-c-revisited/)
   - [.NET Inside Out Part 7 — Generating Func from a bunch of bytes in C#](https://blog.adamfurmanek.pl/2018/03/24/generating-func-from-bunch-of-bytes-in-c/)
+- [**Redgate 'Simple Talk' posts**](https://www.red-gate.com/simple-talk/author/24200-simon-cooper/) by [**Simon Cooper**]()
+  - [Series on '**Anatomy of a .NET Assembly**'](https://www.red-gate.com/Search/?s=%22Anatomy+of+a+.NET+Assembly%22&t=simpletalk) ([Google search](https://www.google.co.uk/search?q=site%3Ahttps%3A%2F%2Fwww.red-gate.com%2Fsimple-talk%2F+%22Anatomy+of+a+.NET+Assembly%22&oq=site%3Ahttps%3A%2F%2Fwww.red-gate.com%2Fsimple-talk%2F+%22Anatomy+of+a+.NET+Assembly%22))
+    - [PE Headers](https://www.red-gate.com/simple-talk/blogs/anatomy-of-a-net-assembly-pe-headers/) (Intro)
+    - [CLR metadata 1](https://www.red-gate.com/simple-talk/blogs/anatomy-of-a-net-assembly-clr-metadata-1/), [Part 2](https://www.red-gate.com/simple-talk/blogs/anatomy-of-a-net-assembly-clr-metadata-2/) and [Part 3](https://www.red-gate.com/simple-talk/blogs/anatomy-of-a-net-assembly-clr-metadata-3/)
+    - [The DOS stub](https://www.red-gate.com/simple-talk/blogs/anatomy-of-a-net-assembly-the-dos-stub/) and [The CLR Loader stub](https://www.red-gate.com/simple-talk/blogs/anatomy-of-a-net-assembly-the-clr-loader-stub/)
+    - [Methods](https://www.red-gate.com/simple-talk/blogs/anatomy-of-a-net-assembly-methods/) and [Type forwards](https://www.red-gate.com/simple-talk/blogs/anatomy-of-a-net-assembly-type-forwards/)
+  - [Series on '**Subterranean IL**'](https://www.red-gate.com/Search/?s=%22Subterranean+IL%22&t=simpletalk) ([Google search](https://www.google.co.uk/search?q=site%3Ahttps%3A%2F%2Fwww.red-gate.com%2Fsimple-talk%2F+%22Subterranean+IL%22&oq=site%3Ahttps%3A%2F%2Fwww.red-gate.com%2Fsimple-talk%2F+%22Subterranean+IL%22))
+    - [Introduction](https://www.red-gate.com/simple-talk/blogs/subterranean-il-introduction/)
+    - [Callvirt and virtual methods](https://www.red-gate.com/simple-talk/blogs/subterranean-il-callvirt-and-virtual-methods/) and [Callvirt and generic types](https://www.red-gate.com/simple-talk/blogs/subterranean-il-callvirt-and-generic-types/)
+    - [The ThreadLocal type](https://www.red-gate.com/simple-talk/blogs/subterranean-il-the-threadlocal-type/) and [ThreadLocal revisited](https://www.red-gate.com/simple-talk/blogs/subterranean-il-threadlocal-revisited/)
+- [**Ayende @ Rahien**](https://ayende.com) by [**Oren Eini**](https://twitter.com/ayende)
+  - [De-virtualization in CoreCLR - Part I](https://ayende.com/blog/177986/de-virtualization-in-coreclr-part-i) and [Part II](https://ayende.com/blog/177987/de-virtualization-in-coreclr-part-ii)
+  - [Debugging CoreCLR applications in WinDBG](https://ayende.com/blog/174914/debugging-coreclr-applications-in-windbg)
+  - [Digging into the CoreCLR - JIT Introduction](https://ayende.com/blog/174977/digging-into-the-coreclr-jit-introduction) (by [Federico Andres Lois](https://twitter.com/federicolois))
+  - [Digging into the CoreCLR - Exceptional costs, Part I](https://ayende.com/blog/175009/digging-into-the-coreclr-exceptional-costs-part-i) and [Part II](https://ayende.com/blog/175010/digging-into-the-coreclr-exceptional-costs-part-ii) (by [Federico Andres Lois](https://twitter.com/federicolois))
 
 ----
 
@@ -181,10 +196,10 @@ The blogs below are written by the *actual* engineers who worked on, designed or
   - [.NET Generics and Code Bloat (or its lack thereof)](https://blogs.msdn.microsoft.com/carlos/2009/11/09/net-generics-and-code-bloat-or-its-lack-thereof/)
   - [Heap Corruption: A Case Study](https://blogs.msdn.microsoft.com/carlos/2008/12/10/heap-corruption-a-case-study/)
   - [Loading multiple CLR Runtimes (InProc SxS) – Sample Code](https://blogs.msdn.microsoft.com/carlos/2013/08/23/loading-multiple-clr-runtimes-inproc-sxs-sample-code/)
-- [**B# .NET BLOG - BART DE SMET'S ON-LINE BLOG (0X2B | ~0X2B, THAT'S THE QUESTION)](http://bartdesmet.net/blogs/bart/archive/2006/09/27/4472.aspx) by [**Bart De Smet**](https://channel9.msdn.com/Events/Speakers/Bart-De-Smet)
+- [**B# .NET Blog - BART DE SMET'S on-line blog (0X2B &#124; ~0X2B, THAT'S THE QUESTION)**](http://bartdesmet.net/blogs/bart/archive/2006/09/27/4472.aspx) by [**Bart De Smet**](https://channel9.msdn.com/Events/Speakers/Bart-De-Smet)
   - [.NET 2.0 string interning inside out](http://bartdesmet.net/blogs/bart/archive/2006/09/27/4472.aspx)
   - [Inlining - yes, it happens](http://bartdesmet.net/blogs/bart/archive/2007/02/19/inlining-yes-it-happens.aspx)
-  - [Going Unsafe - Aa ADDRESSOF Operator in C#](http://bartdesmet.net/blogs/bart/archive/2006/09/07/4395.aspx)
+  - [Going Unsafe - An ADDRESSOF Operator in C#](http://bartdesmet.net/blogs/bart/archive/2006/09/07/4395.aspx)
   - [A Beginner's Guide to Cordbg](http://bartdesmet.net/blogs/bart/archive/2006/10/03/4491.aspx)
 
 ----
@@ -196,6 +211,7 @@ Finally, if you prefer reading off-line there are some decent books that discuss
 - [CLR via C#, 4ed by **Jeffrey Richter**](http://amzn.to/2Ba0ytN)
 - [Shared Source CLI Essentials Paperback by **David Stutz, Ted Neward, Geoff Shilling**](http://amzn.to/2DcscYY)
 - [Writing High-Performance .NET Code Paperback by **Ben Watson**](http://amzn.to/2EOFX0e)
+  - His [blog](http://www.philosophicalgeek.com) is also worth reading, e.g. [Digging Into .NET Object Allocation Fundamentals](http://www.philosophicalgeek.com/2014/09/29/digging-into-net-object-allocation-fundamentals/) and [Digging Into .NET Loop Performance, Bounds-checking, Iteration, and Unrolling](http://www.philosophicalgeek.com/2014/11/20/digging-into-net-loop-performance-bounds-checking-iteration-and-unrolling/)
 - [Pro .NET Performance: Optimize Your C# Applications by **Sasha Goldshtein**](http://amzn.to/2Djtplh)
 
 All the books listed above I've bought copies of and read cover-to-cover, they're fantastic resources.
