@@ -240,17 +240,21 @@ Now, you could argue that some of the code patterns that Fuzzlyn detects are not
 
 ----
 
+Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=17863554), [/r/dotnet](https://www.reddit.com/r/dotnet/comments/9b0qeo/fuzzing_the_net_jit_compiler_performance_is_a/) or [/r/csharp](https://www.reddit.com/r/csharp/comments/9b0qq5/fuzzing_the_net_jit_compiler_performance_is_a/)
+
+----
+
 ## Further Reading
 
 Jakob was kind enough to share some additional links with me:
 
 - [Finding and Understanding Bugs in C Compilers (Csmith)](http://www.cs.utah.edu/~regehr/papers/pldi11-preprint.pdf) (pdf)
 - [Test-Case Reduction for C Compiler Bugs (C-reduce)](http://www.cs.utah.edu/~regehr/papers/pldi12-preprint.pdf) (pdf)
-- [QuickCheck: a lightweight tool for random testing of Haskell programs](http://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf)
+- [QuickCheck: a lightweight tool for random testing of Haskell programs](http://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf) (pdf)
   - This deals with test-case generation for general programs, not for compilers, but still an interesting paper nonetheless. QuickCheck also includes test case reduction, but unfortunately not much about it in their papers.
 
 Also I asked him "*Is any part of Fuzzlyn based on well known techniques, is it all implemented from scratch, or somewhere in-between*?"
 
 > The state-of-the-art fuzzing techniques are unfortunately not well suited for testing the later stages of compilers (eg. the code output, optimization stages and so on). These techniques are for example symbolic execution, taint tracking, input length exploration, path slicing and more. The problem is that compilers use many intermediate representations, and it is hard to cross reference between what the fuzzer is passing in and what code is being executed at each stage. Even getting something to parse is hard without some kind of knowledge about what the structure needs to be. Fuzzlyn does not these techniques.
-> 
+>
 > On the other hand, Fuzzlyn was very inspired by Csmith, which is a similar tool. But most of the code was written from scratch, since there is a big difference in generating C code (Csmith) and C# code. It is much more complicated to generate interesting C code that is free from undefined behavior.
