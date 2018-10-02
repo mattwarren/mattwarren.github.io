@@ -139,13 +139,13 @@ An interesting side-effect of releasing Rotor is that they were also able to rel
 > Midori was the code name for a managed code operating system being developed by Microsoft with joint effort of Microsoft Research. It had been reported to be a possible commercial implementation of the Singularity operating system, a research project started in 2003 to build a highly dependable operating system in which the **kernel, device drivers, and applications are all written in managed code**. It was designed for concurrency, and could run a program spread across multiple nodes at once. It also featured a security model that sandboxes applications for increased security. Microsoft had mapped out several possible migration paths from Windows to Midori. The operating system was discontinued some time in 2015, though many of its concepts were rolled into other Microsoft projects.
 
 Midori is the project that appears to have led to the most ideas making their way back into the '.NET Framework', you can read more about this in [Joe Duffy's](https://twitter.com/funcOfJoe) excellent series [Blogging about Midori](http://joeduffyblog.com/2015/11/03/blogging-about-midori/)
-  1. [A Tale of Three Safeties](/2015/11/03/a-tale-of-three-safeties/)
-  2. [Objects as Secure Capabilities](/2015/11/10/objects-as-secure-capabilities/)
-  3. [Asynchronous Everything](/2015/11/19/asynchronous-everything/)
-  4. [Safe Native Code](/2015/12/19/safe-native-code)
-  5. [The Error Model](/2016/02/07/the-error-model)
-  6. [Performance Culture](/2016/04/10/performance-culture)
-  7. [15 Years of Concurrency](/2016/11/30/15-years-of-concurrency/)
+  1. [A Tale of Three Safeties](http://joeduffyblog.com/2015/11/03/a-tale-of-three-safeties/)
+  2. [Objects as Secure Capabilities](http://joeduffyblog.com/2015/11/10/objects-as-secure-capabilities/)
+  3. [Asynchronous Everything](http://joeduffyblog.com/2015/11/19/asynchronous-everything/)
+  4. [Safe Native Code](http://joeduffyblog.com/2015/12/19/safe-native-code)
+  5. [The Error Model](http://joeduffyblog.com/2016/02/07/the-error-model)
+  6. [Performance Culture](http://joeduffyblog.com/2016/04/10/performance-culture)
+  7. [15 Years of Concurrency](http://joeduffyblog.com/2016/11/30/15-years-of-concurrency/)
 
 [**Singularity (operating system)**](https://en.wikipedia.org/wiki/Singularity_(operating_system)) (also [Singularity RDK](https://archive.codeplex.com/?p=singularity))
 
