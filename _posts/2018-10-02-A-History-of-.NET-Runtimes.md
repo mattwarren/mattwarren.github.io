@@ -25,6 +25,8 @@ Once I had the list, I made copious use of wikipedia (see the [list of 'Referenc
 <iframe width="100%" height="400" src="https://time.graphics/embed?v=1&id=132735" frameborder="0" allowfullscreen></iframe>
 <div><a style="font-size: 12px; text-decoration: none;" title="Timeline maker" href="https://time.graphics">Timeline maker</a></div>
 
+(If the interactive timeline isn't working for you, take a look at [this version]({{ base }}/images/2018/10/History of .NET Runtimes - Timeline.png))
+
 **If I've missed out any runtimes, please let me know!**
 
 To make the timeline a bit easier to understand, I put each runtime into one of the following categories:
@@ -171,5 +173,3 @@ Below are the Wikipedia articles I referenced when creating the timeline:
 - [Singularity (operating system)](https://en.wikipedia.org/wiki/Singularity_(operating_system))
 - [Midori (operating system)](https://en.wikipedia.org/wiki/Midori_(operating_system))
 - [DotGNU Portable.NET](https://en.wikipedia.org/wiki/DotGNU)
-
- 
