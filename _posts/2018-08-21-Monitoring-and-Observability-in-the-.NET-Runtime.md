@@ -6,7 +6,7 @@ codeproject: false
 tags: [CLR, .NET, Internals]
 ---
 
-.NET is a [*managed runtime*](https://en.wikipedia.org/wiki/Managed_code), which means that it provides high-level features that 'manage' your program for you, from [Introduction to the Common Language Runtime (CLR)](https://github.com/mattwarren/coreclr/blob/master/Documentation/botr/intro-to-clr.md#fundamental-features-of-the-clr) (written in 2007):
+.NET is a [*managed runtime*](https://en.wikipedia.org/wiki/Managed_code), which means that it provides high-level features that 'manage' your program for you, from [Introduction to the Common Language Runtime (CLR)](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/intro-to-clr.md#fundamental-features-of-the-clr) (written in 2007):
 
 > The runtime has many features, so it is useful to categorize them as follows:
 > 1. **Fundamental features** – Features that have broad impact on the design of other features.  These include:
@@ -81,7 +81,7 @@ Finally, there are also future plans for a [Performance Profiling Controller](ht
 
 > The controller is responsible for control of the profiling infrastructure and exposure of performance data produced by .NET performance diagnostics components in a simple and cross-platform way.
 
-The idea is for it to expose the [following functionality via a HTTP server]((https://github.com/dotnet/designs/blob/master/accepted/performance-profiling-controller.md#functionality-exposed-through-controller)), by pulling all the relevant data from 'Event Pipes':
+The idea is for it to expose the [following functionality via a HTTP server](https://github.com/dotnet/designs/blob/master/accepted/performance-profiling-controller.md#functionality-exposed-through-controller), by pulling all the relevant data from 'Event Pipes':
 
 > **REST APIs**
 > - Pri 1: Simple Profiling: Profile the runtime for X amount of time and return the trace.
@@ -281,6 +281,10 @@ By making these APIs available, in an officially supported library, Microsoft ha
 
 ----
 
+Discuss this post on [HackerNews](https://news.ycombinator.com/item?id=17819352), [/r/programming](https://www.reddit.com/r/programming/comments/994119/monitoring_and_observability_in_the_net_runtime/) or [/r/csharp](https://www.reddit.com/r/csharp/comments/9940cm/monitoring_and_observability_in_the_net_runtime/)
+
+----
+
 # Further Reading
 
 Where appropriate I've included additional links that covers the topics discussed in this post.
@@ -298,6 +302,8 @@ Where appropriate I've included additional links that covers the topics discusse
 - More info in the [TraceEvent Library Programmers Guide](https://github.com/Microsoft/perfview/blob/master/documentation/TraceEvent/TraceEventProgrammersGuide.md)
 - [Performance Tracing on Windows](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/windows-performance-tracing.md)
 - [CoreClr Event Logging Design](https://github.com/dotnet/coreclr/blob/release/2.1/Documentation/coding-guidelines/EventLogging.md)
+- [Bringing .NET application performance analysis to Linux](https://blogs.msdn.microsoft.com/dotnet/2018/10/24/bringing-net-application-performance-analysis-to-linux/) (introduction on the .NET Blog)
+- [Bringing .NET application performance analysis to Linux](https://lttng.org/blog/2018/08/28/bringing-dotnet-perf-analysis-to-linux/) (more detailed post on the LTTng blog)
 
 **Profiling API:**
 
