@@ -297,7 +297,8 @@ Where appropriate I've included additional links that covers the topics discusse
 **ETW Events and PerfView:**
 
 - [ETW - Monitor Anything, Anytime, Anywhere](https://assets.ctfassets.net/9n3x4rtjlya6/6A7ZxhamzKQI8cq0ikgYYO/d6430a29037100f73c235584ddada75f/Dina_Goldshtein_ETW_-_Monitor_Anything.pdf) (pdf) by [Dina Goldshtein](https://twitter.com/dinagozil?lang=en)
-- [Make ETW Great Again](https://ruxcon.org.au/assets/2016/slides/ETW_16_RUXCON_NJR_no_notes.pdf) (pdf) - [Logging Keystrokes with Event Tracing for Windows (ETW)](https://www.cyberpointllc.com/posts/cp-logging-keystrokes-with-event-tracing-for-windows-etw.html)
+- [Make ETW Great Again](https://ruxcon.org.au/assets/2016/slides/ETW_16_RUXCON_NJR_no_notes.pdf) (pdf) 
+- [Logging Keystrokes with Event Tracing for Windows (ETW)](https://www.cyberpointllc.com/posts/cp-logging-keystrokes-with-event-tracing-for-windows-etw.html)
 - PerfView is based on [Microsoft.Diagnostics.Tracing.TraceEvent](https://github.com/Microsoft/perfview/blob/master/documentation/TraceEvent/TraceEventLibrary.md), which means you can easily write code to collect ETW events yourself, for example ['Observe JIT Events' sample](https://github.com/Microsoft/perfview/blob/master/src/TraceEvent/Samples/21_ObserveJitEvents.cs)
 - More info in the [TraceEvent Library Programmers Guide](https://github.com/Microsoft/perfview/blob/master/documentation/TraceEvent/TraceEventProgrammersGuide.md)
 - [Performance Tracing on Windows](https://github.com/dotnet/coreclr/blob/master/Documentation/project-docs/windows-performance-tracing.md)
