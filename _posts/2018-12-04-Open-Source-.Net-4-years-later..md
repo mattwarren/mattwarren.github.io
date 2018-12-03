@@ -19,10 +19,10 @@ A little over 4 years ago Microsoft announced that they were [open sourcing larg
 
 **Side-note**: This post forms part of an on-going series, if you want to see how things have changed over time you can check out the previous ones:
 
-- [Open Source .NET – 3 years later]({{ base }}/2017/12/19/Open-Source-.Net-3-years-later/?recommended=1)
-- [Open Source .NET – 2 years later]({{ base }}/2016/11/23/open-source-net-2-years-later/?recommended=1)
-- [Open Source .NET – 1 year later - Now with ASP.NET]({{ base }}/2016/01/15/open-source-net-1-year-later-now-with-aspnet/?recommended=1)
-- [Open Source .NET – 1 year later]({{ base }}/2015/12/08/open-source-net-1-year-later/?recommended=1)
+- [Open Source .NET – 3 years later]({{ base }}/2017/12/19/Open-Source-.Net-3-years-later?recommended=1)
+- [Open Source .NET – 2 years later]({{ base }}/2016/11/23/open-source-net-2-years-later?recommended=1)
+- [Open Source .NET – 1 year later - Now with ASP.NET]({{ base }}/2016/01/15/open-source-net-1-year-later-now-with-aspnet?recommended=1)
+- [Open Source .NET – 1 year later]({{ base }}/2015/12/08/open-source-net-1-year-later?recommended=1)
 
 ----
 
