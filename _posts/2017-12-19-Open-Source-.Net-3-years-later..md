@@ -20,7 +20,7 @@ A little over 3 years ago Microsoft announced that they were [open sourcing larg
 This post forms part of an on-going series, if you want to see how things have changed over time you can check out the previous ones:
 
 - [Open Source .NET – 2 years later]({{ base }}/2016/11/23/open-source-net-2-years-later/?recommended=1)
-- [Open Source .NET – 1 year later - Now with ASP.NET]({{ base }}/open-source-net-1-year-later-now-with-aspnet/?recommended=1)
+- [Open Source .NET – 1 year later - Now with ASP.NET]({{ base }}/2016/01/15/open-source-net-1-year-later-now-with-aspnet/?recommended=1)
 - [Open Source .NET – 1 year later]({{ base }}/2015/12/08/open-source-net-1-year-later/?recommended=1)
 
 In addition, I've recently done a talk [covering this subject]({{ base }}/2017/11/14/Microsoft-and-Open-Source-a-Brave-New-World-CORESTART/), the slides are below:
@@ -79,7 +79,7 @@ But onto the data, first we are going to look at an overview of the **level of a
 
 This data gives a good indication of how healthy different repos are, are they growing over time, or staying the same. You can also see the different levels of activity each repo has and how they compare to other ones.
 
-Whilst it's clear that [Visual Studio Code](https://github.com/microsoft/vscode) is way ahead of all the other repos, it's interesting to see that some of the .NET-only ones are still pretty large, notably CoreFX and Roslyn.
+Whilst it's clear that [Visual Studio Code](https://github.com/microsoft/vscode) is way ahead of all the other repos in terms of 'Issues', it's interesting to see that the .NET-only ones have the most 'Pull-Requests', notably CoreFX (Base Class Libraries), Roslyn (Compiler) and CoreCLR (Runtime).
 
 ----
 
@@ -146,5 +146,3 @@ It's clear that the community continues to be invested in the .NET-related, Open
 ----
 
 Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=15998856) and [/r/programming](https://www.reddit.com/r/programming/comments/7lh19z/open_source_net_3_years_later/)
-
-

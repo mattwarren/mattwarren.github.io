@@ -6,10 +6,12 @@ dataIssues = {}, dataPullRequests = {};
 // The current sparkline data (can be 'Issues' or 'Pull Requests')
 sparklineData = {};
 
-dataIssuesUrl = window.location.href.includes("/2017/") ? "/datavis/data-issues-2017.json" : "/datavis/data-issues.json";
-//dataIssuesUrl = "/datavis/data-issues.json";
+dataIssuesUrl = "/datavis/data-issues.json";
+if (window.location.href.includes("/2017/"))
+  dataIssuesUrl = "/datavis/data-issues-2017.json";
+else if (window.location.href.includes("/2018/"))
+  dataIssuesUrl = "/datavis/data-issues-2018.json";
 
-//d3.json("/datavis/data-issues.json", function(error, json) {
 d3.json(dataIssuesUrl, function(error, json) {
   if (error) 
     return console.warn(error);
@@ -28,10 +30,12 @@ d3.json(dataIssuesUrl, function(error, json) {
 });
 
 function getPullRequestDataViaAjax() {
-  dataPullRequestsUrl = window.location.href.includes("/2017/") ? "/datavis/data-pull-requests-2017.json": "/datavis/data-pull-requests.json";
-  //var dataPullRequestsUrl = "/datavis/data-pull-requests.json";
+  dataPullRequestsUrl = "/datavis/data-pull-requests.json";
+  if (window.location.href.includes("/2017/"))
+    dataPullRequestsUrl = "/datavis/data-pull-requests-2017.json";
+  if (window.location.href.includes("/2018/"))
+    dataPullRequestsUrl = "/datavis/data-pull-requests-2018.json";
 
-  //d3.json("/datavis/data-pull-requests.json", function(error, json) {
   d3.json(dataPullRequestsUrl, function(error, json) {
     if (error) 
       return console.warn(error);
@@ -240,23 +244,16 @@ function setupButtonClickHandler() {
 
 var normalizedStackedBarInfo = new function() {
   //Margin conventions
-  //var margin = {top: 10, right: 50, bottom: 20, left: 227};
-  this.margin = {top: 10, right: 10, bottom: 20, left: 150};
+  this.margin = {top: 10, right: 10, bottom: 20, left: 125};
 
   //var widther = window.outerWidth;
-  this.widther = 0;
+  this.widther = 625;
 
-  //var barHeight = 34;
   this.barHeight = 25;
 
-  // 4 bars, overall = 170, bar height = 33, gap = 9.5 (stride = 42.5)
-  // 5 bars, overall = 205, bar height = 33, gap = 8   (stride = 41)
-
   this.width = 0; // widther - margin.left - margin.right,
-  //height = 200 - margin.top - margin.bottom; // 4 bars
-  //height = 235 - margin.top - margin.bottom; // 5 bars
-  //height = 700 - margin.top - margin.bottom; // 16 bars
-  this.height = 550 - this.margin.top - this.margin.bottom; // 16 bars
+  //this.height = 550 - this.margin.top - this.margin.bottom; // 16 bars
+  this.height = 650 - this.margin.top - this.margin.bottom; // 19 bars
 }
 
 function createNormalizedStackedBarChartData(json) {
@@ -511,6 +508,7 @@ function setupStackedGroupedBar(divToUse, data, layers, colourRange, info) {
     .scale(x)
     .tickSize(0)
     .tickPadding(6)
+    //.ticks(12)
     .orient("bottom")
     .tickFormat(function(d) {
       // 'd' is the X-value of the current point, i.e. the "index" field!!

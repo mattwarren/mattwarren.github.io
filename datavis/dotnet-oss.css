@@ -6,8 +6,8 @@
   display: block;
   margin-left: auto; 
   margin-right: auto;
-  width: 650px;
-  height: 1050px; //980px;
+  width: 750px;
+  height: 1350px; /* 1050px; 980px; */
 }
 
 .rChartHeader {
@@ -17,8 +17,8 @@
   display: block;
   margin-left: auto; 
   margin-right: auto;
-  width: 650px;
-  //height: 980px;
+  width: 750px;
+  /*height: 980px;*/
 }
 
 .rChartHeader .alignleft {
@@ -222,4 +222,8 @@ div.tooltipOverall {
     border: 0px;
     border-radius: 8px;
     pointer-events: none;
+}
+
+.xaxis text {
+  font: normal 9px Arial;
 }
