@@ -230,12 +230,16 @@ Finally, if you prefer reading off-line there are some decent books that discuss
   - His [blog](http://www.philosophicalgeek.com) is also worth reading, e.g. [Digging Into .NET Object Allocation Fundamentals](http://www.philosophicalgeek.com/2014/09/29/digging-into-net-object-allocation-fundamentals/) and [Digging Into .NET Loop Performance, Bounds-checking, Iteration, and Unrolling](http://www.philosophicalgeek.com/2014/11/20/digging-into-net-loop-performance-bounds-checking-iteration-and-unrolling/)
 - [Pro .NET Performance: Optimize Your C# Applications by **Sasha Goldshtein**](http://amzn.to/2Djtplh)
 
-All the books listed above I've bought copies of and read cover-to-cover, they're fantastic resources.
+All the books listed above I own copies of and I've read cover-to-cover, they're fantastic resources.
 
 I've also been recently recommend the 2 books below, they look good and certainly the authors know their stuff, but I haven't read them yet:
 
 - [The Common Language Infrastructure Annotated Standard by **James S. Miller, Susann Ragsdale**](http://amzn.to/2ERV6Ol)
 - [Essential .NET, Volume I: The Common Language Runtime by **Don Box, Chris Sells**](http://amzn.to/2Dm1yAV)
+
+**\*New Release\***
+
+- [Pro .NET Memory Management: For Better Code, Performance, and Scalability by **Konrad Kokosa**](https://amzn.to/2PA50Jp) (Nov 2018)
 
 ----
 
