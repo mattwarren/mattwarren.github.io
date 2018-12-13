@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Exploring the .NET Core Runtime
+title: Exploring the .NET Core Runtime (in which I set myself a challenge)
 comments: true
 codeproject: false
 tags: [CLR, .NET, Internals]
