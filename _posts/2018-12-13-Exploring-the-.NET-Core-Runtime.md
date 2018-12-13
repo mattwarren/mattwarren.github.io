@@ -209,7 +209,7 @@ One **huge benefit** of this approach is that [Mono](https://www.mono-project.co
 
 So far we've 'compiled' our code (well technically 'assembled' it) and we've been able to access a simple version of `System.Console`, but how do we actually run our `.exe`? Remember we can't use the `dotnet run` command because that lives in the [dotnet/CLI](https://github.com/dotnet/cli/tree/release/2.2.2xx/src/dotnet/commands/dotnet-run) repository (and that would be breaking the rules of this *slightly contrived* challenge!!).
 
-Again, fortunately those clever runtime enginers have throught of this exact scenario and they built the very helpful `corerun` appplication. You can read more about in [Using corerun To Run .NET Core Application](https://github.com/dotnet/coreclr/blob/master/Documentation/workflow/UsingCoreRun.md), but the td;dr is that it will only look for dependencies in the same folder as your .exe.
+Again, fortunately those clever runtime engineers have thought of this exact scenario and they built the very helpful `corerun` application. You can read more about in [Using corerun To Run .NET Core Application](https://github.com/dotnet/coreclr/blob/master/Documentation/workflow/UsingCoreRun.md), but the td;dr is that it will only look for dependencies in the same folder as your .exe.
 
 So, to complete the challenge, we can now run `CoreRun HelloWorld.exe`:
 
