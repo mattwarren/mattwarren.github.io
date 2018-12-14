@@ -43,11 +43,11 @@ the build is simply a matter of invoking the 'build' script (`build.cmd` or `bui
 >
 > The details of installing the components differ depending on the operating system.  See the following pages based on your OS.  There is no cross-building across OS (only for ARM, which is built on X64). You have to be on the particular platform to build that platform.  
 >
-> * [Windows Build Instructions](Documentation/building/windows-instructions.md)
-> * [Linux Build Instructions](Documentation/building/linux-instructions.md)
-> * [macOS Build Instructions](Documentation/building/osx-instructions.md)
-> * [FreeBSD Build Instructions](Documentation/building/freebsd-instructions.md) 
-> * [NetBSD Build Instructions](Documentation/building/netbsd-instructions.md)
+> * [Windows Build Instructions](https://github.com/dotnet/coreclr/blob/master/Documentation/building/windows-instructions.md)
+> * [Linux Build Instructions](https://github.com/dotnet/coreclr/blob/master/Documentation/building/linux-instructions.md)
+> * [macOS Build Instructions](https://github.com/dotnet/coreclr/blob/master/Documentation/building/osx-instructions.md)
+> * [FreeBSD Build Instructions](https://github.com/dotnet/coreclr/blob/master/Documentation/building/freebsd-instructions.md) 
+> * [NetBSD Build Instructions](https://github.com/dotnet/coreclr/blob/master/Documentation/building/netbsd-instructions.md)
 
 If you follow these steps successfully, you'll end up with the following files (at least on Windows, other OSes may produce something slightly different):
 
