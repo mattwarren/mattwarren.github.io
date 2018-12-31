@@ -54,7 +54,7 @@ These blogs are all written by non-Microsoft employees (AFAICT), or if they do w
   - [DateTime under the hood](http://aakinshin.net/blog/post/datetime/)
   - [Stopwatch under the hood](http://aakinshin.net/blog/post/stopwatch/)
 - [**TooSlowException**](http://tooslowexception.com/) by [**Konrad Kokosa** (@konradkokosa)](https://twitter.com/konradkokosa)
-  - [.NET Core – compilation, running, debugging](http://tooslowexception.com/net-core-compilation-running-debugging/) 
+  - [.NET Core – compilation, running, debugging](http://tooslowexception.com/net-core-compilation-running-debugging/)
   - [How does Object.GetType() really work?](http://tooslowexception.com/how-does-gettype-work/)
   - [Zero Garbage Collector for .NET Core](http://tooslowexception.com/zero-garbage-collector-for-net-core/) and the follow-up [Zero Garbage Collector for .NET Core 2.1 and ASP.NET Core 2.1](http://tooslowexception.com/zero-garbage-collector-for-net-core-2-1-and-asp-net-core-2-1/)
   - [The Ultimate .NET Experiment – open source project](http://tooslowexception.com/the-ultimate-net-experiment-project/)
@@ -156,6 +156,10 @@ Honourable mention goes to [.NET Type Internals - From a Microsoft CLR Perspecti
 - [**Mode 13h**](https://www.mode19.net/) by [**Dustin Metzgar**](https://twitter.com/DustinMetzgar) (author of [.NET Core in Action](https://www.manning.com/books/dotnet-core-in-action))
   - [Hosting the CLR the **Old** Way](https://www.mode19.net/posts/clrhostingold/)
   - [Hosting the CLR the **Right** Way](https://www.mode19.net/posts/clrhostingright/)
+  [**Ben Bowen's Blog**](http://benbowen.blog) by [**Ben Bowen**](https://twitter.com/Xenoprimate)
+  - [Fun With __makeref](http://benbowen.blog/post/fun_with_makeref/)
+  - [P/Invoke Tips](http://benbowen.blog/post/pinvoke_tips/)
+  - [Postmortems - Tale of Two Casts](http://benbowen.blog/post/tale_of_two_casts/#implementation_details)
 
 ----
 
@@ -217,6 +221,10 @@ The blogs below are written by the *actual* engineers who worked on, designed or
   - [Inlining - yes, it happens](http://bartdesmet.net/blogs/bart/archive/2007/02/19/inlining-yes-it-happens.aspx)
   - [Going Unsafe - An ADDRESSOF Operator in C#](http://bartdesmet.net/blogs/bart/archive/2006/09/07/4395.aspx)
   - [A Beginner's Guide to Cordbg](http://bartdesmet.net/blogs/bart/archive/2006/10/03/4491.aspx)
+- [Nate McMaster's blog](https://natemcmaster.com) by [**Nate McMaster**](https://twitter.com/natemcmaster)
+  - [Deep-dive into .NET Core primitives: deps.json, runtimeconfig.json, and dll's](https://natemcmaster.com/blog/2017/12/21/netcore-primitives/)
+  - [Deep-dive into .NET Core primitives, part 2: the shared framework](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/)
+  - [.NET Core Plugins](https://natemcmaster.com/blog/2018/07/25/netcore-plugins/)
 
 ----
 
@@ -225,7 +233,7 @@ The blogs below are written by the *actual* engineers who worked on, designed or
 Finally, if you prefer reading off-line there are some decent books that discuss .NET Internals (Note: all links are Amazon Affiliate links):
 
 - [CLR via C#, 4ed by **Jeffrey Richter**](http://amzn.to/2Ba0ytN)
-- [Shared Source CLI Essentials Paperback by **David Stutz, Ted Neward, Geoff Shilling**](http://amzn.to/2DcscYY)
+- [Shared Source CLI Essentials Paperback by **David Stutz, Ted Neward, Geoff Shilling**](http://amzn.to/2DcscYY) Ted (Ted Neward also made a pdf version available to [download from his web site](http://www.newardassociates.com/files/SSCLI2.pdf))
 - [Writing High-Performance .NET Code Paperback by **Ben Watson**](http://amzn.to/2EOFX0e)
   - His [blog](http://www.philosophicalgeek.com) is also worth reading, e.g. [Digging Into .NET Object Allocation Fundamentals](http://www.philosophicalgeek.com/2014/09/29/digging-into-net-object-allocation-fundamentals/) and [Digging Into .NET Loop Performance, Bounds-checking, Iteration, and Unrolling](http://www.philosophicalgeek.com/2014/11/20/digging-into-net-loop-performance-bounds-checking-iteration-and-unrolling/)
 - [Pro .NET Performance: Optimize Your C# Applications by **Sasha Goldshtein**](http://amzn.to/2Djtplh)

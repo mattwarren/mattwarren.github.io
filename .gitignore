@@ -1,2 +1,7 @@
 _site/*
 .jekyll-metadata
+DataVis-OLD/*
+_drafts/*
+Gemfile*
+Run Blog.bat
+settings.json
