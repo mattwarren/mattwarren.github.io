@@ -17,10 +17,9 @@ What is 'stack walking', well as always the 'Book of the Runtime' (BotR) helps u
 > - The **debugger uses the functionality** when generating managed stack traces.
 > - Various miscellaneous methods, usually those close to some public managed API, perform a stack walk **to pick up information about their caller** (such as the method, class or assembly of that caller).
 
-**The rest of this post will explore what it is, how it works and why so many parts of the runtime need to be involved.**
+**The rest of this post will explore what 'Stack Walking' is, how it works and why so many parts of the runtime need to be involved.**
 
 ----
-
 
 **Table of Contents**
 
@@ -49,24 +48,24 @@ What is 'stack walking', well as always the 'Book of the Runtime' (BotR) helps u
 
 ## Where does the CLR use 'Stack Walking'?
 
-Before we dig into the 'internals', lets take a look at where the runtime utilises 'stack walking', below is the full list (as of .NET Core CLR 'Release 2.2'). All these examples end up calling into `Thread::StackWalkFrames(..)` method [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L978-L1042) and provide a `callback` that is triggered whenever the API encounters a new section of the stack (see [How to use it](#how-to-use-it) below for more info).
+Before we dig into the 'internals', let's take a look at where the runtime utilises 'stack walking', below is the full list (as of .NET Core CLR 'Release 2.2'). All these examples end up calling into the `Thread::StackWalkFrames(..)` method [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L978-L1042) and provide a `callback` that is triggered whenever the API encounters a new section of the stack (see [How to use it](#how-to-use-it) below for more info).
 
 ### Common Scenarios
 
 - **Garbage Collection (GC)**
   - `ScanStackRoots(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/gcenv.ee.cpp#L71-L151) -> [callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/gcenv.ee.common.cpp#L184-L293)
 - **Exception Handling** (unwinding)
-  - `UnwindFrames(..)` (`x86` only) [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/excep.cpp#L2199-L2232) ([callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/i386/excepx86.cpp#L2718-L3119)) 
-  - `ResetThreadAbortState(..)` (`x64` only) [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/excep.cpp#L12770-L12868) ([callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/excep.cpp#L12728-L12767))
+  - `x86` - `UnwindFrames(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/excep.cpp#L2199-L2232) -> [callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/i386/excepx86.cpp#L2718-L3119)
+  - `x64` - `ResetThreadAbortState(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/excep.cpp#L12770-L12868) -> [callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/excep.cpp#L12728-L12767)
 - **Exception Handling** (resumption):
   - `ExceptionTracker::FindNonvolatileRegisterPointers(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/exceptionhandling.cpp#L357-L436) -> [callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/exceptionhandling.cpp#L249-L354)
   - `ExceptionTracker::RareFindParentStackFrame(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/exceptionhandling.cpp#L6991-L7031) -> [callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/exceptionhandling.cpp#L6924-L6989)
 - **Threads**:
-  - `Thread::IsRunningIn(..)` (AppDomain) [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threads.cpp#L8402-L8428) ([callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threads.cpp#L8368-L8396))
-  - `Thread::DetectHandleILStubsForDebugger(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threads.cpp#L219-L282) ([callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threads.cpp#L205-L217))
+  - `Thread::IsRunningIn(..)` (AppDomain) [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threads.cpp#L8402-L8428) -> [callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threads.cpp#L8368-L8396)
+  - `Thread::DetectHandleILStubsForDebugger(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threads.cpp#L219-L282) -> [callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threads.cpp#L205-L217)
 - **Thread Suspension**:
   - `Thread::IsExecutingWithinCer()` ('Constrained Execution Region') [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threadsuspend.cpp#L962-L1006) ([wrapper](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threadsuspend.cpp#L831-L960) and [callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threadsuspend.cpp#L672-L829))
-  - `Thread::HandledJITCase(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threadsuspend.cpp#L6853-L6975) ([callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threadsuspend.cpp#L6130-L6312), [alternative callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threadsuspend.cpp#L6498-L6544))
+  - `Thread::HandledJITCase(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threadsuspend.cpp#L6853-L6975) -> [callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threadsuspend.cpp#L6130-L6312), [alternative callback](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threadsuspend.cpp#L6498-L6544)
 
 ### Debugging/Diagnostics
 
@@ -105,7 +104,7 @@ One of the above scenarios deserves a closer look, but firstly why are 'stack cr
 
 > Unfortunately, there is a ton of legacy APIs that were added during netstandard2.0 push whose behavior depend on the caller. **The caller is basically passed in as an implicit argument to the API**. Most of these StackCrawlMarks are there to support these APIs...
 
-So we can see that multiple functions within the CLR itself need to have knowledge of their **caller**. To understand this some more, lets look an example, the `GetType(string typeName)` [method](https://docs.microsoft.com/en-us/dotnet/api/system.type.gettype?view=netframework-4.7.2#System_Type_GetType_System_String_). Here's the flow from the externally-visible method all the way down to where the work is done, note how a `StackCrawlMark` instance is passed through:
+So we can see that multiple functions within the CLR itself need to have knowledge of their **caller**. To understand this some more, let's look an example, the `GetType(string typeName)` [method](https://docs.microsoft.com/en-us/dotnet/api/system.type.gettype?view=netframework-4.7.2#System_Type_GetType_System_String_). Here's the flow from the externally-visible method all the way down to where the work is done, note how a `StackCrawlMark` instance is passed through:
 
 - `Type::GetType(string typeName)` [implementation](https://github.com/dotnet/coreclr/blob/606c246/src/System.Private.CoreLib/src/System/Type.CoreCLR.cs#L38-L43) (Creates `StackCrawlMark.LookForMyCaller`)
 - `RuntimeType::GetType(.., ref StackCrawlMark stackMark)` [implementation](https://github.com/dotnet/coreclr/blob/606c246/src/System.Private.CoreLib/src/System/RtType.cs#L1741-L1749)
@@ -132,7 +131,7 @@ However, the `StackCrawlMark` feature is currently being *cleaned* up, so it may
 
 ### Exception Handling
 
-The place that most .NET Developers will run into 'stack traces' is when dealing with exceptions. I originally intended to also describe 'exception handling' as part of this post, but then I opened up [/src/vm/exceptionhandling.cpp](https://github.com/dotnet/coreclr/blob/master/src/vm/exceptionhandling.cpp) and saw that it contained **over 7,000** lines of code!! So I decided that it can wait for a future post 😁.
+The place that most .NET Developers will run into 'stack traces' is when dealing with exceptions. I originally intended to also describe 'exception handling' here, but then I opened up [/src/vm/exceptionhandling.cpp](https://github.com/dotnet/coreclr/blob/master/src/vm/exceptionhandling.cpp) and saw that it contained **over 7,000** lines of code!! So I decided that it can wait for a future post 😁.
 
 However, if you want to learn more about the 'internals' I really recommend Chris Brumme's post [The Exception Model](https://blogs.msdn.microsoft.com/cbrumme/2003/10/01/the-exception-model/) (2003) which is the definitive guide on the topic (also see his [Channel9 Videos](https://channel9.msdn.com/Search?term=Christopher%20Brumme&lang-en=true)) and as always, the 'BotR' chapter ['What Every (*Runtime*) Dev needs to Know About Exceptions in the Runtime'](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/exceptions.md) is well worth a read.
 
@@ -142,12 +141,11 @@ Also, I recommend talking a look at the slides from the ['Internals of Exception
 
 ## The 'Stack Walking' API
 
-Now that we've seen *where* it's used, lets look at the 'stack walking' API itself. Firstly, how is it used?
+Now that we've seen *where* it's used, let's look at the 'stack walking' API itself. Firstly, *how* is it used?
 
 ### How to use it
 
-It's worth pointing out that the only way you can access it from C#/F#/VB.NET code is via the `StackTrace` [class](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.stacktrace?view=netframework-4.7.2), only the runtime itself can call into `StackWalkFrames` directly. Probable the simplest example is `EventPipe::WalkManagedStackForThread(..)` (see [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/eventpipe.cpp#L971-L994)). As you can see in the code below it's as simple as specifying the relevant flags, in this case `ALLOW_ASYNC_STACK_WALK | FUNCTIONSONLY | HANDLESKIPPEDFRAMES | ALLOW_INVALID_OBJECTS` and then providing the callback, which in the EventPipe class is `StackWalkCallback` ([here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/eventpipe.cpp#L996-L102))
-
+It's worth pointing out that the only way you can access it from C#/F#/VB.NET code is via the `StackTrace` [class](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.stacktrace?view=netframework-4.7.2), only the runtime itself can call into `Thread::StackWalkFrames(..)` directly. The simplest usage in the runtime is `EventPipe::WalkManagedStackForThread(..)` (see [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/eventpipe.cpp#L971-L994)), which is shown below. As you can see it's as simple as specifying the relevant flags, in this case `ALLOW_ASYNC_STACK_WALK | FUNCTIONSONLY | HANDLESKIPPEDFRAMES | ALLOW_INVALID_OBJECTS` and then providing the callback, which in the EventPipe class is the `StackWalkCallback` method ([here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/eventpipe.cpp#L996-L102))
 
 ``` cpp
 bool EventPipe::WalkManagedStackForThread(Thread *pThread, StackContents &stackContents)
@@ -176,7 +174,7 @@ bool EventPipe::WalkManagedStackForThread(Thread *pThread, StackContents &stackC
 }
 ```
 
-The `StackWalkFrame(..)` function then does the *heavy-lifting* of actually walking the stack, before triggering the callback below, which in this case just records the 'Instruction Pointer' (IP/CP) and the 'managed function', which is an instance of the `MethodDesc` obtained via the `pCf->GetFunction()` call:
+The `StackWalkFrame(..)` function then does the *heavy-lifting* of actually walking the stack, before triggering the callback shown below. In this case it just records the 'Instruction Pointer' (IP/CP) and the 'managed function', which is an instance of the `MethodDesc` obtained via the `pCf->GetFunction()` call:
 
 ``` cpp
 StackWalkAction EventPipe::StackWalkCallback(CrawlFrame *pCf, StackContents *pData)
@@ -214,77 +212,72 @@ StackWalkAction EventPipe::StackWalkCallback(CrawlFrame *pCf, StackContents *pDa
 
 ### How it works
 
-Now onto the most interesting part, how to the runtime actually walks the stack. Well, first lets understand what the stack actually looks like, from the ['BotR' page](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/stackwalking.md):
+Now onto the most interesting part, how to the runtime actually walks the stack. Well, first let's understand what the stack looks like, from the ['BotR' page](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/stackwalking.md):
 
 ![Stack Description from BotR]({{ base }}/images/2019/01/Stack Description from BotR.png)
 
 The main thing to note is that a .NET 'stack' can contain 3 types of methods:
 
-1. **Managed** - this represent code that stared off as C#/F#/VB.NET, was turned into IL and was then compiled to native code by the 'JIT Compiler'.
-2. **Unmanaged** - completely *native* code, that exists outside of the runtime, i.e. a OS function that it calls into or a call via `P/Invoke`. The runtime *only* cares about transitions *into* or *out of* this code, is doesn't care about stack frame within regular unmanaged code.
-3. **Runtime Managed** - still *native* code, but this is slightly different because it's code that the runtime cares about. For example there are quite a few parts of the Base-Class libraries make use of `InternalCall` methods, for more on this see the ['Helper Method' Frames](#helper-method-frames) section later on.
+1. **Managed** - this represents code that started off as C#/F#/VB.NET, was turned into IL and then finally compiled to native code by the 'JIT Compiler'.
+2. **Unmanaged** - completely *native* code that exists outside of the runtime, i.e. a OS function the runtime calls into or a user call via `P/Invoke`. The runtime *only* cares about transitions *into* or *out of* regular unmanaged code, is doesn't care about the stack frame within it.
+3. **Runtime Managed** - still *native* code, but this is slightly different because the runtime case more about this code. For example there are quite a few parts of the Base-Class libraries that make use of `InternalCall` methods, for more on this see the ['Helper Method' Frames](#helper-method-frames) section later on.
 
-So the 'stack walk' has to deal with these different scenarios as it proceeds. Now lets look at the 'code flow' starting with the entry-point method `StackWalkFrames(..)`:
+So the 'stack walk' has to deal with these different scenarios as it proceeds. Now let's look at the 'code flow' starting with the entry-point method `StackWalkFrames(..)`:
 
 - `Thread::StackWalkFrames(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L978-L1042)
   - the entry-point function, the type of 'stack walk' can be controlled via [these flags](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/threads.h#L3302-L3361)
 - `Thread::StackWalkFramesEx(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L899-L976)
-  - worker-function that sets up the `StackFrameIterator`, via a calls to `StackFrameIterator::Init(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L1150-L1274)
-- `StackFrameIterator::Next()` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L1586-L1621), which then hands off to the primary *worker* method `StackFrameIterator::NextRaw()` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L2291-L2761) that does 5 things:
+  - worker-function that sets up the `StackFrameIterator`, via a call to `StackFrameIterator::Init(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L1150-L1274)
+- `StackFrameIterator::Next()` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L1586-L1621), then hands off to the primary *worker* method `StackFrameIterator::NextRaw()` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L2291-L2761) that does 5 things:
   1. `CheckForSkippedFrames(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L3009-L3119), deals with frames that may have been allocated inside a managed stack frame (e.g. an inlined p/invoke call).
-  2. `UnwindStackFrame(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/eetwain.cpp#L4162-L4214), which in turn calls:
-    - **`x84`** - `Thread::VirtualUnwindCallFrame(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L553-L671), which then calls `VirtualUnwindNonLeafCallFrame(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L711-L757) or `VirtualUnwindLeafCallFrame(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L676-L708). All of of these functions make use of the [Windows API function](https://docs.microsoft.com/en-us/windows/desktop/api/winnt/nf-winnt-rtllookupfunctionentry) `RtlLookupFunctionEntry(..)` to do the actual unwinding.
+  2. `UnwindStackFrame(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/eetwain.cpp#L4162-L4214), in-turn calls:
+    - **`x64`** - `Thread::VirtualUnwindCallFrame(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L553-L671), then calls `VirtualUnwindNonLeafCallFrame(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L711-L757) or `VirtualUnwindLeafCallFrame(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L676-L708). All of of these functions make use of the [Windows API function](https://docs.microsoft.com/en-us/windows/desktop/api/winnt/nf-winnt-rtllookupfunctionentry) `RtlLookupFunctionEntry(..)` to do the actual unwinding.
     - **`x86`** - `::UnwindStackFrame(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/eetwain.cpp#L4012-L4107), in turn calls `UnwindEpilog(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/eetwain.cpp#L3528-L3557) and `UnwindEspFrame(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/eetwain.cpp#L3663-L3721). Unlike `x64`, under `x86` all the 'stack-unwinding' is done manually, within the CLR code.
   3. `PostProcessingForManagedFrames(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L3193-L3229), determines if the stack-walk is actually within a **managed method** rather than a **native frame**.
-  4. `ProcessIp(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L2786-L2800) has the job of looking up the current **managed method** (if any) based on the current **instruction pointer** (IP). It does this by calling into  `EECodeInfo::Init(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/jitinterface.cpp#L13948-L13976) which then ends up in one of:
-    - `EEJitManager::JitCodeToMethodInfo(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/codeman.cpp#L3631-L3676), which uses a very cool looking data structure refered to as a ['nibble map'](https://github.com/dotnet/coreclr/blob/release/2.2/src/inc/nibblemapmacros.h#L12-L26)
+  4. `ProcessIp(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L2786-L2800) has the job of looking up the current **managed method** (if any) based on the current **instruction pointer** (IP). It does this by calling into  `EECodeInfo::Init(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/jitinterface.cpp#L13948-L13976) and then ends up in one of:
+    - `EEJitManager::JitCodeToMethodInfo(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/codeman.cpp#L3631-L3676), that uses a very cool looking data structure refereed to as a ['nibble map'](https://github.com/dotnet/coreclr/blob/release/2.2/src/inc/nibblemapmacros.h#L12-L26)
     - `NativeImageJitManager::JitCodeToMethodInfo(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/codeman.cpp#L5428-L5616)
     - `ReadyToRunJitManager::JitCodeToMethodInfo(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/codeman.cpp#L6875-L6953)
-  5. `ProcessCurrentFrame(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L2802-L3007), which does some final house-keeping and tidy-up.
+  5. `ProcessCurrentFrame(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L2802-L3007), does some final house-keeping and tidy-up.
 - `CrawlFrame::GotoNextFrame()` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L369-L390)
   - in-turn calls `pFrame->Next()` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/frames.h#L836-L840) to walk through the 'linked list' of frames which drive the 'stack walk' (more on these 'frames' later)
 - `StackFrameIterator::Filter()` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L1623-L2289)
   - essentially a [huge `switch` statement](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L1677-L2271) that handles all the different [Frame States](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.h#L602-L613) and decides whether or not the 'stack walk' should continue.
 
-When it gets a valid frame it triggers the callback in `Thread::MakeStackwalkerCallback(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L859-L891) and passes in a pointer to the current `CrawlFrame` class [defined here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.h#L68-L496), which exposes methods such as `IsFrameless()`, `GetFunction()` and `GetThisPointer()`. The `CrawlFrame` actually represents 2 scenarios, based on the current IP:
+When it gets a valid frame it triggers the callback in `Thread::MakeStackwalkerCallback(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L859-L891) and passes in a pointer to the current `CrawlFrame` class [defined here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.h#L68-L496), this exposes methods such as `IsFrameless()`, `GetFunction()` and `GetThisPointer()`. The `CrawlFrame` actually represents 2 scenarios, based on the current IP:
 
 - **Native** code, represented by a `Frame` class [defined here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/frames.h#L378-L284), which we'll discuss more in a moment.
 - **Managed** code, well technically 'managed code' that was JITted to 'native code', so more accurately a **managed stack frame**. In this situation the `MethodDesc` class [defined here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/method.hpp#L187-L1879) is provided, you can read more about this key CLR data-structure in [the corresponding BotR chapter](https://github.com/dotnet/coreclr/blob/release/2.2/Documentation/botr/method-descriptor.md).
 
 ### See it 'in Action'
 
-Fortunately we're able to turn on some nice diagnostics in a debug build of the CLR. This is what the output looks like when we call `new StackTrace(..)` from C# with code like this:
+Fortunately we're able to turn on some nice diagnostics in a debug build of the CLR (`COMPLUS_LogEnable`, `COMPLUS_LogToFile` & `COMPLUS_LogFacility`). With that in place, given C# code like this:
 
 ``` cs
-internal class Program
-{
-    private static void Main()
-    {
+internal class Program {
+    private static void Main() {
         MethodA();
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private void MethodA()
-    {
+    private void MethodA() {
         MethodB();
     }
     
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private void MethodB()
-    {
+    private void MethodB() {
         MethodC();
     }
     
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private void MethodC()
-    {
+    private void MethodC() {
         var stackTrace = new StackTrace(fNeedFileInfo: true);
         Console.WriteLine(stackTrace.ToString());
     }
 }
 ```
 
-In the output below you can see the 'stack walking' process, it starts in `InitializeSourceInfo` and `CaptureStackTrace` which are methods internal to the `StackTrace` class (see [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/mscorlib/src/System/Diagnostics/Stacktrace.cs#L351-L407)), before moving up the stack `MethodC` -> `MethodB` -> `MethodA` and then finally stopping in the `Main` function.
+We get the output shown below, in which you can see the 'stack walking' process. It starts in `InitializeSourceInfo` and `CaptureStackTrace` which are methods internal to the `StackTrace` class (see [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/mscorlib/src/System/Diagnostics/Stacktrace.cs#L351-L407)), before moving up the stack `MethodC` -> `MethodB` -> `MethodA` and then finally stopping in the `Main` function. Along the way its does a 'FILTER' and 'CONSIDER' step before actually unwinding ('finished unwind for ...'):
 
 ```
 TID 4740: STACKWALK    starting with partial context
@@ -331,6 +324,8 @@ TID 4740: STACKWALK: [00c] FILTER  : EXPLICIT : PC= 00007ffd`742f9073  SP= 00000
 TID 4740: STACKWALK: SWA_DONE: reached the end of the stack
 ```
 
+To find out more, you can search for these diagnostic message in [\vm\stackwalk.cpp](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp), e.g. in `Thread::DebugLogStackWalkInfo(..)` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L802-L856)
+
 ----
 
 ## Unwinding 'Native' Code
@@ -351,7 +346,7 @@ It turns out that .NET uses the 'table-driven' approach, for the reason explaine
 
 ### Frames
 
-So to enable 'unwinding' of native code or more strictly the transitions 'into' and 'out of' native code, the CLR uses a mechanism of `Frames`, which are defined in the source code [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/frames.h#L7-L143). These frames are arranged into a hierachy and there is one type of `Frame` for each scenario, for more info on these individual `Frames` take a look at the excellent source-code comments [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/frames.h#L145-L195).
+To enable 'unwinding' of native code or more strictly the transitions 'into' and 'out of' native code, the CLR uses a mechanism of `Frames`, which are defined in the source code [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/frames.h#L7-L143). These frames are arranged into a hierachy and there is one type of `Frame` for each scenario, for more info on these individual `Frames` take a look at the excellent source-code comments [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/frames.h#L145-L195).
 
 - **Frame** (abstract/base class)
   - **GCFrame**
@@ -393,14 +388,14 @@ So to enable 'unwinding' of native code or more strictly the transitions 'into' 
 
 ### 'Helper Method' Frames
 
-But to make sense of this, lets look at one type of `Frame`, known as `HelperMethodFrame` (above). This is used when .NET code in the runtime calls into C++ code to do the heavy-lifting, often for performance reasons. One example is if you call `Environment.GetCommandLineArgs()` you end up [in this code](https://github.com/dotnet/coreclr/blob/master/src/System.Private.CoreLib/src/System/Environment.cs#L151-L180) (C#), but note that it ends up calling an `extern` method marked with `InternalCall`:
+But to make sense of this, let's look at one type of `Frame`, known as `HelperMethodFrame` (above). This is used when .NET code in the runtime calls into C++ code to do the heavy-lifting, often for performance reasons. One example is if you call `Environment.GetCommandLineArgs()` you end up [in this code](https://github.com/dotnet/coreclr/blob/master/src/System.Private.CoreLib/src/System/Environment.cs#L151-L180) (C#), but note that it ends up calling an `extern` method marked with `InternalCall`:
 
 ``` cs
 [MethodImplAttribute(MethodImplOptions.InternalCall)]
 private static extern string[] GetCommandLineArgsNative();
 ```
 
-This means that it the rest of the method is implemented in the runtime in C++, you can see how the method call is [wired up](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/ecalllist.h#L153), before ending up in [this method](https://github.com/dotnet/coreclr/blob/release/2.2/src/classlibnative/bcltype/system.cpp#L178-L221), which is shown below:
+This means that the rest of the method is implemented in the runtime in C++, you can see how the method call is [wired up](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/ecalllist.h#L153), before ending up `SystemNative::GetCommandLineArgs` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/classlibnative/bcltype/system.cpp#L178-L221), which is shown below:
 
 ``` cpp
 FCIMPL0(Object*, SystemNative::GetCommandLineArgs)
@@ -412,10 +407,10 @@ FCIMPL0(Object*, SystemNative::GetCommandLineArgs)
     HELPER_METHOD_FRAME_BEGIN_RET_1(strArray); // <-- 'Helper method Frame' started here
 
     // Error handling and setup code removed for clarity
-    
+
     strArray = (PTRARRAYREF) AllocateObjectArray(numArgs, g_pStringClass);
     // Copy each argument into new Strings.
-    for(unsigned int i=0; i<numArgs; i++) 
+    for(unsigned int i=0; i<numArgs; i++)
     {
         STRINGREF str = StringObject::NewString(argv[i]);
         STRINGREF * destData = ((STRINGREF*)(strArray->GetDataPtr())) + i;
@@ -425,14 +420,14 @@ FCIMPL0(Object*, SystemNative::GetCommandLineArgs)
 
     HELPER_METHOD_FRAME_END(); // <-- 'Helper method Frame' ended/closed here
 
-    return OBJECTREFToObject(strArray); 
+    return OBJECTREFToObject(strArray);
 }
 FCIMPLEND
 ```
 
-**Note**: this code makes heavy use of macros, see [this gist](https://gist.github.com/mattwarren/36e52b3f80a411ca5a6b7211c9f1a3a9) for the original code and then the expanded versions (Release and Debug). In addition, if you want more information on these mysterious `FCalls` (and the related `QCalls`) see [Mscorlib and Calling Into the Runtime](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/mscorlib.md) in the 'BotR'.
+**Note**: this code makes heavy use of macros, see [this gist](https://gist.github.com/mattwarren/36e52b3f80a411ca5a6b7211c9f1a3a9) for the original code and then the expanded versions (Release and Debug). In addition, if you want more information on these mysterious `FCalls` as they are known (and the related `QCalls`) see [Mscorlib and Calling Into the Runtime](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/mscorlib.md) in the 'BotR'.
 
-But the main thing to look at in the code sample is the `HELPER_METHOD_FRAME_BEGIN_RET_1()` macro, with ultimately installs an instance of [the HelperMethodFrame_1OBJ class](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/frames.h#L1435-L1492), with code like this:
+But the main thing to look at in the code sample is the `HELPER_METHOD_FRAME_BEGIN_RET_1()` macro, with ultimately installs an instance of the [HelperMethodFrame_1OBJ class](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/frames.h#L1435-L1492). The macro expands into code like this:
 
 ``` cpp
 FrameWithCookie < HelperMethodFrame_1OBJ > __helperframe(__me, Frame::FRAME_ATTR_NONE, (OBJECTREF * ) & strArray); 
@@ -466,11 +461,11 @@ FrameWithCookie < HelperMethodFrame_1OBJ > __helperframe(__me, Frame::FRAME_ATTR
 
 **Note**: the `Push()` and `Pop()` against `_helperMethodFrame` that make it available for 'stack walking'. You can also see the `try`/`catch` block that the CLR puts in place to ensure any exceptions from *native* code are turned into *managed* exceptions that C#/F#/VB.NET code can handle. If you're interested the full macro-expansion is available [in this gist](https://gist.github.com/mattwarren/36e52b3f80a411ca5a6b7211c9f1a3a9#expanded-code---release---81-loc).
 
-So in summary, these `Frames` are pushed onto a 'linked list' when calling into native code and popped of the list when returning from native code. This means that are any moment the 'linked list' contains all the current or active `Frames`.
+So in summary, these `Frames` are *pushed onto* a 'linked list' when calling into native code and *popped off* the list when returning from native code. This means that are any moment the 'linked list' contains all the current or active `Frames`.
 
 ### Native Unwind Information
 
-In addition to creating 'frames', the CLR also ensures that all native code has 'unwind info' emitted by that the C++ compiler. We can see this if we use the [DUMPBIN tool](https://docs.microsoft.com/en-us/cpp/build/reference/dumpbin-reference?view=vs-2017) and run `dumpbin /UNWINDINFO coreclr.dll`. We get the following output for `SystemNative::GetCommandLineArgs(..)` (that we looked at before):
+In addition to creating 'Frames', the CLR also ensures that the C++ compiler emits 'unwind info' for native code. We can see this if we use the [DUMPBIN tool](https://docs.microsoft.com/en-us/cpp/build/reference/dumpbin-reference?view=vs-2017) and run `dumpbin /UNWINDINFO coreclr.dll`. We get the following output for `SystemNative::GetCommandLineArgs(..)` (that we looked at before):
 
 ```
   0002F064 003789B0 00378B7E 004ED1D8  ?GetCommandLineArgs@SystemNative@@SAPEAVObject@@XZ (public: static class Object * __cdecl SystemNative::GetCommandLineArgs(void))
@@ -508,18 +503,18 @@ If you want to understand more of what's going on here I really recommend readin
 
 ### Differences between Windows and Unix
 
-To further complicate things, the 'native code unwinding' uses a different mechanism for 'Windows' v. 'Unix', as explained in [coreclr/issues/#177 (comment)](https://github.com/dotnet/coreclr/issues/177#issuecomment-73648128):
+However, to further complicate things, the 'native code unwinding' uses a different mechanism for 'Windows' v. 'Unix', as explained in [coreclr/issues/#177 (comment)](https://github.com/dotnet/coreclr/issues/177#issuecomment-73648128):
 
 > 1. **Stack walker for managed code**. JIT will generate regular Windows style unwinding info. We will reuse Windows unwinder code that we currently have checked in for debugger components for unwinding calls in managed code on Linux/Mac. Unfortunately, this work requires changes in the runtime that currently cannot be tested in the CoreCLR repo so it is hard to do this in the public right now. But we are working on fixing that because, as I mentioned at the beginning, our goal is do most work in the public.
 > 2. **Stack walker for native code**. Here, in addition to everything else, we need to allow GC to unwind native stack of any thread in the current process until it finds a managed frame. Currently we are considering using libunwind (http://www.nongnu.org/libunwind) for unwinding native call stacks. @janvorli did some prototyping/experiments and it seems to do what we need. If you have any experience with this library or have any comments/suggestions please let us know.
 
-So there are 2 different 'unwind' mechanism depending if the code is 'managed' or 'native', we will discuss how the "*stack walker for managed code*" works in [Unwinding 'JITted' Code](#unwinding-jitted-code).
+This also shows that there are 2 different 'unwind' mechanisms for 'managed' or 'native' code, we will discuss how the "*stack walker for managed code*" works in [Unwinding 'JITted' Code](#unwinding-jitted-code).
 
 There is also some more information in [coreclr/issues/#177 (comment)](https://github.com/dotnet/coreclr/issues/177#issuecomment-73803242):
 
 > My current work has two parts, as @sergiy-k has already mentioned. The **windows style unwinder that will be used for the jitted code** and **Unix unwinder for native code** that uses the libunwind's low level `unw_xxxx` functions like `unw_step` etc.
 
-So, for 'native code' the runtime uses an OS specific mechanism, i.e. on Unix the [Open Source 'libunwind' library](https://github.com/libunwind/libunwind) is used. You can see the differences in action [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/amd64/gmsamd64.cpp#L54-L74), under Windows `Thread::VirtualUnwindCallFrame(..)` ([implementation](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L552-L671)) is called, but on Unix (i.e. `FEATURE_PAL`) `PAL_VirtualUnwind(..)` ([implementation](https://github.com/dotnet/coreclr/blob/release/2.2/src/pal/src/exception/seh-unwind.cpp#L249-L349)) is called instead:
+So, for 'native code' the runtime uses an OS specific mechanism, i.e. on Unix the [Open Source 'libunwind' library](https://github.com/libunwind/libunwind) is used. You can see the differences in the code below (from [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/amd64/gmsamd64.cpp#L54-L74)), under Windows `Thread::VirtualUnwindCallFrame(..)` ([implementation](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/stackwalk.cpp#L552-L671)) is called, but on Unix (i.e. `FEATURE_PAL`) `PAL_VirtualUnwind(..)` ([implementation](https://github.com/dotnet/coreclr/blob/release/2.2/src/pal/src/exception/seh-unwind.cpp#L249-L349)) is called instead:
 
 ``` cpp
 #ifndef FEATURE_PAL
@@ -547,13 +542,13 @@ Before we more on, here are some links to the work that was done to support 'sta
 
 ## Unwinding 'JITted' Code
 
-Finally, we're going to look at what happens with 'managed code', i.e. code that started off as C#/F#/VB.NET, was turned into IL and then was compiled into native code by the 'JIT Compiler'. This is the code that you generally want to see in your 'stack trace', because it code you wrote yourself!
+Finally, we're going to look at what happens with 'managed code', i.e. code that started off as C#/F#/VB.NET, was turned into IL and then compiled into native code by the 'JIT Compiler'. This is the code that you generally want to see in your 'stack trace', because it's code you wrote yourself!
 
 ### Help from the 'JIT Compiler'
 
 Simply, what happens is that when the code is 'JITted', the compiler also emits some extra information, stored via the `EECodeInfo` class, which is defined [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/jitinterface.cpp#L13922-L14300). Also see the ['Unwind Info' section](https://github.com/dotnet/coreclr/blob/release/2.2/src/jit/compiler.h#L7316-L7440) in the JIT Compiler <-> Runtime interface, note how it features seperate sections for `TARGET_ARM`, `TARGET_ARM64`, `TARGET_X86` and `TARGET_UNIX`.
 
-In addition, in `CodeGen::genFnProlog()` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/jit/codegencommon.cpp#L8832-L9299) the JIT emits a function 'prologue' that contains several pieces of 'unwind' related data. This is also imlemented in `CEEJitInfo::allocUnwindInfo(..)` in [this piece of code](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/jitinterface.cpp#L11275-L11300), which behaves different from each CPU architecture:
+In addition, in `CodeGen::genFnProlog()` [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/jit/codegencommon.cpp#L8832-L9299) the JIT emits a function 'prologue' that contains several pieces of 'unwind' related data. This is also imlemented in `CEEJitInfo::allocUnwindInfo(..)` in [this piece of code](https://github.com/dotnet/coreclr/blob/release/2.2/src/vm/jitinterface.cpp#L11275-L11300), which behaves differently for each CPU architecture:
 
 ``` cpp
 #if defined(_TARGET_X86_)
@@ -573,7 +568,7 @@ In addition, in `CodeGen::genFnProlog()` [here](https://github.com/dotnet/corecl
 #endif
 ```
 
-Also, the JIT has several `Compiler::unwindXXX(..)` methods, that are all implemented per-CPU:
+Also, the JIT has several `Compiler::unwindXXX(..)` methods, that are all implemented in per-CPU source files:
 
 - [/src/jit/unwind.cpp](https://github.com/dotnet/coreclr/blob/release/2.2/src/jit/unwind.cpp)
 - [/src/jit/unwind**arm**.cpp](https://github.com/dotnet/coreclr/blob/release/2.2/src/jit/unwindarm.cpp)
@@ -584,8 +579,7 @@ Also, the JIT has several `Compiler::unwindXXX(..)` methods, that are all implem
 Fortunately, we can [ask the JIT](https://github.com/dotnet/coreclr/blob/master/Documentation/building/viewing-jit-dumps.md#useful-complus-variables) to output the unwind info that it emits, however this *only works* with a Debug version of the CLR. Given a simple method like this:
 
 ``` cs
-private void MethodA()
-{
+private void MethodA() {
     try {
         MethodB();
     } catch (Exception ex) {
@@ -594,7 +588,7 @@ private void MethodA()
 }
 ```
 
-if we call `SET COMPlus_JitUnwindDump=MethodA`, we get the following output that contains 2 'Unwind Info' sections, one for the `try` and the other for the `catch` block:
+if we call `SET COMPlus_JitUnwindDump=MethodA`, we get the following output with 2 'Unwind Info' sections, one for the `try` and the other for the `catch` block:
 
 ```
 Unwind Info:
