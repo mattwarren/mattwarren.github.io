@@ -12,7 +12,7 @@ Recently he wrote an excellent post where he [deciphered a postcard sized raytra
 
 But it got me thinking, ***would it be possible to port that C++ code to C#?***
 
-Partly because in my [day job](https://raygun.com/platform/apm) I've been having to write a fair amount of C++ recently and I've realised I'm a bit rusty, so I though this might help!
+Partly because in my [day job](https://raygun.com/platform/apm) I've been having to write a fair amount of C++ recently and I've realised I'm a bit rusty, so I thought this might help!
 
 But more significantly, I wanted to get a better insight into the question **is C# a low-level language?**
 
