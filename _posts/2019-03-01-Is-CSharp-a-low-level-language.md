@@ -26,7 +26,7 @@ I started by simply porting the [un-obfuscated C++ code](http://fabiensanglard.n
 
 Let's look at an example, the main data structure in the code is a 'vector', here's the code side-by-side, C++ on the left and C# on the right:
 
-![Diff - C++ v. C# - struct Vec]({{ base }}/images/2019/03/Diff%20-%20C++%20v.%20C%23%20-%20struct%20Vec.png)
+[![Diff - C++ v. C# - struct Vec]({{ base }}/images/2019/03/Diff%20-%20C++%20v.%20C%23%20-%20struct%20Vec.png)]({{ base }}/images/2019/03/Diff%20-%20C++%20v.%20C%23%20-%20struct%20Vec.png)
 
 So there's a few syntax differences, but because .NET lets you define [your own 'Value Types'](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/value-types) I was able to get the same functionality. This is significant because treating the 'vector' as a `struct` means we can get better 'data locality' and the .NET Garbage Collector (GC) doesn't need to be involved as the data will go onto the *stack* (probably, yes I know it's an implementation detail).
 
@@ -44,11 +44,11 @@ In particular that last post form Eric Lippert contains this helpful quote that 
 
 Now lets look at how some other methods look side-by-side (again C++ on the left, C# on the right), first up `RayTracing(..)`:
 
-![Diff - C++ v. C# - RayMatching]({{ base }}/images/2019/03/Diff%20-%20C++%20v.%20C%23%20-%20RayMatching.png)
+[![Diff - C++ v. C# - RayMatching]({{ base }}/images/2019/03/Diff%20-%20C++%20v.%20C%23%20-%20RayMatching.png)]({{ base }}/images/2019/03/Diff%20-%20C++%20v.%20C%23%20-%20RayMatching.png)
 
 Next `QueryDatabase(..)`:
 
-![Diff - C++ v. C# - QueryDatabase]({{ base }}/images/2019/03/Diff%20-%20C++%20v.%20C%23%20-%20QueryDatabase%20(partial).png)
+[![Diff - C++ v. C# - QueryDatabase]({{ base }}/images/2019/03/Diff%20-%20C++%20v.%20C%23%20-%20QueryDatabase%20(partial).png)]({{ base }}/images/2019/03/Diff%20-%20C++%20v.%20C%23%20-%20QueryDatabase%20(partial).png)
 
 (see [Fabien's post](http://fabiensanglard.net/postcard_pathtracer/) for an explanation of what these 2 functions are doing)
 
@@ -71,13 +71,13 @@ However what's most important for this scenario is that it allows us to have the
 
 So, it's all well and good being able to port the code, but ultimately the performance also matters. Especially in something like a 'ray tracer' that can take minutes to run! The C++ code contains a variable called `sampleCount` that controls the final quality of the image, with `sampleCount = 2` it looks like this:
 
-![output C# - sampleCount = 2]({{ base }}/images/2019/03/output-C%23%20-%20sampleCount%20=%202.png)
+[![output C# - sampleCount = 2]({{ base }}/images/2019/03/output-C%23%20-%20sampleCount%20=%202.png)]({{ base }}/images/2019/03/output-C%23%20-%20sampleCount%20=%202.png)
 
 Which clearly isn't that realistic!
 
 However once you get to `sampleCount = 2048` things look a *lot* better:
 
-![output C# - sampleCount = 2048]({{ base }}/images/2019/03/output-C%23%20-%20sampleCount%20=%202048.png)
+[![output C# - sampleCount = 2048]({{ base }}/images/2019/03/output-C%23%20-%20sampleCount%20=%202048.png)]({{ base }}/images/2019/03/output-C%23%20-%20sampleCount%20=%202048.png)
 
 But, running with `sampleCount = 2048` means the rendering takes a **long time**, so all the following results were run with it set to `2`, which means the test runs completed in ~1 minute. Changing `sampleCount` only affects the number of iterations of the outermost loop of the code, see [this gist](https://gist.github.com/mattwarren/1580572d9d641147c61caf65c383c3a4) for an explanation.
 
@@ -100,11 +100,11 @@ So initially we see that the C# code is quite a bit slower than the C++ version,
 
 However lets first look at what the .NET JIT is doing for us even with this 'naive' line-by-line port. Firstly, it's doing a nice job of in-lining the smaller 'helper methods', we can see this by looking at the output of the brilliant [Inlining Analyzer](https://marketplace.visualstudio.com/items?itemName=StephanZehetner.InliningAnalyzer) tool (green overlay = inlined):
 
-![Inlining Analyzer - QueryDatabase]({{ base }}/images/2019/03/Inlining Analyzer - QueryDatabase.png)
+[![Inlining Analyzer - QueryDatabase]({{ base }}/images/2019/03/Inlining Analyzer - QueryDatabase.png)]({{ base }}/images/2019/03/Inlining Analyzer - QueryDatabase.png)
 
 However, it doesn't inline all methods, for example `QueryDatabase(..)` is skipped because of it's complexity:
 
-![Inlining Analyzer - RayMarching - with ToolTip]({{ base }}/images/2019/03/Inlining Analyzer - RayMarching - with ToolTip.png)
+[![Inlining Analyzer - RayMarching - with ToolTip]({{ base }}/images/2019/03/Inlining Analyzer - RayMarching - with ToolTip.png)]({{ base }}/images/2019/03/Inlining Analyzer - RayMarching - with ToolTip.png)
 
 Another feature that the .NET Just-In-Time (JIT) compiler provides is  converting specific methods calls into corresponding CPU instructions. We can see this in action with the `sqrt` wrapper function, here's the original C# code (note the call to `Math.Sqrt`):
 
@@ -271,7 +271,7 @@ If you're interested in trying to close the gap the [C# code is available](https
 
 Finally, if it helps, here's the output from the Visual Studio Profiler showing the 'hot path' (after the perf improvement described above):
 
-![Call Tree (tidied up) - Report20190221-2029-After-MathF-Changes-NetCore.png]({{ base }}/images/2019/03/Call%20Tree%20(tidied%20up)%20-%20Report20190221-2029-After-MathF-Changes-NetCore.png)
+[![Call Tree (tidied up) - Report20190221-2029-After-MathF-Changes-NetCore.png]({{ base }}/images/2019/03/Call%20Tree%20(tidied%20up)%20-%20Report20190221-2029-After-MathF-Changes-NetCore.png)]({{ base }}/images/2019/03/Call%20Tree%20(tidied%20up)%20-%20Report20190221-2029-After-MathF-Changes-NetCore.png)
 
 ----
 
