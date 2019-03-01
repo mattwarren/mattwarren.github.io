@@ -210,7 +210,7 @@ For more information about why this is necessary see this excellent [Stack Overf
 
 You can see the change I made [in this diff](https://gist.github.com/mattwarren/d17a0c356bd6fdb9f596bee6b9a5e63c/revisions#diff-ab5447b35812d457232030d7d2577458R114).
 
-#### User MathF functions instead of Math
+#### Using MathF functions instead of Math
 
 Secondly and most significantly I got a big perf improvement by making the following changes:
 
