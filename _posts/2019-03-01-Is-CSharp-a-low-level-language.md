@@ -148,7 +148,7 @@ G_M8216_IG03:
 
 (to get this output you need to following [these instructions](https://github.com/dotnet/coreclr/blob/master/Documentation/building/viewing-jit-dumps.md#useful-complus-variables), use the ['Disasmo' VS2019 Add-in](https://github.com/EgorBo/Disasmo) or take a look at [SharpLab.io](https://sharplab.io/#v2:EYLgHgbALANALiAhgZwLYB8ACAGABJgRgG4BYAKEwGZ8AmXAYVwG9zc39rMpcBZACgCUzVu1EA3RACdcYXAF5eiOAAsAdAGUAjpLh8C2AaTKjRhAJx8whkWwC+5W0A==))
 
-These replacements are also known as ['intrinsics'](https://en.wikipedia.org/wiki/Intrinsic_function) and we can see the JIT generating them in the code below. This snippet just shows the mapping for `AMD64`, the JIT also targets `X86`, `ARM` and `ARM64`, the full method is [here]((https://github.com/dotnet/coreclr/blob/release/2.2/src/jit/importer.cpp#L19144-L19217))
+These replacements are also known as ['intrinsics'](https://en.wikipedia.org/wiki/Intrinsic_function) and we can see the JIT generating them in the code below. This snippet just shows the mapping for `AMD64`, the JIT also targets `X86`, `ARM` and `ARM64`, the full method is [here](https://github.com/dotnet/coreclr/blob/release/2.2/src/jit/importer.cpp#L19144-L19217)
 
 ``` cpp
 bool Compiler::IsTargetIntrinsic(CorInfoIntrinsics intrinsicId)
