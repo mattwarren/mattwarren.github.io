@@ -283,7 +283,7 @@ Or more specifically:
 
 \* yes, I know 'low-level' is a subjective term 😊
 
-**Note**: Any C# developer is going to have a different idea of what 'low-level' means, these features are taken for grated by C++ or Rust programmers.
+**Note**: Any C# developer is going to have a different idea of what 'low-level' means, these features would be taken for granted by C++ or Rust programmers.
 
 Here's the list that I came up with:
 
