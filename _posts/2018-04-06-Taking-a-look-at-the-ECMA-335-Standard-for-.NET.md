@@ -63,7 +63,7 @@ At a high-level overview, the specification is divided into the following 'parti
   - Annex F - Imprecise faults
   - Annex G - Parallel library
 
-But, working your way through the entire specification is a mammoth task, generally I find it useful to just search for a particular word or phrase and locate the parts I need that way. However if you do want to read through one section, I recommend 'Partition I: Concepts and Architecture', at just over 100 pages it is much easier to fully digest! This section is a [very comprehensive overview](({{ base }}/images/2018/04/Partition I - Concepts and Architecture - Outline.png)) of the key concepts and components contained within the CLR and well worth a read.
+But, working your way through the entire specification is a mammoth task, generally I find it useful to just search for a particular word or phrase and locate the parts I need that way. However if you do want to read through one section, I recommend 'Partition I: Concepts and Architecture', at just over 100 pages it is much easier to fully digest! This section is a [very comprehensive overview]({{ base }}/images/2018/04/Partition I - Concepts and Architecture - Outline.png) of the key concepts and components contained within the CLR and well worth a read.
 
 Also, I'm convinced that the authors of the spec wanted to *help out* any future readers, so to break things up they included lots of very helpful diagrams:
 
