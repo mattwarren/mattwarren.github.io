@@ -24,6 +24,8 @@ So armed with a trusty regex `/\*(.*?)\*/|//(.*?)\r?\n|"((\\[^\n]|[^"\n])*)"|@("
 
 **Note**: Yes, I shamelessly 'borrowed' this idea from [John Regehr](https://twitter.com/johnregehr/status/1095018518737637376), I was motivated to write this because his excellent post ['Explaining Code using ASCII Art'](https://blog.regehr.org/archives/1653) didn't have any *.NET related* code in it!
 
+**If you've come across any interesting examples I've missed out, please let me know!**
+
 ----
 
 ## Table of Contents
