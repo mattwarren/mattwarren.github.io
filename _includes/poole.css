@@ -184,8 +184,13 @@ pre code {
   margin-bottom: 1rem;
   border-radius: 4px;
 }
+/* See https://stackoverflow.com/questions/12418855/css-display-vertical-scrollbar-on-pre-tag */
 .highlight pre {
   margin-bottom: 0;
+  word-break: normal !important;
+  word-wrap: normal !important;
+  white-space: pre !important;
+  overflow: auto;
 }
 
 /* Gist via GitHub Pages */
