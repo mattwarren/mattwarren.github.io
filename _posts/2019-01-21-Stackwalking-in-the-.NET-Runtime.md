@@ -649,6 +649,9 @@ This 'unwind info' is then looked up during a 'stack walk' as explained in the [
 - [Manual Stack Walking](http://blogs.microsoft.co.il/sasha/2011/07/20/manual-stack-walking/)
 - [Walking the Stack Without Symbols and With FPO (Frame Pointer Omission)](http://blogs.microsoft.co.il/sasha/2011/08/22/walking-the-stack-without-symbols-and-with-fpo-frame-pointer-omission/)
 - [how to write a debuggable programming language - stack unwinding](https://cshung.gitbooks.io/how-to-write-a-debuggable-programming-language/content/stack-unwinder.html)
+- [How the .NET Runtime Walks the Stack](https://www.reddit.com/r/programming/comments/5v4ztx/how_the_net_runtime_walks_the_stack/) (/r/programming discussion of the 'BorR' page)
+- [Caller Info Attributes vs. Stack Walking](https://blog.slaks.net/2011/10/caller-info-attributes-vs-stack-walking.html)
+- [Stacking the Deck -- Finding Your Way Through the Stack](http://www.osronline.com/article.cfm?id=202)
 
 ### Stack Unwinding (other runtimes)
 

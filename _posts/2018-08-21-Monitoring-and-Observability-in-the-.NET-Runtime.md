@@ -180,7 +180,7 @@ So to give a decent experience, the CLR *has* to provide the [higher-level debug
 
 ![common debugging scenario]({{ base }}/images/2018/08/common debugging scenario.png)
 
-In addition, there is a nice description of how the different parts interact in [How do Managed Breakpoints work?](https://blogs.msdn.microsoft.com/jmstall/2004/12/28/how-do-managed-breakpoints-work/), although the descriptions of *left* and *right* are the opposite of the diagram above!
+In addition, there is a nice description of how the different parts interact in [How do Managed Breakpoints work?](https://blogs.msdn.microsoft.com/jmstall/2004/12/28/how-do-managed-breakpoints-work/):
 
 ```
 Here’s an overview of the pipeline of components:

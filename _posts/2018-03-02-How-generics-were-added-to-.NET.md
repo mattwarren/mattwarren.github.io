@@ -225,7 +225,7 @@ From a [comment with more info](https://github.com/mattwarren/GenericsInDotNet/b
 
 In addition, [this comment](https://github.com/mattwarren/GenericsInDotNet/blob/2714ccac6f18f0f6ff885567b90484013b31e007/vm/genmeth.cpp#L34-L83) explains the work that needs to take place to allow shared instantiations when working with *generic methods*.
 
-**Update**: If you want more info on the 'code-sharing' that takes places, I recommend reading these 2 posts:
+**Update**: If you want more info on the 'code-sharing' that takes places, I recommend reading these 4 posts:
 
 - [CLR Generics and code sharing](https://blogs.msdn.microsoft.com/joelpob/2004/11/17/clr-generics-and-code-sharing/)
 - [DG Update: Generics and Performance](https://web.archive.org/web/20100723221307/http://www.bluebytesoftware.com/blog/2005/03/23/DGUpdateGenericsAndPerformance.aspx)
