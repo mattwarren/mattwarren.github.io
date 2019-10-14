@@ -42,9 +42,9 @@ This makes sense because arrays are the building blocks of so many other data ty
 
 ### Memory and Type Safety
 
-This *memory* and *type-safety* is important because without it .NET couldn't be described as a 'managed runtime' and you'd be left having to deal with the types of issues you get when your are writing code in a more low-level language.
+This *memory* and *type-safety* is important because without it .NET couldn't be described as a 'managed runtime' and you'd be left having to deal with the types of issues you get when you are writing code in a more low-level language.
 
-More specifically, the CLR provide the following protections when you are using arrays (from the section on [Memory and Type Safety](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/intro-to-clr.md#memory-and-type-safety) in the BOTR 'Intro to the CLR' page):
+More specifically, the CLR provides the following protections when you are using arrays (from the section on [Memory and Type Safety](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/intro-to-clr.md#memory-and-type-safety) in the BOTR 'Intro to the CLR' page):
 
 > While a GC is necessary to ensure memory safety, it is not sufficient. The GC will not prevent the program from **indexing off the end of an array** or accessing a field off the end of an object (possible if you compute the field's address using a base and offset computation). **However, if we do prevent these cases, then we can indeed make it impossible for a programmer to create memory-unsafe programs**.
 
