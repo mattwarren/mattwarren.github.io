@@ -13,7 +13,7 @@ So armed with [Google Scholar](https://scholar.google.com/) and ably assisted by
 **Note:** I put the papers into the following categories to make them easier to navigate (papers in each category are sorted by date, newest -> oldest):
 
 - Using the .NET Runtime as a ***case-study***
-  - to prove its correctness, study how it works or analyse its behaviour
+  - to prove its *correctness*, study *how it works* or analyse its *behaviour*
 - Research carried out by [**Microsoft Research**](https://www.microsoft.com/en-us/research/), the research subsidiary of Microsoft.
   - "*It was formed in 1991, with the intent to advance state-of-the-art computing and solve difficult world problems through technological innovation in collaboration with academic, government, and industry researchers*" ([according to Wikipedia](https://en.wikipedia.org/wiki/Microsoft_Research))
 - Papers based on the [**Mono Runtime**](https://www.mono-project.com/)
