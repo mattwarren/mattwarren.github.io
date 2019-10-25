@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Research based on the .NET Runtime
-comments: true
+comments: false
 tags: [.NET, Mono, Open Source, Research]
 codeproject: false
 ---
