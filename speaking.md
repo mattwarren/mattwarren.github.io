@@ -11,9 +11,22 @@ title: Speaking
 
 <h4><strong>I've just taken part in a <a href="https://www.infoq.com/articles/high-performance-dotnet">Virtual Panel: High Performance Application in .NET</a> and I was quoted in an InfoWorld article <a href="http://www.infoworld.com/article/3149765/application-development/win-win-open-source-net-pays-off-for-devs.html">'Win-win: Open source .Net pays off for devs'</a> (alongside Scott Hunter!!) </strong></h4>
 
-<h4><strong>I've also been on the Hanselminutes podcast <a href="http://hanselminutes.com/458/performance-as-a-feature-with-matt-warren" target="_blank">talking about "Performance as a Feature!"</a> (2015), the Stackify 'Developer Things' podcast <a href="https://stackify.com/developer-things-5-benchmarkdotnet/" target="_blank">chatting about BenchmarkDotNet & Nerding out on Performance</a> (2018) and Herding Code <a href="http://herdingcode.com/herding-code-228-matt-warren-on-net-internals-and-open-source-contributions/" target="_blank">discussing lots of low-level '.NET Internals'</a> (2018)</strong></h4>
+I've also been interviewed on a few podcasts:
+
+- **No Dogma** <a href="https://nodogmapodcast.bryanhogan.net/122-matt-warren-how-the-net-runtime-has-changed/" target="_blank">talking about how the .NET Runtime has changed</a> (2019)
+- **Herding Code** <a href="http://herdingcode.com/herding-code-228-matt-warren-on-net-internals-and-open-source-contributions/" target="_blank">discussing lots of low-level '.NET Internals'</a> (2018)
+- **Stackify 'Developer Things'** <a href="https://stackify.com/developer-things-5-benchmarkdotnet/" target="_blank">chatting about BenchmarkDotNet & Nerding out on Performance</a> (2018)
+- **Hanselminutes** <a href="http://hanselminutes.com/458/performance-as-a-feature-with-matt-warren" target="_blank">talking about "Performance as a Feature!"</a> (2015)
 
 <hr />
+
+<h4><strong>Performance in the .NET Runtime:</strong></h4>
+- [Dotnetos '.NET Performance Conference' Warsaw - 2019](https://conf.dotnetos.org/#agendaTable)
+  
+<h4><strong>From 'dotnet run' to 'Hello World!'</strong> (links to the recordings):</h4>
+- [NDC London - 2019](https://www.youtube.com/watch?v=bwSNyA1Nfz4)
+- [Update Conference Prague - 2018](https://www.youtube.com/watch?v=1UIzi9fLiuc)
+- [ProgNET London - 2018](https://skillsmatter.com/skillscasts/12055-from-dotnet-run-to-hello-world)
 
 <h4><strong>Microsoft and Open-Source – A ‘Brave New World’:</strong></h4>
 - [CORESTART 2.0 Prague - 2017](#CORESTART2017)
