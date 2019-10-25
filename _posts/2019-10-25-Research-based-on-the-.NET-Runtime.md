@@ -61,6 +61,7 @@ So armed with [Google Scholar](https://scholar.google.com/) and ably assisted by
   - [**MMC: the Mono Model Checker** (Ruys & Aan de Brugh, 2007)](#mmc-the-mono-model-checker-ruys--aan-de-brugh-2007)
   - [**Numeric performance in C, C# and Java** (Sestoft, 2007)](#numeric-performance-in-c-c-and-java-sestoft-2007)
   - [[**Mono versus .Net: A Comparative Study of Performance for Distributed Processing.** (Blajian, Eggen, Eggen & Pitts, 2006)]()](#mono-versus-net-a-comparative-study-of-performance-for-distributed-processing-blajian-eggen-eggen--pitts-2006)
+  - [**Mono versus .Net: A Comparative Study of Performance for Distributed Processing.** (Blajian, Eggen, Eggen & Pitts, 2006)](#mono-versus-net-a-comparative-study-of-performance-for-distributed-processing-blajian-eggen-eggen--pitts-2006)
   - [**Automated detection of performance regressions: the mono experience** (Kalibera, Bulej & Tuma, 2005)](#automated-detection-of-performance-regressions-the-mono-experience-kalibera-bulej--tuma-2005)
 - [**Shared Source Common Language Infrastructure** (SSCLI) - a.k.a '**Rotor**'](#shared-source-common-language-infrastructure-sscli---aka-rotor)
   - [**Efficient virtual machine support of runtime structural reflection** (Ortina, Redondoa & Perez-Schofield, 2009)](#efficient-virtual-machine-support-of-runtime-structural-reflection-ortina-redondoa--perez-schofield-2009)
@@ -280,7 +281,7 @@ The Mono Model Checker (mmc) is a software model checker for cil bytecode progra
 
 We compare the numeric performance of C, C# and Java on three small cases.
 
-### [**Mono versus .Net: A Comparative Study of Performance for Distributed Processing.** (Blajian, Eggen, Eggen & Pitts, 2006)]()
+### [**Mono versus .Net: A Comparative Study of Performance for Distributed Processing.** (Blajian, Eggen, Eggen & Pitts, 2006)](https://www.researchgate.net/publication/221134118_Mono_versus_net_A_Comparative_Study_of_Performance_for_Distributed_Processing)
 
 **Abstract**
 
