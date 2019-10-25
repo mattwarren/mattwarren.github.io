@@ -8,18 +8,20 @@ codeproject: false
 
 Over the last few years, I've come across more and more research papers based, in some way, on the 'Common Language Runtime' (CLR).
 
-So armed with [Google Scholar](https://scholar.google.com/) and ably assisted by [Semantic Scholar](https://www.semanticscholar.org/), I put together the following list.
+So armed with [Google Scholar](https://scholar.google.com/) and ably assisted by [Semantic Scholar](https://www.semanticscholar.org/), I put together the list below.
 
 **Note:** I put the papers into the following categories to make them easier to navigate (papers in each category are sorted by date, newest -> oldest):
 
 - Using the .NET Runtime as a ***case-study***
-  - to prove it's correctness, study how it works or analyse it's behaviour
+  - to prove its correctness, study how it works or analyse its behaviour
 - Research carried out by [**Microsoft Research**](https://www.microsoft.com/en-us/research/), the research subsidiary of Microsoft.
   - "*It was formed in 1991, with the intent to advance state-of-the-art computing and solve difficult world problems through technological innovation in collaboration with academic, government, and industry researchers*" ([according to Wikipedia](https://en.wikipedia.org/wiki/Microsoft_Research))
 - Papers based on the [**Mono Runtime**](https://www.mono-project.com/)
   - a '*Cross-Platform, open-source .NET framework*'
 - Using [**'Rotor'**](https://blogs.msdn.microsoft.com/jasonz/2006/03/23/rotor-sscli-2-0-ships/), real name 'Shared Source CLI (SSCLI)'
   - from [Wikipedia](https://en.wikipedia.org/wiki/Shared_Source_Common_Language_Infrastructure) "*Microsoft provides the Shared Source CLI as a reference CLI implementation suitable for educational use*"
+
+**Any papers I've missed? If so, please let me know in the comments or on [Twitter](https://twitter.com/matthewwarren)**
 
 ----
 
