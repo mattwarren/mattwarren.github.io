@@ -66,7 +66,7 @@ Once you have your '.etl.zip' file, double-click on it and you will see a tree-v
 Notice there's alot of '?' characters in the list, this means that PerfView is not able to work out the method names as it hasn't resolved the necessary symbols for the Runtime dlls. Lets fix that:
 
 1. Open '**CPU Stacks**'
-2. In the list, select the 'HelloWorld' process (PerfView collects data *machine-wide*)
+2. In the list, select the '**HelloWorld**' process (PerfView collects data *machine-wide*)
 3. In the '**GroupPats**' drop-down, select '[no grouping]'
 4. *Optional*, change the '**Symbol Path**' from the default to something else
 5. In the '**By name**' tab, hit 'Ctrl+A' to select all the rows
@@ -79,10 +79,10 @@ Now the 'CPU Stacks' view should look something like this:
 Finally, we can get the data we want:
 
 1. Select the '**Flame Graph**' tab
-2. Change 'GroupPats' to one of the following for a better flame graph:
+2. Change '**GroupPats**' to one of the following for a better flame graph:
    1. [group module entries]  &#123;%&#125;!=>module $1
    2. [group class entries]   &#123;%!*&#125;.%(=>class $1;&#123;%!\*&#125;::=>class $1
-3. Change 'Fold%' to a higher number, maybe 3%, to get rid of any *thin* bars (any higher and you start to loose information)
+3. Change '**Fold%**' to a higher number, maybe 3%, to get rid of any *thin* bars (any higher and you start to loose information)
 
 [![Flamegraph]({{ base }}/images/2020/03/PerfView - Flamegraph.png)](({{ base }}/images/2020/03/PerfView - Flamegraph.png))
 
@@ -118,7 +118,7 @@ So, the main places that the runtime spends time are:
 
 1. **30%** of total time is spent **Launching the runtime**, controlled via the 'host policy', which mostly takes place in `hostpolicy!create_hostpolicy_context` (30% of total time)
 2. **22%** of time is spend on **Initialisation of the runtime** itself and the initial (and only) AppDomain it creates, this can be see in `CorHost2::Start` (*native*) and `CorHost2::CreateAppDomain` (*managed*). For more info on this see [The 68 things the CLR does before executing a single line of your code]({{ base }}/2017/02/07/The-68-things-the-CLR-does-before-executing-a-single-line-of-your-code/)
-3. "**20%** was used **JITting and executing** the `Main` method in our 'Hello World' code sample, this started in `Assembly::ExecuteMainMethod` above.
+3. **20%** was used **JITting and executing** the `Main` method in our 'Hello World' code sample, this started in `Assembly::ExecuteMainMethod` above.
 
 To confirm the last point, we can return to PerfView and take a look at the 'JIT Stats Summary' it produces. From the main menu, under 'Advanced Group' -> 'JIT Stats' we see that 23.1 ms or 9.1% of the total CPU time was spent JITing:
 
