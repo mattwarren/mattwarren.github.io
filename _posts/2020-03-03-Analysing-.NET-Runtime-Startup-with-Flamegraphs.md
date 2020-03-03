@@ -65,10 +65,10 @@ Once you have your '.etl.zip' file, double-click on it and you will see a tree-v
 
 Notice there's alot of '?' characters in the list, this means that PerfView is not able to work out the method names as it hasn't resolved the necessary symbols for the Runtime dlls. Lets fix that:
 
-1. Open 'CPU Stacks'
+1. Open '**CPU Stacks**'
 2. In the list, select the 'HelloWorld' process (PerfView collects data *machine-wide*)
 3. In the '**GroupPats**' drop-down, select '[no grouping]'
-4. *Optional*, change the '**Symbol Path**' from 'C:\Users\<user>\AppData\Local\Temp\SymbolCache' to something else
+4. *Optional*, change the '**Symbol Path**' from the default to something else
 5. In the '**By name**' tab, hit 'Ctrl+A' to select all the rows
 6. Right-click and select '**Lookup Symbols**' (or just hit 'Alt+S')
 
@@ -82,12 +82,11 @@ Finally, we can get the data we want:
 2. Change 'GroupPats' to one of the following for a better flame graph:
    1. [group module entries]  &#123;%&#125;!=>module $1
    2. [group class entries]   &#123;%!*&#125;.%(=>class $1;&#123;%!\*&#125;::=>class $1
-3. Change 'Fold%' to a higher number, maybe 3%, so get rid of thin bars (any higher and you start to loose information)
-4. You can also change 'FoldPats' to 'ntoskrnl!%ServiceCopyEnd;ntdll!Ldr\*;ntdll!??_Ldrp\*' to filter out some of the OS process-launch code
+3. Change 'Fold%' to a higher number, maybe 3%, to get rid of any *thin* bars (any higher and you start to loose information)
 
 [![Flamegraph]({{ base }}/images/2020/03/PerfView - Flamegraph.png)](({{ base }}/images/2020/03/PerfView - Flamegraph.png))
 
-Now, at this point I actually recommend exporting the PerfView data into a format that can be loaded into https://speedscope.app/ as it gives you a *much* better experience. To do this click **File** -> **Save View As** and then in the 'Save as type' box select **Speed Scope Format**. Once that's done you can 'browse' that file at [speedscope.app](https://www.speedscope.app/), or if you want you can just take a look at one [I've already created](https://www.speedscope.app/#profileURL=https%3A%2F%2Fmattwarren.org%2Fdata%2F2020%2F03%2Fflamegraph.speedscope.json).
+Now, at this point I actually recommend exporting the PerfView data into a format that can be loaded into [https://speedscope.app/](https://speedscope.app/) as it gives you a *much* better experience. To do this click **File** -> **Save View As** and then in the 'Save as type' box select **Speed Scope Format**. Once that's done you can 'browse' that file at [speedscope.app](https://www.speedscope.app/), or if you want you can just take a look at one [I've already created](https://www.speedscope.app/#profileURL=https%3A%2F%2Fmattwarren.org%2Fdata%2F2020%2F03%2Fflamegraph.speedscope.json).
 
 **Note:** If you've never encountered '**flamegraphs**' before, I really recommend reading this excellent explanation by [Julia Evans](https://twitter.com/b0rk):
 
@@ -104,7 +103,7 @@ Finally, we can answer our original question:
 Here's the data [from the flamegraph](https://www.speedscope.app/#profileURL=https%3A%2F%2Fmattwarren.org%2Fdata%2F2020%2F03%2Fflamegraph.speedscope.json) summarised as text, with links the corresponding functions in the '.NET Core Runtime' source code:
 
 1. Entire Application - **100%** - 233.28ms
-2. Everything except `helloworld!wmain` - **21%** -
+2. Everything except `helloworld!wmain` - **21%**
 3. `helloworld!wmain` - **79%** - 184.57ms
    1. `hostpolicy!create_hostpolicy_context` - **30%** - 70.92ms [here](https://github.com/dotnet/runtime/blob/9e93d094/src/installer/corehost/cli/hostpolicy/hostpolicy.cpp#L98-L139)
    2. `hostpolicy!create_coreclr` - **22%** - 50.51ms [here](https://github.com/dotnet/runtime/blob/9e93d094/src/installer/corehost/cli/hostpolicy/hostpolicy.cpp#L47-L96)
@@ -118,10 +117,9 @@ Here's the data [from the flamegraph](https://www.speedscope.app/#profileURL=htt
 So, the main places that the runtime spends time are:
 
 1. **30%** of total time is spent **Launching the runtime**, controlled via the 'host policy', which mostly takes place in `hostpolicy!create_hostpolicy_context` (30% of total time)
-2. **22%** of time is spend on **Initialisation of the runtime** itself and the initial (and only) AppDomain it creates, this can be see in `CorHost2::Start` (*native*) and `CorHost2::CreateAppDomain` (*managed*)
-   1. For more info on this see [The 68 things the CLR does before executing a single line of your code]({{ base }}/2017/02/07/The-68-things-the-CLR-does-before-executing-a-single-line-of-your-code/)
+2. **22%** of time is spend on **Initialisation of the runtime** itself and the initial (and only) AppDomain it creates, this can be see in `CorHost2::Start` (*native*) and `CorHost2::CreateAppDomain` (*managed*). For more info on this see [The 68 things the CLR does before executing a single line of your code]({{ base }}/2017/02/07/The-68-things-the-CLR-does-before-executing-a-single-line-of-your-code/)
 3. "**20%** was used **JITting and executing** the `Main` method in our 'Hello World' code sample, this started in `Assembly::ExecuteMainMethod` above.
 
 To confirm the last point, we can return to PerfView and take a look at the 'JIT Stats Summary' it produces. From the main menu, under 'Advanced Group' -> 'JIT Stats' we see that 23.1 ms or 9.1% of the total CPU time was spent JITing:
 
-[![JIT Stats for HelloWorld]({{ base }}/images/2020/03/PerfView - JIT Stats for HelloWorld.png)]({{ base }}/images/2020/03/PerfView - JIT Stats for HelloWorld.png
+[![JIT Stats for HelloWorld]({{ base }}/images/2020/03/PerfView - JIT Stats for HelloWorld.png)]({{ base }}/images/2020/03/PerfView - JIT Stats for HelloWorld.png)
