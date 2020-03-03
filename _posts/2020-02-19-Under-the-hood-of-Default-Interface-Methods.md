@@ -9,7 +9,7 @@ excerpt: <p>'Default Implementations in Interfaces', sometimes referred to as ju
 
 ## Background
 
-'Default Implementations in Interfaces', sometimes referred to as just 'Default Interface Methods' (DIM) appeared in C# 8. In case you've never heard of the feature, here's some links to get you started:
+'Default Interface Methods' (DIM) sometimes referred to as 'Default Implementations in Interfaces', appeared in C# 8. In case you've never heard of the feature, here's some links to get you started:
 
 - [Default implementations in interfaces](https://devblogs.microsoft.com/dotnet/default-implementations-in-interfaces/) (official *announcement*)
 - [Default Interface Methods](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/default-interface-methods) (C# Language Proposal), here's some notable sections:
