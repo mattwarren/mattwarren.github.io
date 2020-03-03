@@ -80,8 +80,8 @@ Finally, we can get the data we want:
 
 1. Select the 'Flame Graph' tab
 2.  Change 'GroupPats' to one of the following for a better flame graph:
-   1. [[group module entries]  {%}!=>module $1]
-   2. [group class entries]     {%!*}.%(=>class $1;{%!*}::=>class $1
+   1. [[group module entries]  &#123;%&#125;!=>module $1]
+   2. [group class entries]     &#123;%!*&#125;.%(=>class $1;&#123;%!*&#125;::=>class $1
 3. Change 'Fold%' to a higher number, maybe 3%, so get rid of thin bars (any higher and you start to loose information)
 4. You can also change 'FoldPats' to 'ntoskrnl!%ServiceCopyEnd;ntdll!Ldr*;ntdll!??_Ldrp*' to filter out some of the OS process-launch code
 
