@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Analysing .NET start-up time with Flamegraphs
-comments: true
+comments: false
 codeproject: false
 tags: [Profiling, ETW, JIT-Compiler]
 ---
