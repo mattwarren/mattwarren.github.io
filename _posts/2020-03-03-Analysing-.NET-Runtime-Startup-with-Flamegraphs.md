@@ -53,7 +53,7 @@ PerfView is a *very* powerful program, but not the most *user-friendly* of tools
 6. Ensure that '**.NET Symbol Collection**' is selected
 7. Hit '**Run Command**
 
-![Collection Options]({{ base }}/images/2020/03/PerfView - Collection Options - annotated.png)
+[![Collection Options]({{ base }}/images/2020/03/PerfView - Collection Options - annotated.png)]({{ base }}/images/2020/03/PerfView - Collection Options - annotated.png)
 
 If you then inspect the log you can see that it's collecting data, obtaining symbols and then finally writing everything out to a .zip file. Once the process is complete you should see the newly created file in the left-hand pane of the main UI, in this case it's called 'PerfViewData.etl.zip'
 
@@ -61,37 +61,37 @@ If you then inspect the log you can see that it's collecting data, obtaining sym
 
 Once you have your '.etl.zip' file, double-click on it and you will see a tree-view with all the available data. Now, select 'CPU Stacks' and you'll be presented with a view like this:
 
-![Unresolved Symbols]({{ base }}/images/2020/03/PerfView - Unresolved Symbols.png)
+[![Unresolved Symbols]({{ base }}/images/2020/03/PerfView - Unresolved Symbols.png)]({{ base }}/images/2020/03/PerfView - Unresolved Symbols.png)
 
 Notice there's alot of '?' characters in the list, this means that PerfView is not able to work out the method names as it hasn't resolved the necessary symbols for the Runtime dlls. Lets fix that:
 
 1. Open 'CPU Stacks'
 2. In the list, select the 'HelloWorld' process (PerfView collects data *machine-wide*)
-3. In the 'GroupPats' drop-down, select '[no grouping]'
-4. *Optional*, change the 'Synbol Path' from 'C:\Users\<user>\AppData\Local\Temp\SymbolCache' to something else
-5. In the 'By name' tab, hit 'Ctrl+A' to select all the rows
-6. Right-click and select 'Lookup Symbols' (or just hit 'Alt+S')
+3. In the '**GroupPats**' drop-down, select '[no grouping]'
+4. *Optional*, change the '**Symbol Path**' from 'C:\Users\<user>\AppData\Local\Temp\SymbolCache' to something else
+5. In the '**By name**' tab, hit 'Ctrl+A' to select all the rows
+6. Right-click and select '**Lookup Symbols**' (or just hit 'Alt+S')
 
 Now the 'CPU Stacks' view should look something like this:
 
-![Resolved Symbols]({{ base }}/images/2020/03/PerfView - Resolved Symbols.png)
+[![Resolved Symbols]({{ base }}/images/2020/03/PerfView - Resolved Symbols.png)]({{ base }}/images/2020/03/PerfView - Resolved Symbols.png)
 
 Finally, we can get the data we want:
 
-1. Select the 'Flame Graph' tab
-2.  Change 'GroupPats' to one of the following for a better flame graph:
-   1. [[group module entries]  &#123;%&#125;!=>module $1]
-   2. [group class entries]     &#123;%!*&#125;.%(=>class $1;&#123;%!*&#125;::=>class $1
+1. Select the '**Flame Graph**' tab
+2. Change 'GroupPats' to one of the following for a better flame graph:
+   1. [group module entries]  &#123;%&#125;!=>module $1
+   2. [group class entries]   &#123;%!*&#125;.%(=>class $1;&#123;%!\*&#125;::=>class $1
 3. Change 'Fold%' to a higher number, maybe 3%, so get rid of thin bars (any higher and you start to loose information)
-4. You can also change 'FoldPats' to 'ntoskrnl!%ServiceCopyEnd;ntdll!Ldr*;ntdll!??_Ldrp*' to filter out some of the OS process-launch code
+4. You can also change 'FoldPats' to 'ntoskrnl!%ServiceCopyEnd;ntdll!Ldr\*;ntdll!??_Ldrp\*' to filter out some of the OS process-launch code
 
-![Flamegraph]({{ base }}/images/2020/03/PerfView - Flamegraph.png)
+[![Flamegraph]({{ base }}/images/2020/03/PerfView - Flamegraph.png)](({{ base }}/images/2020/03/PerfView - Flamegraph.png))
 
 Now, at this point I actually recommend exporting the PerfView data into a format that can be loaded into https://speedscope.app/ as it gives you a *much* better experience. To do this click **File** -> **Save View As** and then in the 'Save as type' box select **Speed Scope Format**. Once that's done you can 'browse' that file at [speedscope.app](https://www.speedscope.app/), or if you want you can just take a look at one [I've already created](https://www.speedscope.app/#profileURL=https%3A%2F%2Fmattwarren.org%2Fdata%2F2020%2F03%2Fflamegraph.speedscope.json).
 
 **Note:** If you've never encountered '**flamegraphs**' before, I really recommend reading this excellent explanation by [Julia Evans](https://twitter.com/b0rk):
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">perf &amp; flamegraphs <a href="https://t.co/duzWs2hoLT">pic.twitter.com/duzWs2hoLT</a></p>&mdash; 🔎Julia Evans🔍 (@b0rk) <a href="https://twitter.com/b0rk/status/945680809712857090?ref_src=twsrc%5Etfw">December 26, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">perf &amp; flamegraphs <a href="https://t.co/duzWs2hoLT">pic.twitter.com/duzWs2hoLT</a></p>&mdash; 🔎Julia Evans🔍 (@b0rk) <a href="https://twitter.com/b0rk/status/945680809712857090?ref_src=twsrc%5Etfw">December 26, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ----
 
@@ -124,4 +124,4 @@ So, the main places that the runtime spends time are:
 
 To confirm the last point, we can return to PerfView and take a look at the 'JIT Stats Summary' it produces. From the main menu, under 'Advanced Group' -> 'JIT Stats' we see that 23.1 ms or 9.1% of the total CPU time was spent JITing:
 
-![JIT Stats for HelloWorld]({{ base }}/images/2020/03/PerfView - JIT Stats for HelloWorld.png)
+[![JIT Stats for HelloWorld]({{ base }}/images/2020/03/PerfView - JIT Stats for HelloWorld.png)]({{ base }}/images/2020/03/PerfView - JIT Stats for HelloWorld.png
