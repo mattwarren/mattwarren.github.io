@@ -84,7 +84,7 @@ Finally, we can get the data we want:
    2. [group class entries]   &#123;%!*&#125;.%(=>class $1;&#123;%!\*&#125;::=>class $1
 3. Change '**Fold%**' to a higher number, maybe 3%, to get rid of any *thin* bars (any higher and you start to loose information)
 
-[![Flamegraph]({{ base }}/images/2020/03/PerfView - Flamegraph.png)](({{ base }}/images/2020/03/PerfView - Flamegraph.png))
+[![Flamegraph]({{ base }}/images/2020/03/PerfView - Flamegraph.png)]({{ base }}/images/2020/03/PerfView - Flamegraph.png)
 
 Now, at this point I actually recommend exporting the PerfView data into a format that can be loaded into [https://speedscope.app/](https://speedscope.app/) as it gives you a *much* better experience. To do this click **File** -> **Save View As** and then in the 'Save as type' box select **Speed Scope Format**. Once that's done you can 'browse' that file at [speedscope.app](https://www.speedscope.app/), or if you want you can just take a look at one [I've already created](https://www.speedscope.app/#profileURL=https%3A%2F%2Fmattwarren.org%2Fdata%2F2020%2F03%2Fflamegraph.speedscope.json).
 
