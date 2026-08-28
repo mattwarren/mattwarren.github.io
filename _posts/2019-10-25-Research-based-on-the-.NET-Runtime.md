@@ -60,7 +60,6 @@ So armed with [Google Scholar](https://scholar.google.com/) and ably assisted by
   - [**VMKit: a Substrate for Managed Runtime Environments** (Geoffray, Thomas, Lawall, Muller & Folliot, 2010)](#vmkit-a-substrate-for-managed-runtime-environments-geoffray-thomas-lawall-muller--folliot-2010)
   - [**MMC: the Mono Model Checker** (Ruys & Aan de Brugh, 2007)](#mmc-the-mono-model-checker-ruys--aan-de-brugh-2007)
   - [**Numeric performance in C, C# and Java** (Sestoft, 2007)](#numeric-performance-in-c-c-and-java-sestoft-2007)
-  - [[**Mono versus .Net: A Comparative Study of Performance for Distributed Processing.** (Blajian, Eggen, Eggen & Pitts, 2006)]()](#mono-versus-net-a-comparative-study-of-performance-for-distributed-processing-blajian-eggen-eggen--pitts-2006)
   - [**Mono versus .Net: A Comparative Study of Performance for Distributed Processing.** (Blajian, Eggen, Eggen & Pitts, 2006)](#mono-versus-net-a-comparative-study-of-performance-for-distributed-processing-blajian-eggen-eggen--pitts-2006)
   - [**Automated detection of performance regressions: the mono experience** (Kalibera, Bulej & Tuma, 2005)](#automated-detection-of-performance-regressions-the-mono-experience-kalibera-bulej--tuma-2005)
 - [**Shared Source Common Language Infrastructure** (SSCLI) - a.k.a '**Rotor**'](#shared-source-common-language-infrastructure-sscli---aka-rotor)
