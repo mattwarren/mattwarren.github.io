@@ -3,10 +3,8 @@ layout: page
 title: About
 ---
 
-<img src="{{ base }}/images/speaking/MVP Award Logo - small.png" alt="MVP Award Logo"/>
-
 <p class="message">
-  I'm a .NET (C#) coder and Microsoft MVP, who loves measuring, finding and fixing performance issues. 
+  I'm a .NET (C#) coder and Microsoft MVP, who loves measuring, finding and fixing performance issues.
   I'm also a contributor to <a href="https://github.com/PerfDotNet/BenchmarkDotNet" target="_blank">BenchmarkDotNet</a> amongst other things.
 </p>
 

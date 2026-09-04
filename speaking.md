@@ -5,7 +5,7 @@ title: Speaking
 
 <img src="{{ base }}/images/speaking/MVP Award Logo - small.png" alt="MVP Award Logo"/>
 
-<h4><strong>In 2017 I was given the <a href="https://mvp.microsoft.com">Microsoft MVP Award</a> in the 'Visual Studio and Development Technologies' Category - Yay!!</strong></h4>
+<h4><strong>From 2017-2022 I was given the <a href="https://mvp.microsoft.com">Microsoft MVP Award</a> in the 'Visual Studio and Development Technologies' Category</strong></h4>
 
 <hr />
 
